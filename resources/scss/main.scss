@@ -1,0 +1,71 @@
+$mediumGreen: #5FA09F;
+$darkGreen  : #217E7E;
+$lightGreen : #F4FAFA;
+$yellow     : #E6ED96;
+$gray       : #F4F4F4;
+$black      : #000000;
+$white      : #FEFEFE;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: pt-sans, sans-serif;
+    font-weight: 700;
+    font-style : normal;
+    padding    : 0;
+    margin     : 0.5rem 0;
+}
+
+h2 {
+    font-size: 3rem;
+}
+
+.text-medium {
+    color: $mediumGreen;
+}
+
+p,
+a,
+button {
+    font-family: pt-sans, sans-serif;
+    font-weight: 400;
+    font-style : normal;
+    padding    : 0;
+    margin     : 0.5rem 0;
+}
+
+.hero {
+    display        : flex;
+    align-items    : center;
+    justify-content: center;
+    gap            : 1rem 8rem;
+    flex-wrap      : wrap;
+    padding        : 3rem 0.5rem;
+
+    &__desc {
+        max-width: 22rem;
+    }
+
+    &__a {
+        background     : $gray;
+        width          : 7rem;
+        height         : 2.5rem;
+        justify-content: center;
+        border-radius  : 4rem;
+        align-items    : center;
+        display        : flex;
+        text-decoration: none;
+        color          : $black;
+
+        &:hover {
+            background-color: $lightGreen;
+        }
+    }
+
+    &__svg {
+        max-width: 25rem;
+    }
+}
