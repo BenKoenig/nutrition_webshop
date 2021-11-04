@@ -26,33 +26,75 @@ HomeController::index - <?php echo $foo; ?>
 
 
 
-<div class="popular-categories">
+<div class="cards">
     <h3 class="text-dark">Popular Categories</h3>
-    <div class="popular-categories__container">   
-        <div class="popular-categories__container__item">
+    <div class="cards__container cards__container--md">   
+        <div class="cards__container__item cards__container__item--md">
             <div>
-                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/VBJ17k9/popular-1.png" alt="">
+                <img class="cards__container__item__bg"src="https://i.ibb.co/VBJ17k9/popular-1.png" alt="">
             </div>
-            <a href="#" class="popular-categories__container__item__a">Item</a>
+            <a href="#" class="cards__container__item__a">Item</a>
         </div> 
-        <div class="popular-categories__container__item">
+        <div class="cards__container__item cards__container__item--md"">
             <div>
-                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/p4RFxst/oats-oatmeal-732x549-thumbnail.png" alt="">
+                <img class="cards__container__item__bg"src="https://i.ibb.co/p4RFxst/oats-oatmeal-732x549-thumbnail.png" alt="">
             </div>
-            <a href="#" class="popular-categories__container__item__a">Item</a>
+            <a href="#" class="cards__container__item__a">Item</a>
         </div> 
-        <div class="popular-categories__container__item">
+        <div class="cards__container__item cards__container__item--md"">
             <div>
-                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/HtZBMHF/chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.png" alt="">
+                <img class="cards__container__item__bg"src="https://i.ibb.co/HtZBMHF/chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.png" alt="">
             </div>
-            <a href="#" class="popular-categories__container__item__a">Item</a>
+            <a href="#" class="cards__container__item__a">Item</a>
         </div> 
-        <div class="popular-categories__container__item">
+        <div class="cards__container__item cards__container__item--md"">
             <div>
-                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/DtSvJ6X/Best-Protein-Shakes-Getty-Images-182673073-2000.png" alt="">
+                <img class="cards__container__item__bg"src="https://i.ibb.co/DtSvJ6X/Best-Protein-Shakes-Getty-Images-182673073-2000.png" alt="">
             </div>
-            <a href="#" class="popular-categories__container__item__a">Item</a>
+            <a href="#" class="cards__container__item__a">Item</a>
         </div> 
+    </div>
+</div>
+
+<div class="cards">
+    <h3 class="text-dark">Find your supplements</h3>
+    <div class="cards__container cards__container--lg">
+        <div class="cards__container__item cards__container__item--lg">
+            <div>
+                <img class="cards__container__item__bg"src="https://i.ibb.co/tLC0nfQ/pexels-cesar-galea-o-3253501.png" alt="">
+            </div>
+            <div class="cards__container__item__info">
+                <h4 class="cards__container__item__info__title">Title</h4>
+                <a class="cards__container__item__info__a" href="#">Learn more</a>
+            </div>
+        </div>
+        <div class="cards__container__item cards__container__item--lg">
+            <div>
+                <img class="cards__container__item__bg"src="https://i.ibb.co/hYcC3B0/jared-rice-NTy-Bbu66-SI-unsplash.png" alt="">
+            </div>
+            <div class="cards__container__item__info">
+                <h4 class="cards__container__item__info__title">Title</h4>
+                <a class="cards__container__item__info__a" href="#">Learn more</a>
+            </div>
+        </div>
+        <div class="cards__container__item cards__container__item--lg">
+            <div>
+                <img class="cards__container__item__bg"src="https://i.ibb.co/vLLNwpb/anastase-maragos-7k-Ep-UPB8v-Nk-unsplash.png" alt="">
+            </div>
+            <div class="cards__container__item__info">
+                <h4 class="cards__container__item__info__title">Title</h4>
+                <a class="cards__container__item__info__a" href="#">Learn more</a>
+            </div>
+        </div>
+        <div class="cards__container__item cards__container__item--lg">
+            <div>
+                <img class="cards__container__item__bg"src="https://i.ibb.co/68DnVN6/andrew-tanglao-3-I2vzcm-Ep-LU-unsplash.png" alt="">
+            </div>
+            <div class="cards__container__item__info">
+                <h4 class="cards__container__item__info__title">Title</h4>
+                <a class="cards__container__item__info__a" href="#">Learn more</a>
+            </div>
+        </div>
     </div>
 
 </div>
