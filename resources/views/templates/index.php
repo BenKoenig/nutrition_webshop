@@ -24,8 +24,36 @@ HomeController::index - <?php echo $foo; ?>
     </div>
 </div>
 
-<div class="popular">
-    <div class="popular__item">
-        <a href="#" class="popular__item__a"></a>
+
+
+<div class="popular-categories">
+    <h3 class="text-dark">Popular Categories</h3>
+    <div class="popular-categories__container">   
+        <div class="popular-categories__container__item">
+            <div>
+                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/VBJ17k9/popular-1.png" alt="">
+            </div>
+            <a href="#" class="popular-categories__container__item__a">Item</a>
+        </div> 
+        <div class="popular-categories__container__item">
+            <div>
+                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/p4RFxst/oats-oatmeal-732x549-thumbnail.png" alt="">
+            </div>
+            <a href="#" class="popular-categories__container__item__a">Item</a>
+        </div> 
+        <div class="popular-categories__container__item">
+            <div>
+                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/HtZBMHF/chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.png" alt="">
+            </div>
+            <a href="#" class="popular-categories__container__item__a">Item</a>
+        </div> 
+        <div class="popular-categories__container__item">
+            <div>
+                <img class="popular-categories__container__item__bg"src="https://i.ibb.co/DtSvJ6X/Best-Protein-Shakes-Getty-Images-182673073-2000.png" alt="">
+            </div>
+            <a href="#" class="popular-categories__container__item__a">Item</a>
+        </div> 
     </div>
+
 </div>
+
