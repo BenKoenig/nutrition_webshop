@@ -1,9 +1,10 @@
 $mediumGreen: #5FA09F;
 $darkGreen  : #217E7E;
 $lightGreen : #F4FAFA;
-$ultragreen: #D4EBEA;
+$ultragreen : #D4EBEA;
 $yellow     : #E6ED96;
 $gray       : #F4F4F4;
+$darkgray: #D5D5D5;
 $black      : #000000;
 $white      : #FEFEFE;
 
@@ -59,6 +60,10 @@ h3 {
     font-size: 2.5rem;
 }
 
+h4 {
+    font-size: 2rem;
+}
+
 .text-medium {
     color: $mediumGreen;
 }
@@ -76,6 +81,9 @@ button {
     padding    : 0;
     margin     : 0.5rem 0;
 }
+
+
+
 
 
 
@@ -147,7 +155,7 @@ button {
 
 
         &__item {
-            background-color   : $gray;
+            background-color   : $lightGreen;
             background-repeat  : no-repeat;
             background-size    : cover;
             background-position: center center;
@@ -155,40 +163,79 @@ button {
             position           : relative;
             flex-basis         : 20rem;
             flex-grow          : 1;
-            overflow           : hidden;
+            display: flex;
+            flex-direction: column;
 
-            &--md {
-                height: 20rem;
-            }
 
-            &--lg {
-                height: 15rem;
+            &__box {
+                background-color: $lightGreen;
 
-                @include xs-screen {
-                    height: 15rem;
-                }
+                &__desc {
+                    background-color: $white;
+                    border-radius   : 2.3rem 2.3rem 0 0;
 
-                @include sm-screen {
-                    height: 18rem;
-                }
+                    h4,
+                    p {
+                        margin: 0;
+                    }
 
-                @include md-screen {
-                    height: 22rem;
-                }
+                    &__info {
+                        padding: 2rem;
 
-                @include lg-screen {
-                    height: 25rem;
-                }
+                        &__ratings {
+                            display: flex;
 
-                @include xl-screen {
-                    height: 30rem;
+                            &__star {
+                                width: 1.3rem;
+
+                                &--green {
+                                    fill:$mediumGreen;
+                                }
+
+                                &--gray {
+                                    fill: $darkgray;
+                                }
+                            }
+                        }
+
+                        &__btns {
+                            display: flex;
+                            gap: 0.3rem;
+
+                            &__btn {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                text-decoration: none;
+                                color: black;
+                                border-radius: 3rem;
+                                height: 2rem;
+                                font-weight: bold;
+                                
+
+                                &--cart {
+                                    width: 7rem;
+                                    background: $yellow;
+
+                                }
+
+                                &--details {
+                                    background-color: $gray;
+                                    width: 5rem;
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
 
             &__bg {
-                width: 100%;
+                width        : 100%;
+                border-radius: 2.3rem 2.3rem 0 0;
 
             }
+
 
             &__info {
                 position        : absolute;
@@ -205,6 +252,7 @@ button {
                 display         : flex;
                 flex-direction  : column;
                 padding         : 0.6rem 0;
+
 
                 &__title,
                 &__a {
@@ -223,12 +271,14 @@ button {
                     background     : $ultragreen;
                     padding        : 0.6rem;
                     border-radius  : 1rem;
-                    font-weight: bold;
+                    font-weight    : bold;
 
                     &:hover {
                         background-color: $lightGreen;
                     }
                 }
+
+
             }
 
             &__a {
@@ -241,10 +291,11 @@ button {
                 color           : $black;
                 text-decoration : none;
                 margin          : 0;
-                padding         : 1.6rem 0 1.5rem 0;
+                padding         : 1.2rem 0 1.5rem 0;
                 display         : flex;
                 justify-content : center;
                 align-items     : center;
+                font-weight     : bold;
 
                 &:hover {
                     color: $darkGreen;
@@ -253,4 +304,3 @@ button {
         }
     }
 }
-
