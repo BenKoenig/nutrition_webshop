@@ -8,6 +8,12 @@ $darkgray: #D5D5D5;
 $black      : #000000;
 $white      : #FEFEFE;
 
+body {
+    background-color: $white;
+    margin: 0;
+    padding: 0;
+}
+
 
 @mixin xl-screen {
     @media only screen and (min-width: 1400px) {
@@ -132,7 +138,6 @@ button {
         grid-gap      : 1rem;
 
         &--md {
-
             grid-template-columns: repeat(1, 1fr);
 
             @include xs-screen {
@@ -163,8 +168,6 @@ button {
             position           : relative;
             flex-basis         : 20rem;
             flex-grow          : 1;
-            display: flex;
-            flex-direction: column;
 
 
             &__box {
@@ -198,6 +201,7 @@ button {
                             }
                         }
 
+                        //item buttons
                         &__btns {
                             display: flex;
                             gap: 0.3rem;
@@ -211,12 +215,16 @@ button {
                                 border-radius: 3rem;
                                 height: 2rem;
                                 font-weight: bold;
-                                
+
+                                &:hover {
+                                    transform:scale(1.05);
+                                    transition: transform 0.3s ease-out;
+                                }
 
                                 &--cart {
                                     width: 7rem;
                                     background: $yellow;
-
+                                    
                                 }
 
                                 &--details {
@@ -270,7 +278,7 @@ button {
                     color          : $black;
                     background     : $ultragreen;
                     padding        : 0.6rem;
-                    border-radius  : 1rem;
+                    border-radius  : 3rem;
                     font-weight    : bold;
 
                     &:hover {
