@@ -31,7 +31,7 @@ require_once __DIR__ . '/../partials/flashMessagesAndErrors.php'; ?>
     require_once $templatePath; ?>
 </div>
 
-<footer class="footer">
+<?php require_once __DIR__ . '/../partials/footer.php'; ?>
 
 </footer>
 

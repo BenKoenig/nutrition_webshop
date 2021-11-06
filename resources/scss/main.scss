@@ -4,14 +4,32 @@ $lightGreen : #F4FAFA;
 $ultragreen : #D4EBEA;
 $yellow     : #E6ED96;
 $gray       : #F4F4F4;
-$darkgray: #D5D5D5;
+$darkgray   : #D5D5D5;
 $black      : #000000;
 $white      : #FEFEFE;
+$darkgray: #777272;
 
 body {
     background-color: $white;
-    margin: 0;
-    padding: 0;
+    margin          : 0;
+    padding         : 0;
+}
+
+.sr-only {
+    border           : 0 !important;
+    clip             : rect(1px, 1px, 1px, 1px) !important;
+    /* 1 */
+    -webkit-clip-path: inset(50%) !important;
+    clip-path        : inset(50%) !important;
+    /* 2 */
+    height           : 1px !important;
+    margin           : -1px !important;
+    overflow         : hidden !important;
+    padding          : 0 !important;
+    position         : absolute !important;
+    width            : 1px !important;
+    white-space      : nowrap !important;
+    /* 3 */
 }
 
 
@@ -68,6 +86,10 @@ h3 {
 
 h4 {
     font-size: 2rem;
+}
+
+h5 {
+    font-size: 1.5rem;
 }
 
 .text-medium {
@@ -192,7 +214,7 @@ button {
                                 width: 1.3rem;
 
                                 &--green {
-                                    fill:$mediumGreen;
+                                    fill: $mediumGreen;
                                 }
 
                                 &--gray {
@@ -204,32 +226,32 @@ button {
                         //item buttons
                         &__btns {
                             display: flex;
-                            gap: 0.3rem;
+                            gap    : 0.3rem;
 
                             &__btn {
-                                display: flex;
+                                display        : flex;
                                 justify-content: center;
-                                align-items: center;
+                                align-items    : center;
                                 text-decoration: none;
-                                color: black;
-                                border-radius: 3rem;
-                                height: 2rem;
-                                font-weight: bold;
+                                color          : black;
+                                border-radius  : 3rem;
+                                height         : 2rem;
+                                font-weight    : bold;
 
                                 &:hover {
-                                    transform:scale(1.05);
+                                    transform : scale(1.05);
                                     transition: transform 0.3s ease-out;
                                 }
 
                                 &--cart {
-                                    width: 7rem;
+                                    width     : 7rem;
                                     background: $yellow;
-                                    
+
                                 }
 
                                 &--details {
                                     background-color: $gray;
-                                    width: 5rem;
+                                    width           : 5rem;
                                 }
                             }
 
@@ -305,8 +327,66 @@ button {
                 align-items     : center;
                 font-weight     : bold;
 
+
+
                 &:hover {
                     color: $darkGreen;
+                }
+            }
+        }
+    }
+}
+
+
+.footer {
+    display       : flex;
+    flex-direction: column;
+    max-width     : 100rem;
+    margin        : 0 auto;
+    padding       : 2.5rem 0;
+
+    &__links {
+        display        : flex;
+        flex-wrap      : wrap;
+        justify-content: space-between;
+
+        &__social {
+            &__ul {
+                display: flex;
+                padding: 0;
+                margin : 0;
+                gap    : 0.4rem;
+
+                &__li {
+                    list-style-type: none;
+
+                    &__a {
+                        text-decoration: none;
+                    }
+                }
+            }
+        }
+
+        &__info {
+            display  : flex;
+            flex-wrap: wrap;
+            gap      : 1.4rem;
+        }
+    }
+
+    &__copyright {
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        &__ul {
+            display: flex;
+            padding: 0;
+            list-style-type: none;
+            gap: 0.7rem;
+            &__li {
+                &__a {
+                    text-decoration: none;
+                    color: $darkgray;
                 }
             }
         }
