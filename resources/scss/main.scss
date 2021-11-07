@@ -123,13 +123,14 @@ button {
     gap            : 1rem 8rem;
     flex-wrap      : wrap;
     padding        : 3rem 0.5rem;
+    background: $gray;
 
     &__desc {
         max-width: 22rem;
     }
 
     &__a {
-        background     : $gray;
+        background     : $darkGreen;
         width          : 7rem;
         height         : 2.5rem;
         justify-content: center;
@@ -137,10 +138,11 @@ button {
         align-items    : center;
         display        : flex;
         text-decoration: none;
-        color          : $black;
+        color          : $white;
+        font-weight: bold;
 
         &:hover {
-            background-color: $lightGreen;
+            background-color: $mediumGreen;
         }
     }
 
@@ -371,6 +373,12 @@ button {
             display  : flex;
             flex-wrap: wrap;
             gap      : 1.4rem;
+            &__item {
+                &__a {
+                    text-decoration: none;
+                    color: $darkGreen;
+                }
+            }
         }
     }
 

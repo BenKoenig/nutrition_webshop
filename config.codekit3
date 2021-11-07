@@ -57,6 +57,14 @@
       "oAP" : "\/app\/Controllers\/RoomController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/TermsController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/TermsController.php",
+      "oF" : 0
+    },
     "\/app\/Models\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -217,22 +225,6 @@
       "oAP" : "\/core\/views\/errors\/exception.php",
       "oF" : 0
     },
-    "\/modules\/compile-sass.dart " : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/modules\/compile-sass.dart ",
-      "oF" : 0
-    },
-    "\/mvc.sql" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/mvc.sql",
-      "oF" : 0
-    },
     "\/node_modules" : {
       "ft" : 65536,
       "oA" : 2,
@@ -305,14 +297,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/public\/uploads",
-      "oF" : 0
-    },
-    "\/pubspec.yaml" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/pubspec.yaml",
       "oF" : 0
     },
     "\/README.html" : {
@@ -428,6 +412,14 @@
       "oAP" : "\/resources\/views\/templates\/.gitkeep",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/auth\/a.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/auth\/a.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/auth\/login.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -458,6 +450,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/rooms\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/terms.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/terms.php",
       "oF" : 0
     },
     "\/routes\/.gitkeep" : {

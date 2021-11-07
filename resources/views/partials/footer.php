@@ -36,7 +36,7 @@ $social_media_svgs = [
                 <div class="footer__links__info__item">
                 <h5><?php echo $info[0];?></h5>
                 <p><?php echo $info[1];?></p>
-                <a href="<?php echo $info[2];?>"><?php echo $info[3];?></a>
+                <a class="footer__links__info__item__a"href="<?php echo $info[2];?>"><?php echo $info[3];?></a>
             </div>
             <?php endforeach; ?>
         </div>
