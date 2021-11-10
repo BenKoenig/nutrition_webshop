@@ -9,6 +9,8 @@ $black      : #000000;
 $white      : #FEFEFE;
 $darkgray: #777272;
 
+
+
 body {
     background-color: $white;
     margin          : 0;
@@ -102,18 +104,14 @@ h5 {
 
 p,
 a,
-button {
+button,
+label{
     font-family: pt-sans, sans-serif;
     font-weight: 400;
     font-style : normal;
     padding    : 0;
     margin     : 0.5rem 0;
 }
-
-
-
-
-
 
 //Hero Section
 .hero {
@@ -400,3 +398,53 @@ button {
         }
     }
 }
+
+.login-form {
+    max-width: 100rem;
+    margin   : 0 auto;
+    padding  : 2.5rem 0;
+    
+    &__container {
+
+        flex-direction: column;
+
+        &--btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 8rem;
+            height: 3rem;
+            font-weight: bold;
+            border: 0;
+            border-radius: 10rem;
+            background-color: $darkGreen;
+            color: $white;
+
+        }
+
+        &__field {
+            display: flex;
+            flex-direction: column;
+            width: 20rem;
+            margin: 0.3rem 0;
+
+            
+            &__input {
+              
+                border: 0;
+                height: 2.5rem;  
+                background: $gray;
+                border-radius: 20rem;
+
+                &:focus {
+                    border: 0;
+                }
+            }
+
+
+            
+        }
+
+    }
+}
+

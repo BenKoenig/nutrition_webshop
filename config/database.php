@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'host' => 'localhost', 
+    'host' => 'localhost', // bei euch vermutlich localhost
     'user' => 'root',
-    'password' => '', 
+    'password' => '', // bei euch vermutlich ''
     'dbname' => 'mvc'
 ];

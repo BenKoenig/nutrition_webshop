@@ -1,4 +1,4 @@
-HomeController::index - <?php echo $foo; ?>
+
 
 
 <section class="hero">
@@ -17,39 +17,39 @@ HomeController::index - <?php echo $foo; ?>
     </div>
 </section>
 
+<!--
+https://i.ibb.co/VBJ17k9/popular-1.png
+https://i.ibb.co/p4RFxst/oats-oatmeal-732x549-thumbnail.png
+https://i.ibb.co/HtZBMHF/chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.png
+https://i.ibb.co/DtSvJ6X/Best-Protein-Shakes-Getty-Images-182673073-2000.png
+-->
+
+
+
 <section class="cards">
     <h3 class="text-dark">Popular Categories</h3>
     <div class="cards__container cards__container--md">   
+    <?php for($i = 0; $i < 4; $i++): ?>
         <div class="cards__container__item cards__container__item--md">
             <div>
                 <img class="cards__container__item__bg"src="https://i.ibb.co/VBJ17k9/popular-1.png" alt="">
             </div>
             <a href="#" class="cards__container__item__a">Item</a>
         </div> 
-        <div class="cards__container__item cards__container__item--md"">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/p4RFxst/oats-oatmeal-732x549-thumbnail.png" alt="">
-            </div>
-            <a href="#" class="cards__container__item__a">Item</a>
-        </div> 
-        <div class="cards__container__item cards__container__item--md"">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/HtZBMHF/chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.png" alt="">
-            </div>
-            <a href="#" class="cards__container__item__a">Item</a>
-        </div> 
-        <div class="cards__container__item cards__container__item--md"">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/DtSvJ6X/Best-Protein-Shakes-Getty-Images-182673073-2000.png" alt="">
-            </div>
-            <a href="#" class="cards__container__item__a">Item</a>
-        </div> 
+    <?php endfor; ?>
     </div>
 </section>
 
+<!--
+    https://i.ibb.co/tLC0nfQ/pexels-cesar-galea-o-3253501.png
+    https://i.ibb.co/hYcC3B0/jared-rice-NTy-Bbu66-SI-unsplash.png
+    https://i.ibb.co/vLLNwpb/anastase-maragos-7k-Ep-UPB8v-Nk-unsplash.png
+    https://i.ibb.co/68DnVN6/andrew-tanglao-3-I2vzcm-Ep-LU-unsplash.png
+-->
 <section class="cards">
     <h3 class="text-dark">Find your supplements</h3>
     <div class="cards__container cards__container--lg">
+    <?php for($i = 0; $i < 4; $i++): ?>
         <div class="cards__container__item cards__container__item--lg">
             <div>
                 <img class="cards__container__item__bg"src="https://i.ibb.co/tLC0nfQ/pexels-cesar-galea-o-3253501.png" alt="">
@@ -59,48 +59,24 @@ HomeController::index - <?php echo $foo; ?>
                 <a class="cards__container__item__info__a" href="#">Learn more</a>
             </div>
         </div>
-        <div class="cards__container__item cards__container__item--lg">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/hYcC3B0/jared-rice-NTy-Bbu66-SI-unsplash.png" alt="">
-            </div>
-            <div class="cards__container__item__info">
-                <h4 class="cards__container__item__info__title">Title</h4>
-                <a class="cards__container__item__info__a" href="#">Learn more</a>
-            </div>
-        </div>
-        <div class="cards__container__item cards__container__item--lg">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/vLLNwpb/anastase-maragos-7k-Ep-UPB8v-Nk-unsplash.png" alt="">
-            </div>
-            <div class="cards__container__item__info">
-                <h4 class="cards__container__item__info__title">Title</h4>
-                <a class="cards__container__item__info__a" href="#">Learn more</a>
-            </div>
-        </div>
-        <div class="cards__container__item cards__container__item--lg">
-            <div>
-                <img class="cards__container__item__bg"src="https://i.ibb.co/68DnVN6/andrew-tanglao-3-I2vzcm-Ep-LU-unsplash.png" alt="">
-            </div>
-            <div class="cards__container__item__info">
-                <h4 class="cards__container__item__info__title">Title</h4>
-                <a class="cards__container__item__info__a" href="#">Learn more</a>
-            </div>
-        </div>
+    <?php endfor; ?>
     </div>
 </section>
+
+
  
 <section class="cards">
     <h3 class="text-dark">Featured Products</h3>
     <div class="cards__container cards__container--md">
 
+        <?php for($i = 0; $i < 4; $i++): ?>
         <div class="cards__container__item">
             <div>
-                <img class="cards__container__item__bg" src="https://i.ibb.co/sVYSmyv/Unbenannt-dasdsadad1.png" alt="">
+                <img class="cards__container__item__bg" src="https://i.ibb.co/jhwWR3n/Product-MW-2270-e3a39323-b0ac-448f-ba23-b5fcc9ba2094.webp" alt="">
             </div>
             <div class="cards__container__item__box">
                 <div class="cards__container__item__box__desc">
                     <div class="cards__container__item__box__desc__info">
-
 
                         <h4>Item</h4>
                         <div class="cards__container__item__box__desc__info__ratings">
@@ -120,100 +96,8 @@ HomeController::index - <?php echo $foo; ?>
                 </div>
             </div>
         </div>  
+        <?php endfor; ?>
 
-
-        <div class="cards__container__item">
-            <div>
-                <img class="cards__container__item__bg" src="https://i.ibb.co/sVYSmyv/Unbenannt-dasdsadad1.png" alt="">
-            </div>
-            
-            <div class="cards__container__item__box">
-                <div class="cards__container__item__box__desc">
-                    <div class="cards__container__item__box__desc__info">
-
-
-                        <h4>Item</h4>
-                        <div class="cards__container__item__box__desc__info__ratings">
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--gray" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                        
-                        </div>
-                        <p>12,99 €  | 25,98 € /kg</p>
-                        <div class="cards__container__item__box__desc__info__btns">
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>  
-
-        <div class="cards__container__item">
-            <div>
-                <img class="cards__container__item__bg" src="https://i.ibb.co/sVYSmyv/Unbenannt-dasdsadad1.png" alt="">
-            </div>
-            
-            <div class="cards__container__item__box">
-                <div class="cards__container__item__box__desc">
-                    <div class="cards__container__item__box__desc__info">
-
-
-                        <h4>Item</h4>
-                        <div class="cards__container__item__box__desc__info__ratings">
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--gray" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                        
-                        </div>
-                        <p>12,99 €  | 25,98 € /kg</p>
-                        <div class="cards__container__item__box__desc__info__btns">
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>  
-
-        <div class="cards__container__item">
-            <div>
-                <img class="cards__container__item__bg" src="https://i.ibb.co/sVYSmyv/Unbenannt-dasdsadad1.png" alt="">
-            </div>
-            
-            <div class="cards__container__item__box">
-                <div class="cards__container__item__box__desc">
-                    <div class="cards__container__item__box__desc__info">
-
-
-                        <h4>Item</h4>
-                        <div class="cards__container__item__box__desc__info__ratings">
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                            <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--gray" xml:space="preserve" viewBox="0 0 510 510"><path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z"/></svg>
-                        
-                        </div>
-                        <p>12,99 €  | 25,98 € /kg</p>
-                        <div class="cards__container__item__box__desc__info__btns">
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
-                            <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            
-        </div>  
 
         
         

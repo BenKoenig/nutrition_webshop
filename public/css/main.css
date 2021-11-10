@@ -60,7 +60,8 @@ h5 {
 
 p,
 a,
-button {
+button,
+label {
   font-family: pt-sans, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -298,4 +299,40 @@ button {
 .footer__copyright__ul__li__a {
   text-decoration: none;
   color: #777272;
+}
+
+.login-form {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 2.5rem 0;
+}
+.login-form__container {
+  flex-direction: column;
+}
+.login-form__container--btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8rem;
+  height: 3rem;
+  font-weight: bold;
+  border: 0;
+  border-radius: 10rem;
+  background-color: #217E7E;
+  color: #FEFEFE;
+}
+.login-form__container__field {
+  display: flex;
+  flex-direction: column;
+  width: 20rem;
+  margin: 0.3rem 0;
+}
+.login-form__container__field__input {
+  border: 0;
+  height: 2.5rem;
+  background: #F4F4F4;
+  border-radius: 20rem;
+}
+.login-form__container__field__input:focus {
+  border: 0;
 }

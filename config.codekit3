@@ -17,6 +17,12 @@
       "oAP" : "\/.htaccess",
       "oF" : 0
     },
+    "\/.idea" : {
+      "ft" : 65536,
+      "oA" : 1,
+      "oAP" : "\/.idea",
+      "oF" : 0
+    },
     "\/app\/Controllers\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -55,14 +61,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Controllers\/RoomController.php",
-      "oF" : 0
-    },
-    "\/app\/Controllers\/TermsController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/TermsController.php",
       "oF" : 0
     },
     "\/app\/Models\/.gitkeep" : {
@@ -161,6 +159,14 @@
       "oAP" : "\/core\/Helpers\/Redirector.php",
       "oF" : 0
     },
+    "\/core\/Middlewares\/AuthMiddleware.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/core\/Middlewares\/AuthMiddleware.php",
+      "oF" : 0
+    },
     "\/core\/Models\/AbstractModel.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -225,27 +231,13 @@
       "oAP" : "\/core\/views\/errors\/exception.php",
       "oF" : 0
     },
-    "\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/node_modules",
+    "\/mvc.sql" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/mvc.sql",
       "oF" : 0
-    },
-    "\/package-lock.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/package-lock-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/package.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/package-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
     },
     "\/public\/.htaccess" : {
       "cB" : 0,
@@ -412,20 +404,20 @@
       "oAP" : "\/resources\/views\/templates\/.gitkeep",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/auth\/a.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/auth\/a.php",
-      "oF" : 0
-    },
     "\/resources\/views\/templates\/auth\/login.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/auth\/login.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/helpers\/confirmation.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/helpers\/confirmation.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/home.php" : {
@@ -444,20 +436,20 @@
       "oAP" : "\/resources\/views\/templates\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/rooms\/create.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/rooms\/create.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/rooms\/edit.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/rooms\/edit.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/terms.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/terms.php",
       "oF" : 0
     },
     "\/routes\/.gitkeep" : {

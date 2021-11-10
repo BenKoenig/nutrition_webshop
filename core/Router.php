@@ -41,7 +41,7 @@ class Router
         /**
          * Route-Files laden.
          */
-        $webRoutes = require_once __DIR__ . '/../routes/web.php';
+        $webRoutes = require_once __DIR__ . '/../routes/web.php'; // bspw. /var/www/html/mvc/core/
         $apiRoutes = require_once __DIR__ . '/../routes/api.php';
 
         /**
@@ -181,7 +181,7 @@ class Router
             /**
              * Controller und Action aus dem Callable laden und den Controller instanziieren.
              * $callable beinhaltete den Namen der Klasse inklusive Namespace als String und kann verwendet werden um
-             * ein Objekt oxhne fix definierten Klassennamen zu erzeugen, dynamisch also.
+             * ein Objekt ohne fix definierten Klassennamen zu erzeugen, dynamisch also.
              */
             $controller = new $callable[0]();
             $action = $callable[1];
