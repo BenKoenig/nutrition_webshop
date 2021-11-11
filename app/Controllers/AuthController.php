@@ -25,7 +25,7 @@ class AuthController
          * Startseite weiter.
          */
         if (User::isLoggedIn()) {
-            Redirector::redirect(BASE_URL . '/home');
+            Redirector::redirect('/home');
         }
 
         /**
@@ -99,7 +99,7 @@ class AuthController
      */
     public function logout()
     {
-        User::logout(BASE_URL);
+        User::logout('/');
     }
 
 }

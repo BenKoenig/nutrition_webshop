@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Room;
+use App\Models\Categorie;
+use App\Models\Goal;
 use Core\View;
 
 /**
@@ -38,4 +40,22 @@ class HomeController
         ]);
     }
 
+    public function display()
+    {
+        /**
+         * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
+         */
+        $categories = Categorie::findWhere('is_popular', 1);
+        $goals = Goal::all('id', 'ASC');
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('home', [
+            'categories' => $categories,
+            'goals' => $goals
+        ]);
+    }
+
+ 
 }

@@ -6,8 +6,10 @@
  */
 
 use App\Controllers\AuthController;
+use App\Controllers\CategoryController;
 use App\Controllers\HomeController;
 use App\Controllers\RoomController;
+use App\Controllers\RoomFeatureController;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -35,11 +37,14 @@ return [
      * Home Route
      */
     '/home' => [HomeController::class, 'home'],
+    '/home' => [HomeController::class, 'display'],
+
+
 
     /**
      * Rooms Routes
      */
-    '/rooms' => [HomeController::class, 'home'], // @todo: create separate View!
+    '/rooms' => [RoomController::class, 'index'],
     '/rooms/{id}' => [RoomController::class, 'edit'],
     '/rooms/{id}/update' => [RoomController::class, 'update'],
     '/rooms/{id}/delete' => [RoomController::class, 'delete'],
@@ -47,5 +52,19 @@ return [
     '/rooms/create' => [RoomController::class, 'create'],
     '/rooms/store' => [RoomController::class, 'store'],
 
+    /**
+     * RoomFeatures Routes
+     */
+    '/room-features' => [RoomFeatureController::class, 'index'],
+    '/room-features/{id}' => [RoomFeatureController::class, 'edit'],
+    '/room-features/{id}/update' => [RoomFeatureController::class, 'update'],
+    '/room-features/{id}/delete' => [RoomFeatureController::class, 'delete'],
+    '/room-features/{id}/delete/confirm' => [RoomFeatureController::class, 'deleteConfirm'],
+    '/room-features/create' => [RoomFeatureController::class, 'create'],
+    '/room-features/store' => [RoomFeatureController::class, 'store'],
+
     // ...
+
+    '/categories' => [CategoryController::class, 'index'],
+    '/categories' => [CategoryController::class, 'categories'],
 ];

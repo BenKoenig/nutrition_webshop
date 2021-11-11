@@ -68,6 +68,22 @@ abstract class AbstractModel
      *
      * @return object|null
      */
+
+
+    public static function findWhere(string $where, int $is) {
+        $database = new Database();
+        $tablename = self::getTablenameFromClassname();
+
+        if ($is === null) {
+            $result = $database->query("SELECT * FROM $tablename WHERE $where;");
+        } else {
+            $result = $database->query("SELECT * FROM $tablename WHERE $where = $is;");
+        }
+
+
+        return self::handleResult($result);
+    } 
+
     public static function find(int $id): ?object
     {
         /**

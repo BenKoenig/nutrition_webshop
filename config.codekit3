@@ -39,6 +39,14 @@
       "oAP" : "\/app\/Controllers\/AuthController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/CategoryController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/CategoryController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/ChannelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -63,6 +71,14 @@
       "oAP" : "\/app\/Controllers\/RoomController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/RoomFeatureController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/RoomFeatureController.php",
+      "oF" : 0
+    },
     "\/app\/Models\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -71,12 +87,36 @@
       "oAP" : "\/app\/Models\/.gitkeep",
       "oF" : 0
     },
+    "\/app\/Models\/Categorie.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Categorie.php",
+      "oF" : 0
+    },
+    "\/app\/Models\/Goal.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Goal.php",
+      "oF" : 0
+    },
     "\/app\/Models\/Room.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/Room.php",
+      "oF" : 0
+    },
+    "\/app\/Models\/RoomFeature.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/RoomFeature.php",
       "oF" : 0
     },
     "\/app\/Models\/User.php" : {
@@ -231,13 +271,21 @@
       "oAP" : "\/core\/views\/errors\/exception.php",
       "oF" : 0
     },
-    "\/mvc.sql" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/mvc.sql",
-      "oF" : 0
+    "\/package-lock.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-lock-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/package.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
     },
     "\/public\/.htaccess" : {
       "cB" : 0,
@@ -283,6 +331,17 @@
       "oAP" : "\/public\/js\/.gitkeep",
       "oF" : 0
     },
+    "\/public\/js\/app.min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/app.min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/public\/uploads" : {
       "cB" : 0,
       "ft" : 8192,
@@ -325,6 +384,17 @@
       "oA" : 0,
       "oAP" : "\/resources\/js\/.gitkeep",
       "oF" : 0
+    },
+    "\/resources\/js\/main.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/resources\/js\/main-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
     },
     "\/resources\/scss\/.gitkeep" : {
       "cB" : 0,
@@ -380,14 +450,6 @@
       "oAP" : "\/resources\/views\/partials\/flashMessagesAndErrors.php",
       "oF" : 0
     },
-    "\/resources\/views\/partials\/footer.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/partials\/footer.php",
-      "oF" : 0
-    },
     "\/resources\/views\/partials\/nav.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -410,6 +472,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/auth\/login.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/categories.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/categories.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {
@@ -436,6 +506,30 @@
       "oAP" : "\/resources\/views\/templates\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/room_features\/create.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/room_features\/create.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/room_features\/edit.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/room_features\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/room_features\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/room_features\/index.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/rooms\/create.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -450,6 +544,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/rooms\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/rooms\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/rooms\/index.php",
       "oF" : 0
     },
     "\/routes\/.gitkeep" : {
@@ -491,6 +593,58 @@
       "oA" : 0,
       "oAP" : "\/storage\/uploads\/.gitkeep",
       "oF" : 0
+    },
+    "\/storage\/uploads\/categories\/category-bars.png" : {
+      "ft" : 32768,
+      "iS" : 321530,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/categories\/category-bars.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/categories\/category-oats.png" : {
+      "ft" : 32768,
+      "iS" : 442846,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/categories\/category-oats.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/categories\/category-protein.png" : {
+      "ft" : 32768,
+      "iS" : 266599,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/categories\/category-protein.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/categories\/category-shakes.png" : {
+      "ft" : 32768,
+      "iS" : 215259,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/categories\/category-shakes.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     }
   },
   "hooks" : [

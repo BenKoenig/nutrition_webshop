@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/styles.css">
 </head>
 <body>
 
 <style>
 <?php include 'css/main.css'; ?>
 </style>
+
 
 <?php
 require_once __DIR__ . '/../partials/nav.php'; ?>
@@ -30,10 +33,10 @@ require_once __DIR__ . '/../partials/flashMessagesAndErrors.php'; ?>
     require_once $templatePath; ?>
 </div>
 
-<?php
-require_once __DIR__ . '/../partials/footer.php'; ?>
+<footer class="footer">
 
 </footer>
 
+<script src="<?php echo BASE_URL; ?>/js/app.min.js"></script>
 </body>
 </html>

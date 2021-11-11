@@ -20,7 +20,7 @@ return [
      *
      * bei euch: http://localhost/mvc/ od. sowas wie http://localhost/sae-wdd320/mvc/
      */
-    'baseurl' => 'http://localhost/php/mvc/public',
+    'baseurl' => 'http://localhost/php/fitness_nutrition_webshop/public',
 
     /**
      * Um einzelne Funktionalitäten je nach Umgebung leicht umschalten zu können, führen wir eine Einstellung ein,

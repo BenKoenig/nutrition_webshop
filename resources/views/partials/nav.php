@@ -10,8 +10,14 @@
                     <a class="nav-link" href="<?php echo BASE_URL; ?>/home">Home</a>
                 </li>
                 <li class="nav-item">
-
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>/rooms">Räume</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>/room-features">Raum Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>/categories">Categories</a>
+                </li>   
             </ul>
             <?php
             /**
