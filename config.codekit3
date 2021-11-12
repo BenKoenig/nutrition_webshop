@@ -506,6 +506,14 @@
       "oAP" : "\/resources\/views\/templates\/control_panel\/control_panel.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/control_panel\/partials\/panel-header.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/control_panel\/partials\/panel-header.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/control_panel\/partials\/panel.php" : {
       "cB" : 0,
       "ft" : 8192,

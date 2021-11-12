@@ -390,6 +390,37 @@ label {
   font-weight: bold;
 }
 
+.panel-header {
+  margin-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  align-items: center;
+  background-color: #F4FAFA;
+  padding: 2rem 1rem;
+}
+.panel-header--desc {
+  max-width: 30rem;
+  margin-bottom: 1.4rem;
+}
+.panel-header--user {
+  color: #217E7E;
+}
+.panel-header--logout {
+  text-decoration: none;
+  background: #E6ED96;
+  width: 6rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 2.5rem;
+}
+.panel-header__img {
+  border-radius: 100%;
+}
+
 .panel {
   max-width: 100rem;
   margin: 0 auto;
@@ -398,23 +429,21 @@ label {
 .panel__container {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
 }
 .panel__container__item {
-  flex: 1 10 auto;
-  background-color: #5FA09F;
+  flex: 1 10 30rem;
   height: 18rem;
   width: 18rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #020024;
-  background: linear-gradient(90deg, #020024 0%, #363678 35%, #00d4ff 100%);
   border-radius: 2.3rem;
+  box-shadow: 5px 5px 29px -10px rgba(0, 0, 0, 0.2);
 }
 .panel__container__item__a {
   text-decoration: none;
-  color: #FEFEFE;
+  color: #000000;
   font-weight: bold;
   font-size: 2rem;
   width: 100%;

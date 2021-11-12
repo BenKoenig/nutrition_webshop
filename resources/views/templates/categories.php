@@ -1,5 +1,4 @@
 <h2>Categories</h2>
-
 <ul class="categories">
     <?php foreach ($categories as $categorie): ?>
         <li class="categories__li">

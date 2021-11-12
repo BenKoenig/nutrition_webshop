@@ -21,6 +21,8 @@ use App\Controllers\RoomFeatureController;
  * + /shop/{id} --> ProductController->show($id)
  */
 
+
+
 return [
     /**
      * Index Route
@@ -69,5 +71,16 @@ return [
     '/categories' => [CategoryController::class, 'index'],
     '/categories' => [CategoryController::class, 'categories'],
 
+    /**
+     * Control Panel
+     */
+
     '/control_panel' => [ControlPanelController::class, 'render'],
+    '/control_panel/products' => [ControlPanelController::class, 'render'],
+    '/control_panel/categories' => [ControlPanelController::class, 'render'],
+    '/control_panel/goals' => [ControlPanelController::class, 'render'],
+    '/control_panel/ratings' => [ControlPanelController::class, 'render'],
+    '/control_panel/users' => [ControlPanelController::class, 'render'],
+    '/control_panel/merchants' => [ControlPanelController::class, 'render'],
+
 ];
