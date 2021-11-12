@@ -1,5 +1,3 @@
-
-
 <section class="hero">
     <div>
         <h2 class="text-medium">Up for a challenge?</h2>
@@ -72,16 +70,16 @@ foreach ($categories as $categorie) : ?>
     <h3 class="text-dark">Featured Products</h3>
     <div class="cards__container cards__container--md">
 
-        <?php for ($i = 0; $i < 4; $i++) : ?>
+        <?php foreach ($products as $product) : ?>
             <div class="cards__container__item">
                 <div>
-                    <img class="cards__container__item__bg" src="https://i.ibb.co/jhwWR3n/Product-MW-2270-e3a39323-b0ac-448f-ba23-b5fcc9ba2094.webp" alt="">
+                    <img class="cards__container__item__bg" src="<?php echo $product->img_path; ?>" alt="<?php echo $product->name; ?>">
                 </div>
                 <div class="cards__container__item__box">
                     <div class="cards__container__item__box__desc">
                         <div class="cards__container__item__box__desc__info">
 
-                            <h4>Item</h4>
+                            <h4><?php echo $product->name; ?></h4>
                             <div class="cards__container__item__box__desc__info__ratings">
                                 <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510">
                                     <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
@@ -100,7 +98,7 @@ foreach ($categories as $categorie) : ?>
                                 </svg>
 
                             </div>
-                            <p>12,99 € | 25,98 € /kg</p>
+                            <p><?php echo $product->price; ?>€</p>
                             <div class="cards__container__item__box__desc__info__btns">
                                 <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
                                 <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
@@ -109,7 +107,7 @@ foreach ($categories as $categorie) : ?>
                     </div>
                 </div>
             </div>
-        <?php endfor; ?>
+        <?php endforeach; ?>
 
 
 

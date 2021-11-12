@@ -476,3 +476,28 @@ label{
         }
     }
 }
+
+.categories {
+    padding: 2rem 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    @include sm-screen {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @include md-screen {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    @include lg-screen {
+        grid-template-columns: repeat(5, 1fr);
+    }
+    &__li {
+        list-style-type: none;
+        &__a {
+            text-decoration: none;
+            color: $black;
+            font-weight: bold;
+        }
+    }
+}

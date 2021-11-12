@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Room;
 use App\Models\Categorie;
 use App\Models\Goal;
+use App\Models\Product;
 use Core\View;
 
 /**
@@ -47,13 +48,15 @@ class HomeController
          */
         $categories = Categorie::findWhere('is_popular', 1);
         $goals = Goal::all('id', 'ASC');
+        $products = Product::findWhere('is_featured', 1);
 
         /**
          * View laden und Daten übergeben.
          */
         View::render('home', [
             'categories' => $categories,
-            'goals' => $goals
+            'goals' => $goals,
+            'products' => $products
         ]);
     }
 

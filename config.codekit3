@@ -103,6 +103,14 @@
       "oAP" : "\/app\/Models\/Goal.php",
       "oF" : 0
     },
+    "\/app\/Models\/Product.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Product.php",
+      "oF" : 0
+    },
     "\/app\/Models\/Room.php" : {
       "cB" : 0,
       "ft" : 8192,

@@ -358,3 +358,34 @@ label {
   height: 100%;
   z-index: 4;
 }
+
+.categories {
+  padding: 2rem 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+}
+@media only screen and (min-width: 767px) {
+  .categories {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media only screen and (min-width: 992px) {
+  .categories {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+@media only screen and (min-width: 1170px) {
+  .categories {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+.categories__li {
+  list-style-type: none;
+}
+.categories__li__a {
+  text-decoration: none;
+  color: #000000;
+  font-weight: bold;
+}
