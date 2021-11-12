@@ -7,6 +7,7 @@
 
 use App\Controllers\AuthController;
 use App\Controllers\CategoryController;
+use App\Controllers\ControlPanelController;
 use App\Controllers\HomeController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
@@ -67,4 +68,6 @@ return [
 
     '/categories' => [CategoryController::class, 'index'],
     '/categories' => [CategoryController::class, 'categories'],
+
+    '/control_panel' => [ControlPanelController::class, 'render'],
 ];

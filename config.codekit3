@@ -55,6 +55,14 @@
       "oAP" : "\/app\/Controllers\/ChannelController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/ControlPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/ControlPanelController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/HomeController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -488,6 +496,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/categories.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/control_panel\/control_panel.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/control_panel\/control_panel.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/control_panel\/partials\/panel.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/control_panel\/partials\/panel.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {

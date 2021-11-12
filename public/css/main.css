@@ -389,3 +389,37 @@ label {
   color: #000000;
   font-weight: bold;
 }
+
+.panel {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 2.5rem 0.7rem;
+}
+.panel__container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.panel__container__item {
+  flex: 1 10 auto;
+  background-color: #5FA09F;
+  height: 18rem;
+  width: 18rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #020024;
+  background: linear-gradient(90deg, #020024 0%, #363678 35%, #00d4ff 100%);
+  border-radius: 2.3rem;
+}
+.panel__container__item__a {
+  text-decoration: none;
+  color: #FEFEFE;
+  font-weight: bold;
+  font-size: 2rem;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
