@@ -1,3 +1,8 @@
+<!--
+---------------------------------------
+Control Panel Header
+---------------------------------------
+-->
 <div class="panel-header">
     <div>
         <h2>Control Panel</h2>

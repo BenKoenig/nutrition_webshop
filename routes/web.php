@@ -75,9 +75,10 @@ return [
      * Control Panel
      */
 
-    '/control_panel' => [ControlPanelController::class, 'render'],
-    '/control_panel/products' => [ControlPanelController::class, 'render'],
-    '/control_panel/categories' => [ControlPanelController::class, 'render'],
+    '/control_panel' => [ControlPanelController::class, 'index'],
+    //'/control_panel/products' => [ControlPanelController::class, 'products'],
+    '/control_panel/categories' => [ControlPanelController::class, 'categories'],
+    '/control_panel/categories/{id}' => [ControlPanelController::class, 'products'],
     '/control_panel/goals' => [ControlPanelController::class, 'render'],
     '/control_panel/ratings' => [ControlPanelController::class, 'render'],
     '/control_panel/users' => [ControlPanelController::class, 'render'],

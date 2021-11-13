@@ -61,7 +61,8 @@ h5 {
 p,
 a,
 button,
-label {
+label,
+table {
   font-family: pt-sans, sans-serif;
   font-weight: 400;
   font-style: normal;
@@ -398,7 +399,7 @@ label {
   gap: 3rem;
   align-items: center;
   background-color: #F4FAFA;
-  padding: 2rem 1rem;
+  padding: 4rem 1rem;
 }
 .panel-header--desc {
   max-width: 30rem;
@@ -432,14 +433,20 @@ label {
   gap: 2rem;
 }
 .panel__container__item {
-  flex: 1 10 30rem;
+  flex: 1 0.4 20rem;
   height: 18rem;
   width: 18rem;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   border-radius: 2.3rem;
-  box-shadow: 5px 5px 29px -10px rgba(0, 0, 0, 0.2);
+  box-shadow: 5px 5px 29px -16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+  background: #FEFEFE;
+}
+.panel__container__item:hover {
+  transform: scale(1.05);
 }
 .panel__container__item__a {
   text-decoration: none;
@@ -451,4 +458,73 @@ label {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.panel__container__item__options {
+  display: flex;
+  gap: 0.5rem;
+}
+.panel__container__item__options__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 3rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 3rem;
+}
+.panel__container__item__options__btn--view {
+  background: #000000;
+  width: 8rem;
+}
+.panel__container__item__options__btn--edit {
+  background: #3cbbde;
+}
+.panel__container__item__options__btn--delete {
+  background: #ec3232;
+}
+
+.panel-option {
+  max-width: 100rem;
+  margin: 0 auto;
+}
+.panel-option__table {
+  border-radius: 0.85rem;
+  border-collapse: collapse;
+  background-color: #D4EBEA;
+}
+.panel-option__table__head {
+  text-align: left;
+}
+.panel-option__table__head th {
+  padding: 2rem 0.8rem;
+}
+.panel-option__table__body {
+  padding: 15px;
+  background-color: rgba(255, 255, 255, 0.2);
+}
+.panel-option__table__body__tr__td {
+  padding: 0.8rem 0.8rem;
+}
+.panel-option__table__body__tr__td__btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 3rem;
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  border-radius: 3rem;
+}
+.panel-option__table__body__tr__td__btn--view {
+  background: #000000;
+  width: 8rem;
+}
+.panel-option__table__body__tr__td__btn--edit {
+  background: #3cbbde;
+}
+.panel-option__table__body__tr__td__btn--delete {
+  background: #ec3232;
 }

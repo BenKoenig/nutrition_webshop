@@ -8,6 +8,9 @@ $darkgray   : #D5D5D5;
 $black      : #000000;
 $white      : #FEFEFE;
 $darkgray: #777272;
+$blue: #3cbbde;
+$red: #ec3232;
+$green: #5ee13e;
 
 
 
@@ -105,7 +108,8 @@ h5 {
 p,
 a,
 button,
-label{
+label,
+table{
     font-family: pt-sans, sans-serif;
     font-weight: 400;
     font-style : normal;
@@ -510,7 +514,7 @@ label{
     gap:3rem;
     align-items: center;
     background-color: $lightGreen;
-    padding: 2rem 1rem;
+    padding: 4rem 1rem;
 
     &--desc {
         max-width: 30rem;
@@ -549,15 +553,22 @@ label{
         gap: 2rem;
         
         &__item {
-            flex: 1 10 30rem;
-          
+            flex: 1 0.4 20rem;
             height: 18rem;
             width: 18rem;
             display: flex;
+            flex-direction: column;
             justify-content: center;
             align-items: center;
             border-radius: 2.3rem;
-            box-shadow: 5px 5px 29px -10px rgba(0,0,0,0.2);
+            box-shadow: 5px 5px 29px -16px rgba(0,0,0,0.2);
+            transition: transform .2s ease-in-out;
+            background: $white;
+
+            &:hover {
+                transform: scale(1.05);
+
+            }
 
             &__a {
                 text-decoration: none;
@@ -570,6 +581,90 @@ label{
                 justify-content: center;
                 align-items: center;
             }
+
+            &__options {
+                display: flex;
+                gap: 0.5rem;
+                &__btn {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    width: 5rem;
+                    height: 3rem;
+                    text-decoration: none;
+                    color: white;
+                    font-weight: bold;
+                    border-radius: 3rem;
+                    &--view {
+                        background: $black;
+                        width: 8rem;
+                    }
+                    &--edit {
+                        background: $blue;
+                    }
+                    &--delete {
+                        background: $red;
+                    }
+                }
+            }
         }
+    }
+}
+
+.panel-option {
+    max-width: 100rem;
+    margin   : 0 auto;
+    &__header {
+
+    }
+    &__table {
+        border-radius: 0.85rem;
+        border-collapse: collapse;
+        background-color: $ultragreen;
+       
+        &__head {
+            text-align: left;
+
+
+            th {
+
+                padding: 2rem 0.8rem;
+            }
+        }
+
+ 
+        &__body {
+            padding: 15px;
+            background-color: rgba(255,255,255,0.2);
+            &__tr {
+                &__td {
+                    padding: 0.8rem 0.8rem;
+                    &__btn {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        width: 5rem;
+                        height: 3rem;
+                        text-decoration: none;
+                        color: white;
+                        font-weight: bold;
+                        border-radius: 3rem;
+                        &--view {
+                            background: $black;
+                            width: 8rem;
+                        }
+                        &--edit {
+                            background: $blue;
+                        }
+                        &--delete {
+                            background: $red;
+                        }
+                    }
+                }
+
+            }
+        }
+
+        
     }
 }

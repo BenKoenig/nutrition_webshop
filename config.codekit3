@@ -498,12 +498,28 @@
       "oAP" : "\/resources\/views\/templates\/categories.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/control_panel\/control_panel.php" : {
+    "\/resources\/views\/templates\/control_panel\/index.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/control_panel.php",
+      "oAP" : "\/resources\/views\/templates\/control_panel\/index.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/control_panel\/panels\/categories_panel.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/control_panel\/panels\/categories_panel.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/control_panel\/panels\/products_panel.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/control_panel\/panels\/products_panel.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/control_panel\/partials\/panel-header.php" : {
