@@ -311,6 +311,12 @@
       "oAP" : "\/core\/views\/errors\/exception.php",
       "oF" : 0
     },
+    "\/node_modules" : {
+      "ft" : 65536,
+      "oA" : 2,
+      "oAP" : "\/node_modules",
+      "oF" : 0
+    },
     "\/package-lock.json" : {
       "ft" : 524288,
       "oA" : 1,
@@ -431,8 +437,8 @@
       "ma" : 0,
       "mi" : 1,
       "oA" : 0,
-      "oAP" : "\/resources\/js\/main-min.js",
-      "oF" : 0,
+      "oAP" : "\/public\/js\/app.min.js",
+      "oF" : 2,
       "sC" : 3,
       "tS" : 0
     },
@@ -560,6 +566,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/helpers\/confirmation.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/helpers\/loading.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/helpers\/loading.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/home.php" : {

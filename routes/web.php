@@ -76,6 +76,8 @@ return [
     '/admin/categories' => [CategoryPanelController::class, 'index'],
     '/admin/categories/create' => [CategoryPanelController::class, 'create'],
     '/admin/categories/create/store' => [CategoryPanelController::class, 'store'],
+    '/admin/categories/{id}/delete' => [CategoryPanelController::class, 'delete'],
+    '/admin/categories/{id}/delete/confirm' => [CategoryPanelController::class, 'deleteConfirm'],
     '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
 
 

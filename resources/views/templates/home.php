@@ -1,3 +1,4 @@
+
 <!--
 --------------------- Hero Section -------------------- 
 This section changes depending on the upcoming events. 
@@ -136,7 +137,7 @@ able to set it to true (1) or false (0) within the CMS.
     <!-- Headline (h3)-->
     <h3 class="text-dark">Featured Products</h3>
     <div class="cards__container cards__container--md">
-        
+
         <!-- Loop for every featured product -->
         <?php foreach ($products as $product) : ?>
             <!-- Product Item -->

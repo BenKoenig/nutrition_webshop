@@ -26,8 +26,7 @@
 
     <div class="buttons mt-1">
         <button type="submit" class="btn btn-primary">Save</button>
-        <a href="<?php
-        echo BASE_URL . '/rooms'; ?>" class="btn btn-danger">Cancel</a>
+        <a href="<?php echo BASE_URL . '/rooms'; ?>" class="btn btn-danger">Cancel</a>
     </div>
 
 </form>

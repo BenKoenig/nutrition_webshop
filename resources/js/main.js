@@ -1,5 +1,8 @@
-(function () {
-  console.log('Works?! :D')
-  console.log('Really?!')
-  console.log('Yep!! :D')
-})()
+
+document.documentElement.onload = function() {
+  document.querySelector('.loading').style.display = "block";
+}
+
+window.onload = function() {
+  document.querySelector('.loading').style.display = "none";
+}

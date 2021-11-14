@@ -6,9 +6,17 @@ use App\Models\Categorie;
 use App\Models\Product;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
+use Core\Session;
+use Core\Helpers\Redirector;
 
 /**
- * ControlPanelController
+ * ====================================================
+ * ProductPanelController
+ * 
+ * This is the admin panel controller for all product
+ * related details (such as product name, price,
+ * image etc.)
+ * ====================================================
  */
 class ProductPanelController
 {
@@ -16,24 +24,79 @@ class ProductPanelController
     public function index(int $id)
     {
         /**
-         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
-         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
-         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         * Check if user is logged in
+         * If user is not logged in, thex will receive an error
          */
         AuthMiddleware::isAdminOrFail();
         /**
-         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
+         * Elements that need to be loaded
          */
         $products = Product::findWhere('category_id', $id);
         $categories = Categorie::findWhereOrFail('id', $id);
 
         /**
-         * View laden und Daten übergeben.
+         * Renders the View
          */
         View::render('products/panel/index', [
             'products' => $products,
             'categories' => $categories
         ]);
+    }
+
+    public function delete(int $id)
+    {
+        /**
+         * Check if user is logged in
+         * If user is not logged in, thex will receive an error
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * Loads the product
+         */
+        $product = Product::findOrFail($id);
+
+        /**
+         * Sends user to confirmation page
+         */
+        View::render('helpers/confirmation', [
+            'objectType' => 'Raum',
+            'objectTitle' => $product->name,
+            'confirmUrl' => BASE_URL . '/admin/categories/' . $product->category_id . '/' . $product->id . '/delete/confirm',
+            'abortUrl' => BASE_URL . '/admin/categories/' . $product->category_id
+        ]);
+    }
+
+
+
+    /**
+     * Delete Confirmation Function
+     */
+    public function deleteConfirm(int $id)
+    {
+        /**
+         * Check if user is logged in
+         * => If user is not logged in, thex will receive an error
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * Load the product
+         */
+        $product = Product::findOrFail($id);
+        /**
+         * Deletes the product
+         */
+        $product->delete();
+
+        /**
+         * Success Message
+         */
+        Session::set('success', ['The product has been sucessfully deleted.']);
+        /**
+         * User gets redirected to Category page
+         */
+        Redirector::redirect('/admin/categories/' . $product->category_id);
     }
 
 }

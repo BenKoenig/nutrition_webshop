@@ -25,7 +25,7 @@
                 <div class="panel__container__item__options">
                     <a class="panel__container__item__options__btn panel__container__item__options__btn--view" href="<?php echo BASE_URL . "/admin/categories/" . $category->id; ?>">View Products</a>
                     <a class="panel__container__item__options__btn panel__container__item__options__btn--edit" href="#">Edit</a>
-                    <a class="panel__container__item__options__btn panel__container__item__options__btn--delete" href="#">Delete</a>
+                    <a class="panel__container__item__options__btn panel__container__item__options__btn--delete" href="<?php echo BASE_URL . "/admin/categories/$category->id/delete"; ?>">Delete</a>
                 </div>
                 <!--    
             <a class="panel__container__item__a" href="<?php echo BASE_URL . "/control_panel/" . $category->name; ?>"><?php echo $category->name; ?></a>

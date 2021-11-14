@@ -1,7 +1,11 @@
-
 <div class="panel-option">
     <div class="panel-option__header">
-        <h2>Category: <?php echo $categories[0]->name; ?></h2>
+        <div class="panel-option__header__container">
+            <h2>Category: <?php echo $categories[0]->name; ?></h2>
+            <a href="<?php echo BASE_URL . "/admin/categories/" ?>create" class="panel-option__header__container__a">Create</a>
+        </div>
+
+
         <div class="panel-option__header__path">
             <a class="panel-option__path__a" href="<?php echo BASE_URL . "/admin" ?>">Admin/</a>
             <a class="panel-option__path__a" href="<?php echo BASE_URL . "/admin/categories" ?>">Categories/</a>

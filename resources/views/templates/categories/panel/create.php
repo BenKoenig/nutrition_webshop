@@ -10,8 +10,16 @@
             <input type="text" name="img_url" id="img_url" placeholder="https://link/example/image.png">
         </div>
         <div>
-            <label for="is_popular">Popular</label>
-            <input type="checkbox" name="is_popular" id="is_popular">
+            <!-- <label for="is_popular">Popular</label>
+            <input type="checkbox" name="is_popular" id="is_popular"> -->
+            <!-- <label for="is_popular">Image Path</label>
+            <input type="text" name="is_popular" id="is_popular" placeholder="https://link/example/image.png"> -->
+
+            <input type="radio" name="is_popular" id="true" value=true>
+            <label for="true">Yes</label>
+
+            <input type="radio" name="is_popular" id="false" value==false>
+            <label for="false">No</label>
         </div>
         <div>
             <button type="submit">Create Category</button>

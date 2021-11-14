@@ -10,5 +10,6 @@
     "js:minify": "npx uglifyjs resources/js/*.js --compress --mangle > public/js/app.min.js",
     "js": "npm run js:minify",
     "build": "npm run sass && npm run js"
-  }
+  },
+  "dependencies": {}
 }

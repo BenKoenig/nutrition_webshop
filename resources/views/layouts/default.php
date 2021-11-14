@@ -18,6 +18,11 @@
 </style>
 
 
+<div class="loading">
+<div class="lds-ellipsis"><div></div><div></div><div></div><div></div></div>
+</div>
+
+
 <?php
 require_once __DIR__ . '/../partials/nav.php'; ?>
 
