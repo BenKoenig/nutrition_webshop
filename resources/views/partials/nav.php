@@ -19,7 +19,7 @@
                     <a class="nav-link" href="<?php echo BASE_URL; ?>/categories">Categories</a>
                 </li>   
                 <li class="nav-item">
-                    <a class="nav-link" href="<?php echo BASE_URL; ?>/control_panel">control_panel</a>
+                    <a class="nav-link" href="<?php echo BASE_URL; ?>/admin">admin</a>
                 </li>   
             </ul>
             <?php

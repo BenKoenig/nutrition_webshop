@@ -547,6 +547,36 @@ table{
     margin   : 0 auto;
     padding  : 2.5rem 0.7rem;
 
+    &__header {
+        &__path {
+            display: flex;
+            &__a {
+                text-decoration: none;
+            }
+        }
+        &__desc {
+            width: 40rem;
+        }
+        &__container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            &__btn {
+                display: flex;
+                width: 5rem;
+                height: 3rem;
+                justify-content: center;
+                align-items: center;
+                text-decoration: none;
+                background-color: $yellow;
+                border-radius: 3rem;
+                color: $black;
+                font-weight: bold;
+            }
+        }
+
+    }
+
     &__container {
         display: flex;
         flex-wrap: wrap;
@@ -592,18 +622,21 @@ table{
                     width: 5rem;
                     height: 3rem;
                     text-decoration: none;
-                    color: white;
+
                     font-weight: bold;
                     border-radius: 3rem;
                     &--view {
-                        background: $black;
-                        width: 8rem;
+                        background: $gray;
+                        color: $black;
+                        width: 8.5rem;
                     }
                     &--edit {
-                        background: $blue;
+                        background: $gray;
+                        color: $black;
                     }
                     &--delete {
                         background: $red;
+                        color: $white;
                     }
                 }
             }
@@ -615,6 +648,9 @@ table{
     max-width: 100rem;
     margin   : 0 auto;
     &__header {
+        &__path {
+            display: flex;
+        }
 
     }
     &__table {

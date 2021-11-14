@@ -31,6 +31,14 @@
       "oAP" : "\/app\/Controllers\/.gitkeep",
       "oF" : 0
     },
+    "\/app\/Controllers\/AdminController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/AdminController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/AuthController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -39,12 +47,20 @@
       "oAP" : "\/app\/Controllers\/AuthController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/CategoryController.php" : {
+    "\/app\/Controllers\/Categories\/CategoryController.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/app\/Controllers\/CategoryController.php",
+      "oAP" : "\/app\/Controllers\/Categories\/CategoryController.php",
+      "oF" : 0
+    },
+    "\/app\/Controllers\/Categories\/CategoryPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Categories\/CategoryPanelController.php",
       "oF" : 0
     },
     "\/app\/Controllers\/ChannelController.php" : {
@@ -55,20 +71,28 @@
       "oAP" : "\/app\/Controllers\/ChannelController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/ControlPanelController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/ControlPanelController.php",
-      "oF" : 0
-    },
     "\/app\/Controllers\/HomeController.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Controllers\/HomeController.php",
+      "oF" : 0
+    },
+    "\/app\/Controllers\/Products\/ProductController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Products\/ProductController.php",
+      "oF" : 0
+    },
+    "\/app\/Controllers\/Products\/ProductPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Products\/ProductPanelController.php",
       "oF" : 0
     },
     "\/app\/Controllers\/RoomController.php" : {
@@ -482,6 +506,14 @@
       "oAP" : "\/resources\/views\/templates\/.gitkeep",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/admin.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/admin.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/auth\/login.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -490,52 +522,36 @@
       "oAP" : "\/resources\/views\/templates\/auth\/login.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/categories.php" : {
+    "\/resources\/views\/templates\/categories\/categories.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/categories.php",
+      "oAP" : "\/resources\/views\/templates\/categories\/categories.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/control_panel\/index.php" : {
+    "\/resources\/views\/templates\/categories\/panel\/create.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/index.php",
+      "oAP" : "\/resources\/views\/templates\/categories\/panel\/create.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/control_panel\/panels\/categories_panel.php" : {
+    "\/resources\/views\/templates\/categories\/panel\/edit.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/panels\/categories_panel.php",
+      "oAP" : "\/resources\/views\/templates\/categories\/panel\/edit.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/control_panel\/panels\/products_panel.php" : {
+    "\/resources\/views\/templates\/categories\/panel\/index.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/panels\/products_panel.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/control_panel\/partials\/panel-header.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/partials\/panel-header.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/control_panel\/partials\/panel.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/control_panel\/partials\/panel.php",
+      "oAP" : "\/resources\/views\/templates\/categories\/panel\/index.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {
@@ -560,6 +576,38 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/index.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/panel\/create.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/panel\/create.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/panel\/edit.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/panel\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/panel\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/panel\/index.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/products.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/products.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/room_features\/create.php" : {

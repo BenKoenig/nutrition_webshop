@@ -427,6 +427,32 @@ table {
   margin: 0 auto;
   padding: 2.5rem 0.7rem;
 }
+.panel__header__path {
+  display: flex;
+}
+.panel__header__path__a {
+  text-decoration: none;
+}
+.panel__header__desc {
+  width: 40rem;
+}
+.panel__header__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.panel__header__container__btn {
+  display: flex;
+  width: 5rem;
+  height: 3rem;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  background-color: #E6ED96;
+  border-radius: 3rem;
+  color: #000000;
+  font-weight: bold;
+}
 .panel__container {
   display: flex;
   flex-wrap: wrap;
@@ -470,24 +496,29 @@ table {
   width: 5rem;
   height: 3rem;
   text-decoration: none;
-  color: white;
   font-weight: bold;
   border-radius: 3rem;
 }
 .panel__container__item__options__btn--view {
-  background: #000000;
-  width: 8rem;
+  background: #F4F4F4;
+  color: #000000;
+  width: 8.5rem;
 }
 .panel__container__item__options__btn--edit {
-  background: #3cbbde;
+  background: #F4F4F4;
+  color: #000000;
 }
 .panel__container__item__options__btn--delete {
   background: #ec3232;
+  color: #FEFEFE;
 }
 
 .panel-option {
   max-width: 100rem;
   margin: 0 auto;
+}
+.panel-option__header__path {
+  display: flex;
 }
 .panel-option__table {
   border-radius: 0.85rem;

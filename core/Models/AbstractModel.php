@@ -84,6 +84,7 @@ abstract class AbstractModel
         return self::handleResult($result);
     } 
 
+
     public static function find(int $id): ?object
     {
         /**
@@ -107,6 +108,18 @@ abstract class AbstractModel
          */
         return self::handleUniqueResult($result);
     }
+
+    public static function findWhereOrFail(string $where, int $is) {
+        $result = self::findWhere($where, $is);
+
+        if (empty($result)) {
+            throw new Exception('Model not found', 404);
+        }
+
+
+        return $result;
+    } 
+
 
     /**
      * find()-Methode aufrufen oder einen Fehler 404 Not Found zurückgeben, wenn kein Ergebnis aus der Datenbank

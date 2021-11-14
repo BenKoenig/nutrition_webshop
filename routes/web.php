@@ -6,9 +6,11 @@
  */
 
 use App\Controllers\AuthController;
-use App\Controllers\CategoryController;
-use App\Controllers\ControlPanelController;
+use App\Controllers\Categories\CategoryController;
+use App\Controllers\Categories\CategoryPanelController;
+use App\Controllers\AdminController;
 use App\Controllers\HomeController;
+use App\Controllers\Products\ProductPanelController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
 
@@ -69,19 +71,19 @@ return [
     // ...
 
     '/categories' => [CategoryController::class, 'index'],
-    '/categories' => [CategoryController::class, 'categories'],
+
+
+    '/admin/categories' => [CategoryPanelController::class, 'index'],
+    '/admin/categories/create' => [CategoryPanelController::class, 'create'],
+    '/admin/categories/create/store' => [CategoryPanelController::class, 'store'],
+    '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
+
 
     /**
      * Control Panel
      */
 
-    '/control_panel' => [ControlPanelController::class, 'index'],
-    //'/control_panel/products' => [ControlPanelController::class, 'products'],
-    '/control_panel/categories' => [ControlPanelController::class, 'categories'],
-    '/control_panel/categories/{id}' => [ControlPanelController::class, 'products'],
-    '/control_panel/goals' => [ControlPanelController::class, 'render'],
-    '/control_panel/ratings' => [ControlPanelController::class, 'render'],
-    '/control_panel/users' => [ControlPanelController::class, 'render'],
-    '/control_panel/merchants' => [ControlPanelController::class, 'render'],
+    '/admin' => [AdminController::class, 'index'],
+
 
 ];
