@@ -80,11 +80,19 @@ class Categorie extends AbstractModel
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
-            $result = $database->query("INSERT INTO $tablename SET name = ?, img_url = ?, is_popular = ?", [
-                's:name' => $this->name,
-                's:img_url' => $this->img_url,
-                's:is_popular' => $this->is_popular
-            ]);
+            if ($_POST['is_popular']) {
+                $result = $database->query("INSERT INTO $tablename SET name = ?, img_url = ?, is_popular = ?", [
+                    's:name' => $this->name,
+                    's:img_url' => $this->img_url,
+                    's:is_popular' => $this->is_popular
+                ]);
+            } else {
+                $result = $database->query("INSERT INTO $tablename SET name = ?, img_url = ?", [
+                    's:name' => $this->name,
+                    's:img_url' => $this->img_url
+                ]);
+            }
+
 
             /**
              * Ein INSERT Query generiert eine neue id, diese müssen wir daher extra abfragen und verwenden daher die

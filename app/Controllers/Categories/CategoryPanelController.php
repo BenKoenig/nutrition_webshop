@@ -46,7 +46,8 @@ class CategoryPanelController
          */
         $validator->textnum($_POST['name'], label: 'name', required: true, max: 255);
         $validator->textnum($_POST['img_url'], label: 'path', required: false, max: 255);
-        
+
+
         /**
          * @todo: implement Validate Array + Contents
          */
@@ -77,11 +78,6 @@ class CategoryPanelController
          * 4) Model in DB zurückspeichern
          * 5) Redirect irgendwohin
          */
-
-        // if (!$_POST['is_popular']) {
-        //     $_POST['is_popular'] = '';
-        // } 
-        
 
 
         /**
@@ -120,19 +116,16 @@ class CategoryPanelController
             /**
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
-            var_dump($_POST['is_popular']);
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+        
+            Session::set('errors', ['Speichern fehlgeschlagen.' ]);
             Redirector::redirect("/admin/categories/create");
 
-            echo $_POST['is_popular'];
-            Redirector::redirect('/admin/categories');
         }
 
         /**
          * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
          */
         Redirector::redirect('/admin/categories');
-        // var_dump($_POST['is_popular']);
     }
 
     public function delete(int $id)

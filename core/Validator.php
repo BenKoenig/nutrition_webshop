@@ -20,7 +20,7 @@ class Validator
         'text' => '/^[a-zA-Z .,#\-_|;:?!]*$/',
         'textnum' => '/^[\w\s .,#\-_|;:?!]*$/',
         'alphanumeric' => '/^[^-_]{1}[a-zA-Z0-9-_]*$/',
-        'checkbox' => '/^(on|true|checked|1)$/i'
+        'checkbox' => '/^(on|true|checked|1)$/i',
     ];
 
     /**

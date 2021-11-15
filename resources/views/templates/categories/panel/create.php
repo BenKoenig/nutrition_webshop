@@ -1,29 +1,21 @@
-<div>
+<div class="create">
     <h2>Create Category</h2>
-    <form action="<?php echo BASE_URL . "/admin/categories/create/store" ?>" method="post">
-        <div>
+    <form class="create__form" action="<?php echo BASE_URL . "/admin/categories/create/store" ?>" method="post">
+        <div class="create__form__field">
             <label for="name">Category Name</label>
-            <input type="text" name="name" id="name" placeholder="Protein Shakes">
+            <input class="create__form__field__input" type="text" name="name" id="name" placeholder="Protein Shakes">
         </div>
-        <div>
+        <div class="create__form__field">
             <label for="img_url">Image Path</label>
-            <input type="text" name="img_url" id="img_url" placeholder="https://link/example/image.png">
+            <input class="create__form__field__input"type="text" name="img_url" id="img_url" placeholder="https://link/example/image.png">
         </div>
-        <div>
-            <!-- <label for="is_popular">Popular</label>
-            <input type="checkbox" name="is_popular" id="is_popular"> -->
-            <!-- <label for="is_popular">Image Path</label>
-            <input type="text" name="is_popular" id="is_popular" placeholder="https://link/example/image.png"> -->
-
-            <input type="radio" name="is_popular" id="true" value=true>
-            <label for="true">Yes</label>
-
-            <input type="radio" name="is_popular" id="false" value==false>
-            <label for="false">No</label>
+        <div class="create__form__field create__form__field--checkfield">
+            <label for="is_popular">Add to popular section</label>
+            <input type="checkbox" name="is_popular" id="is_popular">
         </div>
-        <div>
-            <button type="submit">Create Category</button>
-            <a href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
+        <div class="create__form__btns">
+            <button class="create__form__btns--create" type="submit">Create Category</button>
+            <a class="create__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
         </div>
 
     </form>
