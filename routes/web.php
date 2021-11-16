@@ -79,6 +79,8 @@ return [
     '/admin/categories/{id}/delete' => [CategoryPanelController::class, 'delete'],
     '/admin/categories/{id}/delete/confirm' => [CategoryPanelController::class, 'deleteConfirm'],
     '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
+    '/admin/categories/{id}/edit' => [CategoryPanelController::class, 'edit'],
+    '/admin/categories/{id}/edit/update' => [CategoryPanelController::class, 'update'],
 
 
     /**

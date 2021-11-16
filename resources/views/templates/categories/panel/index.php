@@ -2,7 +2,7 @@
     <div class="panel__header">
 
         <div class="panel__header__container">
-            <h2>Categories</h2>
+            <h1>Categories</h1>
             <a href="<?php echo BASE_URL . "/admin/categories/" ?>create" class="panel__header__container__btn">Create</a>
         </div>
         <div class="panel__header__path">
@@ -24,7 +24,7 @@
                 <p><?php echo $category->is_popular ? "Popular" : ""; ?></p>
                 <div class="panel__container__item__options">
                     <a class="panel__container__item__options__btn panel__container__item__options__btn--view" href="<?php echo BASE_URL . "/admin/categories/" . $category->id; ?>">View Products</a>
-                    <a class="panel__container__item__options__btn panel__container__item__options__btn--edit" href="#">Edit</a>
+                    <a class="panel__container__item__options__btn panel__container__item__options__btn--edit" href="<?php echo BASE_URL . "/admin/categories/" . $category->id . "/edit"; ?>">Edit</a>
                     <a class="panel__container__item__options__btn panel__container__item__options__btn--delete" href="<?php echo BASE_URL . "/admin/categories/$category->id/delete"; ?>">Delete</a>
                 </div>
                 <!--    

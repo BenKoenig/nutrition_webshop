@@ -75,9 +75,9 @@ abstract class AbstractModel
         $tablename = self::getTablenameFromClassname();
 
         if ($is === null) {
-            $result = $database->query("SELECT * FROM $tablename WHERE $where;");
+            $result = $database->query("SELECT * FROM $tablename WHERE $where AND deleted_at IS NULL;");
         } else {
-            $result = $database->query("SELECT * FROM $tablename WHERE $where = $is;");
+            $result = $database->query("SELECT * FROM $tablename WHERE $where = $is AND deleted_at IS NULL;");
         }
 
 

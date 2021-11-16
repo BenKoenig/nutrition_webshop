@@ -121,6 +121,10 @@ h6 {
   margin: 0.5rem 0;
 }
 
+h1 {
+  font-size: 4rem;
+}
+
 h2 {
   font-size: 3rem;
 }
@@ -475,10 +479,10 @@ table {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 3rem;
+  gap: 3.5rem;
   align-items: center;
   background-color: #F4FAFA;
-  padding: 4rem 1rem;
+  padding: 7rem 1rem;
 }
 .panel-header--desc {
   max-width: 30rem;
@@ -763,23 +767,32 @@ table {
 .create {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 1.5rem 0.7rem;
+  padding: 3rem 0.7rem;
+}
+.create__path {
+  display: flex;
 }
 .create__form {
-  background-color: #D4EBEA;
+  background-color: #F4FAFA;
   border-radius: 5rem;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
   padding: 2rem 0;
-  margin: 2.5rem 0;
+  margin: 1.5rem 0;
 }
 .create__form__field {
   margin: 1rem 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.create__form__field__check {
+  border: 0;
+}
+.create__form__field__label {
+  font-weight: bold;
 }
 .create__form__field--checkfield {
   flex-direction: row;
@@ -813,7 +826,7 @@ table {
   width: 11rem;
   height: 2.5rem;
   border: 0;
-  background: #F4F4F4;
+  background: #FEFEFE;
   border-radius: 10rem;
 }
 .create__form__btns--cancel {

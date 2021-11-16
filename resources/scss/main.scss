@@ -181,6 +181,10 @@ h6 {
     margin     : 0.5rem 0;
 }
 
+h1 {
+    font-size: 4rem;
+}
+
 h2 {
     font-size: 3rem;
 }
@@ -602,10 +606,10 @@ table {
     display         : flex;
     justify-content : center;
     flex-wrap       : wrap;
-    gap             : 3rem;
+    gap             : 3.5rem;
     align-items     : center;
     background-color: $lightGreen;
-    padding         : 4rem 1rem;
+    padding         : 7rem 1rem;
 
     &--desc {
         max-width    : 30rem;
@@ -1076,27 +1080,38 @@ table {
 }
 
 
-
 .create {
     max-width: 100rem;
     margin   : 0 auto;
-    padding  : 1.5rem 0.7rem;
+    padding  : 3rem 0.7rem;
+
+    &__path {
+        display: flex;
+    }
 
     &__form {
-        background-color: $ultragreen;
+        background-color: $lightGreen;
         border-radius   : 5rem;
         display         : flex;
         justify-content : center;
         flex-direction  : column;
         align-items     : center;
-        padding: 2rem 0;
-        margin: 2.5rem 0;
+        padding         : 2rem 0;
+        margin          : 1.5rem 0;
 
         &__field {
             margin        : 1rem 0;
             display       : flex;
             flex-direction: column;
-            align-items: center;
+            align-items   : center;
+
+            &__check {
+                border: 0;
+            }
+
+            &__label {
+                font-weight: bold;
+            }
 
             &--checkfield {
                 flex-direction: row;
@@ -1115,6 +1130,7 @@ table {
                 height         : 3rem;
                 border-radius  : 3rem;
                 padding        : 0 1rem;
+
                 &:focus {
                     border : 0;
                     outline: 0;
@@ -1126,7 +1142,7 @@ table {
         &__btns {
             display: flex;
             gap    : 0.5rem;
-            
+
 
             &--create {
                 display        : flex;
@@ -1135,7 +1151,7 @@ table {
                 width          : 11rem;
                 height         : 2.5rem;
                 border         : 0;
-                background     : $gray;
+                background     : $white;
                 border-radius  : 10rem;
             }
 

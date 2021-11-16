@@ -3,6 +3,8 @@
 namespace App\Controllers\Categories;
 
 use App\Models\Categorie;
+use App\Models\Room;
+use App\Models\RoomFeature;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
 use Core\Validator;
@@ -45,7 +47,7 @@ class CategoryPanelController
          * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
          */
         $validator->textnum($_POST['name'], label: 'name', required: true, max: 255);
-        $validator->textnum($_POST['img_url'], label: 'path', required: false, max: 255);
+
 
 
         /**
@@ -194,6 +196,111 @@ class CategoryPanelController
     }
 
 
-}
 
+    public function edit(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
+         */
+        $categorie = Categorie::findOrFail($id);
+
+        /**
+         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
+         */
+        
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('categories/panel/edit', [
+            'categorie' => $categorie
+        ]);
+    }
+
+    /**
+     * Formulardaten aus dem Bearbeitungsformular entgegennehmen und verarbeiten.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     */
+    public function update(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * 1) Daten validieren
+         * 2) Model aus der DB abfragen, das aktualisiert werden soll
+         * 3) Model in PHP überschreiben
+         * 4) Model in DB zurückspeichern
+         * 5) Redirect irgendwohin
+         */
+
+        /**
+         * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
+         * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
+         */
+        $validationErrors = $this->validateFormData($id);
+
+        /**
+         * Sind Validierungsfehler aufgetreten ...
+         */
+        if (!empty($validationErrors)) {
+            /**
+             * ... dann speichern wir sie in die Session um sie in den Views dann ausgeben zu können ...
+             */
+            Session::set('errors', $validationErrors);
+            /**
+             * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
+             * nicht mehr ausgeführt.
+             */
+            Redirector::redirect("/admin/categories/${id}/edit");
+        }
+
+        /**
+         * Gewünschten Room über das ROom-Model aus der Datenbank laden. Hier verwenden wir die findOrFail()-Methode aus
+         * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
+         * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
+         */
+        $categorie = Categorie::findOrFail($id);
+
+        /**
+         * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
+         */
+        $categorie->fill($_POST);
+
+
+
+        /**
+         * Schlägt die Speicherung aus irgendeinem Grund fehl ...
+         */
+        if (!$categorie->save()) {
+            /**
+             * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
+             */
+            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Redirector::redirect("/categorie/${id}/edit");
+        }
+
+        /**
+         * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
+         */
+        Redirector::redirect('/admin/categories');
+    }
+
+
+    
+}
 
