@@ -5,7 +5,7 @@ return [
      * Hier definieren wir den Namen der Anwendung. Das bietet uns die Möglichkeit einen zentralen String zu definieren,
      * den wir dann beispielsweise für den <title>-Tag verwenden können.
      */
-    'app-name' => 'SAE PHP Booking App',
+    'app-name' => 'Fitness Express',
 
     /**
      * Hier definieren wir eine Slug Form des Anwendungsnamens. Dieser wird beispielsweise in der Session Klasse
@@ -34,4 +34,14 @@ return [
      * bei denen die gesamte Seite von einem Werbekunden gebrandet wird, hilfreich sein.
      */
     'default-layout' => 'default',
+
+        /**
+     * @todo: comment
+     */
+    'max-upload-size' => 1024 * 1024 * 10,
+
+    /**
+     * @todo: comment (relative to storage folder)
+     */
+    'uploads-folder' =>'/uploads'
 ];

@@ -1,0 +1,289 @@
+
+.panel {
+    max-width: 100rem;
+    margin   : 0 auto;
+    padding  : 2.5rem 0.7rem;
+
+    &__header {
+        &__path {
+            display: flex;
+
+            &__a {
+                text-decoration: none;
+            }
+        }
+
+        &__desc {
+            width: 40rem;
+        }
+
+        &__container {
+            display    : flex;
+            align-items: center;
+            gap        : 1rem;
+
+            &__btn {
+                display         : flex;
+                width           : 5rem;
+                height          : 3rem;
+                justify-content : center;
+                align-items     : center;
+                text-decoration : none;
+                background-color: $yellow;
+                border-radius   : 3rem;
+                color           : $black;
+                font-weight     : bold;
+            }
+        }
+
+    }
+
+    &__container {
+        display  : flex;
+        flex-wrap: wrap;
+        gap      : 2rem;
+
+        &__item {
+            flex           : 1 0.4 20rem;
+            height         : 18rem;
+            width          : 18rem;
+            display        : flex;
+            flex-direction : column;
+            justify-content: center;
+            align-items    : center;
+            border-radius  : 2.3rem;
+            box-shadow     : 5px 5px 29px -16px rgba(0, 0, 0, 0.2);
+            transition     : transform .2s ease-in-out;
+            background     : $white;
+
+            &:hover {
+                transform: scale(1.05);
+
+            }
+
+            &__a {
+                text-decoration: none;
+                color          : $black;
+                font-weight    : bold;
+                font-size      : 2rem;
+                width          : 100%;
+                height         : 100%;
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+            }
+
+            &__options {
+                display: flex;
+                gap    : 0.5rem;
+
+                &__btn {
+                    display        : flex;
+                    justify-content: center;
+                    align-items    : center;
+                    width          : 5rem;
+                    height         : 3rem;
+                    text-decoration: none;
+
+                    font-weight  : bold;
+                    border-radius: 3rem;
+
+                    &--view {
+                        background: $gray;
+                        color     : $black;
+                        width     : 8.5rem;
+                    }
+
+                    &--edit {
+                        background: $gray;
+                        color     : $black;
+                    }
+
+                    &--delete {
+                        background: $red;
+                        color     : $white;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.panel-option {
+    max-width: 100rem;
+    margin   : 0 auto;
+
+    &__header {
+        &__container {
+            display    : flex;
+            align-items: center;
+            gap        : 1rem;
+
+            &__a {
+                display         : flex;
+                width           : 5rem;
+                height          : 3rem;
+                justify-content : center;
+                align-items     : center;
+                text-decoration : none;
+                background-color: $yellow;
+                border-radius   : 3rem;
+                color           : $black;
+                font-weight     : bold;
+            }
+        }
+
+        &__path {
+            display: flex;
+        }
+
+    }
+
+    &__table {
+        border-radius   : 0.85rem;
+        border-collapse : collapse;
+        background-color: $ultragreen;
+
+        &__head {
+            text-align: left;
+
+
+            th {
+
+                padding: 2rem 0.8rem;
+            }
+        }
+
+
+        &__body {
+            padding         : 15px;
+            background-color: rgba(255, 255, 255, 0.2);
+
+            &__tr {
+                &__td {
+                    padding: 0.8rem 0.8rem;
+
+                    &__btn {
+                        display        : flex;
+                        justify-content: center;
+                        align-items    : center;
+                        width          : 5rem;
+                        height         : 3rem;
+                        text-decoration: none;
+                        color          : white;
+                        font-weight    : bold;
+                        border-radius  : 3rem;
+
+                        &--view {
+                            background: $black;
+                            width     : 8rem;
+                        }
+
+                        &--edit {
+                            background: $blue;
+                        }
+
+                        &--delete {
+                            background: $red;
+                        }
+                    }
+                }
+
+            }
+        }
+
+
+    }
+}
+
+
+.create {
+    max-width: 100rem;
+    margin   : 0 auto;
+    padding  : 3rem 0.7rem;
+
+    &__path {
+        display: flex;
+    }
+
+    &__form {
+
+        background-color: $lightGreen;
+        border-radius  : 5rem;
+        display        : flex;
+        justify-content: center;
+        flex-direction : column;
+        align-items    : center;
+        padding        : 2rem 0;
+        margin         : 1.5rem 0;
+
+        &__field {
+            margin        : 1rem 0;
+            display       : flex;
+            flex-direction: column;
+            align-items   : center;
+
+            &__label {
+                font-weight: bold;
+                font-size  : 1.2rem;
+            }
+
+            &--checkfield {
+                flex-direction: row;
+                align-items   : center;
+                gap           : 0.3rem;
+            }
+
+            &__input {
+                border          : 0;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                width           : 100vw;
+                max-width       : 30rem;
+                height          : 4rem;
+                border-radius   : 3rem;
+                padding         : 0 1rem;
+                background-color: $white;
+                font-size       : 1.1rem;
+
+                &:focus {
+                    border : 0;
+                    outline: 0;
+                }
+            }
+
+        }
+
+        &__btns {
+            display: flex;
+            gap    : 0.5rem;
+
+
+            &--create {
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                width          : 12rem;
+                height         : 3rem;
+                border         : 0;
+                background     : $white;
+                border-radius  : 10rem;
+                font-weight    : bold;
+            }
+
+            &--cancel {
+                display        : flex;
+                justify-content: center;
+                align-items    : center;
+                width          : 12rem;
+                height         : 3rem;
+                border         : 0;
+                background     : $red;
+                border-radius  : 10rem;
+                color          : $white;
+                font-weight    : bold;
+            }
+        }
+    }
+}

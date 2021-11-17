@@ -60,7 +60,7 @@ class ProductPanelController
          * Sends user to confirmation page
          */
         View::render('helpers/confirmation', [
-            'objectType' => 'Raum',
+            'objectType' => 'Category',
             'objectTitle' => $product->name,
             'confirmUrl' => BASE_URL . '/admin/categories/' . $product->category_id . '/' . $product->id . '/delete/confirm',
             'abortUrl' => BASE_URL . '/admin/categories/' . $product->category_id

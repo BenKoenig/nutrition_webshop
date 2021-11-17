@@ -24,7 +24,7 @@ class Database
     public function __construct()
     {
         /**
-         * Datenbankverbindung aufbauen
+         * Setup the database
          */
         $this->link = new mysqli(
             Config::get('database.host'),

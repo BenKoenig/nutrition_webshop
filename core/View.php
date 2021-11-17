@@ -20,6 +20,7 @@ class View
      * @param ?string $layout
      * @param bool    $useCoreTemplates
      */
+    
     public static function render(
         string $template,
         array $params = [],
@@ -94,7 +95,7 @@ class View
          * dieser Methode doe render()-Methode.
          */
         http_response_code($httpResponseCode);
-
+ 
         /**
          * Hier rufen wir dann die render()-Methode von oben auf und laden wie immer einfach einen View.
          */

@@ -1,0 +1,187 @@
+
+.cards {
+    max-width: 100rem;
+    margin   : 0 auto;
+    padding  : 2.5rem 0;
+
+    &__container {
+        display       : grid;
+        grid-auto-rows: auto;
+        grid-gap      : 1rem;
+
+        &--md {
+            grid-template-columns: repeat(1, 1fr);
+
+            @include xs-screen {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            @include lg-screen {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        &--lg {
+            grid-template-columns: repeat(1, 1fr);
+
+            @include xs-screen {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+
+        &__item {
+            background-color   : $lightGreen;
+            background-repeat  : no-repeat;
+            background-size    : cover;
+            background-position: center center;
+            border-radius      : 2.3rem 2.3rem 0 0;
+            position           : relative;
+            flex-basis         : 20rem;
+            flex-grow          : 1;
+
+
+            &__box {
+                background-color: $lightGreen;
+
+                &__desc {
+                    background-color: $white;
+                    border-radius   : 2.3rem 2.3rem 0 0;
+
+                    h4 {
+                        margin: 0;
+                    }
+
+                    &__info {
+                        padding: 2rem;
+
+                        &__ratings {
+                            display: flex;
+
+                            &__star {
+                                width: 1.3rem;
+
+                                &--green {
+                                    fill: $mediumGreen;
+                                }
+
+                                &--gray {
+                                    fill: $darkgray;
+                                }
+                            }
+                        }
+
+                        //item buttons
+                        &__btns {
+                            display: flex;
+                            gap    : 0.3rem;
+
+                            &__btn {
+                                display        : flex;
+                                justify-content: center;
+                                align-items    : center;
+                                text-decoration: none;
+                                color          : black;
+                                border-radius  : 3rem;
+                                height         : 2rem;
+                                font-weight    : bold;
+
+                                &:hover {
+                                    transform : scale(1.05);
+                                    transition: transform 0.3s ease-out;
+                                }
+
+                                &--cart {
+                                    width     : 7rem;
+                                    background: $yellow;
+
+                                }
+
+                                &--details {
+                                    background-color: $gray;
+                                    width           : 5rem;
+                                }
+                            }
+
+                        }
+                    }
+                }
+            }
+
+            &__bg {
+                width        : 100%;
+                border-radius: 2.3rem 2.3rem 0 0;
+
+            }
+
+
+            &__info {
+                position        : absolute;
+                bottom          : 0;
+                text-align      : center;
+                width           : 100%;
+                background-color: $white;
+                border-radius   : 2rem 2rem 0 0;
+                color           : $black;
+                text-decoration : none;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                display         : flex;
+                flex-direction  : column;
+                padding         : 1rem 0;
+
+
+                &__title,
+                &__a {
+                    padding: 0;
+                    margin : 0;
+                    color  : $black;
+                }
+
+                &__title {
+                    margin-bottom: 0.2rem;
+                }
+
+                &__a {
+                    text-decoration: none;
+                    color          : $black;
+                    background     : $ultragreen;
+                    padding        : 0.6rem;
+                    border-radius  : 3rem;
+                    font-weight    : bold;
+
+                    &:hover {
+                        background-color: $lightGreen;
+                    }
+                }
+
+
+            }
+
+            &__a {
+                position        : absolute;
+                bottom          : 0;
+                text-align      : center;
+                width           : 100%;
+                background-color: $white;
+                border-radius   : 2.3rem 2.3rem 0 0;
+                color           : $black;
+                text-decoration : none;
+                margin          : 0;
+                padding         : 1.2rem 0 1.5rem 0;
+                display         : flex;
+                justify-content : center;
+                align-items     : center;
+                font-weight     : bold;
+
+
+
+                &:hover {
+                    color: $darkGreen;
+                }
+            }
+        }
+    }
+}

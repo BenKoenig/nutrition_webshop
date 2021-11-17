@@ -1,0 +1,121 @@
+.nav {
+    &__desktop {
+        display: none;
+    }
+
+    @include md-screen {
+        &__desktop {
+            display         : block;
+            background-color: $lightGreen;
+
+            &__container {
+                display        : flex;
+                align-items    : center;
+                justify-content: space-between;
+                max-width      : 100rem;
+                margin         : 0 auto;
+                padding        : 1.5rem 0.7rem;
+
+
+                &__ul {
+                    display    : flex;
+                    gap        : 1rem;
+                    align-items: center;
+
+                    @include xl-screen {
+                        width: 33.33%;
+                    }
+
+                    &__li {
+                        &__a {
+                            color: $black;
+
+                            &--home {
+                                font-weight : bold;
+                                margin-right: 2rem;
+                                font-size   : 1.5rem;
+
+                            }
+
+                            &--admin {
+                                color: $red;
+                            }
+                        }
+                    }
+                }
+
+
+
+                &__account {
+                    display         : flex;
+                    align-items     : center;
+                    justify-content : center;
+                    gap             : 0.3rem;
+                    background-color: $ultragreen;
+                    padding         : 0.2rem 0.8rem;
+                    border-radius   : 3rem;
+
+                    &__logged {
+                        display    : flex;
+                        gap        : 0.5rem;
+                        align-items: center;
+
+
+                        &__a {
+                            display         : flex;
+                            justify-content : center;
+                            align-items     : center;
+                            width           : 7rem;
+                            height          : 3rem;
+                            border-radius   : 3rem;
+                            font-weight     : bold;
+                            color           : black;
+                            background-color: $gray;
+                        }
+                    }
+
+                    &__li {
+                        &__a {
+
+                            display        : flex;
+                            justify-content: center;
+                            align-items    : center;
+                            width          : 10rem;
+                            height         : 3rem;
+                            border-radius  : 3rem;
+                            font-weight    : bold;
+                            color          : black;
+
+                            &--login {
+                                background-color: $gray;
+                            }
+
+                            &--register {
+                                background-color: $yellow;
+                            }
+                        }
+                    }
+                }
+
+                &__cart {
+                    display        : flex;
+                    justify-content: flex-end;
+                    align-items    : center;
+                    gap            : 1em;
+                    font-weight    : bold;
+                    color          : $black;
+
+                    @include xl-screen {
+                        width: 33.33%;
+                    }
+
+                    &--svg {
+                        width: 3rem;
+
+                    }
+                }
+            }
+
+        }
+    }
+}

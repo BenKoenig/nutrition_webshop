@@ -1,0 +1,61 @@
+
+.login-form {
+    max-width      : 100rem;
+    margin         : 0 auto;
+    padding        : 5rem 0;
+    background     : $lightGreen;
+    margin-top     : 3rem;
+    display        : flex;
+    justify-content: center;
+    border-radius  : 0.7rem;
+
+    @include sm-screen {
+        border-radius: 5rem;
+    }
+
+    &__container {
+        flex-direction: column;
+
+        &--btn {
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+            width           : 8rem;
+            height          : 2.5rem;
+            font-weight     : bold;
+            border          : 0;
+            border-radius   : 10rem;
+            background-color: $darkGreen;
+            color           : $white;
+            margin-top      : 1.5rem;
+
+        }
+
+        &__field {
+            display       : flex;
+            flex-direction: column;
+            width         : 95vw;
+            max-width     : 22rem;
+            margin        : 0.3rem 0;
+
+
+            &__input {
+                padding      : 0 1.1rem;
+                border       : 0;
+                height       : 2.8rem;
+                background   : $white;
+                border-radius: 20rem;
+                font-size    : 1.2remfirfe;
+
+                &:focus {
+                    border : 0;
+                    outline: 0;
+                }
+            }
+
+
+
+        }
+
+    }
+}

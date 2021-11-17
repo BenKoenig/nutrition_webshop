@@ -4,12 +4,12 @@ namespace App\Controllers\Categories;
 
 use App\Models\Categorie;
 use App\Models\Room;
-use App\Models\RoomFeature;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
 use Core\Validator;
 use Core\Session;
 use Core\Helpers\Redirector;
+use Core\Models\AbstractFile;
 
 
 class CategoryPanelController
@@ -18,12 +18,13 @@ class CategoryPanelController
     {
         AuthMiddleware::isAdminOrFail();
         $categories = Categorie::all('id', 'ASC');
-        View::render('categories/panel/index',[
+        View::render('categories/panel/index', [
             'categories' => $categories
         ]);
     }
 
-    public function create() {
+    public function create()
+    {
         AuthMiddleware::isAdminOrFail();
 
         View::render('categories/panel/create');
@@ -31,39 +32,41 @@ class CategoryPanelController
 
 
 
-    private function validateFormData(int $id = 0): array {
-    /**
-     * Neues Validator Objekt erstellen.
-     */
-    $validator = new Validator();
-
-    /**
-     * Gibt es überhaupt Daten, die validiert werden können?
-     */
-    if (!empty($_POST)) {
+    private function validateFormData(int $id = 0): array
+    {
         /**
-         * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
-         *
-         * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
+         * Neues Validator Objekt erstellen.
          */
-        $validator->textnum($_POST['name'], label: 'name', required: true, max: 255);
-
-
+        $validator = new Validator();
 
         /**
-         * @todo: implement Validate Array + Contents
+         * Gibt es überhaupt Daten, die validiert werden können?
          */
+        if (!empty($_POST)) {
+            /**
+             * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
+             *
+             * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
+             */
+            $validator->textnum($_POST['name'], label: 'name', required: true, max: 255);
+            // $validator->file($_FILES['images'], label: 'images', type: 'image');
+
+
+
+            /**
+             * @todo: implement Validate Array + Contents
+             */
+        }
+
+        /**
+         * Fehler aus dem Validator zurückgeben.
+         */
+        return $validator->getErrors();
     }
 
-    /**
-     * Fehler aus dem Validator zurückgeben.
-     */
-    return $validator->getErrors();
-}
 
 
 
-    
     public function store()
     {
         /**
@@ -112,16 +115,24 @@ class CategoryPanelController
         $categorie->fill($_POST);
 
         /**
+         * Hochgeladene Dateien verarbeiten.
+         */
+        // $categorie = $this->handleUploadedFiles($categorie);
+        // /**
+        //  * Checkboxen verarbeiten, ob eine Datei gelöscht werden soll oder nicht.
+        //  */
+        // $categorie = $this->handleDeleteFiles($categorie);
+
+        /**
          * Schlägt die Speicherung aus irgendeinem Grund fehl ...
          */
         if (!$categorie->save()) {
             /**
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
-        
-            Session::set('errors', ['Speichern fehlgeschlagen.' ]);
-            Redirector::redirect("/admin/categories/create");
 
+            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Redirector::redirect("/admin/categories/create");
         }
 
         /**
@@ -152,7 +163,7 @@ class CategoryPanelController
          * Bestätigungsbutton und eine für den Abbrechen-Button.
          */
         View::render('helpers/confirmation', [
-            'objectType' => 'Raum',
+            'objectType' => 'Category',
             'objectTitle' => $categorie->name,
             'confirmUrl' => BASE_URL . '/admin/categories/' . $categorie->id . '/delete/confirm',
             'abortUrl' => BASE_URL . '/admin/categories'
@@ -160,7 +171,7 @@ class CategoryPanelController
     }
 
 
-        /**
+    /**
      * Raum löschen.
      *
      * @param int $id
@@ -214,7 +225,7 @@ class CategoryPanelController
         /**
          * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
          */
-        
+
 
         /**
          * View laden und Daten übergeben.
@@ -301,6 +312,51 @@ class CategoryPanelController
     }
 
 
-    
-}
+    /**
+     * Hochgeladene Dateien verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room|null
+     */
+    // public function handleUploadedFiles(Categorie $categorie): ?Categorie
+    // {
+    //     /**
+    //      * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
+    //      * Objekten kapseln können.
+    //      */
+    //     $files = AbstractFile::createFromUploadedFiles('images');
 
+    //     /**
+    //      * Nun gehen wir alle Dateien durch ...
+    //      */
+    //     foreach ($files as $file) {
+    //         /**
+    //          * ... speichern sie in den Uploads Ordner ...
+    //          */
+    //         $storagePath = $file->putToUploadsFolder();
+    //         /**
+    //          * ... und verknüpfen sie mit dem Raum.
+    //          */
+    //         $categorie->addImages([$storagePath]);
+    //     }
+    //     /**
+    //      * Nun geben wir den aktualisierten Raum wieder zurück.
+    //      */
+    //     return $categorie;
+    // }
+
+
+    // private function handleDeleteFiles(?Categorie $categorie): Categorie
+    // {
+    //     if (isset($_POST['delete-images'])) {
+    //         foreach ($_POST['delete-images'] as $deleteImage) {
+    //             $categorie->removeImages([$deleteImage]);
+
+    //             AbstractFile::delete($deleteImage);
+    //         }
+    //     }
+
+    //     return $categorie;
+    // }
+}

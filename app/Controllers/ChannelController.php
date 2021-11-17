@@ -26,3 +26,4 @@ class ChannelController
     }
 
 }
+x
