@@ -6,6 +6,7 @@ use App\Models\Room;
 use App\Models\RoomFeature;
 use Core\Helpers\Redirector;
 use Core\Middlewares\AuthMiddleware;
+use Core\Models\AbstractFile;
 use Core\Session;
 use Core\Validator;
 use Core\View;
@@ -125,7 +126,17 @@ class RoomController
         /**
          * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
          */
+        var_dump($room); exit;
         $room->fill($_POST);
+
+        /**
+         * Hochgeladene Dateien verarbeiten.
+         */
+        $room = $this->handleUploadedFiles($room);
+        /**
+         * Checkboxen verarbeiten, ob eine Datei gelöscht werden soll oder nicht.
+         */
+        $room = $this->handleDeleteFiles($room);
 
         /**
          * RoomFeature Selections speichern.
@@ -148,13 +159,12 @@ class RoomController
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
             Session::set('errors', ['Speichern fehlgeschlagen.']);
-            Redirector::redirect("/rooms/${id}");
         }
 
         /**
          * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
          */
-        Redirector::redirect('/home');
+        Redirector::redirect("/rooms/${id}");
     }
 
     /**
@@ -172,9 +182,16 @@ class RoomController
         AuthMiddleware::isAdminOrFail();
 
         /**
-         * View laden.
+         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
          */
-        View::render('rooms/create');
+        $roomFeatures = RoomFeature::all();
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('rooms/create', [
+            'roomFeatures' => $roomFeatures
+        ]);
     }
 
     /**
@@ -347,6 +364,7 @@ class RoomController
                 column: 'room_nr',
                 ignoreThisId: $id
             );
+            $validator->file($_FILES['images'], label: 'Images', type: 'image');
             /**
              * @todo: implement Validate Array + Contents
              */
@@ -356,6 +374,72 @@ class RoomController
          * Fehler aus dem Validator zurückgeben.
          */
         return $validator->getErrors();
+    }
+
+    /**
+     * Hochgeladene Dateien verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room|null
+     */
+    public function handleUploadedFiles(Room $room): ?Room
+    {
+        /**
+         * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
+         * Objekten kapseln können.
+         */
+        $files = AbstractFile::createFromUploadedFiles('images');
+
+        /**
+         * Nun gehen wir alle Dateien durch ...
+         */
+        foreach ($files as $file) {
+            /**
+             * ... speichern sie in den Uploads Ordner ...
+             */
+            $storagePath = $file->putToUploadsFolder();
+            /**
+             * ... und verknüpfen sie mit dem Raum.
+             */
+            $room->addImages([$storagePath]);
+        }
+        /**
+         * Nun geben wir den aktualisierten Raum wieder zurück.
+         */
+        return $room;
+    }
+
+
+    /**
+     * Löschen-Checkboxen der Bilder eines Raumes verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room
+     */
+    private function handleDeleteFiles(Room $room): Room
+    {
+        /**
+         * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
+         */
+        if (isset($_POST['delete-images'])) {
+            /**
+             * Wenn ja, gehen wir alle Checkboxen durch ...
+             */
+            foreach ($_POST['delete-images'] as $deleteImage) {
+                /**
+                 * Lösen die Verknüpfung zum Room ...
+                 */
+                $room->removeImages([$deleteImage]);
+                /**
+                 * ... und löschen die Datei aus dem Uploads-Ordner.
+                 */
+                AbstractFile::delete($deleteImage);
+            }
+        }
+
+        return $room;
     }
 
 }

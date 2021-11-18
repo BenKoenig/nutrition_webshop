@@ -25,7 +25,7 @@ class Bootloader
         /**
          * Damit wir nicht bei jedem Redirect die baseurl aus der Config laden müssen, erstellen wir hier eine Hilfskonstante.
          */
-        define('BASE_URL', Config::get('app.baseurl', 'http://localhost'));
+        define('BASE_URL', Config::get('app.baseurl', 'http://localhost/'));
 
         /**
          * Ein try-catch-Block ermöglicht es uns Code auszuführen und eine Exception, die in diesem Code auftritt

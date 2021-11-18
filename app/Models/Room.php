@@ -37,6 +37,7 @@ class Room extends AbstractModel
         public string $name = '',
         public ?string $location = null,
         public string $room_nr = '',
+        public string $images = '[]',
         public string $created_at = '',
         public string $updated_at = '',
         public ?string $deleted_at = null,
@@ -73,12 +74,16 @@ class Room extends AbstractModel
              * Query ausführen und Ergebnis direkt zurückgeben. Das kann entweder true oder false sein, je nachdem ob
              * der Query funktioniert hat oder nicht.
              */
-            $result = $database->query("UPDATE $tablename SET name = ?, location = ?, room_nr = ? WHERE id = ?", [
-                's:name' => $this->name,
-                's:location' => $this->location,
-                's:room_nr' => $this->room_nr,
-                'i:id' => $this->id
-            ]);
+            $result = $database->query(
+                "UPDATE $tablename SET name = ?, location = ?, room_nr = ?, images = ? WHERE id = ?",
+                [
+                    's:name' => $this->name,
+                    's:location' => $this->location,
+                    's:room_nr' => $this->room_nr,
+                    's:images' => $this->images,
+                    'i:id' => $this->id
+                ]
+            );
 
             /**
              * Raum Feature Daten aus $this->_roomFeatures speichern.
@@ -90,10 +95,11 @@ class Room extends AbstractModel
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
-            $result = $database->query("INSERT INTO $tablename SET name = ?, location = ?, room_nr = ?", [
+            $result = $database->query("INSERT INTO $tablename SET name = ?, location = ?, room_nr = ?, images = ?", [
                 's:name' => $this->name,
                 's:location' => $this->location,
-                's:room_nr' => $this->room_nr
+                's:room_nr' => $this->room_nr,
+                's:images' => $this->images
             ]);
 
             /**
@@ -260,5 +266,112 @@ class Room extends AbstractModel
          * Datenbankergebnis verarbeiten und zurückgeben.
          */
         return $result;
+    }
+
+    /**
+     * Getter für Images.
+     *
+     * @return array
+     */
+    public function getImages(): array
+    {
+        /**
+         * Nachdem $this->images ein JSON-Array ist, wandeln wir ihn hier in ein natives PHP Array um.
+         */
+        return json_decode($this->images);
+    }
+
+    /**
+     * Prüfen, ob Bilder vorhanden sind in dem Raum.
+     *
+     * @return bool
+     */
+    public function hasImages(): bool
+    {
+        return !empty($this->getImages());
+    }
+
+    /**
+     * Ein oder mehrere Bilder in $this->images hinzufügen.
+     *
+     * @param array $imagesx
+     *
+     * @return array
+     */
+    public function addImages(array $images): array
+    {
+        /**
+         * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array, ...
+         */
+        $currentImages = $this->getImages();
+        /**
+         * ... führen sie dann mit der Liste der hinzuzufügenden Bilder zusammen ...
+         */
+        $currentImages = array_merge($currentImages, $images);
+        /**
+         * ... und überschreiben die aktuelle Liste.
+         */
+        $this->setImages($currentImages);
+
+        /**
+         * Zum Abschluss geben wir die neue Liste der Bilder zurück.
+         */
+        return $currentImages;
+    }
+
+    /**
+     * Ein oder mehrere Bilder aus den verknüpften Bildern des Raumes entfernen.
+     *
+     * @param array $images
+     *
+     * @return array
+     */
+    public function removeImages(array $images): array
+    {
+        /**
+         * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array.
+         */
+        $currentImages = $this->getImages();
+        /**
+         * Nun filtern wir alle Bilder mit einer Callback-Funktion.
+         */
+        $filteredImages = array_filter($currentImages, function ($image) use ($images) {
+            /**
+             * Ein Element wird in das Ergebnis-Array übernommen, wenn die Callback Funktion true zurück gibt. Soll ein
+             * Bild also entfernt werden, geben wir false zurück.
+             */
+            if (in_array($image, $images)) {
+                return false;
+            }
+            return true;
+        });
+        /**
+         * Nun überschreiben wir die aktuelle Liste verknüpfter Bilder des Raumes.
+         */
+        $this->setImages($filteredImages);
+
+        return $filteredImages;
+    }
+
+    /**
+     * Setter für Images.
+     *
+     * @param array $images
+     *
+     * @return array
+     */
+    public function setImages(array $images): array
+    {
+        /**
+         * Hier indizieren wir das $images Array neu und konvertieren es in ein JSON. Das ist nötig, weil die JSON-
+         * Konvertierung sonst ein Objekt und kein Array erzeugen würde - daher stellen wir sicher, dass die Arrray-
+         * Indizes fortlaufend sind.
+         */
+        $this->images = json_encode(array_values($images));
+
+        /**
+         * Zum Abschluss geben wir die neue Liste der verknüpften Bilder zurück.
+         */
+        return $this->getImages();
     }
 }

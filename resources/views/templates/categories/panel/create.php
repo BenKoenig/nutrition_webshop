@@ -10,10 +10,7 @@
             <label class="create__form__field__label" for="name">Category Name</label>
             <input class="create__form__field__input" type="text" name="name" id="name" placeholder="Protein Shakes">
         </div>
-        <div class="create__form__field">
-            <label class="create__form__field__label" for="img_url">Image Path</label>
-            <input class="create__form__field__input" type="text" name="img_url" id="img_url" placeholder="https://link/example/image.png">
-        </div>
+
         <div class="create__form__field create__form__field--checkfield">
             <label class="create__form__field__label" for="is_popular">Add to popular section</label>
             <input type="checkbox" name="is_popular" id="is_popular">

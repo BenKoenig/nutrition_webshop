@@ -43,7 +43,7 @@ require_once __DIR__ . '/../partials/flashMessagesAndErrors.php'; ?>
 <footer class="footer">
 
 </footer>
-
+<!-- /.container -->
 <script src="<?php echo BASE_URL; ?>/js/app.min.js"></script>
 </body>
 </html>

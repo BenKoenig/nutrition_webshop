@@ -3,7 +3,6 @@
 namespace App\Controllers\Categories;
 
 use App\Models\Categorie;
-use App\Models\Room;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
 use Core\Validator;
@@ -23,6 +22,127 @@ class CategoryPanelController
         ]);
     }
 
+
+
+
+    public function edit(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
+         */
+        $categorie = Categorie::findOrFail($id);
+
+        /**
+         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
+         */
+
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('categories/panel/edit', [
+            'categorie' => $categorie
+        ]);
+    }
+
+
+
+
+    /**
+     * Formulardaten aus dem Bearbeitungsformular entgegennehmen und verarbeiten.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     */
+    public function update(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * 1) Daten validieren
+         * 2) Model aus der DB abfragen, das aktualisiert werden soll
+         * 3) Model in PHP überschreiben
+         * 4) Model in DB zurückspeichern
+         * 5) Redirect irgendwohin
+         */
+
+        /**
+         * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
+         * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
+         */
+        $validationErrors = $this->validateFormData($id);
+
+        /**
+         * Sind Validierungsfehler aufgetreten ...
+         */
+        if (!empty($validationErrors)) {
+            /**
+             * ... dann speichern wir sie in die Session um sie in den Views dann ausgeben zu können ...
+             */
+            Session::set('errors', $validationErrors);
+            /**
+             * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
+             * nicht mehr ausgeführt.
+             */
+            Redirector::redirect("/admin/categories/${id}/edit");
+        }
+
+        /**
+         * Gewünschten Room über das ROom-Model aus der Datenbank laden. Hier verwenden wir die findOrFail()-Methode aus
+         * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
+         * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
+         */
+        $categorie = Categorie::findOrFail($id);
+
+        /**
+         * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
+         */
+
+    
+
+        $categorie->fill($_POST);
+
+        $categorie = $this->handleUploadedFiles($categorie);
+
+
+        $categorie = $this->handleDeleteFiles($categorie);
+
+
+
+        /**
+         * Schlägt die Speicherung aus irgendeinem Grund fehl ...
+         */
+        if (!$categorie->save()) {
+            /**
+             * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
+             */
+            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            // Redirector::redirect("/categorie/${id}/edit");
+        }
+
+        /**
+         * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
+         */
+        Redirector::redirect('/admin/categories');
+    }
+
+
+
+
+
     public function create()
     {
         AuthMiddleware::isAdminOrFail();
@@ -32,37 +152,8 @@ class CategoryPanelController
 
 
 
-    private function validateFormData(int $id = 0): array
-    {
-        /**
-         * Neues Validator Objekt erstellen.
-         */
-        $validator = new Validator();
-
-        /**
-         * Gibt es überhaupt Daten, die validiert werden können?
-         */
-        if (!empty($_POST)) {
-            /**
-             * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
-             *
-             * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
-             */
-            $validator->textnum($_POST['name'], label: 'name', required: true, max: 255);
-            // $validator->file($_FILES['images'], label: 'images', type: 'image');
 
 
-
-            /**
-             * @todo: implement Validate Array + Contents
-             */
-        }
-
-        /**
-         * Fehler aus dem Validator zurückgeben.
-         */
-        return $validator->getErrors();
-    }
 
 
 
@@ -199,7 +290,7 @@ class CategoryPanelController
         /**
          * Erfolgsmeldung für später in die Session speichern.
          */
-        Session::set('success', ['The room has been sucessfully deleted.']);
+        Session::set('success', ['The category has been sucessfully deleted.']);
         /**
          * Weiterleiten zur Home Seite.
          */
@@ -207,109 +298,42 @@ class CategoryPanelController
     }
 
 
-
-    public function edit(int $id)
-    {
-        /**
-         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
-         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
-         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
-         */
-        AuthMiddleware::isAdminOrFail();
-
-        /**
-         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
-         */
-        $categorie = Categorie::findOrFail($id);
-
-        /**
-         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
-         */
-
-
-        /**
-         * View laden und Daten übergeben.
-         */
-        View::render('categories/panel/edit', [
-            'categorie' => $categorie
-        ]);
-    }
-
     /**
-     * Formulardaten aus dem Bearbeitungsformular entgegennehmen und verarbeiten.
+     * Validierungen kapseln, damit wir sie überall dort, wo wir derartige Objekte validieren müssen, verwenden können.
      *
-     * @param int $id
+     * @param int $id Wird dieser Wert übergeben, so ignoriert die unique Methode den Eintrag mit der übergebenen ID.
      *
-     * @throws \Exception
+     * @return array
      */
-    public function update(int $id)
+    private function validateFormData(int $id = 0): array
     {
         /**
-         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
-         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
-         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         * Neues Validator Objekt erstellen.
          */
-        AuthMiddleware::isAdminOrFail();
+        $validator = new Validator();
 
         /**
-         * 1) Daten validieren
-         * 2) Model aus der DB abfragen, das aktualisiert werden soll
-         * 3) Model in PHP überschreiben
-         * 4) Model in DB zurückspeichern
-         * 5) Redirect irgendwohin
+         * Gibt es überhaupt Daten, die validiert werden können?
          */
-
-        /**
-         * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
-         * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
-         */
-        $validationErrors = $this->validateFormData($id);
-
-        /**
-         * Sind Validierungsfehler aufgetreten ...
-         */
-        if (!empty($validationErrors)) {
+        if (!empty($_POST)) {
             /**
-             * ... dann speichern wir sie in die Session um sie in den Views dann ausgeben zu können ...
+             * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
+             *
+             * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
              */
-            Session::set('errors', $validationErrors);
+            $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
+            $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
             /**
-             * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
-             * nicht mehr ausgeführt.
+             * @todo: implement Validate Array + Contents
              */
-            Redirector::redirect("/admin/categories/${id}/edit");
         }
 
         /**
-         * Gewünschten Room über das ROom-Model aus der Datenbank laden. Hier verwenden wir die findOrFail()-Methode aus
-         * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
-         * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
+         * Fehler aus dem Validator zurückgeben.
          */
-        $categorie = Categorie::findOrFail($id);
-
-        /**
-         * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
-         */
-        $categorie->fill($_POST);
-
-
-
-        /**
-         * Schlägt die Speicherung aus irgendeinem Grund fehl ...
-         */
-        if (!$categorie->save()) {
-            /**
-             * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
-             */
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
-            Redirector::redirect("/categorie/${id}/edit");
-        }
-
-        /**
-         * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
-         */
-        Redirector::redirect('/admin/categories');
+        return $validator->getErrors();
     }
+
 
 
     /**
@@ -319,44 +343,62 @@ class CategoryPanelController
      *
      * @return Room|null
      */
-    // public function handleUploadedFiles(Categorie $categorie): ?Categorie
-    // {
-    //     /**
-    //      * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
-    //      * Objekten kapseln können.
-    //      */
-    //     $files = AbstractFile::createFromUploadedFiles('images');
+    public function handleUploadedFiles(Categorie $categorie): ?Categorie
+    {
+        /**
+         * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
+         * Objekten kapseln können.
+         */
+        $files = AbstractFile::createFromUploadedFiles('imgs');
 
-    //     /**
-    //      * Nun gehen wir alle Dateien durch ...
-    //      */
-    //     foreach ($files as $file) {
-    //         /**
-    //          * ... speichern sie in den Uploads Ordner ...
-    //          */
-    //         $storagePath = $file->putToUploadsFolder();
-    //         /**
-    //          * ... und verknüpfen sie mit dem Raum.
-    //          */
-    //         $categorie->addImages([$storagePath]);
-    //     }
-    //     /**
-    //      * Nun geben wir den aktualisierten Raum wieder zurück.
-    //      */
-    //     return $categorie;
-    // }
+        /**
+         * Nun gehen wir alle Dateien durch ...
+         */
+        foreach ($files as $file) {
+            /**
+             * ... speichern sie in den Uploads Ordner ...
+             */
+            $storagePath = $file->putToUploadsFolder();
+            /**
+             * ... und verknüpfen sie mit dem Raum.
+             */
+            $categorie->addImages([$storagePath]);
+        }
+        /**
+         * Nun geben wir den aktualisierten Raum wieder zurück.
+         */
+        return $categorie;
+    }
 
 
-    // private function handleDeleteFiles(?Categorie $categorie): Categorie
-    // {
-    //     if (isset($_POST['delete-images'])) {
-    //         foreach ($_POST['delete-images'] as $deleteImage) {
-    //             $categorie->removeImages([$deleteImage]);
+    /**
+     * Löschen-Checkboxen der Bilder eines Raumes verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room
+     */
+    private function handleDeleteFiles(Categorie $categorie): Categorie
+    {
+        /**
+         * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
+         */
+        if (isset($_POST['delete-images'])) {
+            /**
+             * Wenn ja, gehen wir alle Checkboxen durch ...
+             */
+            foreach ($_POST['delete-images'] as $deleteImage) {
+                /**
+                 * Lösen die Verknüpfung zum Room ...
+                 */
+                $categorie->removeImages([$deleteImage]);
+                /**
+                 * ... und löschen die Datei aus dem Uploads-Ordner.
+                 */
+                AbstractFile::delete($deleteImage);
+            }
+        }
 
-    //             AbstractFile::delete($deleteImage);
-    //         }
-    //     }
-
-    //     return $categorie;
-    // }
+        return $categorie;
+    }
 }

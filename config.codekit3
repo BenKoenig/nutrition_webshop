@@ -47,6 +47,14 @@
       "oAP" : "\/app\/Controllers\/AuthController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/CartController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/CartController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Categories\/CategoryController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -740,6 +748,14 @@
       "oAP" : "\/resources\/views\/templates\/auth\/login.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/cart.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/cart.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/categories\/categories.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -923,6 +939,107 @@
       "oA" : 0,
       "oAP" : "\/storage\/uploads\/.gitkeep",
       "oF" : 0
+    },
+    "\/storage\/uploads\/1637136577_map-railway-network-croatia.jpg" : {
+      "ft" : 16384,
+      "iS" : 85004,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637136577_map-railway-network-croatia.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637154312_chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.jpg" : {
+      "ft" : 16384,
+      "iS" : 87718,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637154312_chocolate-whey-protein-powder-with-a-filled-scoop-royalty-free-image-1626898564.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637164283_jared-rice-NTyBbu66_SI-unsplash.png" : {
+      "ft" : 32768,
+      "iS" : 735342,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637164283_jared-rice-NTyBbu66_SI-unsplash.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637183018_81n3NDnh0dL._AC_SL1500_.png" : {
+      "ft" : 32768,
+      "iS" : 292824,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637183018_81n3NDnh0dL._AC_SL1500_.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637183082_anastase-maragos-7kEpUPB8vNk-unsplash.png" : {
+      "ft" : 32768,
+      "iS" : 545878,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637183082_anastase-maragos-7kEpUPB8vNk-unsplash.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637183198_instagram(1).svg" : {
+      "ft" : 2097152,
+      "miP" : 0,
+      "oA" : 2,
+      "oAP" : "\/storage\/uploads\/1637183198_instagram(1).svg",
+      "oF" : 0,
+      "opt" : 0,
+      "plM" : 52780316221407,
+      "prP" : 0
+    },
+    "\/storage\/uploads\/1637231922_Unbenannt-dasdsadad1.png" : {
+      "ft" : 32768,
+      "iS" : 159072,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637231922_Unbenannt-dasdsadad1.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637232413_category-bars.png" : {
+      "ft" : 32768,
+      "iS" : 321530,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637232413_category-bars.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     },
     "\/storage\/uploads\/categories\/category-bars.png" : {
       "ft" : 32768,

@@ -1,4 +1,3 @@
-
 <!--
 --------------------- Hero Section -------------------- 
 This section changes depending on the upcoming events. 
@@ -71,7 +70,10 @@ able to set it to true (1) or false (0) within the CMS.
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
-                    <img class="cards__container__item__bg" src="<?php echo $categorie->img_url; ?>" alt="<?php echo $categorie->name; ?>">
+
+
+                    
+                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $categorie->getImages()[0]; ?>" alt="<?php echo $categorie->name; ?>">
                 </div>
                 <!--
                 Link name: PHP code that contains the category name from the database

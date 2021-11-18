@@ -25,7 +25,7 @@ class ProductPanelController
     {
         /**
          * Check if user is logged in
-         * If user is not logged in, thex will receive an error
+         * If user is not logged        in, thex will receive an error
          */
         AuthMiddleware::isAdminOrFail();
         /**

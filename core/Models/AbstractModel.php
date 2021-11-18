@@ -177,7 +177,7 @@ abstract class AbstractModel
             /**
              * Existiert zu dem Wert eine namensgleiche Property in dem Objekt ...
              */
-            if (property_exists($this, $name)) {
+            if (property_exists($this, $name)) {    
                 /**
                  * ... so trimmen wir den Wert.
                  */
