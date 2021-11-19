@@ -190,6 +190,7 @@ class Router
              * Nun rufen wir Controller und Action auf und verwenden den Spread Operator, weil wir mit einer
              * variablen Anzahl an Parametern umgehen müssen.
              */
+  
             $controller->$action(...$params);
         }
     }

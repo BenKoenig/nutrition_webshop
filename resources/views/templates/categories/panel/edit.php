@@ -2,7 +2,7 @@
     <h1>Edit Category</h1>
     <div class="adminForm__path">
         <a class="adminForm__path__a" href="<?php echo BASE_URL . "/admin" ?>">Admin/</a>
-        <a class="adminForm__path__a" href="<?php echo BASE_URL . "/admin/categories" ?>">Categoies/</a>
+        <a class="adminForm__path__a" href="<?php echo BASE_URL . "/admin/categories" ?>">Categories/</a>
         <p>Edit</p>
     </div>
     <form class="adminForm__form" action="<?php echo BASE_URL . "/admin/categories/" . $categorie->id . "/edit/update" ?>" method="post" enctype="multipart/form-data">

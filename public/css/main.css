@@ -365,7 +365,7 @@
   width: 8rem;
 }
 .panel-option__table__body__tr__td__btn--edit {
-  background: #3cbbde;
+  background: #b2d7f3;
 }
 .panel-option__table__body__tr__td__btn--delete {
   background: #F5B8B8;
@@ -383,6 +383,8 @@
 .adminForm__form {
   display: inline-block;
   border-radius: 3rem;
+  max-width: 30rem;
+  width: 100%;
 }
 .adminForm__form__field {
   display: flex;
@@ -409,7 +411,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   max-width: 30rem;
   height: 4rem;
   border-radius: 0.9rem;
@@ -633,7 +634,7 @@
   width: 8rem;
 }
 .panel-option__table__body__tr__td__btn--edit {
-  background: #3cbbde;
+  background: #b2d7f3;
 }
 .panel-option__table__body__tr__td__btn--delete {
   background: #F5B8B8;
@@ -884,6 +885,39 @@
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
+}
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 8.5rem;
+  height: 3rem;
+  border-radius: 1rem;
+}
+.btn--red {
+  background-color: #F5B8B8;
+  color: #BB0000;
+}
+.btn--red:hover {
+  background-color: #BB0000;
+  color: #F5B8B8;
+}
+.btn--blue {
+  background-color: #b2d7f3;
+  color: #455ec5;
+}
+.btn--blue:hover {
+  background-color: #455ec5;
+  color: #b2d7f3;
+}
+.btn--gray {
+  background-color: #F4F4F4;
+  color: #777272;
+}
+.btn--gray:hover {
+  background-color: #777272;
+  color: #F4F4F4;
 }
 
 .cart__container {

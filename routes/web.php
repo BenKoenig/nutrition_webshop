@@ -11,6 +11,7 @@ use App\Controllers\Categories\CategoryPanelController;
 use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\Products\ProductPanelController;
+use App\Controllers\Merchants\MerchantPanelController;
 use App\Controllers\CartController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
@@ -85,6 +86,13 @@ return [
 
     '/cart' => [CartController::class, 'index'],
 
+    '/admin/merchants' => [MerchantPanelController::class, 'index'],
+    '/admin/merchants/create' => [MerchantPanelController::class, 'create'],
+    '/admin/merchants/create/store' => [MerchantPanelController::class, 'store'],
+    '/admin/merchants/{id}/delete' => [MerchantPanelController::class, 'delete'],
+    '/admin/merchants/{id}/delete/confirm' => [MerchantPanelController::class, 'deleteConfirm'],
+    '/admin/merchants/{id}/edit' => [MerchantPanelController::class, 'edit'],
+    '/admin/merchants/{id}/edit/update' => [MerchantPanelController::class, 'update'],
 
     /**
      * Control Panel

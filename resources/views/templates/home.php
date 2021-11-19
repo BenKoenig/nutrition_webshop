@@ -89,7 +89,7 @@ able to set it to true (1) or false (0) within the CMS.
 
 <!--
 ----------------- Goals Section -----------------
-This section helps users find products depending
+This section helps users find products depending 
 on their goals. For example, if they are trying
 to lose weight, then products with low calorie
 and sugar content will be suggested for them

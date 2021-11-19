@@ -87,6 +87,14 @@
       "oAP" : "\/app\/Controllers\/HomeController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/Merchants\/MerchantPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Merchants\/MerchantPanelController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Products\/ProductController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -141,6 +149,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/Goal.php",
+      "oF" : 0
+    },
+    "\/app\/Models\/Merchant.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Merchant.php",
       "oF" : 0
     },
     "\/app\/Models\/Product.php" : {
@@ -500,6 +516,21 @@
       "oA" : 1,
       "oAP" : "\/resources\/scss\/abstracts\/variables.css",
       "oF" : 1,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/resources\/scss\/components\/btn.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/components\/btn.css",
+      "oF" : 0,
       "oS" : 0,
       "pg" : 0,
       "sct" : 0

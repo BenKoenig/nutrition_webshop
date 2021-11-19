@@ -1,0 +1,32 @@
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8.5rem;
+    height: 3rem;
+    border-radius: 1rem;
+    &--red {
+        background-color: $red;
+        color: $darkred;
+        &:hover {
+            background-color: $darkred;
+            color: $red;
+        }
+    }
+    &--blue {
+        background-color: $blue;
+        color:$darkblue;
+        &:hover {
+            background-color: $darkblue;
+            color: $blue;
+        }
+    }
+    &--gray {
+        background-color: $gray;
+        color:$darkgray;
+        &:hover {
+            background-color: $darkgray;
+            color: $gray;
+        }
+    }
+}
