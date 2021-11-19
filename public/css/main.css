@@ -84,7 +84,7 @@
     font-size: 1.5rem;
   }
   .nav__desktop__container__ul__li__a--admin {
-    color: #ec3232;
+    color: #BB0000;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -212,7 +212,7 @@
   color: black;
 }
 .confirm__btns__btn--cancel {
-  background-color: #ec3232;
+  background-color: #F5B8B8;
   color: #FEFEFE;
 }
 
@@ -303,7 +303,7 @@
   color: #000000;
 }
 .panel__container__item__options__btn--delete {
-  background: #ec3232;
+  background: #F5B8B8;
   color: #FEFEFE;
 }
 
@@ -368,43 +368,43 @@
   background: #3cbbde;
 }
 .panel-option__table__body__tr__td__btn--delete {
-  background: #ec3232;
+  background: #F5B8B8;
 }
 
-.create {
+.adminForm {
   max-width: 100rem;
   margin: 0 auto;
   padding: 3rem 0.7rem;
 }
-.create__path {
+.adminForm__path {
   display: flex;
+  margin-bottom: 0.7rem;
 }
-.create__form {
-  background-color: #F4FAFA;
-  border-radius: 5rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
-  margin: 1.5rem 0;
+.adminForm__form {
+  display: inline-block;
+  border-radius: 3rem;
 }
-.create__form__field {
-  margin: 1rem 0;
+.adminForm__form__field {
   display: flex;
   flex-direction: column;
+  margin: 1.2rem 0;
+}
+.adminForm__form__field--checkfield {
   align-items: center;
-}
-.create__form__field__label {
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-.create__form__field--checkfield {
   flex-direction: row;
-  align-items: center;
-  gap: 0.3rem;
+  background-color: #F4F4F4;
+  border-radius: 0.9rem;
+  padding: 0.8rem 1rem;
+  gap: 1rem;
 }
-.create__form__field__input {
+.adminForm__form__field__label {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.adminForm__form__field__label--checklabel {
+  font-weight: normal;
+}
+.adminForm__form__field__input {
   border: 0;
   display: flex;
   justify-content: center;
@@ -412,41 +412,45 @@
   width: 100vw;
   max-width: 30rem;
   height: 4rem;
-  border-radius: 3rem;
+  border-radius: 0.9rem;
   padding: 0 1rem;
-  background-color: #FEFEFE;
+  background-color: #F4F4F4;
   font-size: 1.1rem;
 }
-.create__form__field__input:focus {
-  border: 0;
-  outline: 0;
+.adminForm__form__field__file {
+  background: #F4F4F4;
+  padding: 1rem 1rem;
+  border-radius: 0.9rem;
 }
-.create__form__btns {
+.adminForm__form__btns {
   display: flex;
-  gap: 0.5rem;
+  justify-content: space-between;
+  gap: 1rem;
 }
-.create__form__btns--create {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 12rem;
-  height: 3rem;
-  border: 0;
-  background: #FEFEFE;
-  border-radius: 10rem;
-  font-weight: bold;
-}
-.create__form__btns--cancel {
+.adminForm__form__btns--create {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 12rem;
+  width: 15rem;
   height: 3rem;
   border: 0;
-  background: #ec3232;
-  border-radius: 10rem;
-  color: #FEFEFE;
-  font-weight: bold;
+  background: #BDF5CE;
+  border-radius: 0.8rem;
+  color: #288918;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+.adminForm__form__btns--cancel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15rem;
+  background: #F5B8B8;
+  height: 3rem;
+  border: 0;
+  border-radius: 0.8rem;
+  color: #BB0000;
+  font-size: 1.1rem;
 }
 
 .panel-header {
@@ -567,7 +571,7 @@
   color: #000000;
 }
 .panel__container__item__options__btn--delete {
-  background: #ec3232;
+  background: #F5B8B8;
   color: #FEFEFE;
 }
 
@@ -632,7 +636,7 @@
   background: #3cbbde;
 }
 .panel-option__table__body__tr__td__btn--delete {
-  background: #ec3232;
+  background: #F5B8B8;
 }
 
 .login-form {
@@ -880,6 +884,43 @@
   position: absolute !important;
   width: 1px !important;
   white-space: nowrap !important;
+}
+
+.cart__container {
+  display: flex;
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 5rem 0;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.cart__container__item__product {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  background-color: #F4FAFA;
+  padding: 2rem;
+  border-radius: 3rem;
+  flex-wrap: wrap;
+}
+.cart__container__item__product__img {
+  background-color: #D4EBEA;
+  border-radius: 3rem;
+}
+.cart__container__item__product__desc__flex {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+}
+.cart__container__item__costs {
+  background-color: #F4FAFA;
+  padding: 2rem;
+  border-radius: 3rem;
+}
+.cart__container__item__costs__flex {
+  display: flex;
+  gap: 6em;
+  justify-content: space-between;
 }
 
 body {

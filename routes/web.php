@@ -11,7 +11,7 @@ use App\Controllers\Categories\CategoryPanelController;
 use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\Products\ProductPanelController;
-use App\Controllers\Products\CartController;
+use App\Controllers\CartController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
 
@@ -79,7 +79,7 @@ return [
     '/admin/categories/create/store' => [CategoryPanelController::class, 'store'],
     '/admin/categories/{id}/delete' => [CategoryPanelController::class, 'delete'],
     '/admin/categories/{id}/delete/confirm' => [CategoryPanelController::class, 'deleteConfirm'],
-    '/admin/categories/{id}' => [CategoryPanelController::class, 'index'],
+    '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
     '/admin/categories/{id}/edit' => [CategoryPanelController::class, 'edit'],
     '/admin/categories/{id}/edit/update' => [CategoryPanelController::class, 'update'],
 
@@ -91,6 +91,7 @@ return [
      */
 
     '/admin' => [AdminController::class, 'index'],
+
 
 
 ];

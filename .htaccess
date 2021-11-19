@@ -17,6 +17,7 @@ RewriteCond %{REQUEST_FILENAME} !-d
 #   Datei anähngen.
 RewriteRule ^(.*)$ index.php?path=$1 [L,QSA]
 
+
 # Unser Webroot ist eigentlich in /public. Kann der Webserver aber nicht entsprechend konfiguriert werden, kann der
 #   Webroot auch auf das Wurzelverzeichnis zeigen. In diesem Fall sollten aber nur Dateien aus dem /public Ordner
 #   aufrufbar sein. Hier konfigurieren wir, dass Urls, die mit app, config, core usw. beginnen, Forbidden sein sollen

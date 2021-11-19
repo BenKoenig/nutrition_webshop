@@ -12,21 +12,21 @@ where customers can win prices when taking part.
         <h2 class="text-medium">Up for a challenge?</h2>
         <!-- Further information about the Vienna Run -->
         <p class="hero__desc">
-            Sign up for the Vienna Run on <span class="text-medium">15th of September</span>
-            and win awesome prices.
+        Sign up for the Vienna Run on <span class="text-medium">15th of September</span>
+        and win awesome prices.
         </p>
         <!-- Link to find out more about the Vienna Run -->
         <a href="#" class="hero__a">Learn more</a>
 
-    </div>
+        </div>
 
 
-    <!-- SVG (Runner) -->
-    <svg class="hero__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001" xml:space="preserve">
+        <!-- SVG (Runner) -->
+        <svg class="hero__svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.001 512.001" style="enable-background:new 0 0 512.001 512.001" xml:space="preserve">
         <path style="fill:#ffbcab" d="M265.896 81.464h28.74v42.814h-28.74z" />
-        <path style="fill:#ff9478" d="M265.896 81.464h28.74v23.717h-28.74z" />
-        <path style="fill:#ffbcab" d="m310.573 124.277 52.826 58.506 51.127-33.969 2.837 4.626c6.628 10.809 3.511 24.926-7.054 31.938l-36.191 24.018c-8.336 5.456-19.392 4.104-26.169-3.198l-40.958-45.066 3.582-36.855zM243.154 417.033l29.898-135.746-48.276 17.967-14.664 88.41a2.978 2.978 0 0 1-2.938 2.491h-80.075l-8.958 29.449 113.014 6.516a11.602 11.602 0 0 0 11.999-9.087z" />
-        <path style="fill:#9ce0b8" d="M91.161 461.606v-71.528h37.084l-17.662 62.528c-1.921 6.573-7.947 9-14.795 9h-4.627z" />
+            <path style="fill:#ff9478" d="M265.896 81.464h28.74v23.717h-28.74z" />
+            <path style="fill:#ffbcab" d="m310.573 124.277 52.826 58.506 51.127-33.969 2.837 4.626c6.628 10.809 3.511 24.926-7.054 31.938l-36.191 24.018c-8.336 5.456-19.392 4.104-26.169-3.198l-40.958-45.066 3.582-36.855zM243.154 417.033l29.898-135.746-48.276 17.967-14.664 88.41a2.978 2.978 0 0 1-2.938 2.491h-80.075l-8.958 29.449 113.014 6.516a11.602 11.602 0 0 0 11.999-9.087z" />
+            <path style="fill:#9ce0b8" d="M91.161 461.606v-71.528h37.084l-17.662 62.528c-1.921 6.573-7.947 9-14.795 9h-4.627z" />
         <path style="fill:#781900" d="M316.886 12.46C312.268 4.999 304.008 0 294.636 0h-25.08c-14.383 0-26.152 11.768-26.152 26.152v21.176c43.747-1.6 65.393-23.835 73.482-34.868z" />
         <path style="fill:#ffbcab" d="M243.404 47.327v21.384c0 14.383 11.768 26.152 26.152 26.152h25.08c14.383 0 26.152-11.768 26.152-26.152V26.152a25.95 25.95 0 0 0-3.9-13.691c-8.091 11.032-29.737 33.267-73.484 34.866z" />
         <path style="fill:#9ce0b8" d="M373.526 512h-71.528v-37.083l60.925 17.804a14.737 14.737 0 0 1 10.603 14.145V512z" />
@@ -70,15 +70,18 @@ able to set it to true (1) or false (0) within the CMS.
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
+                    <?php
 
+                    $url =  BASE_URL . $categorie->getImages()[0];
+                    ?>
 
-                    
-                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $categorie->getImages()[0]; ?>" alt="<?php echo $categorie->name; ?>">
+                    <!-- <img class="cards__container__item__bg" src="<?php echo $url; ?>"> -->
+                    <img class="cards__container__item__bg" src="http://localhost/storage/uploads/1637232413_category-bars.png" alt="">
                 </div>
                 <!--
                 Link name: PHP code that contains the category name from the database
                 -->
-                <a href="#" class="cards__container__item__a"><?php echo $categorie->name; ?></a>
+                <a href="#" class="cards__container__item__a"><?php echo $categorie->name; ?>   </a>
             </div>
         <?php endforeach; ?>
     </div>
