@@ -57,7 +57,7 @@ trait SoftDelete
      *
      * @return array
      */
-    public static function all(?string $orderBy = null, ?string $direction = null, ?int $limit = null): array
+    public static function all(?string $orderBy = null, ?string $direction = null, ?int $limit = null, ?string $where = null, ?int $is = null): array
     {
         /**
          * Datenbankverbindung herstellen.
@@ -78,20 +78,54 @@ trait SoftDelete
          * gelöscht markiert sind.
          */
 
-        switch([$orderBy, $limit]) {
-            case [null, null]:
-                $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL");
+
+
+        switch([$orderBy, $limit, $where, $is]) {
+            case [null, null, null, null]:
+                $result = $database->query("SELECT * FROM $tablename");
             break;
-            case [true, null]:
+            case [true, null, null, null]:
                 $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
             break;
-            case [null, true]: 
+            case [null, true, null, null]: 
                 $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
             break;
-            case [true, true]:
+            case [true, true, null, null]:
                 $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
             break;
+            case [null, null, true, null]:
+                $result = $database->query("SELECT * FROM $tablename WHERE $where");
+            break;
+            case [true, null, true, null]:
+                $result = $database->query("SELECT * FROM $tablename WHERE $where ORDER BY $orderBy $direction");
+            break;
+            case [null, null, true, true]:
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is");
+            break;
+            case [true, null, true, true]:
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is ORDER BY $orderBy $direction");
+            break;
+            case [true, true, true, true]:
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is LIMIT $limit ORDER BY $orderBy $direction");
+            break;
+
         }
+
+
+        // switch([$orderBy, $limit]) {
+        //     case [null, null]:
+        //         $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL");
+        //     break;
+        //     case [true, null]:
+        //         $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
+        //     break;
+        //     case [null, true]: 
+        //         $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
+        //     break;
+        //     case [true, true]:
+        //         $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
+        //     break;
+        // }
 
 
         // if ($orderBy === null) {

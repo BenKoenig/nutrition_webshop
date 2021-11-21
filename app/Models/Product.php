@@ -46,6 +46,7 @@ class Product extends AbstractModel
         public ?float $weight = null,
         public bool $is_featured = false,
         public bool $is_bestseller = false,
+        public bool $is_sale = false,
         public string $created_at = '',
         public string $updated_at = '',
         public ?string $deleted_at = null
@@ -82,7 +83,7 @@ class Product extends AbstractModel
              * der Query funktioniert hat oder nicht.
              */
             return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ? WHERE id = ?", [
+            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
                 's:category_id' => $this->category_id,
                 's:goal_id' => $this->goal_id,
                 'i:rating_id' => $this->rating_id,
@@ -97,13 +98,14 @@ class Product extends AbstractModel
                 'f:weight' => $this->weight,
                 'i:is_featured' => $this->is_featured,
                 'i:is_bestseller' => $this->is_bestseller,
+                'i:is_sale' => $this->is_sale,
             ]);
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
             $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?", [
+            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
                 's:category_id' => $this->category_id,
                 's:goal_id' => $this->goal_id,
                 'i:rating_id' => $this->rating_id,
@@ -118,6 +120,7 @@ class Product extends AbstractModel
                 'f:weight' => $this->weight,
                 'i:is_featured' => $this->is_featured,
                 'i:is_bestseller' => $this->is_bestseller,
+                'i:is_sale' => $this->is_sale,
             ]);
 
             /**

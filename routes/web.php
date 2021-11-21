@@ -18,6 +18,7 @@ use App\Controllers\CartController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
 use App\Controllers\NewController;
+use App\Controllers\SaleController;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -110,6 +111,8 @@ return [
     '/admin/flavors/{id}/edit/update' => [FlavorPanelController::class, 'update'],
 
     '/new' => [NewController::class, 'index'],
+    
+    '/sales' => [SaleController::class, 'index'],
 
     /**
      * Control Panel

@@ -151,6 +151,14 @@
       "oAP" : "\/app\/Controllers\/RoomFeatureController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/SaleController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/SaleController.php",
+      "oF" : 0
+    },
     "\/app\/Models\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1064,6 +1072,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/rooms\/index.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/sales.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/sales.php",
       "oF" : 0
     },
     "\/routes\/.gitkeep" : {
