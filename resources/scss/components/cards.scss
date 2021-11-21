@@ -4,7 +4,9 @@
     margin   : 0 auto;
     padding  : 2.5rem 0;
 
+
     &__container {
+        margin-top: 2rem;
         display       : grid;
         grid-auto-rows: auto;
         grid-gap      : 1rem;
@@ -19,6 +21,7 @@
             @include lg-screen {
                 grid-template-columns: repeat(4, 1fr);
             }
+
         }
 
         &--lg {

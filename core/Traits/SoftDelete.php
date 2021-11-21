@@ -82,31 +82,31 @@ trait SoftDelete
 
         switch([$orderBy, $limit, $where, $is]) {
             case [null, null, null, null]:
-                $result = $database->query("SELECT * FROM $tablename");
+                $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL");
             break;
             case [true, null, null, null]:
-                $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
+                $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL ORDER BY $orderBy $direction");
             break;
             case [null, true, null, null]: 
                 $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
             break;
             case [true, true, null, null]:
-                $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
+                $result = $database->query("SELECT * FROM $tablename WHERE deleted_at IS NULL ORDER BY $orderBy $direction LIMIT $limit");
             break;
             case [null, null, true, null]:
-                $result = $database->query("SELECT * FROM $tablename WHERE $where");
+                $result = $database->query("SELECT * FROM $tablename WHERE $where AND deleted_at IS NULL");
             break;
             case [true, null, true, null]:
-                $result = $database->query("SELECT * FROM $tablename WHERE $where ORDER BY $orderBy $direction");
+                $result = $database->query("SELECT * FROM $tablename WHERE $where AND IS deleted_at NULL ORDER BY $orderBy $direction");
             break;
             case [null, null, true, true]:
-                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is");
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is AND deleted_at IS NULL");
             break;
             case [true, null, true, true]:
-                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is ORDER BY $orderBy $direction");
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is AND deleted_at IS NULL ORDER BY $orderBy $direction");
             break;
             case [true, true, true, true]:
-                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is LIMIT $limit ORDER BY $orderBy $direction");
+                $result = $database->query("SELECT * FROM $tablename WHERE $where = $is AND deleted_at IS NULL LIMIT $limit ORDER BY $orderBy $direction");
             break;
 
         }

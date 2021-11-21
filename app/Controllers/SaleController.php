@@ -11,7 +11,7 @@ class SaleController {
         /**
          * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
          */;
-         $products = Product::all('created_at', 'ASC', null, 'is_sale', 1);
+         $products = Product::all('updated_at', 'ASC', null, 'is_sale', 1);
 
         /**
          * View laden und Daten übergeben.
