@@ -37,8 +37,9 @@
                     <td class="panel-option__table__body__tr__td"><?php echo $product->weight; ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo ($product->is_featured  ? 'Yes' : 'No'); ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo ($product->is_bestseller  ? 'Yes' : 'No'); ?></td>
-                    <td class="panel-option__table__body__tr__td"><a class="panel-option__table__body__tr__td__btn panel-option__table__body__tr__td__btn--edit" href="#">Edit</a></td>
-                    <td class="panel-option__table__body__tr__td"><a class="panel-option__table__body__tr__td__btn panel-option__table__body__tr__td__btn--delete" href="#">Delete</a></td>
+                    <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="<?php echo BASE_URL . '/admin/products/'  . $product->id . '/ratings';?>"">Ratings</a></td>
+                    <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="#">Edit</a></td>
+                    <td class="panel-option__table__body__tr__td"><a class="btn btn--red" href="#">Delete</a></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>

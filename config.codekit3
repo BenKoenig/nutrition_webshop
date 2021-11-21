@@ -79,6 +79,14 @@
       "oAP" : "\/app\/Controllers\/ChannelController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/Flavors\/FlavorPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Flavors\/FlavorPanelController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/HomeController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -95,6 +103,14 @@
       "oAP" : "\/app\/Controllers\/Merchants\/MerchantPanelController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/NewController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/NewController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Products\/ProductController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -109,6 +125,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Controllers\/Products\/ProductPanelController.php",
+      "oF" : 0
+    },
+    "\/app\/Controllers\/Ratings\/RatingPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Ratings\/RatingPanelController.php",
       "oF" : 0
     },
     "\/app\/Controllers\/RoomController.php" : {
@@ -143,6 +167,14 @@
       "oAP" : "\/app\/Models\/Categorie.php",
       "oF" : 0
     },
+    "\/app\/Models\/Flavor.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Flavor.php",
+      "oF" : 0
+    },
     "\/app\/Models\/Goal.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -165,6 +197,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/Product.php",
+      "oF" : 0
+    },
+    "\/app\/Models\/Rating.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Rating.php",
       "oF" : 0
     },
     "\/app\/Models\/Room.php" : {
@@ -520,6 +560,21 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/resources\/scss\/components\/admin.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/components\/admin.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/resources\/scss\/components\/btn.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -545,21 +600,6 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/resources\/scss\/components\/cards.css",
-      "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
-    },
-    "\/resources\/scss\/components\/forms.scss" : {
-      "aP" : 0,
-      "bl" : 0,
-      "co" : 0,
-      "dP" : 10,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/resources\/scss\/components\/forms.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -842,6 +882,30 @@
       "oAP" : "\/resources\/views\/templates\/categories\/panel\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/flavors\/panel\/create.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/create.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/flavors\/panel\/edit.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/flavors\/panel\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/index.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -898,6 +962,14 @@
       "oAP" : "\/resources\/views\/templates\/merchants\/panel\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/new.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/new.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/products\/panel\/create.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -928,6 +1000,22 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/products\/products.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/ratings\/panel\/edit.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/ratings\/panel\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/ratings\/panel\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/ratings\/panel\/index.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/room_features\/create.php" : {

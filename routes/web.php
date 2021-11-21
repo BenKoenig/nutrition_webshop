@@ -12,9 +12,12 @@ use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\Products\ProductPanelController;
 use App\Controllers\Merchants\MerchantPanelController;
+use App\Controllers\Flavors\FlavorPanelController;
+use App\Controllers\Ratings\RatingPanelController;
 use App\Controllers\CartController;
 use App\Controllers\RoomController;
 use App\Controllers\RoomFeatureController;
+use App\Controllers\NewController;
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -73,17 +76,21 @@ return [
     // ...
 
     '/categories' => [CategoryController::class, 'index'],
-
-
+    '/categories/{id}' => [ProductController::class, 'index'],
+    
     '/admin/categories' => [CategoryPanelController::class, 'index'],
     '/admin/categories/create' => [CategoryPanelController::class, 'create'],
     '/admin/categories/create/store' => [CategoryPanelController::class, 'store'],
     '/admin/categories/{id}/delete' => [CategoryPanelController::class, 'delete'],
     '/admin/categories/{id}/delete/confirm' => [CategoryPanelController::class, 'deleteConfirm'],
-    '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
+    '/admin/categories/{id}/{di}' => [ProductPanelController::class, 'index'],
     '/admin/categories/{id}/edit' => [CategoryPanelController::class, 'edit'],
     '/admin/categories/{id}/edit/update' => [CategoryPanelController::class, 'update'],
+    '/admin/products/{id}/ratings' => [RatingPanelController::class, 'index'],
+    '/admin/ratings/{id}/delete' => [RatingPanelController::class, 'delete'],
+    '/admin/ratings/{id}/delete/confirm' => [RatingPanelController::class, 'deleteConfirm'],
 
+    
     '/cart' => [CartController::class, 'index'],
 
     '/admin/merchants' => [MerchantPanelController::class, 'index'],
@@ -93,6 +100,16 @@ return [
     '/admin/merchants/{id}/delete/confirm' => [MerchantPanelController::class, 'deleteConfirm'],
     '/admin/merchants/{id}/edit' => [MerchantPanelController::class, 'edit'],
     '/admin/merchants/{id}/edit/update' => [MerchantPanelController::class, 'update'],
+
+    '/admin/flavors' => [FlavorPanelController::class, 'index'],
+    '/admin/flavors/create' => [FlavorPanelController::class, 'create'],
+    '/admin/flavors/create/store' => [FlavorPanelController::class, 'store'],
+    '/admin/flavors/{id}/delete' => [FlavorPanelController::class, 'delete'],
+    '/admin/flavors/{id}/delete/confirm' => [FlavorPanelController::class, 'deleteConfirm'],
+    '/admin/flavors/{id}/edit' => [FlavorPanelController::class, 'edit'],
+    '/admin/flavors/{id}/edit/update' => [FlavorPanelController::class, 'update'],
+
+    '/new' => [NewController::class, 'index'],
 
     /**
      * Control Panel

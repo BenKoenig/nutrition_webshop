@@ -334,7 +334,7 @@
 .panel-option__table {
   border-radius: 0.85rem;
   border-collapse: collapse;
-  background-color: #D4EBEA;
+  background-color: #F4F4F4;
 }
 .panel-option__table__head {
   text-align: left;
@@ -344,7 +344,7 @@
 }
 .panel-option__table__body {
   padding: 15px;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: #F4F4F4;
 }
 .panel-option__table__body__tr__td {
   padding: 0.8rem 0.8rem;

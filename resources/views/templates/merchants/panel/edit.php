@@ -8,7 +8,7 @@
     <form class="adminForm__form" action="<?php echo BASE_URL . "/admin/merchants/" . $merchant->id . "/edit/update" ?>" method="post">
         
         
-        <div class="adminForm__form__field">
+        <div class="adminForm__form__field">    
             <label class="adminForm__form__field__label" for="name">Merchant Name</label>
             <input class="adminForm__form__field__input" type="text" name="name" id="name" value="<?php echo $merchant->name; ?>">
         </div>

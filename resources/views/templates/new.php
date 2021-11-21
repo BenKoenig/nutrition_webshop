@@ -1,6 +1,6 @@
 <section class="cards">
     <!-- Headline (h3)-->
-    <h3 class="text-dark">Products</h3>
+    <h1 class="text-dark">New Products</h1>
     <div class="cards__container cards__container--md">
 
         <!-- Loop for every featured product -->

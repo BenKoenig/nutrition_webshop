@@ -32,7 +32,7 @@ abstract class AbstractModel
      *
      * @return array
      */
-    public static function all(?string $orderBy = null, ?string $direction = null): array
+    public static function all(?string $orderBy = null, ?string $direction = null, ?int $limit = null): array
     {
         /**
          * Datenbankverbindung herstellen.
@@ -49,11 +49,27 @@ abstract class AbstractModel
          * Wurde in den Funktionsparametern eine Sortierung definiert, so wenden wir sie hier an, andernfalls rufen wir
          * alles ohne Sortierung ab.
          */
-        if ($orderBy === null) {
-            $result = $database->query("SELECT * FROM $tablename");
-        } else {
-            $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
+
+        switch([$orderBy, $limit]) {
+            case [null, null]:
+                $result = $database->query("SELECT * FROM $tablename");
+            break;
+            case [true, null]:
+                $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
+            break;
+            case [null, true]: 
+                $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
+            break;
+            case [true, true]:
+                $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
+            break;
         }
+
+        // if ($orderBy === null) {
+        //     $result = $database->query("SELECT * FROM $tablename");
+        // } else {
+        //     $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
+        // }
 
         /**
          * Datenbankergebnis verarbeiten und zurückgeben.
@@ -70,6 +86,9 @@ abstract class AbstractModel
      */
 
 
+
+
+
     public static function findWhere(string $where, int $is) {
         $database = new Database();
         $tablename = self::getTablenameFromClassname();
@@ -83,6 +102,7 @@ abstract class AbstractModel
 
         return self::handleResult($result);
     } 
+
 
 
     public static function find(int $id): ?object

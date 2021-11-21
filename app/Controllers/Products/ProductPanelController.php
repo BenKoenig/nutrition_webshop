@@ -21,7 +21,7 @@ use Core\Helpers\Redirector;
 class ProductPanelController
 {
 
-    public function index(int $id)
+    public function index(int $id, int $di)
     {
         /**
          * Check if user is logged in
@@ -33,13 +33,18 @@ class ProductPanelController
          */
         $products = Product::findWhere('category_id', $id);
         $categories = Categorie::findWhereOrFail('id', $id);
+        $categorie = Categorie::find($id);
+    
+        $test = $di;
 
         /**
          * Renders the View
          */
         View::render('products/panel/index', [
             'products' => $products,
-            'categories' => $categories
+            'categories' => $categories,
+            'categorie' => $categorie,
+            'test' => $test
         ]);
     }
 
