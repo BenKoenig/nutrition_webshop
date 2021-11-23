@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\Room;
-use App\Models\Categorie;
+use App\Models\Category;
 use App\Models\Goal;
 use App\Models\Product;
 use Core\View;
@@ -46,7 +46,7 @@ class HomeController
         /**
          * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
          */
-        $categories = Categorie::findWhere('is_popular', 1);
+        $categories = Category::findWhere('is_popular', 1);
         $goals = Goal::all('id', 'ASC');
         $products = Product::findWhere('is_featured', 1);
 

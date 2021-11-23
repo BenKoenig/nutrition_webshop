@@ -87,6 +87,14 @@
       "oAP" : "\/app\/Controllers\/Flavors\/FlavorPanelController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/Goals\/GoalPanelController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Goals\/GoalPanelController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/HomeController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -103,12 +111,12 @@
       "oAP" : "\/app\/Controllers\/Merchants\/MerchantPanelController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/NewController.php" : {
+    "\/app\/Controllers\/Products\/NewController.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/app\/Controllers\/NewController.php",
+      "oAP" : "\/app\/Controllers\/Products\/NewController.php",
       "oF" : 0
     },
     "\/app\/Controllers\/Products\/ProductController.php" : {
@@ -125,6 +133,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Controllers\/Products\/ProductPanelController.php",
+      "oF" : 0
+    },
+    "\/app\/Controllers\/Products\/SaleController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Products\/SaleController.php",
       "oF" : 0
     },
     "\/app\/Controllers\/Ratings\/RatingPanelController.php" : {
@@ -151,12 +167,12 @@
       "oAP" : "\/app\/Controllers\/RoomFeatureController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/SaleController.php" : {
+    "\/app\/Controllers\/Users\/UserPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/app\/Controllers\/SaleController.php",
+      "oAP" : "\/app\/Controllers\/Users\/UserPanelController.php",
       "oF" : 0
     },
     "\/app\/Models\/.gitkeep" : {
@@ -167,12 +183,12 @@
       "oAP" : "\/app\/Models\/.gitkeep",
       "oF" : 0
     },
-    "\/app\/Models\/Categorie.php" : {
+    "\/app\/Models\/Category.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/app\/Models\/Categorie.php",
+      "oAP" : "\/app\/Models\/Category.php",
       "oF" : 0
     },
     "\/app\/Models\/Flavor.php" : {
@@ -476,14 +492,6 @@
       "sC" : 3,
       "tS" : 0
     },
-    "\/public\/uploads" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/public\/uploads",
-      "oF" : 0
-    },
     "\/README.html" : {
       "cB" : 0,
       "ft" : 8192,
@@ -613,6 +621,21 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/resources\/scss\/components\/listing.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/components\/listing.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/resources\/scss\/components\/loading.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -703,21 +726,6 @@
       "pg" : 0,
       "sct" : 0
     },
-    "\/resources\/scss\/pages\/categories.scss" : {
-      "aP" : 0,
-      "bl" : 0,
-      "co" : 0,
-      "dP" : 10,
-      "ec" : 1,
-      "ft" : 4,
-      "ma" : 0,
-      "oA" : 1,
-      "oAP" : "\/resources\/scss\/pages\/categories.css",
-      "oF" : 0,
-      "oS" : 0,
-      "pg" : 0,
-      "sct" : 0
-    },
     "\/resources\/scss\/pages\/confirm.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -773,6 +781,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/resources\/scss\/pages\/panel.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/resources\/scss\/pages\/productDetail.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/pages\/productDetail.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -914,6 +937,30 @@
       "oAP" : "\/resources\/views\/templates\/flavors\/panel\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/goals\/panel\/create.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/goals\/panel\/create.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/goals\/panel\/edit.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/goals\/panel\/edit.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/goals\/panel\/index.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/goals\/panel\/index.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -970,12 +1017,12 @@
       "oAP" : "\/resources\/views\/templates\/merchants\/panel\/index.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/new.php" : {
+    "\/resources\/views\/templates\/products\/new.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/new.php",
+      "oAP" : "\/resources\/views\/templates\/products\/new.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/products\/panel\/create.php" : {
@@ -1002,12 +1049,36 @@
       "oAP" : "\/resources\/views\/templates\/products\/panel\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/products\/productDetails.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/productDetails.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/productList.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/productList.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/products\/products.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/products\/products.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/products\/sales.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/products\/sales.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/ratings\/panel\/edit.php" : {
@@ -1074,12 +1145,12 @@
       "oAP" : "\/resources\/views\/templates\/rooms\/index.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/sales.php" : {
+    "\/resources\/views\/templates\/users\/panel\/index.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/sales.php",
+      "oAP" : "\/resources\/views\/templates\/users\/panel\/index.php",
       "oF" : 0
     },
     "\/routes\/.gitkeep" : {
@@ -1161,29 +1232,6 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/storage\/uploads\/1637183082_anastase-maragos-7kEpUPB8vNk-unsplash.png" : {
-      "ft" : 32768,
-      "iS" : 545878,
-      "oA" : 0,
-      "oAP" : "\/storage\/uploads\/1637183082_anastase-maragos-7kEpUPB8vNk-unsplash.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/storage\/uploads\/1637183198_instagram(1).svg" : {
-      "ft" : 2097152,
-      "miP" : 0,
-      "oA" : 2,
-      "oAP" : "\/storage\/uploads\/1637183198_instagram(1).svg",
-      "oF" : 0,
-      "opt" : 0,
-      "plM" : 52780316221407,
-      "prP" : 0
-    },
     "\/storage\/uploads\/1637231922_Unbenannt-dasdsadad1.png" : {
       "ft" : 32768,
       "iS" : 159072,
@@ -1223,19 +1271,6 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/storage\/uploads\/1637238435_Bildschirmfoto 2021-11-18 um 08.54.39.png" : {
-      "ft" : 32768,
-      "iS" : 99747,
-      "oA" : 0,
-      "oAP" : "\/storage\/uploads\/1637238435_Bildschirmfoto 2021-11-18 um 08.54.39.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
     "\/storage\/uploads\/1637254040_gentrit-sylejmani-JjUyjE-oEbM-unsplash.jpg" : {
       "ft" : 16384,
       "iS" : 3000530,
@@ -1249,11 +1284,102 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/storage\/uploads\/1637323575_Bildschirmfoto 2021-11-17 um 08.36.50 Kopie.png" : {
+    "\/storage\/uploads\/1637647699_category-oats.png" : {
       "ft" : 32768,
-      "iS" : 163644,
+      "iS" : 442846,
       "oA" : 0,
-      "oAP" : "\/storage\/uploads\/1637323575_Bildschirmfoto 2021-11-17 um 08.36.50 Kopie.png",
+      "oAP" : "\/storage\/uploads\/1637647699_category-oats.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637647729_category-protein.png" : {
+      "ft" : 32768,
+      "iS" : 266599,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637647729_category-protein.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637658343_pexels-cesar-galeão-3253501.png" : {
+      "ft" : 32768,
+      "iS" : 809490,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637658343_pexels-cesar-galeão-3253501.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637667391_Screenshot_20211123-102401.jpg" : {
+      "ft" : 16384,
+      "iS" : 236972,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637667391_Screenshot_20211123-102401.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637667446_anastase-maragos-7kEpUPB8vNk-unsplash.png" : {
+      "ft" : 32768,
+      "iS" : 545878,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637667446_anastase-maragos-7kEpUPB8vNk-unsplash.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637667784_jared-rice-NTyBbu66_SI-unsplash.png" : {
+      "ft" : 32768,
+      "iS" : 735342,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637667784_jared-rice-NTyBbu66_SI-unsplash.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637667831_andrew-tanglao-3I2vzcmEpLU-unsplash.png" : {
+      "ft" : 32768,
+      "iS" : 481986,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637667831_andrew-tanglao-3I2vzcmEpLU-unsplash.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637667844_pexels-cesar-galeão-3253501.png" : {
+      "ft" : 32768,
+      "iS" : 809490,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637667844_pexels-cesar-galeão-3253501.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,

@@ -6,7 +6,7 @@ namespace App\Controllers;
  * Beispiel Controller
  */
 class ChannelController
-{
+{    
 
     /**
      * Beispiel Methode
@@ -26,4 +26,3 @@ class ChannelController
     }
 
 }
-x

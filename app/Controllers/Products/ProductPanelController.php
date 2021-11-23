@@ -2,7 +2,10 @@
 
 namespace App\Controllers\Products;
 
-use App\Models\Categorie;
+use App\Models\Category;
+use App\Models\Flavor;
+use App\Models\Merchant;
+use App\Models\Goal;
 use App\Models\Product;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
@@ -21,7 +24,7 @@ use Core\Helpers\Redirector;
 class ProductPanelController
 {
 
-    public function index(int $id, int $di)
+    public function index(int $id)
     {
         /**
          * Check if user is logged in
@@ -32,10 +35,10 @@ class ProductPanelController
          * Elements that need to be loaded
          */
         $products = Product::findWhere('category_id', $id);
-        $categories = Categorie::findWhereOrFail('id', $id);
-        $categorie = Categorie::find($id);
+        $categories = Category::findWhereOrFail('id', $id);
+        $categorie = Category::find($id);
     
-        $test = $di;
+
 
         /**
          * Renders the View
@@ -44,7 +47,7 @@ class ProductPanelController
             'products' => $products,
             'categories' => $categories,
             'categorie' => $categorie,
-            'test' => $test
+
         ]);
     }
 
@@ -104,4 +107,40 @@ class ProductPanelController
         Redirector::redirect('/admin/categories/' . $product->category_id);
     }
 
+
+
+    public function create()
+    {
+        AuthMiddleware::isAdminOrFail();
+
+
+
+                /**
+         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
+         */
+        $products = Product::all();
+
+        /**
+         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
+         */
+        $categories = Category::all();
+        $goals = Goal::all();
+        $merchants = Merchant::all();
+        $flavors = Flavor::all();
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('products/panel/create', [
+            'products' => $products,
+            'categories' => $categories,
+            'goals' => $goals,
+            'merchants' => $merchants,
+            'flavors' => $flavors
+        ]);
+
+    }
+
+
 }
+

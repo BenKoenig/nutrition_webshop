@@ -3,7 +3,7 @@
 namespace App\Controllers\Ratings;
 
 use App\Models\Rating;
-use App\Models\Categorie;
+use App\Models\Category;
 use App\Models\Product;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;

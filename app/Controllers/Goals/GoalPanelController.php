@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Controllers\Categories;
+namespace App\Controllers\Goals;
 
-use App\Models\Category;
+use App\Models\Goal;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
 use Core\Validator;
@@ -11,14 +11,15 @@ use Core\Helpers\Redirector;
 use Core\Models\AbstractFile;
 
 
-class CategoryPanelController
+
+class GoalPanelController
 {
     public function index()
     {
         AuthMiddleware::isAdminOrFail();
-        $categories = Category::all('id', 'ASC');
-        View::render('categories/panel/index', [
-            'categories' => $categories
+        $goals = Goal::all('id', 'ASC');
+        View::render('goals/panel/index', [
+            'goals' => $goals
         ]);
     }
 
@@ -37,7 +38,7 @@ class CategoryPanelController
         /**
          * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
          */
-        $categorie = Category::findOrFail($id);
+        $goal = Goal::findOrFail($id);
 
         /**
          * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
@@ -47,10 +48,11 @@ class CategoryPanelController
         /**
          * View laden und Daten übergeben.
          */
-        View::render('categories/panel/edit', [
-            'categorie' => $categorie
+        View::render('goals/panel/edit', [
+            'goal' => $goal
         ]);
     }
+
 
 
 
@@ -97,7 +99,7 @@ class CategoryPanelController
              * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
              * nicht mehr ausgeführt.
              */
-            Redirector::redirect("/admin/categories/${id}/edit");
+            Redirector::redirect("/admin/goals/${id}/edit");
         }
 
         /**
@@ -105,7 +107,7 @@ class CategoryPanelController
          * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
          * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
          */
-        $category = Category::findOrFail($id);
+        $goal = Goal::findOrFail($id);
 
         /**
          * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
@@ -113,19 +115,19 @@ class CategoryPanelController
 
     
 
-        $category->fill($_POST);
+        $goal->fill($_POST);
 
-        $category = $this->handleUploadedFiles($category);
+        $goal = $this->handleUploadedFiles($goal);
 
 
-        $category = $this->handleDeleteFiles($category);
+        $goal = $this->handleDeleteFiles($goal);
 
 
 
         /**
          * Schlägt die Speicherung aus irgendeinem Grund fehl ...
          */
-        if (!$category->save()) {
+        if (!$goal->save()) {
             /**
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
@@ -136,9 +138,8 @@ class CategoryPanelController
         /**
          * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
          */
-        Redirector::redirect('/admin/categories');
+        Redirector::redirect('/admin/goals');
     }
-
 
 
 
@@ -147,7 +148,7 @@ class CategoryPanelController
     {
         AuthMiddleware::isAdminOrFail();
 
-        View::render('categories/panel/create');
+        View::render('goals/panel/create');
     }
 
 
@@ -194,16 +195,16 @@ class CategoryPanelController
              * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
              * nicht mehr ausgeführt.
              */
-            Redirector::redirect("/admin/categories/create");
+            Redirector::redirect("/admin/goals/create");
         }
 
         /**
          * Neuen Room erstellen und mit den Daten aus dem Formular befüllen.
          */
-        $categorie = new Category();
+        $goal = new Goal();
 
 
-        $categorie->fill($_POST);
+        $goal->fill($_POST);
 
         /**
          * Hochgeladene Dateien verarbeiten.
@@ -217,21 +218,20 @@ class CategoryPanelController
         /**
          * Schlägt die Speicherung aus irgendeinem Grund fehl ...
          */
-        if (!$categorie->save()) {
+        if (!$goal->save()) {
             /**
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
 
             Session::set('errors', ['Speichern fehlgeschlagen.']);
-            Redirector::redirect("/admin/categories/create");
+            Redirector::redirect("/admin/goals/create");
         }
 
         /**
          * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
          */
-        Redirector::redirect('/admin/categories');
+        Redirector::redirect('/admin/goals');
     }
-
     public function delete(int $id)
     {
         /**
@@ -244,7 +244,7 @@ class CategoryPanelController
         /**
          * Raum, der gelöscht werden soll, aus der DB laden.
          */
-        $categorie = Category::findOrFail($id);
+        $goal = Goal::findOrFail($id);
 
         /**
          * View laden und relativ viele Daten übergeben. Die große Anzahl an Daten entsteht dadurch, dass der
@@ -254,10 +254,10 @@ class CategoryPanelController
          * Bestätigungsbutton und eine für den Abbrechen-Button.
          */
         View::render('helpers/confirmation', [
-            'objectType' => 'Category',
-            'objectTitle' => $categorie->name,
-            'confirmUrl' => BASE_URL . '/admin/categories/' . $categorie->id . '/delete/confirm',
-            'abortUrl' => BASE_URL . '/admin/categories'
+            'objectType' => 'Goal',
+            'objectTitle' => $goal->name,
+            'confirmUrl' => BASE_URL . '/admin/goals/' . $goal->id . '/delete/confirm',
+            'abortUrl' => BASE_URL . '/admin/goals'
         ]);
     }
 
@@ -281,11 +281,11 @@ class CategoryPanelController
         /**
          * Raum, der gelöscht werden soll, aus DB laden.
          */
-        $categorie = Category::findOrFail($id);
+        $goal = Goal::findOrFail($id);
         /**
          * Raum löschen.
          */
-        $categorie->delete();
+        $goal->delete();
 
         /**
          * Erfolgsmeldung für später in die Session speichern.
@@ -294,7 +294,7 @@ class CategoryPanelController
         /**
          * Weiterleiten zur Home Seite.
          */
-        Redirector::redirect('/admin/categories');
+        Redirector::redirect('/admin/goals');
     }
 
 
@@ -321,8 +321,8 @@ class CategoryPanelController
              *
              * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
              */
-            $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
-            $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
+            // $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
+            // $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
             /**
              * @todo: implement Validate Array + Contents
              */
@@ -343,7 +343,7 @@ class CategoryPanelController
      *
      * @return Room|null
      */
-    public function handleUploadedFiles(Category $categorie): ?Category
+    public function handleUploadedFiles(Goal $goal): ?Goal
     {
         /**
          * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
@@ -362,12 +362,12 @@ class CategoryPanelController
             /**
              * ... und verknüpfen sie mit dem Raum.
              */
-            $categorie->addImages([$storagePath]);
+            $goal->addImages([$storagePath]);
         }
         /**
          * Nun geben wir den aktualisierten Raum wieder zurück.
          */
-        return $categorie;
+        return $goal;
     }
 
 
@@ -378,7 +378,7 @@ class CategoryPanelController
      *
      * @return Room
      */
-    private function handleDeleteFiles(Category $categorie): Category
+    private function handleDeleteFiles(Goal $goal): Goal
     {
         /**
          * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
@@ -391,7 +391,7 @@ class CategoryPanelController
                 /**
                  * Lösen die Verknüpfung zum Room ...
                  */
-                $categorie->removeImages([$deleteImage]);
+                $goal->removeImages([$deleteImage]);
                 /**
                  * ... und löschen die Datei aus dem Uploads-Ordner.
                  */
@@ -399,6 +399,8 @@ class CategoryPanelController
             }
         }
 
-        return $categorie;
+        return $goal;
     }
+
+
 }

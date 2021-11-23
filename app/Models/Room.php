@@ -47,7 +47,7 @@ class Room extends AbstractModel
 
     /**
      * Objekt speichern.
-     *
+     *  
      * Wenn das Objekt bereits existiert hat, so wird es aktualisiert, andernfalls neu angelegt. Dadurch können wir eine
      * einzige Funktion verwenden und müssen uns nicht darum kümmern, ob das Objekt angelegt oder aktualisiert werden
      * muss.

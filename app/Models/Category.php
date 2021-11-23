@@ -11,9 +11,10 @@ use Core\Traits\SoftDelete;
  *
  * @package App\Models
  */
-class Categorie extends AbstractModel
+class Category extends AbstractModel
 {
 
+    const TABLENAME = 'categories';
     /**
      * Wir innerhalb einer Klasse das use-Keyword verwendet, so wird damit ein Trait importiert. Das kann man sich
      * vorstellen wie einen Import mittels require, weil die Methoden, die im Trait definiert sind, einfach in die
@@ -208,5 +209,44 @@ class Categorie extends AbstractModel
          * Zum Abschluss geben wir die neue Liste der verknüpften Bilder zurück.
          */
         return $this->getImages();
+    }
+
+
+        /**
+     * Alle RoomFeatures zu einem bestimmten Room abfragen.
+     *
+     * Das ist sehr ähnlich wie die AbstractModel::all() Methode, nur ist der Query ein bisschen anders.
+     *
+     * @param int $roomId
+     *
+     * @return array
+     */
+    public static function findByCategory(int $productId): array
+    {
+        /**
+         * Datenbankverbindung herstellen.
+         */
+        $database = new Database();
+        /**
+         * Tabellennamen berechnen.
+         */
+        $tablename = self::getTablenameFromClassname();
+
+        /**
+         * Query ausführen.
+         */
+        $result = $database->query("
+            SELECT $tablename.* FROM $tablename
+                JOIN categories_products_mm
+                    ON $tablename.id = categories_products_mm.category_id
+                WHERE categories_products_mm.product_id = ?
+        ", [
+            'i:room_id' => $productId
+        ]);
+
+        /**
+         * Datenbankergebnis verarbeiten und zurückgeben.
+         */
+        return self::handleResult($result);
     }
 }

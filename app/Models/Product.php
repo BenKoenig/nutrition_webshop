@@ -14,6 +14,8 @@ use Core\Traits\SoftDelete;
 class Product extends AbstractModel
 {
 
+    const TABLENAME_ROOMFEATURES_MM = 'categories_products_mm';
+
     /**
      * Wir innerhalb einer Klasse das use-Keyword verwendet, so wird damit ein Trait importiert. Das kann man sich
      * vorstellen wie einen Import mittels require, weil die Methoden, die im Trait definiert sind, einfach in die
@@ -41,6 +43,7 @@ class Product extends AbstractModel
         public ?float $price = null,
         public string $description = '',
         public ?string $img_path = null,
+        public string $imgs = '[]',
         public ?float $serving = null,
         public string $ingredients = '',
         public ?float $weight = null,
@@ -83,7 +86,7 @@ class Product extends AbstractModel
              * der Query funktioniert hat oder nicht.
              */
             return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
+            description = ?, img_path = ?, imgs = ?,  serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
                 's:category_id' => $this->category_id,
                 's:goal_id' => $this->goal_id,
                 'i:rating_id' => $this->rating_id,
@@ -93,6 +96,7 @@ class Product extends AbstractModel
                 'f:price' => $this->price,
                 's:description' => $this->description,
                 's:img_path' => $this->img_path,
+                's:imgs' => $this->imgs,
                 'f:serving' => $this->serving,
                 'f:ingredients' => $this->ingredients,
                 'f:weight' => $this->weight,
@@ -100,12 +104,15 @@ class Product extends AbstractModel
                 'i:is_bestseller' => $this->is_bestseller,
                 'i:is_sale' => $this->is_sale,
             ]);
+
+            // $this->saveCategories();
+
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
             $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
+            description = ?, img_path = ?, imgs = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
                 's:category_id' => $this->category_id,
                 's:goal_id' => $this->goal_id,
                 'i:rating_id' => $this->rating_id,
@@ -115,6 +122,7 @@ class Product extends AbstractModel
                 'f:price' => $this->price,
                 's:description' => $this->description,
                 's:img_path' => $this->img_path,
+                's:imgs' => $this->imgs,
                 'f:serving' => $this->serving,
                 'f:ingredients' => $this->ingredients,
                 'f:weight' => $this->weight,
@@ -122,6 +130,8 @@ class Product extends AbstractModel
                 'i:is_bestseller' => $this->is_bestseller,
                 'i:is_sale' => $this->is_sale,
             ]);
+
+            // $this->saveCategories();
 
             /**
              * Ein INSERT Query generiert eine neue id, diese müssen wir daher extra abfragen und verwenden daher die
@@ -136,4 +146,146 @@ class Product extends AbstractModel
             return $result;
         }
     }
+
+
+      
+    // public function setCategory(array $categories): array
+    // {
+    //     $this->_categories = $categories;
+
+    //     return $this->_categories;
+    // }
+
+    // /**
+    //  * Neue Liste an verknüpften Raum Features zuweisen.
+    //  */
+    // private function saveCategories()
+    // {
+    //     /**
+    //      * Zunächst holen wir uns die aktuell zugewiesenen Raum Features aus der Datenbank.
+    //      */
+    //     $oldCategories = $this->categories();
+
+    //     /**
+    //      * Dann bereiten wir uns zwei Arrays vor, damit wir die zu löschenden Zuweisungen und jene, die unverändert
+    //      * bleiben sollen, speichern können. Daraus ergibt sich, dass alle weiteren, die in $this->_roomFeatures
+    //      * vorhanden sind, neu angelegt werden müssen.
+    //      */
+    //     $categoriesToDelete = [];
+    //     $categoriesToNotBeTouched = [];
+
+    //     /**
+    //      * Nun gehen wir alle alten Zuweisungen durch ...
+    //      */
+    //     foreach ($oldCategories as $oldCategory) {
+    //         /**
+    //          * ... und prüfen, ob sie auch in den neuen Raum Features vorkommen sollen.
+    //          */
+    //         if (!in_array($oldCategory->id, $this->_categories)) {
+    //             /**
+    //              * Wenn nein, soll die Zuweisung gelöscht werden.
+    //              */
+    //             $categoriesToDelete[] = $oldCategory->id;
+    //         } else {
+    //             /**
+    //              * Wenn ja, soll sie weiterhin bestehen bleiben.
+    //              */
+    //             $categoriesToNotBeTouched[] = $oldCategory->id;
+    //         }
+    //     }
+
+    //     /**
+    //      * Nun berechnen wir uns die Differenz der drei Arrays, wobei alle Werte aus dem ersten Array das Ergebnis
+    //      * bilden, die in keinem der weiteren Arrays vorhanden sind. Diese RoomFeatures müssen neu zugewiesen werden.
+    //      */
+    //     $categoriesToAdd = array_diff($this->_roomFeatures, $categoriesToDelete, $categoriesToNotBeTouched);
+
+    //     /**
+    //      * Nun gehen wir alle zu löschenden und neu anzulegenden RoomFeature Verbindungen durch und führen die
+    //      * entsprechende Aktion aus.
+    //      */
+    //     foreach ($categoriesToDelete as $categoryToDelete) {
+    //         $this->detachCategory($categoryToDelete);
+    //     }
+    //     foreach ($categoriesToAdd as $categoryToAdd) {
+    //         $this->attachCategory($categoryToAdd);
+    //     }
+    // }
+
+    // /**
+    //  * Relation zu RoomFeatures
+    //  *
+    //  * @return array
+    //  */
+    // public function categories(): array
+    // {
+    //     /**
+    //      * Über das RoomFeature Model alle zugehörigen RoomFeatures abrufen.
+    //      */
+    //     return Category::findByCategory($this->id);
+    // }
+
+    // /**
+    //  * Verknüpfung zu einem RoomFeature aufheben.
+    //  *
+    //  * @param int $roomFeatureId
+    //  *
+    //  * @return bool
+    //  */
+    // public function detachCategory(int $categoryId): bool
+    // {
+    //     /**
+    //      * Datenbankverbindung herstellen.
+    //      */
+    //     $database = new Database();
+    //     /**
+    //      * Tabellennamen berechnen.
+    //      */
+    //     $tablename = self::TABLENAME_ROOMFEATURES_MM;
+
+    //     /**
+    //      * Query ausführen.
+    //      */
+    //     $result = $database->query("DELETE FROM $tablename WHERE product_id = ? AND category_id = ?", [
+    //         'i:product_id' => $this->id,
+    //         'i:category_id' => $categoryId
+    //     ]);
+
+    //     /**
+    //      * Datenbankergebnis verarbeiten und zurückgeben.
+    //      */
+    //     return $result;
+    // }
+
+    // /**
+    //  * Verknüpfung zu einem RoomFeature herstellen.
+    //  *
+    //  * @param int $roomFeatureId
+    //  *
+    //  * @return bool
+    //  */
+    // public function attachCategory(int $categoryId): bool
+    // {
+    //     /**
+    //      * Datenbankverbindung herstellen.
+    //      */
+    //     $database = new Database();
+    //     /**
+    //      * Tabellennamen berechnen.
+    //      */
+    //     $tablename = self::TABLENAME_ROOMFEATURES_MM;
+
+    //     /**
+    //      * Query ausführen.
+    //      */
+    //     $result = $database->query("INSERT INTO $tablename SET product_id = ?, category_id = ?", [
+    //         'i:product_id' => $this->id,
+    //         'i:category_id' => $categoryId
+    //     ]);
+
+    //     /**
+    //      * Datenbankergebnis verarbeiten und zurückgeben.
+    //      */
+    //     return $result;
+    // }
 }

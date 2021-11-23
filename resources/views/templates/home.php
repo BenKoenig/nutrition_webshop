@@ -61,7 +61,7 @@ able to set it to true (1) or false (0) within the CMS.
     <h3 class="text-dark">Popular Categories</h3>
     <div class="cards__container cards__container--md">
         <!-- Loop for every popular category -->
-        <?php foreach ($categories as $categorie) : ?>
+        <?php foreach ($categories as $category) : ?>
             <!-- Category Item -->
             <div class="cards__container__item cards__container__item--md">
                 <div>
@@ -70,18 +70,13 @@ able to set it to true (1) or false (0) within the CMS.
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
-                    <?php
-
-                    $url =  BASE_URL . $categorie->getImages()[0];
-                    ?>
-
-                    <!-- <img class="cards__container__item__bg" src="<?php echo $url; ?>"> -->
-                    <img class="cards__container__item__bg" src="http://localhost/storage/uploads/1637232413_category-bars.png" alt="">
+               
+                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $category->getImages()[0];?>" alt="<?php $category->name; ?>">
                 </div>
                 <!--
                 Link name: PHP code that contains the category name from the database
                 -->
-                <a href="#" class="cards__container__item__a"><?php echo $categorie->name; ?>   </a>
+                <a href="#" class="cards__container__item__a"><?php echo $category->name; ?>   </a>
             </div>
         <?php endforeach; ?>
     </div>
@@ -112,7 +107,7 @@ and can be edited within the CMS.
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
-                    <img class="cards__container__item__bg" src="<?php echo $goal->img_path; ?>" alt="<?php echo $goal->name; ?>">
+                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $goal->getImages()[0]; ?>" alt="<?php echo $goal->name; ?>">
                 </div>
                 <div class="cards__container__item__info">
                     <!-- 
