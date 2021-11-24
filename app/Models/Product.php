@@ -14,8 +14,6 @@ use Core\Traits\SoftDelete;
 class Product extends AbstractModel
 {
 
-    const TABLENAME_ROOMFEATURES_MM = 'categories_products_mm';
-
     /**
      * Wir innerhalb einer Klasse das use-Keyword verwendet, so wird damit ein Trait importiert. Das kann man sich
      * vorstellen wie einen Import mittels require, weil die Methoden, die im Trait definiert sind, einfach in die
@@ -36,17 +34,12 @@ class Product extends AbstractModel
         public ?int $id = null,
         public ?int $category_id = null,
         public ?int $goal_id = null,
-        public ?int $rating_id = null,
         public ?int $merchant_id = null,
-        public ?int $flavor_id = null,
         public string $name = '',
-        public ?float $price = null,
         public string $description = '',
-        public ?string $img_path = null,
-        public string $imgs = '[]',
-        public ?float $serving = null,
+        public ?int $serving = null,
         public string $ingredients = '',
-        public ?float $weight = null,
+        public ?int $weight = null,
         public bool $is_featured = false,
         public bool $is_bestseller = false,
         public bool $is_sale = false,
@@ -85,53 +78,134 @@ class Product extends AbstractModel
              * Query ausführen und Ergebnis direkt zurückgeben. Das kann entweder true oder false sein, je nachdem ob
              * der Query funktioniert hat oder nicht.
              */
-            return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, imgs = ?,  serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
-                's:category_id' => $this->category_id,
-                's:goal_id' => $this->goal_id,
-                'i:rating_id' => $this->rating_id,
-                'i:merchant_id' => $this->merchant_id,
-                'i:flavor_id' => $this->flavor_id,
+            return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+            ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
+                'i:category_id' => $this->category_id,
+                'i:goal_id' => $this->goal_id,
+                'i:merchant_it' => $this->merchant_id,
                 's:name' => $this->name,
-                'f:price' => $this->price,
                 's:description' => $this->description,
-                's:img_path' => $this->img_path,
-                's:imgs' => $this->imgs,
-                'f:serving' => $this->serving,
-                'f:ingredients' => $this->ingredients,
-                'f:weight' => $this->weight,
-                'i:is_featured' => $this->is_featured,
-                'i:is_bestseller' => $this->is_bestseller,
-                'i:is_sale' => $this->is_sale,
+                'i:serving' => $this->serving,
+                's:ingredients' => $this->ingredients,
+                's:weight' => $this->weight,
+                's:is_featured' => $this->is_featured,
+                's:is_bestseller' => $this->is_bestseller,
+                's:is_sale' => $this->is_sale,
+                'i:id' => $this->id
             ]);
-
-            // $this->saveCategories();
-
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
-            $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, rating_id = ?, merchant_id = ?, flavor_id = ?, name = ?, price = ?,
-            description = ?, img_path = ?, imgs = ?, serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
-                's:category_id' => $this->category_id,
-                's:goal_id' => $this->goal_id,
-                'i:rating_id' => $this->rating_id,
-                'i:merchant_id' => $this->merchant_id,
-                'i:flavor_id' => $this->flavor_id,
-                's:name' => $this->name,
-                'f:price' => $this->price,
-                's:description' => $this->description,
-                's:img_path' => $this->img_path,
-                's:imgs' => $this->imgs,
-                'f:serving' => $this->serving,
-                'f:ingredients' => $this->ingredients,
-                'f:weight' => $this->weight,
-                'i:is_featured' => $this->is_featured,
-                'i:is_bestseller' => $this->is_bestseller,
-                'i:is_sale' => $this->is_sale,
-            ]);
 
-            // $this->saveCategories();
+
+            switch ([$_POST['is_featured'], $_POST['is_bestseller'], $_POST['is_sale']]) {
+                case [true, true, true]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_featured' => $this->is_featured,
+                        's:is_bestseller' => $this->is_bestseller,
+                        's:is_sale' => $this->is_sale,
+                    ]);
+                    break;
+                case [true, true, false]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_featured' => $this->is_featured,
+                        's:is_bestseller' => $this->is_bestseller,
+                    ]);
+                    break;
+                case [true, false, false]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                        ingredients = ?, weight = ?, is_featured = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_featured' => $this->is_featured,
+                    ]);
+                    break;
+                case [false, false, false]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                            ingredients = ?, weight = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                    ]);
+                    break;
+                case [false, false, true]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                                ingredients = ?, weight = ?, is_sale = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_sale' => $this->is_sale
+                    ]);
+                    break;
+                case [true, false, true]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                                    ingredients = ?, weight = ?, is_sale = ?, is_featured = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_sale' => $this->is_sale,
+                        's:is_featured' => $this->is_featured
+                    ]);
+                    break;
+                case [false, true, false]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
+                                        ingredients = ?, weight = ?, is_besteller = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_besteller' => $this->is_besteller,
+                    ]);
+                    break;
+            }
+
+
+
+
 
             /**
              * Ein INSERT Query generiert eine neue id, diese müssen wir daher extra abfragen und verwenden daher die
@@ -147,145 +221,105 @@ class Product extends AbstractModel
         }
     }
 
-
-      
-    // public function setCategory(array $categories): array
+    // public function getImages(): array
     // {
-    //     $this->_categories = $categories;
-
-    //     return $this->_categories;
+    //     /**
+    //      * Nachdem $this->images ein JSON-Array ist, wandeln wir ihn hier in ein natives PHP Array um.
+    //      */
+    //     return json_decode($this->imgs);
     // }
 
     // /**
-    //  * Neue Liste an verknüpften Raum Features zuweisen.
+    //  * Prüfen, ob Bilder vorhanden sind in dem Raum.
+    //  *
+    //  * @return bool
     //  */
-    // private function saveCategories()
+    // public function hasImages(): bool
     // {
-    //     /**
-    //      * Zunächst holen wir uns die aktuell zugewiesenen Raum Features aus der Datenbank.
-    //      */
-    //     $oldCategories = $this->categories();
-
-    //     /**
-    //      * Dann bereiten wir uns zwei Arrays vor, damit wir die zu löschenden Zuweisungen und jene, die unverändert
-    //      * bleiben sollen, speichern können. Daraus ergibt sich, dass alle weiteren, die in $this->_roomFeatures
-    //      * vorhanden sind, neu angelegt werden müssen.
-    //      */
-    //     $categoriesToDelete = [];
-    //     $categoriesToNotBeTouched = [];
-
-    //     /**
-    //      * Nun gehen wir alle alten Zuweisungen durch ...
-    //      */
-    //     foreach ($oldCategories as $oldCategory) {
-    //         /**
-    //          * ... und prüfen, ob sie auch in den neuen Raum Features vorkommen sollen.
-    //          */
-    //         if (!in_array($oldCategory->id, $this->_categories)) {
-    //             /**
-    //              * Wenn nein, soll die Zuweisung gelöscht werden.
-    //              */
-    //             $categoriesToDelete[] = $oldCategory->id;
-    //         } else {
-    //             /**
-    //              * Wenn ja, soll sie weiterhin bestehen bleiben.
-    //              */
-    //             $categoriesToNotBeTouched[] = $oldCategory->id;
-    //         }
-    //     }
-
-    //     /**
-    //      * Nun berechnen wir uns die Differenz der drei Arrays, wobei alle Werte aus dem ersten Array das Ergebnis
-    //      * bilden, die in keinem der weiteren Arrays vorhanden sind. Diese RoomFeatures müssen neu zugewiesen werden.
-    //      */
-    //     $categoriesToAdd = array_diff($this->_roomFeatures, $categoriesToDelete, $categoriesToNotBeTouched);
-
-    //     /**
-    //      * Nun gehen wir alle zu löschenden und neu anzulegenden RoomFeature Verbindungen durch und führen die
-    //      * entsprechende Aktion aus.
-    //      */
-    //     foreach ($categoriesToDelete as $categoryToDelete) {
-    //         $this->detachCategory($categoryToDelete);
-    //     }
-    //     foreach ($categoriesToAdd as $categoryToAdd) {
-    //         $this->attachCategory($categoryToAdd);
-    //     }
+    //     return !empty($this->getImages());
     // }
 
     // /**
-    //  * Relation zu RoomFeatures
+    //  * Ein oder mehrere Bilder in $this->images hinzufügen.
+    //  *
+    //  * @param array $images
     //  *
     //  * @return array
     //  */
-    // public function categories(): array
+    // public function addImages(array $imgs): array
     // {
     //     /**
-    //      * Über das RoomFeature Model alle zugehörigen RoomFeatures abrufen.
+    //      * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array, ...
     //      */
-    //     return Category::findByCategory($this->id);
+    //     $currentImages = $this->getImages();
+    //     /**
+    //      * ... führen sie dann mit der Liste der hinzuzufügenden Bilder zusammen ...
+    //      */
+    //     $currentImages = array_merge($currentImages, $imgs);
+    //     /**
+    //      * ... und überschreiben die aktuelle Liste.
+    //      */
+    //     $this->setImages($currentImages);
+
+    //     /**
+    //      * Zum Abschluss geben wir die neue Liste der Bilder zurück.
+    //      */
+    //     return $currentImages;
     // }
 
     // /**
-    //  * Verknüpfung zu einem RoomFeature aufheben.
+    //  * Ein oder mehrere Bilder aus den verknüpften Bildern des Raumes entfernen.
     //  *
-    //  * @param int $roomFeatureId
+    //  * @param array $images
     //  *
-    //  * @return bool
+    //  * @return array
     //  */
-    // public function detachCategory(int $categoryId): bool
+    // public function removeImages(array $imgs): array
     // {
     //     /**
-    //      * Datenbankverbindung herstellen.
+    //      * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array.
     //      */
-    //     $database = new Database();
+    //     $currentImages = $this->getImages();
     //     /**
-    //      * Tabellennamen berechnen.
+    //      * Nun filtern wir alle Bilder mit einer Callback-Funktion.
     //      */
-    //     $tablename = self::TABLENAME_ROOMFEATURES_MM;
+    //     $filteredImages = array_filter($currentImages, function ($img) use ($imgs) {
+    //         /**
+    //          * Ein Element wird in das Ergebnis-Array übernommen, wenn die Callback Funktion true zurück gibt. Soll ein
+    //          * Bild also entfernt werden, geben wir false zurück.
+    //          */
+    //         if (in_array($img, $imgs)) {
+    //             return false;
+    //         }
+    //         return true;
+    //     });
+    //     /**
+    //      * Nun überschreiben wir die aktuelle Liste verknüpfter Bilder des Raumes.
+    //      */
+    //     $this->setImages($filteredImages);
 
-    //     /**
-    //      * Query ausführen.
-    //      */
-    //     $result = $database->query("DELETE FROM $tablename WHERE product_id = ? AND category_id = ?", [
-    //         'i:product_id' => $this->id,
-    //         'i:category_id' => $categoryId
-    //     ]);
-
-    //     /**
-    //      * Datenbankergebnis verarbeiten und zurückgeben.
-    //      */
-    //     return $result;
+    //     return $filteredImages;
     // }
 
     // /**
-    //  * Verknüpfung zu einem RoomFeature herstellen.
+    //  * Setter für Images.
     //  *
-    //  * @param int $roomFeatureId
+    //  * @param array $images
     //  *
-    //  * @return bool
+    //  * @return array
     //  */
-    // public function attachCategory(int $categoryId): bool
+    // public function setImages(array $imgs): array
     // {
     //     /**
-    //      * Datenbankverbindung herstellen.
+    //      * Hier indizieren wir das $images Array neu und konvertieren es in ein JSON. Das ist nötig, weil die JSON-
+    //      * Konvertierung sonst ein Objekt und kein Array erzeugen würde - daher stellen wir sicher, dass die Arrray-
+    //      * Indizes fortlaufend sind.
     //      */
-    //     $database = new Database();
-    //     /**
-    //      * Tabellennamen berechnen.
-    //      */
-    //     $tablename = self::TABLENAME_ROOMFEATURES_MM;
+    //     $this->imgs = json_encode(array_values($imgs));
 
     //     /**
-    //      * Query ausführen.
+    //      * Zum Abschluss geben wir die neue Liste der verknüpften Bilder zurück.
     //      */
-    //     $result = $database->query("INSERT INTO $tablename SET product_id = ?, category_id = ?", [
-    //         'i:product_id' => $this->id,
-    //         'i:category_id' => $categoryId
-    //     ]);
-
-    //     /**
-    //      * Datenbankergebnis verarbeiten und zurückgeben.
-    //      */
-    //     return $result;
+    //     return $this->getImages();
     // }
 }

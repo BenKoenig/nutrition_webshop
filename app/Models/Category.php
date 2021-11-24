@@ -212,41 +212,4 @@ class Category extends AbstractModel
     }
 
 
-        /**
-     * Alle RoomFeatures zu einem bestimmten Room abfragen.
-     *
-     * Das ist sehr ähnlich wie die AbstractModel::all() Methode, nur ist der Query ein bisschen anders.
-     *
-     * @param int $roomId
-     *
-     * @return array
-     */
-    public static function findByCategory(int $productId): array
-    {
-        /**
-         * Datenbankverbindung herstellen.
-         */
-        $database = new Database();
-        /**
-         * Tabellennamen berechnen.
-         */
-        $tablename = self::getTablenameFromClassname();
-
-        /**
-         * Query ausführen.
-         */
-        $result = $database->query("
-            SELECT $tablename.* FROM $tablename
-                JOIN categories_products_mm
-                    ON $tablename.id = categories_products_mm.category_id
-                WHERE categories_products_mm.product_id = ?
-        ", [
-            'i:room_id' => $productId
-        ]);
-
-        /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
-         */
-        return self::handleResult($result);
-    }
 }

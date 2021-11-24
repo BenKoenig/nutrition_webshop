@@ -5,16 +5,16 @@
         <a class="adminForm__path__a" href="<?php echo BASE_URL . "/admin/products" ?>">Products/</a>
         <p>Create</p>
     </div>
-    <form class="adminForm__form" action="<?php echo BASE_URL . "/admin/categories/create/store" ?>" method="post" enctype="multipart/form-data">
+    <form class="adminForm__form" action="<?php echo BASE_URL . "/admin/products/create/store" ?>" method="post" enctype="multipart/form-data">
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="name">Category Name</label>
             <input class="adminForm__form__field__input" type="text" name="name" id="name" placeholder="Protein Bar">
         </div>
 
-        <div class="adminForm__form__field">
+        <!-- <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="price">Price (€)</label>
             <input class="adminForm__form__field__input" type="text" name="price" id="price" placeholder="9.99">
-        </div>
+        </div> -->
 
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="description">Description</label>
@@ -68,7 +68,7 @@
         </div>
 
         <div class="adminForm__form__field">
-            <label for="category_id">Select a Goal</label>
+            <label for="goal_id">Select a Goal</label>
             <select name="goal_id" id="goal_id">
                 <option value="_default" disabled selected>Goals</option>
 
@@ -79,8 +79,8 @@
         </div>
 
         <div class="adminForm__form__field">
-            <label for="category_id">Select a Merchant</label>
-            <select name="goal_id" id="goal_id">
+            <label for="merchant_id">Select a Merchant</label>
+            <select name="merchant_id" id="merchant_id">
                 <option value="_default" disabled selected>Merchant</option>
 
                 <?php foreach ($merchants as $merchant) : ?>
@@ -89,20 +89,13 @@
             </select>
         </div>
 
-        <div class="adminForm__form__field">
-            <?php foreach($flavors as $flavor): ?>
-                <input type="checkbox" name="<?php echo $flavor->id ;?>" id="<?php echo $flavor->$id;?>">
-                <label for="<?php echo $flavor->id;?>"><?php echo $flavor->flavor; ?></label>
-            <?php endforeach; ?>
-        </div>
 
 
 
-
-        <div class="adminForm__form__field">
+        <!-- <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="imgs">Upload Images</label>
             <input class="adminForm__form__field__file" type="file" class="form-control" id="imgs" name="imgs[]" multiple>
-        </div>
+        </div> -->
         <div class="adminForm__form__btns">
             <button class="adminForm__form__btns--create" type="submit">Create Category</button>
             <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>

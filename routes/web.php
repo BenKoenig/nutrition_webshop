@@ -96,6 +96,7 @@ return [
     '/admin/ratings/{id}/delete/confirm' => [RatingPanelController::class, 'deleteConfirm'],
 
     '/admin/products/create' => [ProductPanelController::class, 'create'],
+    '/admin/products/create/store' => [ProductPanelController::class, 'store'],
 
     
     '/cart' => [CartController::class, 'index'],
