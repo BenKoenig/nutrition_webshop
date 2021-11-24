@@ -37,12 +37,14 @@ class Product extends AbstractModel
         public ?int $merchant_id = null,
         public string $name = '',
         public string $description = '',
+        public int $price = 0,
         public ?int $serving = null,
         public string $ingredients = '',
         public ?int $weight = null,
         public bool $is_featured = false,
         public bool $is_bestseller = false,
         public bool $is_sale = false,
+        public string $imgs = '[]',
         public string $created_at = '',
         public string $updated_at = '',
         public ?string $deleted_at = null
@@ -79,18 +81,20 @@ class Product extends AbstractModel
              * der Query funktioniert hat oder nicht.
              */
             return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-            ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ? WHERE id = ?", [
+            ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?, price = ? WHERE id = ?", [
                 'i:category_id' => $this->category_id,
                 'i:goal_id' => $this->goal_id,
                 'i:merchant_it' => $this->merchant_id,
                 's:name' => $this->name,
                 's:description' => $this->description,
+                'i:price' => $this->price,
                 'i:serving' => $this->serving,
                 's:ingredients' => $this->ingredients,
                 's:weight' => $this->weight,
                 's:is_featured' => $this->is_featured,
                 's:is_bestseller' => $this->is_bestseller,
                 's:is_sale' => $this->is_sale,
+                's:imgs' => $this->imgs,
                 'i:id' => $this->id
             ]);
         } else {
@@ -101,104 +105,118 @@ class Product extends AbstractModel
 
             switch ([$_POST['is_featured'], $_POST['is_bestseller'], $_POST['is_sale']]) {
                 case [true, true, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?", [
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
                         's:is_bestseller' => $this->is_bestseller,
                         's:is_sale' => $this->is_sale,
+                        's:imgs' => $this->imgs,
                     ]);
                     break;
                 case [true, true, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?", [
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
                         's:is_bestseller' => $this->is_bestseller,
+                        's:imgs' => $this->imgs,
                     ]);
                     break;
                 case [true, false, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                        ingredients = ?, weight = ?, is_featured = ?", [
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                        ingredients = ?, weight = ?, is_featured = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
+                        's:imgs' => $this->imgs,
                     ]);
                     break;
                 case [false, false, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                            ingredients = ?, weight = ?", [
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                            ingredients = ?, weight = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
+                        's:imgs' => $this->imgs,
                     ]);
                     break;
                 case [false, false, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                                ingredients = ?, weight = ?, is_sale = ?", [
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                                ingredients = ?, weight = ?, is_sale = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
-                        's:is_sale' => $this->is_sale
-                    ]);
-                    break;
-                case [true, false, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                                    ingredients = ?, weight = ?, is_sale = ?, is_featured = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
                         's:is_sale' => $this->is_sale,
-                        's:is_featured' => $this->is_featured
+                        's:imgs' => $this->imgs,
                     ]);
                     break;
-                case [false, true, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-                                        ingredients = ?, weight = ?, is_besteller = ?", [
+                case [true, false, true]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                                    ingredients = ?, weight = ?, is_sale = ?, is_featured = ?, imgs = ?", [
                         'i:category_id' => $this->category_id,
                         'i:goal_id' => $this->goal_id,
                         'i:merchant_it' => $this->merchant_id,
                         's:name' => $this->name,
                         's:description' => $this->description,
+                        'i:price' => $this->price,
+                        'i:serving' => $this->serving,
+                        's:ingredients' => $this->ingredients,
+                        's:weight' => $this->weight,
+                        's:is_sale' => $this->is_sale,
+                        's:is_featured' => $this->is_featured,
+                        's:imgs' => $this->imgs
+                    ]);
+                    break;
+                case [false, true, false]:
+                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
+                                        ingredients = ?, weight = ?, is_besteller = ?, imgs = ?", [
+                        'i:category_id' => $this->category_id,
+                        'i:goal_id' => $this->goal_id,
+                        'i:merchant_it' => $this->merchant_id,
+                        's:name' => $this->name,
+                        's:description' => $this->description,
+                        'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
                         's:weight' => $this->weight,
                         's:is_besteller' => $this->is_besteller,
+                        's:imgs' => $this->imgs
                     ]);
                     break;
             }
@@ -221,105 +239,105 @@ class Product extends AbstractModel
         }
     }
 
-    // public function getImages(): array
-    // {
-    //     /**
-    //      * Nachdem $this->images ein JSON-Array ist, wandeln wir ihn hier in ein natives PHP Array um.
-    //      */
-    //     return json_decode($this->imgs);
-    // }
+    public function getImages(): array
+    {
+        /**
+         * Nachdem $this->images ein JSON-Array ist, wandeln wir ihn hier in ein natives PHP Array um.
+         */
+        return json_decode($this->imgs);
+    }
 
-    // /**
-    //  * Prüfen, ob Bilder vorhanden sind in dem Raum.
-    //  *
-    //  * @return bool
-    //  */
-    // public function hasImages(): bool
-    // {
-    //     return !empty($this->getImages());
-    // }
+    /**
+     * Prüfen, ob Bilder vorhanden sind in dem Raum.
+     *
+     * @return bool
+     */
+    public function hasImages(): bool
+    {
+        return !empty($this->getImages());
+    }
 
-    // /**
-    //  * Ein oder mehrere Bilder in $this->images hinzufügen.
-    //  *
-    //  * @param array $images
-    //  *
-    //  * @return array
-    //  */
-    // public function addImages(array $imgs): array
-    // {
-    //     /**
-    //      * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array, ...
-    //      */
-    //     $currentImages = $this->getImages();
-    //     /**
-    //      * ... führen sie dann mit der Liste der hinzuzufügenden Bilder zusammen ...
-    //      */
-    //     $currentImages = array_merge($currentImages, $imgs);
-    //     /**
-    //      * ... und überschreiben die aktuelle Liste.
-    //      */
-    //     $this->setImages($currentImages);
+    /**
+     * Ein oder mehrere Bilder in $this->images hinzufügen.
+     *
+     * @param array $images
+     *
+     * @return array
+     */
+    public function addImages(array $imgs): array
+    {
+        /**
+         * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array, ...
+         */
+        $currentImages = $this->getImages();
+        /**
+         * ... führen sie dann mit der Liste der hinzuzufügenden Bilder zusammen ...
+         */
+        $currentImages = array_merge($currentImages, $imgs);
+        /**
+         * ... und überschreiben die aktuelle Liste.
+         */
+        $this->setImages($currentImages);
 
-    //     /**
-    //      * Zum Abschluss geben wir die neue Liste der Bilder zurück.
-    //      */
-    //     return $currentImages;
-    // }
+        /**
+         * Zum Abschluss geben wir die neue Liste der Bilder zurück.
+         */
+        return $currentImages;
+    }
 
-    // /**
-    //  * Ein oder mehrere Bilder aus den verknüpften Bildern des Raumes entfernen.
-    //  *
-    //  * @param array $images
-    //  *
-    //  * @return array
-    //  */
-    // public function removeImages(array $imgs): array
-    // {
-    //     /**
-    //      * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array.
-    //      */
-    //     $currentImages = $this->getImages();
-    //     /**
-    //      * Nun filtern wir alle Bilder mit einer Callback-Funktion.
-    //      */
-    //     $filteredImages = array_filter($currentImages, function ($img) use ($imgs) {
-    //         /**
-    //          * Ein Element wird in das Ergebnis-Array übernommen, wenn die Callback Funktion true zurück gibt. Soll ein
-    //          * Bild also entfernt werden, geben wir false zurück.
-    //          */
-    //         if (in_array($img, $imgs)) {
-    //             return false;
-    //         }
-    //         return true;
-    //     });
-    //     /**
-    //      * Nun überschreiben wir die aktuelle Liste verknüpfter Bilder des Raumes.
-    //      */
-    //     $this->setImages($filteredImages);
+    /**
+     * Ein oder mehrere Bilder aus den verknüpften Bildern des Raumes entfernen.
+     *
+     * @param array $images
+     *
+     * @return array
+     */
+    public function removeImages(array $imgs): array
+    {
+        /**
+         * Zunächst holen wir uns die aktuelle Liste verknüpfter Bilder des Raumes als Array.
+         */
+        $currentImages = $this->getImages();
+        /**
+         * Nun filtern wir alle Bilder mit einer Callback-Funktion.
+         */
+        $filteredImages = array_filter($currentImages, function ($img) use ($imgs) {
+            /**
+             * Ein Element wird in das Ergebnis-Array übernommen, wenn die Callback Funktion true zurück gibt. Soll ein
+             * Bild also entfernt werden, geben wir false zurück.
+             */
+            if (in_array($img, $imgs)) {
+                return false;
+            }
+            return true;
+        });
+        /**
+         * Nun überschreiben wir die aktuelle Liste verknüpfter Bilder des Raumes.
+         */
+        $this->setImages($filteredImages);
 
-    //     return $filteredImages;
-    // }
+        return $filteredImages;
+    }
 
-    // /**
-    //  * Setter für Images.
-    //  *
-    //  * @param array $images
-    //  *
-    //  * @return array
-    //  */
-    // public function setImages(array $imgs): array
-    // {
-    //     /**
-    //      * Hier indizieren wir das $images Array neu und konvertieren es in ein JSON. Das ist nötig, weil die JSON-
-    //      * Konvertierung sonst ein Objekt und kein Array erzeugen würde - daher stellen wir sicher, dass die Arrray-
-    //      * Indizes fortlaufend sind.
-    //      */
-    //     $this->imgs = json_encode(array_values($imgs));
+    /**
+     * Setter für Images.
+     *
+     * @param array $images
+     *
+     * @return array
+     */
+    public function setImages(array $imgs): array
+    {
+        /**
+         * Hier indizieren wir das $images Array neu und konvertieren es in ein JSON. Das ist nötig, weil die JSON-
+         * Konvertierung sonst ein Objekt und kein Array erzeugen würde - daher stellen wir sicher, dass die Arrray-
+         * Indizes fortlaufend sind.
+         */
+        $this->imgs = json_encode(array_values($imgs));
 
-    //     /**
-    //      * Zum Abschluss geben wir die neue Liste der verknüpften Bilder zurück.
-    //      */
-    //     return $this->getImages();
-    // }
+        /**
+         * Zum Abschluss geben wir die neue Liste der verknüpften Bilder zurück.
+         */
+        return $this->getImages();
+    }
 }

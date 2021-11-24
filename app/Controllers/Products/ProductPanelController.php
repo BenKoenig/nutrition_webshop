@@ -12,7 +12,7 @@ use Core\View;
 use Core\Session;
 use Core\Helpers\Redirector;
 use Core\Validator;
-
+use Core\Models\AbstractFile;
 /**
  * ====================================================
  * ProductPanelController
@@ -183,6 +183,13 @@ class ProductPanelController
 
         $product->fill($_POST);
 
+
+        $product = $this->handleUploadedFiles($product);
+
+
+        $product = $this->handleDeleteFiles($product);
+
+
         /**
          * Hochgeladene Dateien verarbeiten.
          */
@@ -239,6 +246,74 @@ class ProductPanelController
          * Fehler aus dem Validator zurückgeben.
          */
         return $validator->getErrors();
+    }
+
+
+
+        /**
+     * Hochgeladene Dateien verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room|null
+     */
+    public function handleUploadedFiles(Product $product): ?Product
+    {
+        /**
+         * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
+         * Objekten kapseln können.
+         */
+        $files = AbstractFile::createFromUploadedFiles('imgs');
+
+        /**
+         * Nun gehen wir alle Dateien durch ...
+         */
+        foreach ($files as $file) {
+            /**
+             * ... speichern sie in den Uploads Ordner ...
+             */
+            $storagePath = $file->putToUploadsFolder();
+            /**
+             * ... und verknüpfen sie mit dem Raum.
+             */
+            $product->addImages([$storagePath]);
+        }
+        /**
+         * Nun geben wir den aktualisierten Raum wieder zurück.
+         */
+        return $product;
+    }
+
+
+    /**
+     * Löschen-Checkboxen der Bilder eines Raumes verarbeiten.
+     *
+     * @param Room $room
+     *
+     * @return Room
+     */
+    private function handleDeleteFiles(Product $product): Product
+    {
+        /**
+         * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
+         */
+        if (isset($_POST['delete-images'])) {
+            /**
+             * Wenn ja, gehen wir alle Checkboxen durch ...
+             */
+            foreach ($_POST['delete-images'] as $deleteImage) {
+                /**
+                 * Lösen die Verknüpfung zum Room ...
+                 */
+                $product->removeImages([$deleteImage]);
+                /**
+                 * ... und löschen die Datei aus dem Uploads-Ordner.
+                 */
+                AbstractFile::delete($deleteImage);
+            }
+        }
+
+        return $product;
     }
 
 }

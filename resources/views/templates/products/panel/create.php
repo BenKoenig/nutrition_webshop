@@ -11,10 +11,10 @@
             <input class="adminForm__form__field__input" type="text" name="name" id="name" placeholder="Protein Bar">
         </div>
 
-        <!-- <div class="adminForm__form__field">
+        <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="price">Price (€)</label>
             <input class="adminForm__form__field__input" type="text" name="price" id="price" placeholder="9.99">
-        </div> -->
+        </div>
 
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="description">Description</label>
@@ -92,10 +92,10 @@
 
 
 
-        <!-- <div class="adminForm__form__field">
+        <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="imgs">Upload Images</label>
             <input class="adminForm__form__field__file" type="file" class="form-control" id="imgs" name="imgs[]" multiple>
-        </div> -->
+        </div>
         <div class="adminForm__form__btns">
             <button class="adminForm__form__btns--create" type="submit">Create Category</button>
             <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
