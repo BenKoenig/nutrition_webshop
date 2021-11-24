@@ -16,7 +16,7 @@ where customers can win prices when taking part.
         and win awesome prices.
         </p>
         <!-- Link to find out more about the Vienna Run -->
-        <a href="#" class="hero__a">Learn more</a>
+        <a href="#" class="btn btn--green">Learn more</a>
 
         </div>
 
@@ -114,7 +114,7 @@ and can be edited within the CMS.
                     The headline (h4) contains the goal name from the database
                     -->
                     <h4 class="cards__container__item__info__title"><?php echo $goal->name; ?></h4>
-                    <a class="cards__container__item__info__a" href="#">Learn more</a>
+                    <a class="btn btn--aqua" href="#">Learn more</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -163,8 +163,8 @@ able to set it to true (1) or false (0) within the CMS.
                             -->
                             <p><?php echo $product->price; ?>€</p>
                             <div class="cards__container__item__box__desc__info__btns">
-                                <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
-                                <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
+                                <a class="btn btn--lime" href="#">Add to Cart</a>
+                                <a class="btn btn--gray" href="#">Details</a>
                             </div>
                         </div>
                     </div>

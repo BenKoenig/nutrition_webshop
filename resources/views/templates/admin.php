@@ -21,7 +21,7 @@ Array list of all the control panel categories that admins
 can edit within the website.
 -->
 <?php
-$control_panel_categories = ['categories', 'goals', 'ratings', 'users', 'merchants', 'flavors'];
+$control_panel_categories = ['categories', 'goals', 'users', 'merchants'];
 ?>
 <!--
 ----------------------------------------------------------

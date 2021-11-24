@@ -2,7 +2,7 @@
     <div class="panel-option__header">
         <div class="panel-option__header__container">
             <h2>Category: <?php echo $categories[0]->name; ?></h2>
-            <a href="<?php echo BASE_URL . "/admin/categories/" ?>create" class="panel-option__header__container__a">Create</a>
+            <a href="<?php echo BASE_URL . "/admin/products/" ?>create" class="panel-option__header__container__a">Create</a>
         </div>
 
 
@@ -37,7 +37,6 @@
                     <td class="panel-option__table__body__tr__td"><?php echo $product->weight; ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo ($product->is_featured  ? 'Yes' : 'No'); ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo ($product->is_bestseller  ? 'Yes' : 'No'); ?></td>
-                    <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="<?php echo BASE_URL . '/admin/products/'  . $product->id . '/ratings';?>"">Ratings</a></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="#">Edit</a></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--red" href="#">Delete</a></td>
                 </tr>

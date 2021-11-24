@@ -5,6 +5,11 @@
     width: 8.5rem;
     height: 3rem;
     border-radius: 1rem;
+    transition: color 0.5s ease-in-out;
+    transition-property: color, background-color;
+    transition-duration: .2s;
+    transition-timing-function: ease-out;
+
     &--red {
         background-color: $red;
         color: $darkred;
@@ -27,6 +32,30 @@
         &:hover {
             background-color: $darkgray;
             color: $gray;
+        }
+    }
+    &--lime {
+        background-color: $yellow;
+        color:$brown;
+        &:hover {
+            background-color: $brown;
+            color: $yellow;
+        }
+    }
+    &--aqua {
+        background-color: $ultragreen;
+        color:$darkGreen;
+        &:hover {
+            background-color: $darkGreen;
+            color: $ultragreen;
+        }
+    }
+    &--green {
+        background-color: $darkGreen;
+        color:$white;
+        &:hover {
+            background-color: $mediumGreen;
+
         }
     }
 }

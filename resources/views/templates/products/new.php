@@ -13,7 +13,7 @@
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
-                    <img class="cards__container__item__bg" src="<?php echo $product->img_path; ?>" alt="<?php echo $product->name; ?>">
+                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="<?php echo $product->name; ?>">
                 </div>
                 <div class="cards__container__item__box">
                     <div class="cards__container__item__box__desc">
@@ -22,24 +22,6 @@
                             The headline (h4) contains the goal name from the database
                             -->
                             <h4><?php echo $product->name; ?></h4>
-                            <div class="cards__container__item__box__desc__info__ratings">
-                                <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510">
-                                    <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
-                                </svg>
-                                <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510">
-                                    <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
-                                </svg>
-                                <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510">
-                                    <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
-                                </svg>
-                                <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--green" xml:space="preserve" viewBox="0 0 510 510">
-                                    <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
-                                </svg>
-                                <svg class="cards__container__item__box__desc__info__ratings__star cards__container__item__box__desc__info__ratings__star--gray" xml:space="preserve" viewBox="0 0 510 510">
-                                    <path d="m255 402.212 157.59 95.038-41.693-179.239L510 197.472l-183.37-15.734L255 12.75l-71.629 168.988L0 197.472l139.103 120.539L97.41 497.25z" />
-                                </svg>
-
-                            </div>
                             <!-- 
                             This text contains the price amount from the database
                             -->

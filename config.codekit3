@@ -833,6 +833,14 @@
       "oAP" : "\/resources\/views\/partials\/flashMessagesAndErrors.php",
       "oF" : 0
     },
+    "\/resources\/views\/partials\/footer.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/partials\/footer.php",
+      "oF" : 0
+    },
     "\/resources\/views\/partials\/nav_old.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1436,6 +1444,45 @@
       "oIPL" : 0,
       "opt" : 0,
       "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637748845_Product_MBWC_0600_5b1ca581-46d8-4c4f-9f5c-0bea419ec6b3.jpg" : {
+      "ft" : 16384,
+      "iS" : 254074,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637748845_Product_MBWC_0600_5b1ca581-46d8-4c4f-9f5c-0bea419ec6b3.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637748884_Product_MBWC_0600_5b1ca581-46d8-4c4f-9f5c-0bea419ec6b3.jpg" : {
+      "ft" : 16384,
+      "iS" : 254074,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637748884_Product_MBWC_0600_5b1ca581-46d8-4c4f-9f5c-0bea419ec6b3.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1637752002_Product_EAA_PINEAPPLE_0500_1.jpg" : {
+      "ft" : 16384,
+      "iS" : 174720,
+      "jF" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1637752002_Product_EAA_PINEAPPLE_0500_1.jpg",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
