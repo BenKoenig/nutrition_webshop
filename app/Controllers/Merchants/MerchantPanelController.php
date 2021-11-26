@@ -146,13 +146,6 @@ class MerchantPanelController
     }
 
 
-
-
-
-
-
-
-
     public function store()
     {
         /**

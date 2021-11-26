@@ -881,6 +881,14 @@
       "oAP" : "\/resources\/views\/templates\/auth\/login.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/auth\/register.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/auth\/register.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/cart.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1193,6 +1201,19 @@
       "oAP" : "\/storage\/sessions\/.gitkeep",
       "oF" : 0
     },
+    "\/storage\/settings\/settings-bg.png" : {
+      "ft" : 32768,
+      "iS" : 17455,
+      "oA" : 0,
+      "oAP" : "\/storage\/settings\/settings-bg.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
     "\/storage\/uploads\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1487,37 +1508,11 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/storage\/uploads\/categories\/category-bars.png" : {
-      "ft" : 32768,
-      "iS" : 321530,
-      "oA" : 0,
-      "oAP" : "\/storage\/uploads\/categories\/category-bars.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/storage\/uploads\/categories\/category-oats.png" : {
-      "ft" : 32768,
-      "iS" : 442846,
-      "oA" : 0,
-      "oAP" : "\/storage\/uploads\/categories\/category-oats.png",
-      "oF" : 0,
-      "oIPL" : 0,
-      "opt" : 0,
-      "oT" : 1,
-      "ou" : "lpckwebp-none",
-      "q" : 100,
-      "rq" : 75
-    },
-    "\/storage\/uploads\/categories\/category-protein.png" : {
+    "\/storage\/uploads\/1637830603_category-protein.png" : {
       "ft" : 32768,
       "iS" : 266599,
       "oA" : 0,
-      "oAP" : "\/storage\/uploads\/categories\/category-protein.png",
+      "oAP" : "\/storage\/uploads\/1637830603_category-protein.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
@@ -1526,11 +1521,11 @@
       "q" : 100,
       "rq" : 75
     },
-    "\/storage\/uploads\/categories\/category-shakes.png" : {
+    "\/storage\/uploads\/1637848219_category-shakes.png" : {
       "ft" : 32768,
       "iS" : 215259,
       "oA" : 0,
-      "oAP" : "\/storage\/uploads\/categories\/category-shakes.png",
+      "oAP" : "\/storage\/uploads\/1637848219_category-shakes.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,

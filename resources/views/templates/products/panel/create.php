@@ -7,7 +7,7 @@
     </div>
     <form class="adminForm__form" action="<?php echo BASE_URL . "/admin/products/create/store" ?>" method="post" enctype="multipart/form-data">
         <div class="adminForm__form__field">
-            <label class="adminForm__form__field__label" for="name">Category Name</label>
+            <label class="adminForm__form__field__label" for="name">Name</label>
             <input class="adminForm__form__field__input" type="text" name="name" id="name" placeholder="Protein Bar">
         </div>
 

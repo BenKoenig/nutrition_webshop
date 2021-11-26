@@ -21,7 +21,7 @@ Array list of all the control panel categories that admins
 can edit within the website.
 -->
 <?php
-$control_panel_categories = ['categories', 'goals', 'users', 'merchants'];
+$control_panel_categories = ['products', 'categories', 'goals', 'users', 'merchants'];
 ?>
 <!--
 ----------------------------------------------------------
@@ -39,8 +39,8 @@ want to edit.
 
     <ul class="listing__ul">
         <?php foreach ($control_panel_categories as $control_panel_category) : ?>
-            <li class="listing__ul__li">
-                <a class="listing__ul__li__a" href="<?php echo BASE_URL . "/admin/" . $control_panel_category; ?>"><?php echo ucfirst($control_panel_category); ?></a>
+            <li class="listing__ul__li listing__ul__li--settings">
+                <a class="listing__ul__li__a listing__ul__li__a--black" href="<?php echo BASE_URL . "/admin/" . $control_panel_category; ?>"><?php echo ucfirst($control_panel_category); ?></a>
             </li>
         <?php endforeach; ?>
     </ul>

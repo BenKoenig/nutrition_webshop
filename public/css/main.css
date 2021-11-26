@@ -741,43 +741,9 @@
 .cards__container__item__box__desc__info {
   padding: 2rem;
 }
-.cards__container__item__box__desc__info__ratings {
-  display: flex;
-}
-.cards__container__item__box__desc__info__ratings__star {
-  width: 1.3rem;
-}
-.cards__container__item__box__desc__info__ratings__star--green {
-  fill: #5FA09F;
-}
-.cards__container__item__box__desc__info__ratings__star--gray {
-  fill: #777272;
-}
 .cards__container__item__box__desc__info__btns {
   display: flex;
   gap: 0.3rem;
-}
-.cards__container__item__box__desc__info__btns__btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  color: black;
-  border-radius: 3rem;
-  height: 3rem;
-  font-weight: bold;
-}
-.cards__container__item__box__desc__info__btns__btn:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s ease-out;
-}
-.cards__container__item__box__desc__info__btns__btn--cart {
-  width: 8rem;
-  background: #E6ED96;
-}
-.cards__container__item__box__desc__info__btns__btn--details {
-  background-color: #F4F4F4;
-  width: 6rem;
 }
 .cards__container__item__bg {
   width: 100%;
@@ -803,9 +769,6 @@
   padding: 0;
   margin: 0;
   color: #000000;
-}
-.cards__container__item__info__title {
-  margin-bottom: 0.2rem;
 }
 .cards__container__item__info__a {
   text-decoration: none;
@@ -961,6 +924,11 @@
   padding: 3rem 1rem;
   margin: 0 auto;
 }
+.listing__header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
 .listing__h1 {
   color: #217E7E;
 }
@@ -1002,9 +970,24 @@
   height: 15rem;
   border-radius: 3rem;
   transition: background-color 0.2s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 .listing__ul__li:hover {
   background-color: #F4FAFA;
+}
+.listing__ul__li--img {
+  width: 100%;
+  position: absolute;
+  filter: brightness(50%);
+  z-index: 1;
+}
+.listing__ul__li--filter {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(17, 25, 40, 0.5);
+  z-index: 2;
 }
 .listing__ul__li__btns {
   display: flex;
@@ -1016,9 +999,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #000000;
+  color: #FEFEFE;
   font-weight: bold;
   font-size: 1.5rem;
+  z-index: 3;
+}
+.listing__ul__li__a--black {
+  color: #000000;
 }
 
 body {

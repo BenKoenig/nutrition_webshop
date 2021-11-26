@@ -206,6 +206,11 @@ class GoalPanelController
 
         $goal->fill($_POST);
 
+        $goal = $this->handleUploadedFiles($goal);
+
+
+        $goal = $this->handleDeleteFiles($goal);
+
         /**
          * Hochgeladene Dateien verarbeiten.
          */

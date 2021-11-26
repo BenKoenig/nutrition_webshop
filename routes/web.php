@@ -47,6 +47,9 @@ return [
     '/login/do' => [AuthController::class, 'loginDo'],
     '/logout' => [AuthController::class, 'logout'],
 
+    '/register' => [AuthController::class, 'registerForm'],
+    '/register/do' => [AuthController::class, 'registerDo'],
+
     /**
      * Home Route
      */
@@ -88,16 +91,19 @@ return [
     '/admin/categories/create/store' => [CategoryPanelController::class, 'store'],
     '/admin/categories/{id}/delete' => [CategoryPanelController::class, 'delete'],
     '/admin/categories/{id}/delete/confirm' => [CategoryPanelController::class, 'deleteConfirm'],
-    '/admin/categories/{id}' => [ProductPanelController::class, 'index'],
+    '/admin/products' => [ProductPanelController::class, 'index'],
     '/admin/categories/{id}/edit' => [CategoryPanelController::class, 'edit'],
     '/admin/categories/{id}/edit/update' => [CategoryPanelController::class, 'update'],
     '/admin/products/{id}/ratings' => [RatingPanelController::class, 'index'],
-    '/admin/ratings/{id}/delete' => [RatingPanelController::class, 'delete'],
-    '/admin/ratings/{id}/delete/confirm' => [RatingPanelController::class, 'deleteConfirm'],
+    // '/admin/ratings/{id}/delete' => [RatingPanelController::class, 'delete'],
+    // '/admin/ratings/{id}/delete/confirm' => [RatingPanelController::class, 'deleteConfirm'],
 
     '/admin/products/create' => [ProductPanelController::class, 'create'],
     '/admin/products/create/store' => [ProductPanelController::class, 'store'],
-
+    '/admin/products/{id}/edit' => [ProductPanelController::class, 'edit'],
+    '/admin/products/{id}/edit/update' => [ProductPanelController::class, 'update'],
+    '/admin/products/{id}/delete' => [ProductPanelController::class, 'delete'],
+    '/admin/products/{id}/delete/confirm' => [ProductPanelController::class, 'deleteConfirm'],
     
     '/cart' => [CartController::class, 'index'],
 
@@ -109,19 +115,24 @@ return [
     '/admin/merchants/{id}/edit' => [MerchantPanelController::class, 'edit'],
     '/admin/merchants/{id}/edit/update' => [MerchantPanelController::class, 'update'],
 
-    '/admin/flavors' => [FlavorPanelController::class, 'index'],
-    '/admin/flavors/create' => [FlavorPanelController::class, 'create'],
-    '/admin/flavors/create/store' => [FlavorPanelController::class, 'store'],
-    '/admin/flavors/{id}/delete' => [FlavorPanelController::class, 'delete'],
-    '/admin/flavors/{id}/delete/confirm' => [FlavorPanelController::class, 'deleteConfirm'],
-    '/admin/flavors/{id}/edit' => [FlavorPanelController::class, 'edit'],
-    '/admin/flavors/{id}/edit/update' => [FlavorPanelController::class, 'update'],
+    // '/admin/flavors' => [FlavorPanelController::class, 'index'],
+    // '/admin/flavors/create' => [FlavorPanelController::class, 'create'],
+    // '/admin/flavors/create/store' => [FlavorPanelController::class, 'store'],
+    // '/admin/flavors/{id}/delete' => [FlavorPanelController::class, 'delete'],
+    // '/admin/flavors/{id}/delete/confirm' => [FlavorPanelController::class, 'deleteConfirm'],
+    // '/admin/flavors/{id}/edit' => [FlavorPanelController::class, 'edit'],
+    // '/admin/flavors/{id}/edit/update' => [FlavorPanelController::class, 'update'],
 
     '/admin/users' => [UserPanelController::class, 'index'],
 
     '/admin/goals' => [GoalPanelController::class, 'index'],
+    '/admin/goals/create' => [GoalPanelController::class, 'create'],
+    '/admin/goals/create/store' => [GoalPanelController::class, 'store'],
+    '/admin/goals/{id}/delete' => [GoalPanelController::class, 'delete'],
+    '/admin/goals/{id}/delete/confirm' => [GoalPanelController::class, 'deleteConfirm'],
     '/admin/goals/{id}/edit' => [GoalPanelController::class, 'edit'],
     '/admin/goals/{id}/edit/update' => [GoalPanelController::class, 'update'],
+    
     
 
     '/new' => [NewController::class, 'index'],

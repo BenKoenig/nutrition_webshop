@@ -161,7 +161,7 @@ able to set it to true (1) or false (0) within the CMS.
                             <!-- 
                             This text contains the price amount from the database
                             -->
-                            <p><?php echo $product->price; ?>€</p>
+                            <p><?php echo $product->price; ?>€ | <?php echo $product->weight;?> g</p>
                             <div class="cards__container__item__box__desc__info__btns">
                                 <a class="btn btn--lime" href="#">Add to Cart</a>
                                 <a class="btn btn--gray" href="#">Details</a>

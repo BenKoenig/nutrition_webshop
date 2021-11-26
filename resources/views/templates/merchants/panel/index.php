@@ -22,7 +22,6 @@
                 <tr class="panel-option__table__body__tr">
                     <td class="panel-option__table__body__tr__td"><?php echo $merchant->name; ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo $merchant->website; ?></td>
-                    <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="#">Products</a></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="<?php echo BASE_URL . "/admin/merchants/" . $merchant->id . "/edit" ?>" title="Edit">Edit</a></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--red" href="<?php echo BASE_URL . "/admin/merchants/$merchant->id/delete" ?>">Delete</a></td>
                 </tr>

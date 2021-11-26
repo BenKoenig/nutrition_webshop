@@ -6,13 +6,14 @@ use Core\Helpers\Redirector;
 use Core\Session;
 use Core\View;
 use App\Models\User;
+use Core\Validator;
 
 /**
  * Class AuthController
  *
  * @package App\Controllers
  */
-class AuthController
+class AuthController 
 {
 
     /**
@@ -93,6 +94,139 @@ class AuthController
         Session::set('errors', $errors);
         Redirector::redirect('/login');
     }
+
+
+
+
+ /**
+     * Registrierungsformular anzeigen
+     */
+    public function registerForm()
+    {
+        /**
+         * Wenn bereits ein*e User*in eingeloggt ist, zeigen wir das Signup Formular nicht an, sondern leiten auf die
+         * Startseite weiter.
+         */
+        if (User::isLoggedIn()) {
+            Redirector::redirect('/home');
+        }
+
+        /**
+         * Andernfalls laden wir das Registrierungsformular.
+         */
+        View::render('auth/register');
+    }
+
+    /**
+     * Daten aus dem Registrierungsformular entgegennehmen und verarbeiten.
+     */
+    public function registerDo()
+    {
+        /**
+         * [x] Daten validieren
+         * [x] erfolgreich: weiter, nicht erfolgreich: Fehler
+         * [x] Gibts E-Mail oder Username schon in der DB?
+         * [x] ja: Fehler, nein: weiter
+         * [x] User Object aus den Daten erstellen & in DB speichern
+         * [x] Weiterleiten zum Login
+         */
+
+        /**
+         * Formulardaten validieren.
+         */
+        $validator = new Validator();
+        $validator->email($_POST['email'], 'E-Mail', required: true);
+        $validator->unique($_POST['email'], 'E-Mail', 'users', 'email');
+        $validator->unique($_POST['username'], 'Username', 'users', 'username');
+        $validator->password($_POST['password'], 'Passwort', min: 8, required: true);
+        /**
+         * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
+         * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt
+         * sich daraus, dass auch 'password_repeat' ein valides Passwort ist.
+         */
+        $validator->compare([
+            $_POST['password'],
+            'Passwort'
+        ], [
+            $_POST['password_repeat'],
+            'Passwort wiederholen'
+        ]);
+
+        /**
+         * Fehler aus dem Validator auslesen. Validator::getErrors() gibt uns dabei in jedem Fall ein Array zurück,
+         * wenn keine Fehler aufgetreten sind, ist dieses Array allerdings leer.
+         */
+        $errors = $validator->getErrors();
+
+        /**
+         * Wenn der Fehler-Array nicht leer ist und es somit Fehler gibt ...
+         */
+        if (!empty($errors)) {
+            /**
+             * ... dann speichern wir sie in die Session, damit sie im View ausgegeben werden können und leiten dann
+             * zurück zum Formular.
+             */
+            Session::set('errors', $errors);
+            Redirector::redirect('/register');
+        }
+
+        /**
+         * Kommen wir an diesen Punkt, können wir sicher sein, dass die E-Mail Adresse und der Username noch nicht
+         * verwendet werden und alle eingegebenen Daten korrekt validiert werden konnten.
+         */
+        $user = new User();
+        $user->fill($_POST);
+        $user->setPassword($_POST['password']);
+
+        /**
+         * Neue*n User*in in die Datenbank speichern.
+         *
+         * Die User::save() Methode gibt true zurück, wenn die Speicherung in die Datenbank funktioniert hat.
+         */
+        if ($user->save()) {
+            /**
+             * Hat alles funktioniert und sind keine Fehler aufgetreten, leiten wir zum Login Formular.
+             *
+             * Um eine Erfolgsmeldung ausgeben zu können, verwenden wir dieselbe Mechanik wie für die errors.
+             */
+            Session::set('success', ['Herzlich wilkommen!']);
+            $user->login('/home');
+        } else {
+            /**
+             * Fehlermeldung erstellen und in die Session speichern.
+             */
+            $errors[] = 'Leider ist ein Fehler aufgetreten. Bitte probieren Sie es erneut! :(';
+            Session::set('errors', $errors);
+
+            /**
+             * Redirect zurück zum Registrierungsformular.
+             */
+            Redirector::redirect('/register');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     /**
      * Logout und redirect auf die Startseite durchführen.

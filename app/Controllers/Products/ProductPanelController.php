@@ -3,7 +3,6 @@
 namespace App\Controllers\Products;
 
 use App\Models\Category;
-use App\Models\Flavor;
 use App\Models\Merchant;
 use App\Models\Goal;
 use App\Models\Product;
@@ -25,7 +24,7 @@ use Core\Models\AbstractFile;
 class ProductPanelController
 {
 
-    public function index(int $id)
+    public function index()
     {
         /**
          * Check if user is logged in
@@ -35,9 +34,8 @@ class ProductPanelController
         /**
          * Elements that need to be loaded
          */
-        $products = Product::findWhere('category_id', $id);
-        $categories = Category::findWhereOrFail('id', $id);
-        $categorie = Category::find($id);
+        $products = Product::all();
+
     
 
 
@@ -45,12 +43,105 @@ class ProductPanelController
          * Renders the View
          */
         View::render('products/panel/index', [
-            'products' => $products,
-            'categories' => $categories,
-            'categorie' => $categorie,
+            'products' => $products
+
 
         ]);
     }
+
+
+
+
+
+    /**
+     * Formulardaten aus dem Bearbeitungsformular entgegennehmen und verarbeiten.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     */
+    public function update(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * 1) Daten validieren
+         * 2) Model aus der DB abfragen, das aktualisiert werden soll
+         * 3) Model in PHP überschreiben
+         * 4) Model in DB zurückspeichern
+         * 5) Redirect irgendwohin
+         */
+
+        /**
+         * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
+         * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
+         */
+        $validationErrors = $this->validateFormData($id);
+
+        /**
+         * Sind Validierungsfehler aufgetreten ...
+         */
+        if (!empty($validationErrors)) {
+            /**
+             * ... dann speichern wir sie in die Session um sie in den Views dann ausgeben zu können ...
+             */
+            Session::set('errors', $validationErrors);
+            /**
+             * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
+             * nicht mehr ausgeführt.
+             */
+            Redirector::redirect("/admin/products/${id}/edit");
+        }
+
+        /**
+         * Gewünschten Room über das ROom-Model aus der Datenbank laden. Hier verwenden wir die findOrFail()-Methode aus
+         * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
+         * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
+         */
+        $product = Product::findOrFail($id);
+
+        /**
+         * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
+         */
+
+    
+
+        $product->fill($_POST);
+
+        $product = $this->handleUploadedFiles($product);
+
+
+        $product = $this->handleDeleteFiles($product);
+
+
+
+        /**
+         * Schlägt die Speicherung aus irgendeinem Grund fehl ...
+         */
+        if (!$product->save()) {
+            /**
+             * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
+             */
+            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Redirector::redirect("/admin/products/${id}/edit");
+        }
+
+        /**
+         * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
+         */
+        Redirector::redirect('/admin/products');
+    }
+
+
+
+
+
+
 
     public function delete(int $id)
     {
@@ -71,8 +162,8 @@ class ProductPanelController
         View::render('helpers/confirmation', [
             'objectType' => 'Category',
             'objectTitle' => $product->name,
-            'confirmUrl' => BASE_URL . '/admin/categories/' . $product->category_id . '/' . $product->id . '/delete/confirm',
-            'abortUrl' => BASE_URL . '/admin/categories/' . $product->category_id
+            'confirmUrl' => BASE_URL . '/admin/products/' . $product->id . '/delete/confirm',
+            'abortUrl' => BASE_URL . '/admin/products/'
         ]);
     }
 
@@ -105,7 +196,7 @@ class ProductPanelController
         /**
          * User gets redirected to Category page
          */
-        Redirector::redirect('/admin/categories/' . $product->category_id);
+        Redirector::redirect('/admin/products/');
     }
 
 
@@ -247,6 +338,45 @@ class ProductPanelController
          */
         return $validator->getErrors();
     }
+
+
+
+
+
+
+    public function edit(int $id)
+    {
+        /**
+         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
+         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
+         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
+         */
+        AuthMiddleware::isAdminOrFail();
+
+        /**
+         * Gewünschtes Element über das zugehörige Model aus der Datenbank laden.
+         */
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+        $merchants = Merchant::all();
+        $goals = Goal::all();
+
+        /**
+         * Alle Room Features aus der Datenbank laden, damit wir im View Checkboxen generieren können.
+         */
+
+
+        /**
+         * View laden und Daten übergeben.
+         */
+        View::render('products/panel/edit', [
+            'product' => $product,
+            'categories' => $categories,
+            'merchants' => $merchants,
+            'goals' => $goals
+        ]);
+    }
+
 
 
 

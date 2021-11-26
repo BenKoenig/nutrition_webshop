@@ -22,14 +22,14 @@
                             The headline (h4) contains the goal name from the database
                             -->
                             <h4><?php echo $product->name; ?></h4>
-
+                            
                             <!-- 
                             This text contains the price amount from the database
                             -->
-                            <p><?php echo $product->price; ?>€</p>
+                            <p><?php echo $product->price; ?>€ | <?php echo $product->weight;?> g</p>
                             <div class="cards__container__item__box__desc__info__btns">
-                                <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--cart" href="#">Add to Cart</a>
-                                <a class="cards__container__item__box__desc__info__btns__btn cards__container__item__box__desc__info__btns__btn--details" href="#">Details</a>
+                                <a class="btn btn--lime" href="#">Add to Cart</a>
+                                <a class="btn btn--gray" href="#">Details</a>
                             </div>
                         </div>
                     </div>

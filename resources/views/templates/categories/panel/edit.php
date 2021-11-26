@@ -13,7 +13,7 @@
             <input class="adminForm__form__field__input" type="text" name="name" id="name" value="<?php echo $categorie->name; ?>">
         </div>
 
-        <div class="adminForm__form__field adminForm__form__field--checkfield">
+        <div class="adminForm__form__field adminForm__form__field--checkfield"> 
             <label class="adminForm__form__field__label--checklabel" for="is_popular">Add to popular section</label>
             <input type="checkbox" name="is_popular" id="is_popular" <?php echo $categorie->is_popular ? "checked" : ""; ?>>
         </div>

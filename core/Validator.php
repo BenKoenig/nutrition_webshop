@@ -21,6 +21,8 @@ class Validator
         'textnum' => '/^[\w\s .,#\-_|;:?!]*$/',
         'alphanumeric' => '/^[^-_]{1}[a-zA-Z0-9-_]*$/',
         'checkbox' => '/^(on|true|checked|1)$/i',
+        'password' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/',
+        'email' => '/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'
     ];
 
     /**
@@ -52,13 +54,17 @@ class Validator
         'float' => '%s muss eine Fließkommazahl sein.',
         'equals' => '%s muss ident sein mit %s.',
 
+        'checkbox' => '%s enthält keinen gültigen Wert für eine Checkbox.',
+        'password' => '%s muss mindestens 8 Zeichen lang sein, Groß- und Kleinbuchstabe und Sonderzeichen enthalten.',
+        'email' => '%s muss eine korrekte E-Mail Adresse sein.',
+
         'required' => '%s ist ein Pflichtfeld.',
         'min' => '%s muss mindestens %s sein.',
         'min-string' => '%s muss mindestens %s Zeichen haben.',
         'max' => '%s muss kleiner oder gleich %s sein.',
         'max-string' => '%s darf maximal %s Zeichen haben.',
         'compare' => '%s und %s müssen ident sein.',
-        'unique' => '%s darf nur einmal verwendet werden.',
+        'unique' => '%s wird bereits verwendet.',
 
 
         'file-error' => 'Es konnten nicht alle Dateien aus %s hochgeladen werden.',

@@ -28,14 +28,23 @@ class User extends AbstractUser
          *
          * Im Prinzip definieren wir alle Spalten aus der Tabelle mit dem richtigen Datentyp.
          */
-        public int $id,
-        public string $username,
-        public string $email,
-        protected string $password,
-        public string $created_at,
-        public string $updated_at,
-        public ?string $deleted_at,
+        public ?int $id = null,
+        public string $username = '',
+        public string $email = '',
+        protected string $password = '',
+        public string $firstname = '',
+        public string $lastname = '',
+        public string $adress_1  = '',
+        public string $adress_2 = '',
+        public int $postal_code = 0,
+        public string $city = '',
+        public string $country = '',
+        public string $created_at = '',
+        public string $updated_at = '',
+        public ?string $deleted_at = '',
         public bool $is_admin = false
+
+
     ) {
     }
 
@@ -64,28 +73,41 @@ class User extends AbstractUser
              * der Query funktioniert hat oder nicht.
              */
             $result = $database->query(
-                "UPDATE $tablename SET username = ?, email = ?, created_at WHERE id = ?",
+                "UPDATE $tablename SET email = ?, username = ?, password = ?, is_admin = ?, firstname = ?, lastname = ?, adress_1 = ?, adress_2 = ?, postal_code = ?, city = ?, country = ? WHERE id = ?",
                 [
-                    's:username' => $this->username,
                     's:email' => $this->email,
-                    's:created_at' => $this->created_at,
+                    's:username' => $this->username,
+                    's:password' => $this->password,
+                    'i:is_admin' => $this->is_admin,
+                    's:firstname' => $this->firstname, 
+                    's:lastname' => $this->lastname,
+                    's:adress_1' => $this->adress_1,
+                    's:adress_2' => $this->adress_2, 
+                    'i:postal_code' => $this->postal_code,
+                    's:city' => $this->city,
+                    's:country' => $this->country,
                     'i:id' => $this->id
                 ]
             );
-
 
             return $result;
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
-            $result = $database->query("INSERT INTO $tablename SET username = ?, email = ?, created_at = ?", [
-                's:username' => $this->username,
+            $result = $database->query("INSERT INTO $tablename SET email = ?, username = ?, password = ?, is_admin = ?, firstname = ?, lastname = ?, adress_1 = ?, adress_2 = ?, postal_code = ?, city = ?, country = ?", [
                 's:email' => $this->email,
-                's:created_at' => $this->created_at,
+                's:username' => $this->username,
+                's:password' => $this->password,
+                'i:is_admin' => $this->is_admin,
+                's:firstname' => $this->firstname, 
+                's:lastname' => $this->lastname,
+                's:adress_1' => $this->adress_1,
+                's:adress_2' => $this->adress_2, 
+                'i:postal_code' => $this->postal_code,
+                's:city' => $this->city,
+                's:country' => $this->country
             ]);
-
-            
 
             /**
              * Ein INSERT Query generiert eine neue id, diese müssen wir daher extra abfragen und verwenden daher die
@@ -101,19 +123,6 @@ class User extends AbstractUser
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
