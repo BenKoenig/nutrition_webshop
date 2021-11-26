@@ -22,6 +22,10 @@ use App\Controllers\Products\NewController;
 use App\Controllers\Products\SaleController;
 use App\Controllers\Users\UserPanelController;
 use App\Controllers\Goals\GoalPanelController;
+use App\Controllers\CheckoutController;
+use App\Controllers\BookingController;
+
+
 
 /**
  * Die Dateien im /routes Ordner beinhalten ein Mapping von einer URL auf eine eindeutige Controller & Action
@@ -106,6 +110,9 @@ return [
     '/admin/products/{id}/delete/confirm' => [ProductPanelController::class, 'deleteConfirm'],
     
     '/cart' => [CartController::class, 'index'],
+    '/products/{id}/add-to-cart' => [CartController::class, 'add'],
+    '/products/{id}/remove-from-cart' => [CartController::class, 'remove'],
+    '/products/{id}/remove-all-from-cart' => [CartController::class, 'removeAll'],
 
     '/admin/merchants' => [MerchantPanelController::class, 'index'],
     '/admin/merchants/create' => [MerchantPanelController::class, 'create'],

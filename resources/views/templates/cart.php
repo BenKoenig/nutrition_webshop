@@ -2,35 +2,66 @@
     <div class="cart__container">
         <div class="cart__container__item">
             <h2>Cart</h2>
-            <div class="cart__container__item__product">
-                <img class="cart__container__item__product__img" src="https://i.ibb.co/5cQ5cbR/Unbenannt-dasdsadad1.png" alt="">
-                <div class="cart__container__item__product__desc">
-                    <h4>Plant Fusion Complete Protein</h4>
-                    <p>Flavor: Chocoloate</p>
-                    <div class="cart__container__item__product__desc__flex">
-                        <p>1 Item</p>
-                        <p>€ 35,99</p>
+            <?php foreach ($products as $product) : ?>
+                <div class="cart__container__item__product">
+                    <img class="cart__container__item__product__img" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="">
+                    <div class="cart__container__item__product__desc">
+                        <h4><?php echo $product->name; ?></h4>
+                        <div class="cart__container__item__product__desc__flex">
+                            <p>1 Item</p>
+                            <p>€ <?php echo $product->price; ?></p>
+                        </div>
+                        <a class="btn btn--red" href="<?php echo BASE_URL . "/products/$product->id/remove-from-cart"; ?>">Remove</a>
                     </div>
-                    <a href="#">Remove</a>
                 </div>
-            </div>
+            <?php endforeach; ?>
+
         </div>
         <div class="cart__container__item">
             <h2>Total</h2>
             <div class="cart__container__item__costs">
+
+                <?php foreach ($products as $product) : ?>
+                    <div class="cart__container__item__costs__flex">
+                        <p><?php echo $product->name; ?></p>
+                        <p>€ <?php echo $product->price; ?></p>
+                    </div>
+                <?php endforeach; ?>
+                <div class="cart__container__item__costs__divider"></div>
                 <div class="cart__container__item__costs__flex">
                     <p>Subtotal</p>
-                    <p>€ 35,99</p>
+                    <p>
+                        <?php $subTotal = 0; ?>
+                        <?php foreach ($products as $product)
+                            $subTotal += $product->price;
+                        ?>
+                        € <?php echo $subTotal; ?>
+                    </p>
                 </div>
                 <div class="cart__container__item__costs__flex">
                     <p>Delivery</p>
-                    <p>€ 3,90</p>
+                    <p>
+                        <?php
+                        $deliveryCost = 0;
+                        if ($subTotal < 100) {
+                            $deliveryCost = 5;
+                        }; ?>
+                        € <?php echo $deliveryCost; ?>
+                    </p>
+
                 </div>
+                <div class="cart__container__item__costs__divider"></div>
                 <div class="cart__container__item__costs__flex">
                     <p>Total Cost (including Tax)</p>
-                    <p>€ 38,89</p>
+                    <p>
+                        €
+                        <?php
+                        $totalCost = $subTotal + $deliveryCost;
+                        echo $totalCost;
+                        ?>
+                    </p>
                 </div>
-                <a href="#">Checkout</a>
+                <a class="btn btn--lime"href="#">Checkout</a>
             </div>
         </div>
     </div>

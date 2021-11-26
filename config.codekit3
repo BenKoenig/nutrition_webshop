@@ -79,6 +79,14 @@
       "oAP" : "\/app\/Controllers\/ChannelController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/CheckoutController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/CheckoutController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Flavors\/FlavorPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -183,6 +191,14 @@
       "oAP" : "\/app\/Models\/.gitkeep",
       "oF" : 0
     },
+    "\/app\/Models\/Booking.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Booking.php",
+      "oF" : 0
+    },
     "\/app\/Models\/Category.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -253,6 +269,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/User.php",
+      "oF" : 0
+    },
+    "\/app\/Services\/CartService.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Services\/CartService.php",
       "oF" : 0
     },
     "\/config\/.gitkeep" : {
@@ -1159,6 +1183,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/rooms\/index.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/summary.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/summary.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/users\/panel\/index.php" : {
