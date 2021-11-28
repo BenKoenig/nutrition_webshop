@@ -208,11 +208,11 @@ class CategoryPanelController
         /**
          * Hochgeladene Dateien verarbeiten.
          */
-        // $categorie = $this->handleUploadedFiles($categorie);
+        $categorie = $this->handleUploadedFiles($categorie);
         // /**
         //  * Checkboxen verarbeiten, ob eine Datei gelöscht werden soll oder nicht.
         //  */
-        // $categorie = $this->handleDeleteFiles($categorie);
+        $categorie = $this->handleDeleteFiles($categorie);
 
         /**
          * Schlägt die Speicherung aus irgendeinem Grund fehl ...

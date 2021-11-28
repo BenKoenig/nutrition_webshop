@@ -48,6 +48,7 @@ class CartController
         /**
          * Equipment in Cart hinzufügen.
          */
+        
         CartService::add($product);
 
         /**

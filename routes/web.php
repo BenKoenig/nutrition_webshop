@@ -114,6 +114,10 @@ return [
     '/products/{id}/remove-from-cart' => [CartController::class, 'remove'],
     '/products/{id}/remove-all-from-cart' => [CartController::class, 'removeAll'],
 
+
+    '/checkout/summary' => [CheckoutController::class, 'summary'],
+    '/checkout/finish' => [CheckoutController::class, 'finish'],
+
     '/admin/merchants' => [MerchantPanelController::class, 'index'],
     '/admin/merchants/create' => [MerchantPanelController::class, 'create'],
     '/admin/merchants/create/store' => [MerchantPanelController::class, 'store'],

@@ -43,7 +43,7 @@ class CheckoutController
         /**
          * View laden und Daten übergeben.
          */
-        View::render('checkout/summary', [
+        View::render('summary', [
             'cartContent' => $cartContent,
             'user' => $user
         ]);
@@ -95,7 +95,7 @@ class CheckoutController
                      * Konnte nicht gespeichert werden, schreiben wir einen Fehler und leiten zurück zur Zusammenfassung.
                      */
                     Session::set('errors', ['Bookings konnten nicht gespeichert werden.']);
-                    Redirector::redirect('/checkout/summary');
+                    Redirector::redirect('/checkoutsummary');
                 }
             }
 

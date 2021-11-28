@@ -38,9 +38,9 @@ class Product extends AbstractModel
         public string $name = '',
         public string $description = '',
         public int $price = 0,
-        public ?int $serving = null,
+        public int $serving = 0,
         public string $ingredients = '',
-        public ?int $weight = null,
+        public int $weight = 0,
         public bool $is_featured = false,
         public bool $is_bestseller = false,
         public bool $is_sale = false,
@@ -90,7 +90,7 @@ class Product extends AbstractModel
                 'i:price' => $this->price,
                 'i:serving' => $this->serving,
                 's:ingredients' => $this->ingredients,
-                's:weight' => $this->weight,
+                'i:weight' => $this->weight,
                 's:is_featured' => $this->is_featured,
                 's:is_bestseller' => $this->is_bestseller,
                 's:is_sale' => $this->is_sale,
@@ -115,7 +115,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
                         's:is_bestseller' => $this->is_bestseller,
                         's:is_sale' => $this->is_sale,
@@ -133,7 +133,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
                         's:is_bestseller' => $this->is_bestseller,
                         's:imgs' => $this->imgs,
@@ -150,7 +150,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_featured' => $this->is_featured,
                         's:imgs' => $this->imgs,
                     ]);
@@ -166,7 +166,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:imgs' => $this->imgs,
                     ]);
                     break;
@@ -181,7 +181,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_sale' => $this->is_sale,
                         's:imgs' => $this->imgs,
                     ]);
@@ -197,7 +197,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_sale' => $this->is_sale,
                         's:is_featured' => $this->is_featured,
                         's:imgs' => $this->imgs
@@ -214,7 +214,7 @@ class Product extends AbstractModel
                         'i:price' => $this->price,
                         'i:serving' => $this->serving,
                         's:ingredients' => $this->ingredients,
-                        's:weight' => $this->weight,
+                        'i:weight' => $this->weight,
                         's:is_besteller' => $this->is_besteller,
                         's:imgs' => $this->imgs
                     ]);

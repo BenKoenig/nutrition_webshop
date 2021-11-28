@@ -1,5 +1,13 @@
 <div class="cart">
-    <div class="cart__container">
+    <?php if (count($products) === 0): ?>
+    
+    
+    <h2>Your cart is empty.</h2>
+    
+    
+
+    <?php else: ?>
+        <div class="cart__container">
         <div class="cart__container__item">
             <h2>Cart</h2>
             <?php foreach ($products as $product) : ?>
@@ -52,7 +60,7 @@
                 </div>
                 <div class="cart__container__item__costs__divider"></div>
                 <div class="cart__container__item__costs__flex">
-                    <p>Total Cost (including Tax)</p>
+                    <p>Total Cost</p>
                     <p>
                         €
                         <?php
@@ -61,8 +69,12 @@
                         ?>
                     </p>
                 </div>
-                <a class="btn btn--lime"href="#">Checkout</a>
+                <a class="btn btn--lime"href="<?php echo BASE_URL . '/checkout/summary'; ?>">Checkout</a>
             </div>
         </div>
     </div>
+    <?php endif; ?> 
+
+
+
 </div>
