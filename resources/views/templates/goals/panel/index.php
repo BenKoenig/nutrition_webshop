@@ -3,6 +3,10 @@
         <h1 class="listing__h1">Goals</h1>
         <a class="btn btn--lime" href="<?php echo BASE_URL . '/admin/goals/create'; ?>">Create</a>
     </div>
+    <div class="panel__header__path">
+        <a class="panel__header__path__a" href="<?php echo BASE_URL . "/admin" ?>">Admin</a>
+        <p>/Goals</p>
+    </div>
 
     <div class="listing__ul">
         <?php foreach ($goals as $goal) : ?>

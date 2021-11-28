@@ -16,7 +16,7 @@ where customers can win prices when taking part.
             and win awesome prices.
         </p>
         <!-- Link to find out more about the Vienna Run -->
-        <a href="#" class="btn btn--green">Learn more</a>
+        <a href="" class="btn btn--green">Learn more</a>
 
     </div>
 
@@ -76,7 +76,7 @@ able to set it to true (1) or false (0) within the CMS.
                 <!--
                 Link name: PHP code that contains the category name from the database
                 -->
-                <a href="#" class="cards__container__item__a"><?php echo $category->name; ?> </a>
+                <a href="<?php echo BASE_URL . '/categories/' . $category->id;?>" class="cards__container__item__a"><?php echo $category->name; ?> </a>
             </div>
         <?php endforeach; ?>
     </div>
@@ -164,7 +164,7 @@ able to set it to true (1) or false (0) within the CMS.
                             <p><?php echo $product->price; ?>€ | <?php echo $product->weight; ?> g</p>
                             <div class="cards__container__item__box__desc__info__btns">
                                 <a class="btn btn--lime" href="<?php echo BASE_URL . "/products/$product->id/add-to-cart"; ?>">Add to Cart</a>
-                                <a class="btn btn--gray" href="#">Details</a>
+                                <a class="btn btn--gray" href="<?php echo BASE_URL . "/product/$product->id";?>">Details</a>
                             </div>
                         </div>
                     </div>

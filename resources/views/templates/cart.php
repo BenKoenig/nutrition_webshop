@@ -2,7 +2,7 @@
     <?php if (count($products) === 0): ?>
     
     
-    <h2>Your cart is empty.</h2>
+    <h1>Your cart is empty.</h1>
     
     
 

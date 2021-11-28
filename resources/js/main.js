@@ -21,3 +21,17 @@ mobileBtn.addEventListener("click", () =>  {
 black.addEventListener('click', () => {
   menu.style.display = "none";
 })
+
+const ingredientsBtn = document.querySelector('.productDetail__container__item--a');
+const moreInfo = document.querySelector('.productDetail__container__item--moreInfo');
+
+
+moreInfo.style.display = "none";
+ingredientsBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  if(moreInfo.style.display === "block") {
+    moreInfo.style.display = "none";
+  } else {
+    moreInfo.style.display = "block";
+  }
+})

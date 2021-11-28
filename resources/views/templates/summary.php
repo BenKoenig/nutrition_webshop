@@ -24,7 +24,7 @@
             <p><?php echo $user->email; ?></p>
         </div>
 
-        <div class="summary__container__item">
+        <div class="summary__container__item summary__container__item--orders">
             <h4>Order</h4>
             <?php foreach ($cartContent as $product) : ?>
                 <div class="summary__container__item__wrapper">
@@ -33,10 +33,6 @@
                         <?php echo $product->name; ?>
                     </p>
 
-                    <h5 class="summary__container__item__wrapper--max">Description</h5>
-                    <p>
-                        <?php echo $product->description; ?>
-                    </p>
 
 
                     <h5>Amount</h5>
@@ -46,6 +42,12 @@
                         <?php echo $product->count; ?>
                     </p>
 
+                    <h5>Description</h5>
+                    <p>
+                        <?php echo $product->description; ?>
+                    </p>
+
+
                 </div>
             <?php endforeach; ?>
 
@@ -53,8 +55,11 @@
     </div>
 
     <?php if (\App\Models\User::isLoggedIn()) : ?>
-        <a href="<?php echo BASE_URL; ?>/checkout/finish" class="btn btn--lime">Complete</a>
-        <a href="<?php echo BASE_URL; ?>/cart" class="btn btn--red">Cancel</a>
+        <div class="summary__container__btns">
+            <a href="<?php echo BASE_URL; ?>/checkout/finish" class="btn btn--lime">Complete</a>
+            <a href="<?php echo BASE_URL; ?>/cart" class="btn btn--red">Cancel</a>
+        </div>
+
     <?php endif; ?>
 
 

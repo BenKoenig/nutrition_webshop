@@ -135,6 +135,14 @@
       "oAP" : "\/app\/Controllers\/Products\/ProductController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/Products\/ProductDetailController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Products\/ProductDetailController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Products\/ProductPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1104,12 +1112,12 @@
       "oAP" : "\/resources\/views\/templates\/products\/panel\/index.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/products\/productDetails.php" : {
+    "\/resources\/views\/templates\/products\/productDetail.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/products\/productDetails.php",
+      "oAP" : "\/resources\/views\/templates\/products\/productDetail.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/products\/productList.php" : {

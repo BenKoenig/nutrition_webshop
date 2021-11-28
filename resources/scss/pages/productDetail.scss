@@ -1,8 +1,30 @@
 .productDetail {
-    &__breadcrumbs {
-        display: flex;
-    }
+    max-width      : 100rem;
+    margin         : 0 auto;
+    padding        : 5rem 1rem;
     &__container {
-        display: flex;
+        display              : grid;
+        gap: 1rem;
+        grid-template-columns: repeat(1, 1fr);
+        @include md-screen {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        &__item {
+            &__img {
+                max-width: 30rem;
+                width:100%;
+                background: $ultragreen;
+                border-radius: 3rem;
+            }
+            &--description {
+                max-width: 30rem;
+            }
+            &--price {
+                font-weight: bold;
+                font-size: 1.5rem;
+            }
+        }
     }
+
 }
+

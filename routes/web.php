@@ -12,7 +12,7 @@ use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\Products\ProductPanelController;
 use App\Controllers\Merchants\MerchantPanelController;
-use App\Controllers\Flavors\FlavorPanelController;
+use App\Controllers\Products\ProductDetailController;
 use App\Controllers\Ratings\RatingPanelController;
 use App\Controllers\CartController;
 use App\Controllers\RoomController;
@@ -88,7 +88,7 @@ return [
 
     '/categories' => [CategoryController::class, 'index'],
     '/categories/{id}' => [ProductController::class, 'index'],
-    '/product/{id}' => [ProductController::class, 'detail'],
+    '/product/{id}' => [ProductDetailController::class, 'index'],
     
     '/admin/categories' => [CategoryPanelController::class, 'index'],
     '/admin/categories/create' => [CategoryPanelController::class, 'create'],

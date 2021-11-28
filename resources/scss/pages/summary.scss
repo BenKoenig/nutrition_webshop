@@ -3,11 +3,34 @@
     margin         : 0 auto;
     padding        : 5rem 1rem;
     &__container {
+        h5 {
+            font-weight: 500;
+        }
         display              : grid;
         grid-template-columns: repeat(1, 1fr);
         gap: 2rem;
         @include md-screen {
             grid-template-columns: repeat(2, 1fr);
+        }
+        &__item {
+            &--orders {
+                display: flex;
+                flex-direction: column;
+                max-width: 40rem;
+       
+            }
+            &__wrapper {
+     
+                background-color: $ultragreen;
+                padding: 2rem;
+                border-radius: 1rem;
+                margin-bottom: 0.4rem;
+            }
+        }
+
+        &__btns {
+            display: flex;
+            gap: 0.5rem;
         }
     }
 }
