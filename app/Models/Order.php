@@ -6,29 +6,9 @@ use Core\Database;
 use Core\Models\AbstractModel;
 use Core\Traits\SoftDelete;
 
-/**
- * Class Post
- *
- * @package App\Models
- */
-class RoomFeature extends AbstractModel
+class Order extends AbstractModel
 {
 
-    /**
-     * Der Tabellenname zu diesem Model kann nicht über unsere Methode aus dem AbstractModel berechnet werden, weil ein
-     * Unterstrich eingefügt werden müsste. In der Methode haben wir aber die Möglichkeit vorgesehen, dass der Wert für
-     * den Tabellennamen auch über eine Klassenkonstante gesetzt werden kann.
-     */
-    const TABLENAME = 'room_features';
-
-    /**
-     * Wir innerhalb einer Klasse das use-Keyword verwendet, so wird damit ein Trait importiert. Das kann man sich
-     * vorstellen wie einen Import mittels require, weil die Methoden, die im Trait definiert sind, einfach in die
-     * Klasse, die den Trait verwendet, eingefügt werden, als ob sie in der Klasse selbst definiert worden wären.
-     * Das hat den Vorteil, dass Methoden, die in mehreren Klassen vorkommen, zentral definiert und verwaltet werden
-     * können in einem Trait, und dennoch überall dort eingebunden werden, wo sie gebraucht werden, ohne Probleme mit
-     * komplexen und sehr verschachtelten Vererbungen zu kommen.
-     */
     use SoftDelete;
 
     public function __construct(
@@ -39,8 +19,8 @@ class RoomFeature extends AbstractModel
          * Im Prinzip definieren wir alle Spalten aus der Tabelle mit dem richtigen Datentyp.
          */
         public ?int $id = null,
-        public string $name = '',
-        public ?string $description = null,
+        public ?int $user_id = null,
+        public ?int $product_id = null,
         public string $created_at = '',
         public string $updated_at = '',
         public ?string $deleted_at = null
@@ -76,19 +56,27 @@ class RoomFeature extends AbstractModel
              * Query ausführen und Ergebnis direkt zurückgeben. Das kann entweder true oder false sein, je nachdem ob
              * der Query funktioniert hat oder nicht.
              */
-            return $database->query("UPDATE $tablename SET name = ?, description = ? WHERE id = ?", [
-                's:name' => $this->name,
-                's:description' => $this->description,
-                'i:id' => $this->id
-            ]);
+            $result = $database->query(
+                "UPDATE $tablename SET user_id = ?, product_id = ? WHERE id = ?",
+                [
+                    'i:user_id' => $this->user_id,
+                    'i:product_id' => $this->product_id,
+                    'i:id' => $this->id
+                ]
+            );
+
+            return $result;
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
              */
-            $result = $database->query("INSERT INTO $tablename SET name = ?, description = ?", [
-                's:name' => $this->name,
-                's:description' => $this->description
-            ]);
+            $result = $database->query(
+                "INSERT INTO $tablename SET user_id = ?, product_id = ?",
+                [
+                    'i:user_id' => $this->user_id,
+                    'i:product_id' => $this->product_id,
+                ]
+            );
 
             /**
              * Ein INSERT Query generiert eine neue id, diese müssen wir daher extra abfragen und verwenden daher die
@@ -104,16 +92,14 @@ class RoomFeature extends AbstractModel
         }
     }
 
+
     /**
-     * Alle RoomFeatures zu einem bestimmten Room abfragen.
-     *
-     * Das ist sehr ähnlich wie die AbstractModel::all() Methode, nur ist der Query ein bisschen anders.
-     *
-     * @param int $roomId
+     * @param ?int $userId
      *
      * @return array
+     * @todo: comment
      */
-    public static function findByRoom(int $roomId): array
+    public static function findOrdersByUser(?int $userId)
     {
         /**
          * Datenbankverbindung herstellen.
@@ -127,18 +113,26 @@ class RoomFeature extends AbstractModel
         /**
          * Query ausführen.
          */
-        $result = $database->query("
-            SELECT $tablename.* FROM $tablename
-                JOIN rooms_room_features_mm
-                    ON $tablename.id = rooms_room_features_mm.room_feature_id
-                WHERE rooms_room_features_mm.room_id = ?
-        ", [
-            'i:room_id' => $roomId
-        ]);
+        $result = $database->query(
+//            "SELECT *, COUNT(*) as units FROM $tablename WHERE foreign_table = ? AND user_id = ? GROUP BY foreign_id",
+            "SELECT * FROM $tablename WHERE product AND user_id = ?",
+            [
+                'i:user_id' => $userId,
+            ]
+        );
 
         /**
          * Datenbankergebnis verarbeiten und zurückgeben.
          */
         return self::handleResult($result);
+    }
+
+    /**
+     * @return object|null
+     * @todo: comment
+     */
+    public function bookable()
+    {
+        // return Product::find($this->product_id);
     }
 }

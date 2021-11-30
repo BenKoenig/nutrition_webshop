@@ -87,14 +87,6 @@
       "oAP" : "\/app\/Controllers\/CheckoutController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/Flavors\/FlavorPanelController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/Flavors\/FlavorPanelController.php",
-      "oF" : 0
-    },
     "\/app\/Controllers\/Goals\/GoalPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -159,30 +151,6 @@
       "oAP" : "\/app\/Controllers\/Products\/SaleController.php",
       "oF" : 0
     },
-    "\/app\/Controllers\/Ratings\/RatingPanelController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/Ratings\/RatingPanelController.php",
-      "oF" : 0
-    },
-    "\/app\/Controllers\/RoomController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/RoomController.php",
-      "oF" : 0
-    },
-    "\/app\/Controllers\/RoomFeatureController.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Controllers\/RoomFeatureController.php",
-      "oF" : 0
-    },
     "\/app\/Controllers\/Users\/UserPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -197,14 +165,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/.gitkeep",
-      "oF" : 0
-    },
-    "\/app\/Models\/Booking.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Models\/Booking.php",
       "oF" : 0
     },
     "\/app\/Models\/Category.php" : {
@@ -239,36 +199,20 @@
       "oAP" : "\/app\/Models\/Merchant.php",
       "oF" : 0
     },
+    "\/app\/Models\/Order.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Models\/Order.php",
+      "oF" : 0
+    },
     "\/app\/Models\/Product.php" : {
       "cB" : 0,
       "ft" : 8192,
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/Product.php",
-      "oF" : 0
-    },
-    "\/app\/Models\/Rating.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Models\/Rating.php",
-      "oF" : 0
-    },
-    "\/app\/Models\/Room.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Models\/Room.php",
-      "oF" : 0
-    },
-    "\/app\/Models\/RoomFeature.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Models\/RoomFeature.php",
       "oF" : 0
     },
     "\/app\/Models\/User.php" : {
@@ -976,30 +920,6 @@
       "oAP" : "\/resources\/views\/templates\/categories\/panel\/index.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/flavors\/panel\/create.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/create.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/flavors\/panel\/edit.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/edit.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/flavors\/panel\/index.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/flavors\/panel\/index.php",
-      "oF" : 0
-    },
     "\/resources\/views\/templates\/goals\/panel\/create.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1142,70 +1062,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/products\/sales.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/ratings\/panel\/edit.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/ratings\/panel\/edit.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/ratings\/panel\/index.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/ratings\/panel\/index.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/room_features\/create.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/room_features\/create.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/room_features\/edit.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/room_features\/edit.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/room_features\/index.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/room_features\/index.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/rooms\/create.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/rooms\/create.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/rooms\/edit.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/rooms\/edit.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/templates\/rooms\/index.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/rooms\/index.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/summary.php" : {

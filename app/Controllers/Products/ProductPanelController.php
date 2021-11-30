@@ -12,6 +12,7 @@ use Core\Session;
 use Core\Helpers\Redirector;
 use Core\Validator;
 use Core\Models\AbstractFile;
+
 /**
  * ====================================================
  * ProductPanelController
@@ -36,7 +37,7 @@ class ProductPanelController
          */
         $products = Product::all();
 
-    
+
 
 
         /**
@@ -78,16 +79,21 @@ class ProductPanelController
          */
 
         /**
+         * When checkbox is checked it returns 1
+         * and if checkbox is unchecked it returns 0.
+         */
+
+
+        /**
          * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
          * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
          */
         $validationErrors = $this->validateFormData($id);
 
 
-        $_POST['is_featured'] = (int) $_POST['is_featured'];
-        $_POST['is_bestseller'] = (int) $_POST['is_bestseller'];
-        $_POST['is_sale'] = (int) $_POST['is_sale'];
-
+        $_POST['is_featured'] = $_POST['is_featured'] === 0 ? 0 : 1;
+        $_POST['is_bestseller'] = $_POST['is_bestseller'] === 0 ? 0 : 1;
+        $_POST['is_sale'] = $_POST['is_sale'] === 0 ? 0 : 1;
         /**
          * Sind Validierungsfehler aufgetreten ...
          */
@@ -114,7 +120,6 @@ class ProductPanelController
          * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
          */
 
-    
 
         $product->fill($_POST);
 
@@ -227,7 +232,6 @@ class ProductPanelController
             'goals' => $goals,
             'merchants' => $merchants,
         ]);
-
     }
 
 
@@ -249,12 +253,19 @@ class ProductPanelController
          * 5) Redirect irgendwohin
          */
 
-        
 
-        $_POST['is_featured'] = empty($_POST['is_featured'])?0:1;
-        $_POST['is_bestseller'] = empty($_POST['is_bestseller'])?0:1;
-        $_POST['is_sale'] = empty($_POST['is_sale'])?0:1;
-        
+        /**
+         * Checkboxes return "on" when checked and otherwise nothing. 
+         * For the result to be able to be read by the database it must be
+         * turned into a integer. 
+         * 
+         * If checkbox is checked it returns 1
+         * and if checkbox is unchecked it returns 0.
+         */
+        $_POST['is_featured'] = empty($_POST['is_featured']) ? 0 : 1;
+        $_POST['is_bestseller'] = empty($_POST['is_bestseller']) ? 0 : 1;
+        $_POST['is_sale'] = empty($_POST['is_sale']) ? 0 : 1;
+
 
         /**
          * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
@@ -391,7 +402,7 @@ class ProductPanelController
 
 
 
-        /**
+    /**
      * Hochgeladene Dateien verarbeiten.
      *
      * @param Room $room
@@ -456,6 +467,4 @@ class ProductPanelController
 
         return $product;
     }
-
 }
-

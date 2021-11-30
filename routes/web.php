@@ -15,9 +15,7 @@ use App\Controllers\Merchants\MerchantPanelController;
 use App\Controllers\Products\ProductDetailController;
 use App\Controllers\Ratings\RatingPanelController;
 use App\Controllers\CartController;
-use App\Controllers\RoomController;
 use App\Controllers\Products\ProductController;
-use App\Controllers\RoomFeatureController;
 use App\Controllers\Products\NewController;
 use App\Controllers\Products\SaleController;
 use App\Controllers\Users\UserPanelController;
@@ -61,34 +59,11 @@ return [
     '/home' => [HomeController::class, 'display'],
 
 
-
-    /**
-     * Rooms Routes
-     */
-    '/rooms' => [RoomController::class, 'index'],
-    '/rooms/{id}' => [RoomController::class, 'edit'],
-    '/rooms/{id}/update' => [RoomController::class, 'update'],
-    '/rooms/{id}/delete' => [RoomController::class, 'delete'],
-    '/rooms/{id}/delete/confirm' => [RoomController::class, 'deleteConfirm'],
-    '/rooms/create' => [RoomController::class, 'create'],
-    '/rooms/store' => [RoomController::class, 'store'],
-
-    /**
-     * RoomFeatures Routes
-     */
-    '/room-features' => [RoomFeatureController::class, 'index'],
-    '/room-features/{id}' => [RoomFeatureController::class, 'edit'],
-    '/room-features/{id}/update' => [RoomFeatureController::class, 'update'],
-    '/room-features/{id}/delete' => [RoomFeatureController::class, 'delete'],
-    '/room-features/{id}/delete/confirm' => [RoomFeatureController::class, 'deleteConfirm'],
-    '/room-features/create' => [RoomFeatureController::class, 'create'],
-    '/room-features/store' => [RoomFeatureController::class, 'store'],
-
     // ...
 
     '/categories' => [CategoryController::class, 'index'],
     '/categories/{id}' => [ProductController::class, 'index'],
-    '/product/{id}' => [ProductDetailController::class, 'index'],
+
     
     '/admin/categories' => [CategoryPanelController::class, 'index'],
     '/admin/categories/create' => [CategoryPanelController::class, 'create'],
@@ -108,13 +83,12 @@ return [
     '/admin/products/{id}/edit/update' => [ProductPanelController::class, 'update'],
     '/admin/products/{id}/delete' => [ProductPanelController::class, 'delete'],
     '/admin/products/{id}/delete/confirm' => [ProductPanelController::class, 'deleteConfirm'],
-    
-    '/cart' => [CartController::class, 'index'],
+    '/product/{id}' => [ProductDetailController::class, 'index'],
     '/products/{id}/add-to-cart' => [CartController::class, 'add'],
     '/products/{id}/remove-from-cart' => [CartController::class, 'remove'],
     '/products/{id}/remove-all-from-cart' => [CartController::class, 'removeAll'],
 
-
+    '/cart' => [CartController::class, 'index'],
     '/checkout/summary' => [CheckoutController::class, 'summary'],
     '/checkout/finish' => [CheckoutController::class, 'finish'],
 
@@ -125,14 +99,6 @@ return [
     '/admin/merchants/{id}/delete/confirm' => [MerchantPanelController::class, 'deleteConfirm'],
     '/admin/merchants/{id}/edit' => [MerchantPanelController::class, 'edit'],
     '/admin/merchants/{id}/edit/update' => [MerchantPanelController::class, 'update'],
-
-    // '/admin/flavors' => [FlavorPanelController::class, 'index'],
-    // '/admin/flavors/create' => [FlavorPanelController::class, 'create'],
-    // '/admin/flavors/create/store' => [FlavorPanelController::class, 'store'],
-    // '/admin/flavors/{id}/delete' => [FlavorPanelController::class, 'delete'],
-    // '/admin/flavors/{id}/delete/confirm' => [FlavorPanelController::class, 'deleteConfirm'],
-    // '/admin/flavors/{id}/edit' => [FlavorPanelController::class, 'edit'],
-    // '/admin/flavors/{id}/edit/update' => [FlavorPanelController::class, 'update'],
 
     '/admin/users' => [UserPanelController::class, 'index'],
 

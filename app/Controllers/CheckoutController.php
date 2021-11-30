@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Booking;
+use App\Models\Order;
 use App\Models\User;
 use App\Services\CartService;
 use Core\Helpers\Redirector;
@@ -81,16 +81,15 @@ class CheckoutController
                 /**
                  * Booking Objekt erstellen und befüllen.
                  */
-                $booking = new Booking();
-                $booking->fill([
+                $order = new Order();
+                $order->fill([
                     'user_id' => $user->id,
-                    'foreign_table' => $itemFromCart::class,
-                    'foreign_id' => $itemFromCart->id
+                    'product_id' => $itemFromCart->id
                 ]);
                 /**
                  * Booking Objekt in die Datenbank speichern.
                  */
-                if (!$booking->save()) {
+                if (!$order->save()) {
                     /**
                      * Konnte nicht gespeichert werden, schreiben wir einen Fehler und leiten zurück zur Zusammenfassung.
                      */
