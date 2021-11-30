@@ -83,6 +83,11 @@ class ProductPanelController
          */
         $validationErrors = $this->validateFormData($id);
 
+
+        $_POST['is_featured'] = (int) $_POST['is_featured'];
+        $_POST['is_bestseller'] = (int) $_POST['is_bestseller'];
+        $_POST['is_sale'] = (int) $_POST['is_sale'];
+
         /**
          * Sind Validierungsfehler aufgetreten ...
          */
@@ -244,6 +249,12 @@ class ProductPanelController
          * 5) Redirect irgendwohin
          */
 
+        
+
+        $_POST['is_featured'] = empty($_POST['is_featured'])?0:1;
+        $_POST['is_bestseller'] = empty($_POST['is_bestseller'])?0:1;
+        $_POST['is_sale'] = empty($_POST['is_sale'])?0:1;
+        
 
         /**
          * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene

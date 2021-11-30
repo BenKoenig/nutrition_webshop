@@ -42,17 +42,17 @@
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
             <label class="adminForm__form__field__label--checklabel" for="is_featured">Add to featured section</label>
-            <input type="checkbox" name="is_featured" id="is_featured" <?php echo $product->is_featured ? "checked" : ""; ?>>
+            <input type="checkbox" name="is_featured" id="is_featured"  <?php echo $product->is_featured===1 ? "checked" : "";?>>
         </div>
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
             <label class="adminForm__form__field__label--checklabel" for="is_bestseller">Is this item a bestseller?</label>
-            <input type="checkbox" name="is_bestseller" id="is_bestseller" <?php echo $product->is_bestseller ? "checked" : ""; ?>>
+            <input type="checkbox" name="is_bestseller" id="is_bestseller" <?php echo $product->is_bestseller===1? "checked" : ""; ?>>
         </div>
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
             <label class="adminForm__form__field__label--checklabel" for="is_sale">Is this item on sale?</label>
-            <input type="checkbox" name="is_sale" id="is_sale" <?php echo $product->is_sale ? "checked" : ""; ?>>
+            <input type="checkbox" name="is_sale" id="is_sale" <?php echo $product->is_sale===1 ? "checked" : ""; ?>>
         </div>
 
         <div class="adminForm__form__field">
@@ -84,6 +84,11 @@
                     <option <?php echo $merchant->id ? "selected" : ""; ?> value="<?php echo $merchant->id; ?>"><?php echo $merchant->name; ?></option>
                 <?php endforeach; ?>
             </select>
+        </div>
+
+        <div class="adminForm__form__field">
+            <label class="adminForm__form__field__label" for="units">Units</label>
+            <input class="adminForm__form__field__input" type="text" name="units" id="units" value="<?php echo $product->units; ?>">
         </div>
 
 

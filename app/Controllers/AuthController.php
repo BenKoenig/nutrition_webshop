@@ -139,6 +139,13 @@ class AuthController
         $validator->unique($_POST['email'], 'E-Mail', 'users', 'email');
         $validator->unique($_POST['username'], 'Username', 'users', 'username');
         $validator->password($_POST['password'], 'Passwort', min: 8, required: true);
+        $validator->letters($_POST['firstname'], 'Firstname', required: true);
+        $validator->letters($_POST['lastname'], 'Lastname', required: true);
+        $validator->alphanumeric($_POST['adress_1'], 'Adress_1', required: true);
+        $validator->alphanumeric($_POST['adress_2'], 'Adress_2', required: false);
+        $validator->numeric($_POST['postal_code'], 'Postal_code', required: true);
+        $validator->letters($_POST['city'], 'City', required: true);
+        $validator->letters($_POST['country'], 'Country', required: true);
         /**
          * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
          * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt

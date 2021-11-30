@@ -1,11 +1,12 @@
 <div class="productDetail">
-    <h1><?php echo $product->name; ?></h1>
+
     <div class="productDetail__container">
+
         <div class="productDetail__container__item">
             <img class="productDetail__container__item__img" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="<?php echo $product->name; ?>">
         </div>
         <div class="productDetail__container__item">
-
+            <h1><?php echo $product->name; ?></h1>
             <p class="productDetail__container__item--price">
                 € <?php echo $product->price; ?>
             </p>

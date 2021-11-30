@@ -1627,6 +1627,32 @@
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75
+    },
+    "\/storage\/uploads\/1638261740_category-bars.png" : {
+      "ft" : 32768,
+      "iS" : 321530,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638261740_category-bars.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638263775_category-shakes.png" : {
+      "ft" : 32768,
+      "iS" : 215259,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638263775_category-shakes.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
     }
   },
   "hooks" : [

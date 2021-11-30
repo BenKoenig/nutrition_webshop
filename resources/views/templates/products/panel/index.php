@@ -33,9 +33,9 @@
                     <td class="panel-option__table__body__tr__td"><?php echo $product->serving; ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo $product->ingredients; ?></td>
                     <td class="panel-option__table__body__tr__td"><?php echo $product->weight; ?> g</td>
-                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_featured  ? 'Yes' : 'No'); ?></td>
-                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_bestseller  ? 'Yes' : 'No'); ?></td>
-                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_sale  ? 'Yes' : 'No'); ?></td>
+                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_featured===1  ? 'Yes' : 'No'); ?></td>
+                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_bestseller===1  ? 'Yes' : 'No'); ?></td>
+                    <td class="panel-option__table__body__tr__td"><?php echo ($product->is_sale===1  ? 'Yes' : 'No'); ?></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--gray" href="<?php echo BASE_URL . '/admin/products/' . $product->id . '/edit';?>">Edit</a></td>
                     <td class="panel-option__table__body__tr__td"><a class="btn btn--red" href="<?php echo BASE_URL . '/admin/products/' . $product->id . '/delete';?>"">Delete</a></td>
                 </tr>

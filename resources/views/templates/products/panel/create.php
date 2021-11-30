@@ -37,14 +37,14 @@
         </div>
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
-            <input type="checkbox" name="is_featured" id="is_featured">
+            <input type="checkbox" name="is_featured" id="is_featured" >
             <label class="adminForm__form__field__label adminForm__form__field__label--checklabel" for="is_featured">Add to featured section</label>
 
         </div>
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
-            <input type="checkbox" name="is_bestseller" id="is_bestseller">
-            <label class="adminForm__form__field__label adminForm__form__field__label--checklabel" for="is_bestseller">Is this item a bestseller?</label>
+            <input type="checkbox" name="is_bestseller" id="is_bestseller" >
+            <label class="adminForm__form__field__label adminForm__form__field__label--checklabel"for="is_bestseller">Is this item a bestseller?</label>
 
         </div>
 
@@ -52,7 +52,11 @@
         <div class="adminForm__form__field adminForm__form__field--checkfield">
             <input type="checkbox" name="is_sale" id="is_sale">
             <label class="adminForm__form__field__label adminForm__form__field__label--checklabel" for="is_sale">Is this item on sale?</label>
+        </div>
 
+        <div class="adminForm__form__field">
+            <label class="adminForm__form__field__label" for="units">Units</label>
+            <input class="adminForm__form__field__input" type="text" name="units" id="units" placeholder="50">
         </div>
 
 

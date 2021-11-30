@@ -41,10 +41,11 @@ class Product extends AbstractModel
         public int $serving = 0,
         public string $ingredients = '',
         public int $weight = 0,
-        public bool $is_featured = false,
-        public bool $is_bestseller = false,
-        public bool $is_sale = false,
+        public int $is_featured = 0,
+        public int $is_bestseller = 0,
+        public int $is_sale = 0,
         public string $imgs = '[]',
+        public int $units = 1,
         public string $created_at = '',
         public string $updated_at = '',
         public ?string $deleted_at = null
@@ -80,8 +81,8 @@ class Product extends AbstractModel
              * Query ausführen und Ergebnis direkt zurückgeben. Das kann entweder true oder false sein, je nachdem ob
              * der Query funktioniert hat oder nicht.
              */
-            return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, serving = ?,
-            ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?, price = ? WHERE id = ?", [
+            return $database->query("UPDATE $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, 
+            serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?, units = ? WHERE id = ?", [
                 'i:category_id' => $this->category_id,
                 'i:goal_id' => $this->goal_id,
                 'i:merchant_it' => $this->merchant_id,
@@ -95,134 +96,33 @@ class Product extends AbstractModel
                 's:is_bestseller' => $this->is_bestseller,
                 's:is_sale' => $this->is_sale,
                 's:imgs' => $this->imgs,
+                'i:units' => $this->units,
                 'i:id' => $this->id
             ]);
         } else {
             /**
              * Hat das Objekt keine id, so müssen wir es neu anlegen.
+             *
              */
 
 
-            switch ([$_POST['is_featured'], $_POST['is_bestseller'], $_POST['is_sale']]) {
-                case [true, true, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_featured' => $this->is_featured,
-                        's:is_bestseller' => $this->is_bestseller,
-                        's:is_sale' => $this->is_sale,
-                        's:imgs' => $this->imgs,
-                    ]);
-                    break;
-                case [true, true, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                    ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_featured' => $this->is_featured,
-                        's:is_bestseller' => $this->is_bestseller,
-                        's:imgs' => $this->imgs,
-                    ]);
-                    break;
-                case [true, false, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                        ingredients = ?, weight = ?, is_featured = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_featured' => $this->is_featured,
-                        's:imgs' => $this->imgs,
-                    ]);
-                    break;
-                case [false, false, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                            ingredients = ?, weight = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:imgs' => $this->imgs,
-                    ]);
-                    break;
-                case [false, false, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                                ingredients = ?, weight = ?, is_sale = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_sale' => $this->is_sale,
-                        's:imgs' => $this->imgs,
-                    ]);
-                    break;
-                case [true, false, true]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                                    ingredients = ?, weight = ?, is_sale = ?, is_featured = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_sale' => $this->is_sale,
-                        's:is_featured' => $this->is_featured,
-                        's:imgs' => $this->imgs
-                    ]);
-                    break;
-                case [false, true, false]:
-                    $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, serving = ?,
-                                        ingredients = ?, weight = ?, is_besteller = ?, imgs = ?", [
-                        'i:category_id' => $this->category_id,
-                        'i:goal_id' => $this->goal_id,
-                        'i:merchant_it' => $this->merchant_id,
-                        's:name' => $this->name,
-                        's:description' => $this->description,
-                        'i:price' => $this->price,
-                        'i:serving' => $this->serving,
-                        's:ingredients' => $this->ingredients,
-                        'i:weight' => $this->weight,
-                        's:is_besteller' => $this->is_besteller,
-                        's:imgs' => $this->imgs
-                    ]);
-                    break;
-            }
-
-
-
+            $result = $database->query("INSERT INTO $tablename SET category_id = ?, goal_id = ?, merchant_id = ?, name = ?, description = ?, price = ?, 
+            serving = ?, ingredients = ?, weight = ?, is_featured = ?, is_bestseller = ?, is_sale = ?, imgs = ?, units = ?", [
+                'i:category_id' => $this->category_id,
+                'i:goal_id' => $this->goal_id,
+                'i:merchant_it' => $this->merchant_id,
+                's:name' => $this->name,
+                's:description' => $this->description,
+                'i:price' => $this->price,
+                'i:serving' => $this->serving,
+                's:ingredients' => $this->ingredients,
+                'i:weight' => $this->weight,
+                's:is_featured' => $this->is_featured,
+                's:is_bestseller' => $this->is_bestseller,
+                's:is_sale' => $this->is_sale,
+                's:imgs' => $this->imgs,
+                'i:units' => $this->units,
+            ]);
 
 
             /**
