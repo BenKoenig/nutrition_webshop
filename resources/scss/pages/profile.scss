@@ -1,0 +1,35 @@
+.profile {
+    @include page-width;
+    &__header {
+        padding-bottom: 1.5rem;
+    }
+    &__orders {
+        &__container {
+            display: flex;
+            gap: 1rem;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            &__item {
+                flex-basis: 20rem;
+                flex-grow: 1;
+                flex-shrink: 1;
+                @include sm-screen {
+                    max-width: 15rem;
+                }
+
+ 
+                background: $lightGreen;
+                border-radius: 3rem;
+                &--img {
+                    width:100%;
+                }
+                &--p {
+                    display: flex;
+                    justify-content: center;
+                    padding-bottom: 1rem;
+                }
+            }
+        }
+    }
+}

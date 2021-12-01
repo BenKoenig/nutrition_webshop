@@ -33,3 +33,9 @@
         @content;
     }
 }
+
+@mixin page-width {
+    max-width: 100rem;
+    margin   : 0 auto;
+    padding  : 5rem 2rem;
+}

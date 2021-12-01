@@ -1101,6 +1101,41 @@
   font-size: 1.5rem;
 }
 
+.profile {
+  max-width: 100rem;
+  margin: 0 auto;
+  padding: 5rem 2rem;
+}
+.profile__header {
+  padding-bottom: 1.5rem;
+}
+.profile__orders__container {
+  display: flex;
+  gap: 1rem;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.profile__orders__container__item {
+  flex-basis: 20rem;
+  flex-grow: 1;
+  flex-shrink: 1;
+  background: #F4FAFA;
+  border-radius: 3rem;
+}
+@media only screen and (min-width: 767px) {
+  .profile__orders__container__item {
+    max-width: 15rem;
+  }
+}
+.profile__orders__container__item--img {
+  width: 100%;
+}
+.profile__orders__container__item--p {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 1rem;
+}
+
 body {
   background-color: #FEFEFE;
   margin: 0;

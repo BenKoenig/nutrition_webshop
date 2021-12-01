@@ -749,6 +749,21 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/resources\/scss\/pages\/profile.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/pages\/profile.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/resources\/scss\/pages\/summary.scss" : {
       "aP" : 0,
       "bl" : 0,

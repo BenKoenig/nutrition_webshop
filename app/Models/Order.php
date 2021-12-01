@@ -93,45 +93,31 @@ class Order extends AbstractModel
     }
 
 
+
     /**
-     * @param ?int $userId
-     *
-     * @return array
-     * @todo: comment
+     * Searches for orders from users
      */
     public static function findOrdersByUser(?int $userId)
     {
-        /**
-         * Datenbankverbindung herstellen.
-         */
+        //creates database connection
         $database = new Database();
-        /**
-         * Tabellennamen berechnen.
-         */
+        //caluclates tablename
         $tablename = self::getTablenameFromClassname();
 
-        /**
-         * Query ausführen.
-         */
+        //executs query
         $result = $database->query(
-            "SELECT * FROM $tablename WHERE user_id = ?",
+            "SELECT product_id FROM $tablename WHERE user_id = ?",
             [
                 'i:user_id' => $userId
             ]
         );
 
-        /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
-         */
         return self::handleResult($result);
     }
 
-    /**
-     * @return object|null
-     * @todo: comment
-     */
-    public function bookable()
+    public function item()
     {
+
         return Product::find($this->product_id);
     }
 }

@@ -5,7 +5,6 @@
 
     &__container {
         display: flex;
-
         justify-content: space-between;
         flex-wrap      : wrap;
         gap            : 2rem;
@@ -16,7 +15,6 @@
             gap           : 1rem;
 
             &__product {
-
                 display         : flex;
                 gap             : 2rem;
                 justify-content : space-between;
@@ -61,20 +59,16 @@
                             border-radius  : 100%;
                         }
                     }
-
                 }
             }
 
             &__costs {
-
-
                 background-color: $lightGreen;
                 padding         : 2rem;
                 border-radius   : 3rem;
 
 
                 &__divider {
-
                     height          : 0.03rem;
                     background-color: $black;
                     margin-bottom   : 0.2rem;
