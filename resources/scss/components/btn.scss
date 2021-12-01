@@ -9,6 +9,8 @@
     transition-property: color, background-color;
     transition-duration: .2s;
     transition-timing-function: ease-out;
+    outline: 0;
+    border: 0;
 
     &--red {
         background-color: $red;

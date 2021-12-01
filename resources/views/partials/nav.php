@@ -2,7 +2,7 @@
     <div class="nav__desktop">
         <div class="nav__desktop__container">
             <ul class="nav__desktop__container__ul">
-                <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--home" href="<?php echo BASE_URL; ?>/home">Fitness Express</a></li>
+                <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--home" href="<?php echo BASE_URL; ?>/home">Shape Nutrtitions</a></li>
                 <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/categories"">Categories</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/sales"">Sales</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/new"">New</a></li>
@@ -19,7 +19,7 @@
                 <li class="nav__desktop__container__account__li"><a class="nav__desktop__container__account__li__a nav__desktop__container__account__li__a--register" href="<?php echo BASE_URL; ?>/register">Register</a></li>
             <?php else : ?>
                 <div class="nav__desktop__container__account__logged">
-                    <p>Logged in as <?php echo \App\Models\User::getLoggedIn()->username; ?></p>
+                    <p>Logged in as <a href="<?php echo BASE_URL . "/profile";?>"><?php echo \App\Models\User::getLoggedIn()->username; ?></a></p>
                     <a class="nav__desktop__container__account__logged__a" href="<?php echo BASE_URL ?>/logout">Logout</a>
                 </div>
             <?php endif; ?>
