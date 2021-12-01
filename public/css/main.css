@@ -1158,19 +1158,19 @@
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  background-color: #E6ED96;
+  background-color: #FEFEFE;
   padding: 0.5rem;
   width: 10rem;
   text-align: center;
-  color: #a9b04e;
+  color: #777272;
   border-radius: 0.8rem;
   transition: color, background;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 .profile__wrapper__orders__container__item--a:hover {
-  background: #a9b04e;
-  color: #E6ED96;
+  background: #777272;
+  color: #FEFEFE;
 }
 .profile__wrapper__form {
   width: 100%;

@@ -289,6 +289,14 @@
       "oAP" : "\/core\/ExceptionHandler.php",
       "oF" : 0
     },
+    "\/core\/helpers.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/core\/helpers.php",
+      "oF" : 0
+    },
     "\/core\/Helpers\/Redirector.php" : {
       "cB" : 0,
       "ft" : 8192,
