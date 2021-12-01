@@ -5,11 +5,6 @@ namespace Core\Models;
 use Core\Database;
 use Exception;
 
-/**
- * Class AbstractModel
- *
- * @package Core\Models
- */
 abstract class AbstractModel
 {
 
@@ -21,16 +16,7 @@ abstract class AbstractModel
     public abstract function save(): bool;
 
     /**
-     * Alle Datensätze aus der Datenbank abfragen.
-     *
-     * Die beiden Funktionsparameter bieten die Möglichkeit die Daten, die abgerufen werden, nach einer einzelnen Spalte
-     * aufsteigend oder absteigend direkt über MySQL zu sortieren. Sortierungen sollten, sofern möglich, über die
-     * Datenbank durchgeführt werden, weil das wesentlich performanter ist als über PHP.
-     *
-     * @param string|null $orderBy
-     * @param string|null $direction
-     *
-     * @return array
+    Requests all data from the databank
      */
     public static function all(?string $orderBy = null, ?string $direction = null, ?int $limit = null, ?string $where = null, ?int $is = null): array
     {
@@ -43,14 +29,10 @@ abstract class AbstractModel
          */
         $tablename = self::getTablenameFromClassname();
 
+
         /**
-         * Query ausführen.
-         *
-         * Wurde in den Funktionsparametern eine Sortierung definiert, so wenden wir sie hier an, andernfalls rufen wir
-         * alles ohne Sortierung ab.
+         * Searches through parameters and adds SQL code depending on the information that is provided
          */
-
-
         switch([$orderBy, $limit, $where, $is]) {
             case [null, null, null, null]:
                 $result = $database->query("SELECT * FROM $tablename");
@@ -82,202 +64,89 @@ abstract class AbstractModel
 
         }
 
-        // switch([$orderBy, $limit]) {
-        //     case [null, null]:
-        //         $result = $database->query("SELECT * FROM $tablename");
-        //     break;
-        //     case [true, null]:
-        //         $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
-        //     break;
-        //     case [null, true]: 
-        //         $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
-        //     break;
-        //     case [true, true]:
-        //         $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
-        //     break;
-        // }
-
-
-
-        // if ($orderBy === null) {
-        //     $result = $database->query("SELECT * FROM $tablename");
-        // } else {
-        //     $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
-        // }
 
         /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
+         * Returns data result
          */
         return self::handleResult($result);
     }
 
     /**
-     * Ein einzelnes Objekt anhand seiner ID finden.
-     *
-     * @param int $id
-     *
-     * @return object|null
+     * Searches for a specific object with an ID
      */
-
-
-
-
-
-    public static function findWhere(string $where, int $is) {
-        $database = new Database();
-        $tablename = self::getTablenameFromClassname();
-
-        if ($is === null) {
-            $result = $database->query("SELECT * FROM $tablename WHERE $where AND deleted_at IS NULL;");
-        } else {
-            $result = $database->query("SELECT * FROM $tablename WHERE $where = $is AND deleted_at IS NULL;");
-        }
-
-
-        return self::handleResult($result);
-    } 
-
-
-
     public static function find(int $id): ?object
     {
         /**
-         * Datenbankverbindung herstellen.
+         * Creates database
          */
         $database = new Database();
         /**
-         * Tabellennamen berechnen.
+         * Calculates tablename
          */
         $tablename = self::getTablenameFromClassname();
 
         /**
-         * Query ausführen.
+         * Executes Query
          */
         $result = $database->query("SELECT * FROM $tablename WHERE `id` = ?", [
             'i:id' => $id
         ]);
 
         /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
+         * Returns data result
          */
         return self::handleUniqueResult($result);
     }
 
-    public static function findWhereOrFail(string $where, int $is) {
-        $result = self::findWhere($where, $is);
-
-        if (empty($result)) {
-            throw new Exception('Model not found', 404);
-        }
-
-
-        return $result;
-    } 
 
 
     /**
-     * find()-Methode aufrufen oder einen Fehler 404 Not Found zurückgeben, wenn kein Ergebnis aus der Datenbank
-     * zurückgekommen ist.
-     *
-     * @param int $id
-     *
-     * @return object|null
-     * @throws Exception
+     * Searches for object with an ID and gives error if it doesn't exist
      */
     public static function findOrFail(int $id): ?object
     {
-        /**
-         * find()-Methode aufrufen.
-         */
         $result = self::find($id);
 
         if (empty($result)) {
             /**
-             * Wurde kein Ergebnis gefunden, so werfen wir einen Fehler, den wir über den ErrorHandler dann abfangen
-             * können.
+             * Error if object isn't found
              */
             throw new Exception('Model not found', 404);
         }
 
-        /**
-         * Wurde ein Ergebnis gefunden, so geben wir es zurück.
-         */
         return $result;
     }
 
     /**
-     * Diese Methode ermöglicht es uns, jedes beliebige Model, das das AbstractModel erweitert, mit Daten aus einem
-     * Array (bspw. $_GET oder $_POST) zu befüllen.
-     *
-     * @param array $data
-     * @param bool  $ignoreEmpty
-     *
-     * @return object
+     * Fills array with data
      */
     public function fill(array $data, bool $ignoreEmpty = true): object
     {
         /**
-         * 1) $data durchgehen
-         * 2) Gibt es eine Property zu den $data Werten?
-         *   Wenn ja: weiter, wenn nein: nix
-         * 3) Wert in Property mit Wert aus $data überschreiben
-         * 4) Fertiges Object zurückgeben
-         */
-
-        /**
-         * Wir gehen alle Werte aus dem übergebenen Array durch.
+         * Goes through all data
          */
         foreach ($data as $name => $value) {
-            /**
-             * Existiert zu dem Wert eine namensgleiche Property in dem Objekt ...
-             */
             if (property_exists($this, $name)) {    
-                /**
-                 * ... so trimmen wir den Wert.
-                 */
                 $trimmedValue = trim($value);
-                /**
-                 * Ist der getrimmte Wert nicht leer oder möchten wir leere Werte nicht ignorieren, so überschreiben
-                 * wir die Property mit dem Wert aus dem Array.
-                 */
                 if ($ignoreEmpty !== true || !empty($value)) {
                     $this->$name = $trimmedValue;
                 }
             }
         }
-
-        /**
-         * Nun geben wir das aktualisierte Objekt zurück.
-         */
         return $this;
     }
 
     /**
-     * Objekt löschen.
-     *
-     * @return bool
+     * Deletes Object
      */
     public function delete(): bool
     {
-        /**
-         * Datenbankverbindung herstellen.
-         */
         $database = new Database();
-        /**
-         * Tabellennamen berechnen.
-         */
         $tablename = self::getTablenameFromClassname();
-
-        /**
-         * Query ausführen.
-         */
         $result = $database->query("DELETE FROM $tablename WHERE id = ?", [
             'i:id' => $this->id
         ]);
 
-        /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
-         */
         return $result;
     }
 

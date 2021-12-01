@@ -17,12 +17,6 @@
       "oAP" : "\/.htaccess",
       "oF" : 0
     },
-    "\/.idea" : {
-      "ft" : 65536,
-      "oA" : 1,
-      "oAP" : "\/.idea",
-      "oF" : 0
-    },
     "\/app\/Controllers\/.gitkeep" : {
       "cB" : 0,
       "ft" : 8192,
@@ -151,6 +145,14 @@
       "oAP" : "\/app\/Controllers\/Products\/SaleController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/ProfileController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/ProfileController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Users\/UserPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -173,14 +175,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/app\/Models\/Category.php",
-      "oF" : 0
-    },
-    "\/app\/Models\/Flavor.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/app\/Models\/Flavor.php",
       "oF" : 0
     },
     "\/app\/Models\/Goal.php" : {
@@ -390,28 +384,6 @@
       "oA" : 0,
       "oAP" : "\/mvc.sql",
       "oF" : 0
-    },
-    "\/node_modules" : {
-      "ft" : 65536,
-      "oA" : 2,
-      "oAP" : "\/node_modules",
-      "oF" : 0
-    },
-    "\/package-lock.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/package-lock-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
-    },
-    "\/package.json" : {
-      "ft" : 524288,
-      "oA" : 1,
-      "oAP" : "\/package-min.json",
-      "oF" : 0,
-      "oO" : 1,
-      "oS" : 1
     },
     "\/public\/.htaccess" : {
       "cB" : 0,
@@ -1062,6 +1034,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/templates\/products\/sales.php",
+      "oF" : 0
+    },
+    "\/resources\/views\/templates\/profile.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/profile.php",
       "oF" : 0
     },
     "\/resources\/views\/templates\/summary.php" : {

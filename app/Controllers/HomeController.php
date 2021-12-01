@@ -2,29 +2,17 @@
 
 namespace App\Controllers;
 
-use App\Models\Room;
 use App\Models\Category;
 use App\Models\Goal;
 use App\Models\Product;
 use Core\View;
 
 /**
- * Beispiel Controller
+ * Home Controller Controller
  */
 class HomeController
 {
-
-    /**
-     * Beispielmethode
-     */
     public function index()
-    {
-        View::render('index', ['foo' => 'bar']);
-    }
-
-
-
-    public function display()
     {
         /**
          * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
@@ -42,9 +30,4 @@ class HomeController
             'products' => $products
         ]);
     }
-
-
-    
-
- 
 }

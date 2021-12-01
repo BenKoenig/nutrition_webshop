@@ -114,10 +114,9 @@ class Order extends AbstractModel
          * Query ausführen.
          */
         $result = $database->query(
-//            "SELECT *, COUNT(*) as units FROM $tablename WHERE foreign_table = ? AND user_id = ? GROUP BY foreign_id",
-            "SELECT * FROM $tablename WHERE product AND user_id = ?",
+            "SELECT * FROM $tablename WHERE user_id = ?",
             [
-                'i:user_id' => $userId,
+                'i:user_id' => $userId
             ]
         );
 
@@ -133,6 +132,6 @@ class Order extends AbstractModel
      */
     public function bookable()
     {
-        // return Product::find($this->product_id);
+        return Product::find($this->product_id);
     }
 }

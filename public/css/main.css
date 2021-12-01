@@ -916,6 +916,23 @@
     min-width: 20rem;
   }
 }
+.cart__container__item__product__desc__count {
+  display: flex;
+  gap: 1rem;
+  border-radius: 1rem;
+}
+.cart__container__item__product__desc__count a {
+  font-size: 1.7rem;
+  color: black;
+  font-weight: bold;
+  background: #E6ED96;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 100%;
+}
 .cart__container__item__costs {
   background-color: #F4FAFA;
   padding: 2rem;

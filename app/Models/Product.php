@@ -241,32 +241,6 @@ class Product extends AbstractModel
         return $this->getImages();
     }
 
-    public static function findOrdersByUser(?int $userId)
-    {
-        /**
-         * Datenbankverbindung herstellen.
-         */
-        $database = new Database();
-        /**
-         * Tabellennamen berechnen.
-         */
-        $tablename = self::getTablenameFromClassname();
-
-        /**
-         * Query ausführen.
-         */
-        $result = $database->query(
-            "SELECT * FROM $tablename WHERE id = ? AND user_id = ?",
-            [
-                // 's:foreign_table' => Equipment::class,
-                'i:user_id' => $userId
-            ]
-        );
-
-        /**
-         * Datenbankergebnis verarbeiten und zurückgeben.
-         */
-        return self::handleResult($result);
-    }
-}
+    
+}   
 

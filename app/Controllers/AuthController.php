@@ -17,51 +17,30 @@ class AuthController
 {
 
     /**
-     * Loin Formular anzeigen
+     * Displays login form
      */
     public function loginForm()
     {
         /**
-         * Wenn bereits ein*e User*in eingeloggt ist, zeigen wir das Login Formular nicht an, sondern leiten auf die
-         * Startseite weiter.
+         * Is the user logged in? 
          */
         if (User::isLoggedIn()) {
             Redirector::redirect('/home');
         }
 
         /**
-         * Andernfalls laden wir das Login Formular.
+         * If user isn't logged in, the login form refreshes
          */
         View::render('auth/login');
     }
 
-    /**
-     * Daten aus Login Formular entgegennehmen und verarbeiten.
-     */
     public function loginDo()
     {
-        /**
-         * 1) Username & Passwort ins Login Formular eingeben
-         * 2) Remember Me Checkbox anhakerln (optional)
-         * 3) Formular absenden
-         * ---
-         * 4) Gibts den/die User*in schon? ja: weiter, nein: Fehlermeldung
-         * 5) Passwort aus DB abrufen (Salted Hashes)
-         * 6) Passwort aus Eingabe und DB ident? ja: weiter, nein: Fehlermeldung
-         * 7) "Remember Me" angehakerlt? ja: $exp=7, nein: $exp=0 (für die aktuelle Browser Session, bis der Tab
-         * geschlossen wird)
-         * 8) Session schreiben: logged_in=>true
-         * 9) Redirect zu bspw. Dashboard/Home Seite/whatever
-         */
 
-        /**
-         * User anhand einer Email-Adresse oder eines Usernames aus der Datenbank laden.
-         * Diese Funktionalität kommt aus der erweiterten Klasse AbstractUser.
-         */
         $user = User::findByEmailOrUsername($_POST['username-or-email']);
 
         /**
-         * Fehler-Array vorbereiten
+         *  Array for any incoming errors
          */
         $errors = [];
 

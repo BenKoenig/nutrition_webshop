@@ -35,17 +35,17 @@ class CartService
         /**
          * Gibt es das Equipment bereits im Cart ...
          */
-        // if (self::has($product)) {
-        //     /**
-        //      * ... so legen wir es ein weiteres Mal hinein, indem wir den aktuellen Counter um 1 erhöhen.
-        //      */
-        //     $_SESSION[self::SESSION_KEY][$product->id]++;
-        // } else {
+        if (self::has($product)) {
+            /**
+             * ... so legen wir es ein weiteres Mal hinein, indem wir den aktuellen Counter um 1 erhöhen.
+             */
+            $_SESSION[self::SESSION_KEY][$product->id]++;
+        } else {
             /**
              * Andernfalls legen wir es genau 1-mal hinein.
              */
             $_SESSION[self::SESSION_KEY][$product->id] = 1;
-        // }
+        }
 
         /**
          * Neuen Inhalt des Carts zurückgeben.
