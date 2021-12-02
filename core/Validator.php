@@ -2,19 +2,8 @@
 
 namespace Core;
 
-/**
- * Class Validator
- *
- * @package Core
- */
 class Validator
 {
-
-    /**
-     * Definieren der string-basierten Datentypen, die validiert werden können.
-     *
-     * @var string[]
-     */
     private array $types = [
         'letters' => '/^[a-zA-Zßäöü ]*$/i',
         'text' => '/^[a-zA-Zßäöü .,#\-_|;:?!]*$/i',
@@ -22,61 +11,50 @@ class Validator
         'alphanumeric' => '/^[^-_]{1}[a-zA-Z0-9-_]*$/',
         'checkbox' => '/^(on|true|checked|1)$/i',
         'password' => '/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/',
-        'email' => '/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix'
+        'email' => '/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix',
+        'intRegex' => '/^[0-9]+$/'
     ];
 
-    /**
-     * Definieren der numerischen Datentypen, die validiert werden können. Hier wird auch definiert, mit welcher PHP
-     * Funktion die Validierung durchgeführt werden soll.
-     *
-     * @var string[]
-     */
+    //Data types
     private array $numericTypes = [
         'numeric' => 'is_numeric',
         'int' => 'is_int',
         'float' => 'is_float'
     ];
 
-    /**
-     * Definieren der Fehlermeldungen für alle Datentypen oben. Hier wird immer ein %s-Platzhalter definiert, damit wir
-     * später, wenn wir die Fehlermeldung verwenden, mit der sprintf()-Funktion das Label des Input Feldes einfügen
-     * können.
-     *
-     * @var string[]
-     */
+    //Error Message templates
     private array $errorMessages = [
         'letters' => '%s darf nur Buchstaben und Leerzeichen beinhalten.',
         'text' => '%s darf nur Buchstaben und Sonderzeichen beinhalten.',
         'textnum' => '%s darf nur aus alphanumerischen Zeichen bestehen.',
         'alphanumeric' => '%s darf nur Buchstaben, Zahlen, Binde- und Unterstriche beinhalten.',
-        'numeric' => '%s muss numerisch sein.',
-        'int' => '%s muss ganzzahlig sein.',
-        'float' => '%s muss eine Fließkommazahl sein.',
-        'equals' => '%s muss ident sein mit %s.',
-
         'checkbox' => '%s enthält keinen gültigen Wert für eine Checkbox.',
         'password' => '%s muss mindestens 8 Zeichen lang sein, Groß- und Kleinbuchstabe und Sonderzeichen enthalten.',
         'email' => '%s muss eine korrekte E-Mail Adresse sein.',
+
+        'numeric' => '%s muss numerisch sein.',
+        'int' => '%s muss ganzzahlig sein.',
+        'intRegex' => '%s muss ganzzahlig sein.',
+        'float' => '%s muss eine Fließkommazahl sein.',
+
+        'equals' => '%s muss ident sein mit %s.',
+        'compare' => '%s und %s müssen ident sein.',
+        'unique' => '%s wird bereits verwendet.',
+        'date' => '%s muss ein Datum sein.',
+        'array-required' => '%s muss Werte beinhalten.',
 
         'required' => '%s ist ein Pflichtfeld.',
         'min' => '%s muss mindestens %s sein.',
         'min-string' => '%s muss mindestens %s Zeichen haben.',
         'max' => '%s muss kleiner oder gleich %s sein.',
         'max-string' => '%s darf maximal %s Zeichen haben.',
-        'compare' => '%s und %s müssen ident sein.',
-        'unique' => '%s wird bereits verwendet.',
-
 
         'file-error' => 'Es konnten nicht alle Dateien aus %s hochgeladen werden.',
         'file-type' => '%s darf nur Dateien vom Typ "%s" beinhalten.',
         'file-size' => '%s darf nur Dateien bis zu %d MB beinhalten.'
     ];
 
-    /**
-     * Definieren einer Property, in die alle aufgetretenen Fehler gespeichert werden.
-     *
-     * @var string[]
-     */
+    //Error Array
     private array $errors = [];
 
     /**
@@ -211,6 +189,114 @@ class Validator
         return true;
     }
 
+
+    /**
+     * Hochgeladene Dateien validieren.
+     *
+     * @param array       $files
+     * @param string      $label
+     * @param string|null $type
+     * @param int|null    $maxFileSize
+     *
+     * @return bool
+     */
+    public function file(array $files, string $label, ?string $type = null, ?int $maxFileSize = null): bool
+    {
+        /**
+         * Wurde eine Datei hochgeladen?
+         */
+        if ($files['error'][0] !== UPLOAD_ERR_NO_FILE) {
+            /**
+             * Fallback für die max-upload-size holen, falls der Parameter nicht gesetzt wurde.
+             */
+            if (empty($maxFileSize)) {
+                $maxFileSize = Config::get('app.max-upload-size', 0);
+            }
+
+            /**
+             * Alle Uploads durchgehen.
+             */
+            foreach ($files['name'] as $index => $filename) {
+                /**
+                 * Ist ein Upload-Fehler aufgetreten, schreiben wir einen Fehler.
+                 */
+                if ($files['error'][$index] !== UPLOAD_ERR_OK) {
+                    $this->errors[] = sprintf($this->errorMessages['file-error'], $label);
+                    return false;
+                }
+
+                /**
+                 * Ist ein Typ definiert und stimmt dieser Type aber nicht überein, schreiben wir einen Fehler.
+                 */
+                if (!empty($type)) {
+                    $_type = $files['type'][$index];
+                    if (!str_starts_with($_type, $type)) {
+                        $this->errors[] = sprintf($this->errorMessages['file-type'], $label, $type);
+                        return false;
+                    }
+                }
+
+                /**
+                 * Überschreitet die Datei das Upload-Limit, schreiben wir einen Fehler.
+                 */
+                if (!empty($maxFileSize)) {
+                    $_filesize = $files['size'][$index];
+                    if ($_filesize > $maxFileSize) {
+                        $this->errors[] = sprintf(
+                            $this->errorMessages['file-size'],
+                            $label,
+                            $maxFileSize / 1024 / 1024
+                        );
+                        return false;
+                    }
+                }
+            }
+        }
+
+        /**
+         * Ist bisher kein Fehler aufgetreten, war die Validierung erfolgreich.
+         */
+        return true;
+    }
+
+    /**
+     * Sollen Array-Input Fehler (bspw. Listen an Checkboxen) validiert werden, so muss jeder Wert aus der Liste
+     * einzeln validiert werden.
+     *
+     * @param array  $value
+     * @param string $type
+     * @param string $label
+     * @param bool   $required
+     *
+     * @return bool
+     */
+    public function _array(array $value, string $label, string $type = 'intRegex', bool $required = false): bool
+    {
+        /**
+         * Ist der Array required aber leer, schreiben wir einen Fehler.
+         */
+        if ($required === true && empty($value)) {
+            $this->errors[] = sprintf($this->errorMessages['array-required'], $label);
+            return false;
+        }
+
+        /**
+         * Nun gehen wir alle Werte aus dem Array durch und validieren jeden einzelnen anhand des $type, der übergeben
+         * wurde. Dazu verwenden wir die oben definierte __call() Magic Method.
+         */
+        foreach ($value as $item) {
+            if ($this->$type($item, label: $label) === false) {
+                return false;
+            }
+        }
+
+        /**
+         * Ist bisher kein Fehler aufgetreten und wurde nicht false zurückgegeben, so ist die Validierung erfolgreich
+         * gewesen.
+         */
+        return true;
+    }
+
     /**
      * Diese Funktion hilft uns dabei, Standardwerte für alle Parameter in $arguments aus __call() zu setzen. Das ist
      * nötig, weil wir normalerweise Standardwerte für optionale Paramater direkt in der Funktion definieren können. Die
@@ -221,6 +307,7 @@ class Validator
      *
      * @return array
      */
+   
     private function mergeDefaults(array $arguments): array
     {
         /**
@@ -228,7 +315,7 @@ class Validator
          */
         $defaults = [
             0 => 'text',
-            'label' => 'Feld',
+            'label' => "Field",
             'required' => false,
             'min' => null,
             'max' => null
@@ -459,49 +546,6 @@ class Validator
     public function getErrors(): array
     {
         return $this->errors;
-    }
-
-
-        /**
-     * @param array       $files
-     * @param string|null $type
-     * @param int|null    $maxFileSize
-     *
-     * @return bool
-     * @todo: comment
-     */
-    public function file(array $files, string $label, ?string $type = null, ?int $maxFileSize = null): bool
-    {
-        if ($files['error'][0] !== UPLOAD_ERR_NO_FILE) {
-            if (empty($maxFileSize)) {
-                $maxFileSize = Config::get('app.max-upload-size', 0);
-            }
-
-            foreach ($files['name'] as $index => $filename) {
-                if ($files['error'][$index] !== UPLOAD_ERR_OK) {
-                    $this->errors[] = sprintf($this->errorMessages['file-error'], $label);
-                    return false;
-                }
-
-                if (!empty($type)) {
-                    $_type = $files['type'][$index];
-                    if (!str_starts_with($_type, $type)) {
-                        $this->errors[] = sprintf($this->errorMessages['file-type'], $label, $type);
-                        return false;
-                    }
-                }
-
-                if (!empty($maxFileSize)) {
-                    $_filesize = $files['size'][$index];
-                    if ($_filesize > $maxFileSize) {
-                        $this->errors[] = sprintf($this->errorMessages['file-size'], $label, $maxFileSize / 1024 / 1024);
-                        return false;
-                    }
-                }
-            }
-        }
-
-        return true;
     }
 
 }

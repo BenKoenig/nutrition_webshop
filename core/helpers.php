@@ -6,10 +6,15 @@ function url($path): string
 
 function url_e($path)
 {
-    echo url($path);
+    echo url('/' . $path);
 }
 
 function e(mixed $value)
 {
     echo $value;
+}
+
+function upperLowerCase($string)
+{
+    return ucwords(strtolower($string));
 }

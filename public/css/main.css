@@ -1184,33 +1184,37 @@
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  background-color: #5FA09F;
+  background-color: #F4FAFA;
   padding: 1rem;
   border-radius: 1rem;
 }
-.profile__wrapper__form__container__field {
+.profile__wrapper__form__container__flex {
   display: flex;
-  gap: 0.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
 }
-.profile__wrapper__form__container__field__input {
+.profile__wrapper__form__container__flex__field--label {
+  color: #777272;
+  font-size: 0.9rem;
+}
+.profile__wrapper__form__container__flex__field__input {
   border: 0;
   display: flex;
   height: 3rem;
   padding-left: 1rem;
   border-radius: 1rem;
-  background: #F4FAFA;
+  background: #FEFEFE;
   width: 100%;
   transition: transform;
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 }
 @media only screen and (min-width: 767px) {
-  .profile__wrapper__form__container__field__input {
+  .profile__wrapper__form__container__flex__field__input {
     max-width: 15rem;
   }
 }
-.profile__wrapper__form__container__field__input:hover {
+.profile__wrapper__form__container__flex__field__input:hover {
   transform: scale(1.03);
 }
 
@@ -1232,7 +1236,7 @@ a {
 
 h1 {
   font-family: pt-sans, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-style: normal;
   padding: 0;
   margin: 0.5rem 0;
@@ -1251,11 +1255,11 @@ h6 {
 }
 
 h1 {
-  font-size: 4rem;
+  font-size: 3.5rem;
 }
 
 h2 {
-  font-size: 3rem;
+  font-size: 2.8rem;
 }
 
 h3 {
@@ -1263,7 +1267,7 @@ h3 {
 }
 
 h4 {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 h5 {
