@@ -55,6 +55,15 @@ h6 {
     margin     : 0;
 }
 
+.font-normal {
+    font-family: pt-sans, sans-serif;
+    font-weight:300;
+    font-style : normal;
+    padding    : 0;
+    margin     : 0;
+}
+
+
 
 h1 {
     font-size: 3.5rem;
@@ -78,10 +87,16 @@ h5 {
 
 .text-medium {
     color: $mediumGreen;
+
 }
 
 .text-dark {
     color: $darkGreen;
+    margin-bottom: 0.8rem;
+}
+
+.text-center {
+    text-align: center;
 }
 
 p,

@@ -15,7 +15,7 @@
             <input class="adminForm__form__field__input" type="text" name="website" id="website" placeholder="www.dundermifflin.com">
         </div>
         <div class="adminForm__form__btns">
-            <button class="adminForm__form__btns--create" type="submit">Create Category</button>
+            <button class="adminForm__form__btns--create" type="submit">Create Merchant</button>
             <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
         </div>
 

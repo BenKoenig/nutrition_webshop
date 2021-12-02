@@ -1,3 +1,7 @@
-.message {
-    padding: 20px;
-}   
+.errors {
+    max-width: 100rem;
+    margin   : 0 auto;
+    &__message {
+        margin: 0 auto;
+    }
+}

@@ -5,7 +5,7 @@ Control Panel Header
 -->
 <div class="panel-header">
     <div>
-        <h1>Admin Panel</h1>
+        <h2>Admin Panel</h2>
         <p class="panel-header--desc">You can explore Admin Panel by selecting different categories
             (for example users, products and merchants), and viewing common tasks listed under each category. </p>
         <p class="panel-header--user">Logged in as: <?php echo \App\Models\User::getLoggedIn()->username; ?></p>

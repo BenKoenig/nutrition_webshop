@@ -54,16 +54,16 @@ class ProfileController
          * Daten validieren.
          */
         $validator = new Validator();
-        $validator->email($_POST['email'], 'E-Mail', required: true);
-        $validator->letters($_POST['firstname'], 'First Name', required: true);
-        $validator->letters($_POST['lastname'], 'Last Name', required: true);
-        $validator->textnum($_POST['adress_1'], 'Adress 1', required: true);
-        $validator->textnum($_POST['adress_2'], 'Adress 2', required: false);
-        $validator->numeric($_POST['postal_code'], 'Postal Code', required: true);
+        $validator->email($_POST['email'], label: 'E-Mail', required: true);
+        $validator->letters($_POST['firstname'], label: 'First Name', required: true);
+        $validator->letters($_POST['lastname'], label: 'Last Name', required: true);
+        $validator->textnum($_POST['adress_1'], label: 'Adress 1', required: true);
+        $validator->textnum($_POST['adress_2'], label: 'Adress 2', required: false);
+        $validator->numeric($_POST['postal_code'], label: 'Postal Code', required: true);
         $validator->unique($_POST['email'], 'E-Mail', 'users', 'email', ignoreThisId: $user->id);
-        $validator->letters($_POST['city'], 'City', required: true);
-        $validator->letters($_POST['country'], 'country', required: true);
-        $validator->password($_POST['password'], 'Passwort', min: 8, required: true);
+        $validator->letters($_POST['city'], label: 'City', required: true);
+        $validator->letters($_POST['country'], label: 'country', required: true);
+        $validator->password($_POST['password'], label: 'Passwort', min: 8, required: true);
         /**
          * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
          * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt

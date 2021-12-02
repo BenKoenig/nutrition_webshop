@@ -2,7 +2,7 @@
     <div class="nav__desktop">
         <div class="nav__desktop__container">
             <ul class="nav__desktop__container__ul">
-                <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--home" href="<?php echo BASE_URL; ?>/home">Shape Nutrtitions</a></li>
+                <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--home" href="<?php echo BASE_URL; ?>/home">Shape <span class="font-normal">Nutrtitions</span></a></li>
                 <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/categories"">Categories</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/sales"">Sales</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/new"">New</a></li>

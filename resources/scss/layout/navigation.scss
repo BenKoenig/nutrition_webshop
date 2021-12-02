@@ -1,4 +1,6 @@
 .nav {
+    margin-top: 7rem;
+
     &__desktop {
         display: none;
     }
@@ -7,6 +9,11 @@
         &__desktop {
             display         : block;
             background-color: $lightGreen;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-radius: 0 0 3rem 3rem;
 
             &__container {
                 display        : flex;
@@ -14,7 +21,7 @@
                 justify-content: space-between;
                 max-width      : 100rem;
                 margin         : 0 auto;
-                padding        : 1.5rem 0.7rem;
+                padding        : 0.7rem 0.7rem;
 
 
                 &__ul {
@@ -110,7 +117,7 @@
                     }
 
                     &--svg {
-                        width: 3rem;
+                        width: 2.5em;
 
                     }
                 }

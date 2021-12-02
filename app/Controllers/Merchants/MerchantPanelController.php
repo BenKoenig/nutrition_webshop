@@ -22,8 +22,6 @@ class MerchantPanelController
     }
 
 
-
-
     public function edit(int $id)
     {
         /**
@@ -320,5 +318,6 @@ class MerchantPanelController
          */
         return $validator->getErrors();
     }
+
 
 }

@@ -1,6 +1,6 @@
 <section class="cards">
     <!-- Headline (h3)-->
-    <h1 class="text-dark">New Products</h1>
+    <h2 class="text-dark text-center">New Products</h2>
     <div class="cards__container cards__container--md">
 
         <!-- Loop for every featured product -->
@@ -13,6 +13,7 @@
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
+                    <div class="cards__container__item__bgColor"></div>
                     <img class="cards__container__item__bg" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="<?php echo $product->name; ?>">
                 </div>
                 <div class="cards__container__item__box">

@@ -16,7 +16,7 @@ where customers can win prices when taking part.
             and win awesome prices.
         </p>
         <!-- Link to find out more about the Vienna Run -->
-        <a href="" class="btn btn--green">Learn more</a>
+        <a href="" class="btn btn--lime">Learn more</a>
 
     </div>
 
@@ -58,7 +58,7 @@ able to set it to true (1) or false (0) within the CMS.
 -->
 <section class="cards">
     <!-- Headline (h3) -->
-    <h3 class="text-dark">Popular Categories</h3>
+    <h4 class="text-dark">Popular Categories</h4>
     <div class="cards__container cards__container--md">
         <!-- Loop for every popular category -->
         <?php foreach ($categories as $category) : ?>
@@ -76,7 +76,10 @@ able to set it to true (1) or false (0) within the CMS.
                 <!--
                 Link name: PHP code that contains the category name from the database
                 -->
-                <a href="<?php echo BASE_URL . '/categories/' . $category->id;?>" class="cards__container__item__a"><?php echo $category->name; ?> </a>
+                <div class="cards__container__item__a">
+                    <a href="<?php echo BASE_URL . '/categories/' . $category->id;?>" class="btn btn--lime"><?php echo $category->name; ?> </a>
+                </div>
+
             </div>
         <?php endforeach; ?>
     </div>
@@ -95,7 +98,7 @@ and can be edited within the CMS.
 -->
 <section class="cards">
     <!-- Headline (h3) -->
-    <h3 class="text-dark">Find your supplements</h3>
+    <h4 class="text-dark">Find your supplements</h4>
     <div class="cards__container cards__container--lg">
         <!-- Loop for every goal -->
         <?php foreach ($goals as $goal) : ?>
@@ -114,7 +117,7 @@ and can be edited within the CMS.
                     The headline (h4) contains the goal name from the database
                     -->
                     <h4 class="cards__container__item__info__title"><?php echo $goal->name; ?></h4>
-                    <a class="btn btn--aqua" href="#">Learn more</a>
+                    <a class="btn btn--lime" href="#">Discover</a>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -135,7 +138,7 @@ able to set it to true (1) or false (0) within the CMS.
 -->
 <section class="cards">
     <!-- Headline (h3)-->
-    <h3 class="text-dark">Featured Products</h3>
+    <h4 class="text-dark">Featured Products</h4>
     <div class="cards__container cards__container--md">
 
         <!-- Loop for every featured product -->
@@ -148,7 +151,9 @@ able to set it to true (1) or false (0) within the CMS.
                     src: PHP code that contains the image path from the database
                     alt: PHP code that contains the name of the image from the database
                     -->
+                    <div class="cards__container__item__bgColor"></div>
                     <img class="cards__container__item__bg" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="<?php echo $product->name; ?>">
+
                 </div>
                 <div class="cards__container__item__box">
                     <div class="cards__container__item__box__desc">

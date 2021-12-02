@@ -200,24 +200,24 @@ class CategoryPanelController
         /**
          * Neuen Room erstellen und mit den Daten aus dem Formular befüllen.
          */
-        $categorie = new Category();
+        $category = new Category();
 
 
-        $categorie->fill($_POST);
+        $category->fill($_POST);
 
         /**
          * Hochgeladene Dateien verarbeiten.
          */
-        $categorie = $this->handleUploadedFiles($categorie);
+        $category = $this->handleUploadedFiles($category);
         // /**
         //  * Checkboxen verarbeiten, ob eine Datei gelöscht werden soll oder nicht.
         //  */
-        $categorie = $this->handleDeleteFiles($categorie);
+        $category = $this->handleDeleteFiles($category);
 
         /**
          * Schlägt die Speicherung aus irgendeinem Grund fehl ...
          */
-        if (!$categorie->save()) {
+        if (!$category->save()) {
             /**
              * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
              */
