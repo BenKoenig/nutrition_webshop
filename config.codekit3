@@ -393,14 +393,6 @@
       "oAP" : "\/dump.sql",
       "oF" : 0
     },
-    "\/mvc.sql" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/mvc.sql",
-      "oF" : 0
-    },
     "\/public\/.htaccess" : {
       "cB" : 0,
       "ft" : 8192,
