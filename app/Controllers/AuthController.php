@@ -8,29 +8,16 @@ use Core\View;
 use App\Models\User;
 use Core\Validator;
 
-/**
- * Class AuthController
- *
- * @package App\Controllers
- */
-class AuthController 
+class AuthController
 {
-
-    /**
-     * Displays login form
-     */
     public function loginForm()
     {
-        /**
-         * Is the user logged in? 
-         */
+        //Checks if user is logged in and sends them to homepage
         if (User::isLoggedIn()) {
             Redirector::redirect('/home');
         }
 
-        /**
-         * If user isn't logged in, the login form refreshes
-         */
+        //Sends user to login page if they aren't logged in
         View::render('auth/login');
     }
 
@@ -39,97 +26,52 @@ class AuthController
 
         $user = User::findByEmailOrUsername($_POST['username-or-email']);
 
-        /**
-         *  Array for any incoming errors
-         */
+        //Array for upcoming errrs
         $errors = [];
 
-        /**
-         * Wurde ein*e User*in in der Datenbank gefunden und stimmt das eingegebene Passwort mit dem Passwort Hash
-         * des/der User*in überein?
-         *
-         * Hier ist wichtig zu bedenken, dass wir nicht zwei unterschiedliche Fehlermeldungen ausgeben, damit wir nicht
-         * einem Angreifer verraten, dass der Username richtig ist und nur das Passwort noch nicht. Dadurch wäre es
-         * nämlich erheblich einfacher, das Passwort zu brute-forcen.
-         */
+        //Checks if password is correct
         if (empty($user) || !$user->checkPassword($_POST['password'])) {
-            /**
-             * Wenn nein: Fehler!
-             */
             $errors[] = 'Username/E-Mail oder Passwort sind falsch.';
         } else {
-            /**
-             * Wenn ja: weiter.
-             */
             $user->login('/home');
         }
 
-        /**
-         * Fehler in die Session schreiben und zum Login zurückleiten. In die Session speichern wir deshalb, weil wir
-         * im Login Formular nicht mehr auf die Variable $errors zugreifen können und daher eine Möglichkeit brauchen
-         * über einen Request hinweg Daten zu speichern. Im Login Form laden wir die Fehler aus der Session, zeigen sie
-         * an und löschen sie in der Session wieder.
-         */
+        //Error if password is incorrect
         Session::set('errors', $errors);
         Redirector::redirect('/login');
     }
 
 
 
-
- /**
-     * Registrierungsformular anzeigen
-     */
     public function registerForm()
     {
-        /**
-         * Wenn bereits ein*e User*in eingeloggt ist, zeigen wir das Signup Formular nicht an, sondern leiten auf die
-         * Startseite weiter.
-         */
+        //Sends user back to homepage if they are logged in
         if (User::isLoggedIn()) {
             Redirector::redirect('/home');
         }
 
-        /**
-         * Andernfalls laden wir das Registrierungsformular.
-         */
+        //Renders register form
         View::render('auth/register');
     }
 
-    /**
-     * Daten aus dem Registrierungsformular entgegennehmen und verarbeiten.
-     */
+
     public function registerDo()
     {
-        /**
-         * [x] Daten validieren
-         * [x] erfolgreich: weiter, nicht erfolgreich: Fehler
-         * [x] Gibts E-Mail oder Username schon in der DB?
-         * [x] ja: Fehler, nein: weiter
-         * [x] User Object aus den Daten erstellen & in DB speichern
-         * [x] Weiterleiten zum Login
-         */
-
-        /**
-         * Formulardaten validieren.
-         */
+        //Form Validation
         $validator = new Validator();
         $validator->email($_POST['email'], 'E-Mail', required: true);
         $validator->unique($_POST['email'], 'E-Mail', 'users', 'email');
-        $validator->unique($_POST['username'], 'Username', 'users', 'username');
-        $validator->password($_POST['password'], 'Passwort', min: 8, required: true);
-        $validator->letters($_POST['firstname'], 'Firstname', required: true);
-        $validator->letters($_POST['lastname'], 'Lastname', required: true);
-        $validator->alphanumeric($_POST['adress_1'], 'Adress_1', required: true);
-        $validator->alphanumeric($_POST['adress_2'], 'Adress_2', required: false);
-        $validator->numeric($_POST['postal_code'], 'Postal_code', required: true);
+        $validator->letters($_POST['firstname'], 'First Name', required: true);
+        $validator->letters($_POST['lastname'], 'Last Name', required: true);
+        $validator->textnum($_POST['adress_1'], 'Adress 1', required: true);
+        $validator->textnum($_POST['adress_2'], 'Adress 2', required: false);
+        $validator->numeric($_POST['postal_code'], 'Postal Code', required: true);
         $validator->letters($_POST['city'], 'City', required: true);
-        $validator->letters($_POST['country'], 'Country', required: true);
-        /**
-         * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
-         * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt
-         * sich daraus, dass auch 'password_repeat' ein valides Passwort ist.
-         */
+        $validator->letters($_POST['country'], 'country', required: true);
+        $validator->password($_POST['password'], 'Passwort', min: 8, required: true);
+
+
+        //Checks if both passwords are the same
         $validator->compare([
             $_POST['password'],
             'Passwort'
@@ -138,88 +80,40 @@ class AuthController
             'Passwort wiederholen'
         ]);
 
-        /**
-         * Fehler aus dem Validator auslesen. Validator::getErrors() gibt uns dabei in jedem Fall ein Array zurück,
-         * wenn keine Fehler aufgetreten sind, ist dieses Array allerdings leer.
-         */
+
         $errors = $validator->getErrors();
 
-        /**
-         * Wenn der Fehler-Array nicht leer ist und es somit Fehler gibt ...
-         */
+        //Errors
         if (!empty($errors)) {
-            /**
-             * ... dann speichern wir sie in die Session, damit sie im View ausgegeben werden können und leiten dann
-             * zurück zum Formular.
-             */
             Session::set('errors', $errors);
             Redirector::redirect('/register');
         }
 
-        /**
-         * Kommen wir an diesen Punkt, können wir sicher sein, dass die E-Mail Adresse und der Username noch nicht
-         * verwendet werden und alle eingegebenen Daten korrekt validiert werden konnten.
-         */
+
+        //Once everything is validated
         $user = new User();
         $user->fill($_POST);
         $user->setPassword($_POST['password']);
 
-        /**
-         * Neue*n User*in in die Datenbank speichern.
-         *
-         * Die User::save() Methode gibt true zurück, wenn die Speicherung in die Datenbank funktioniert hat.
-         */
+
+        //Saves new users to the databse
         if ($user->save()) {
-            /**
-             * Hat alles funktioniert und sind keine Fehler aufgetreten, leiten wir zum Login Formular.
-             *
-             * Um eine Erfolgsmeldung ausgeben zu können, verwenden wir dieselbe Mechanik wie für die errors.
-             */
+            //Sends user back to homepage
             Session::set('success', ['Herzlich wilkommen!']);
             $user->login('/home');
         } else {
-            /**
-             * Fehlermeldung erstellen und in die Session speichern.
-             */
+            //Error message
             $errors[] = 'Leider ist ein Fehler aufgetreten. Bitte probieren Sie es erneut! :(';
             Session::set('errors', $errors);
 
-            /**
-             * Redirect zurück zum Registrierungsformular.
-             */
+            //Sends user back to register form
             Redirector::redirect('/register');
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    /**
-     * Logout und redirect auf die Startseite durchführen.
-     */
+    //Logs user out
     public function logout()
     {
         User::logout('/');
     }
-
 }

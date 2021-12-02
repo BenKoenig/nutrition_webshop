@@ -1,6 +1,6 @@
 <section class="cards">
     <!-- Headline (h3)-->
-    <h3 class="text-dark"><?php echo $category->name;?></h3>
+    <h3 class="text-dark"><?php echo $category->name; ?></h3>
     <div class="cards__container cards__container--md">
 
         <!-- Loop for every featured product -->
@@ -22,14 +22,14 @@
                             The headline (h4) contains the goal name from the database
                             -->
                             <h4><?php echo $product->name; ?></h4>
-                            
+
                             <!-- 
                             This text contains the price amount from the database
                             -->
-                            <p><?php echo $product->price; ?>€ | <?php echo $product->weight;?> g</p>
+                            <p><?php echo $product->price; ?>€ | <?php echo $product->weight; ?> g</p>
                             <div class="cards__container__item__box__desc__info__btns">
-                                <a class="btn btn--lime" href="#">Add to Cart</a>
-                                <a class="btn btn--gray" href="#">Details</a>
+                                <a class="btn btn--lime" href="<?php url_e("products/$product->id/add-to-cart"); ?>">Add to Cart</a>
+                                <a class="btn btn--gray" href="<?php url_e("product/$product->id"); ?>">Details</a>
                             </div>
                         </div>
                     </div>

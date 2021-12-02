@@ -385,6 +385,14 @@
       "oAP" : "\/core\/views\/errors\/exception.php",
       "oF" : 0
     },
+    "\/dump.sql" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/dump.sql",
+      "oF" : 0
+    },
     "\/mvc.sql" : {
       "cB" : 0,
       "ft" : 8192,
@@ -572,6 +580,21 @@
       "ma" : 0,
       "oA" : 1,
       "oAP" : "\/resources\/scss\/components\/cards.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
+    "\/resources\/scss\/components\/errors.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/components\/errors.css",
       "oF" : 0,
       "oS" : 0,
       "pg" : 0,
@@ -825,14 +848,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/resources\/views\/partials\/footer.php",
-      "oF" : 0
-    },
-    "\/resources\/views\/partials\/nav_old.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/partials\/nav_old.php",
       "oF" : 0
     },
     "\/resources\/views\/partials\/nav.php" : {
@@ -1522,6 +1537,58 @@
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638450278_Product_VD3_0100_3a6723bc-d9c1-49f5-955e-8d3021d589f7.png" : {
+      "ft" : 32768,
+      "iS" : 137664,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638450278_Product_VD3_0100_3a6723bc-d9c1-49f5-955e-8d3021d589f7.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638450328_Product_VD3_0100_3a6723bc-d9c1-49f5-955e-8d3021d589f7.png" : {
+      "ft" : 32768,
+      "iS" : 137664,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638450328_Product_VD3_0100_3a6723bc-d9c1-49f5-955e-8d3021d589f7.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638450667_Product_VC_0100.png" : {
+      "ft" : 32768,
+      "iS" : 131318,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638450667_Product_VC_0100.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638450767_Product_NP90_0090.png" : {
+      "ft" : 32768,
+      "iS" : 186796,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638450767_Product_NP90_0090.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
       "ou" : "lpckwebp-none",
       "q" : 100,
       "rq" : 75

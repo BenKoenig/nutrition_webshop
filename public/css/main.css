@@ -815,6 +815,10 @@
   white-space: nowrap !important;
 }
 
+.message {
+  padding: 20px;
+}
+
 .btn {
   display: flex;
   justify-content: center;
