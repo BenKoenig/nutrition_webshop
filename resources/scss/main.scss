@@ -17,6 +17,7 @@
 @import 'pages/summary';
 @import 'pages/productDetail'; 
 @import 'pages/profile';
+@import 'pages/register';
 
 
 body {
@@ -36,8 +37,7 @@ a {
 }
 
 h1{
-    font-family: pt-sans, sans-serif;
-    font-weight:500;
+    font-family: pt-sans, sans-serif;    // font-weight:500;
     font-style : normal;
     padding    : 0;
     margin     : 0.5rem 0;
@@ -48,7 +48,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: pt-sans, sans-serif;
+    font-family: pt-sans, sans-serif; 
     font-weight:300;
     font-style : normal;
     padding    : 0;

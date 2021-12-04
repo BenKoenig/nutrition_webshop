@@ -393,6 +393,22 @@
       "oAP" : "\/dump.sql",
       "oF" : 0
     },
+    "\/package-lock.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-lock-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
+    "\/package.json" : {
+      "ft" : 524288,
+      "oA" : 1,
+      "oAP" : "\/package-min.json",
+      "oF" : 0,
+      "oO" : 1,
+      "oS" : 1
+    },
     "\/public\/.htaccess" : {
       "cB" : 0,
       "ft" : 8192,
@@ -787,6 +803,21 @@
       "pg" : 0,
       "sct" : 0
     },
+    "\/resources\/scss\/pages\/register.scss" : {
+      "aP" : 0,
+      "bl" : 0,
+      "co" : 0,
+      "dP" : 10,
+      "ec" : 1,
+      "ft" : 4,
+      "ma" : 0,
+      "oA" : 1,
+      "oAP" : "\/resources\/scss\/pages\/register.css",
+      "oF" : 0,
+      "oS" : 0,
+      "pg" : 0,
+      "sct" : 0
+    },
     "\/resources\/scss\/pages\/summary.scss" : {
       "aP" : 0,
       "bl" : 0,
@@ -1112,6 +1143,14 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/routes\/web.php",
+      "oF" : 0
+    },
+    "\/storage\/fonts\/HelveticaNeue-Light.otf" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/storage\/fonts\/HelveticaNeue-Light.otf",
       "oF" : 0
     },
     "\/storage\/sessions\/.gitkeep" : {
@@ -1642,6 +1681,69 @@
       "iS" : 401144,
       "oA" : 0,
       "oAP" : "\/storage\/uploads\/1638451664_yfood-bar-saltedcaramel-chocolate-60g-DE-FK-2500px-srgb-ws_1.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638513474_yfood-website-product-rtd-500ml-PG-Combo-Bulk-DE-2500px-srgb-ws.png" : {
+      "ft" : 32768,
+      "iS" : 235790,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638513474_yfood-website-product-rtd-500ml-PG-Combo-Bulk-DE-2500px-srgb-ws.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638513666_yfood-powder-crazy-coconut-1-5kg-INT-PG-2500px-srgb-ws.webp" : {
+      "ft" : 8388608,
+      "iS" : 285292,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638513666_yfood-powder-crazy-coconut-1-5kg-INT-PG-2500px-srgb-ws.webp",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "ou" : "lpckwebp-default",
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638514608_yfood-drink-vegan-vanilla-500ml-DE-PG-2500px-srgb-ws.png" : {
+      "ft" : 32768,
+      "iS" : 147938,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638514608_yfood-drink-vegan-vanilla-500ml-DE-PG-2500px-srgb-ws.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638514798_Products_VMProteinChoco_600x@2xasdasdasdas.png" : {
+      "ft" : 32768,
+      "iS" : 140228,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638514798_Products_VMProteinChoco_600x@2xasdasdasdas.png",
+      "oF" : 0,
+      "oIPL" : 0,
+      "opt" : 0,
+      "oT" : 1,
+      "ou" : "lpckwebp-none",
+      "q" : 100,
+      "rq" : 75
+    },
+    "\/storage\/uploads\/1638514836_Products_VMProteinChoco_600x@2xasdasdasdas.png" : {
+      "ft" : 32768,
+      "iS" : 140228,
+      "oA" : 0,
+      "oAP" : "\/storage\/uploads\/1638514836_Products_VMProteinChoco_600x@2xasdasdasdas.png",
       "oF" : 0,
       "oIPL" : 0,
       "opt" : 0,

@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Services\CartService;
 use Core\Helpers\Redirector;
 use Core\View;
+use Core\Session;
 
 /**
  * Cart Controller
@@ -49,6 +50,12 @@ class CartController
          * Equipment in Cart hinzufügen.
          */
         
+        if($product->getUnits() < 1) {
+            Session::set('errors', ['No more Units are left.']);
+            Redirector::redirect('/home');
+        }
+
+
         CartService::add($product);
 
         /**

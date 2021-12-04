@@ -13,6 +13,21 @@
             grid-template-columns: repeat(2, 1fr);
         }
         &__item {
+            &__field {
+                display: flex;
+                flex-direction: column;
+                max-width: 20rem;
+                &__input {
+                    height:2.5rem;
+                    font-size: 1.1rem;
+                    border: 0;
+                    background: $gray;
+                    padding-left: 0.5rem;
+                    border-radius: 0.5rem;
+                    margin-top: -0.4rem;
+                    margin-bottom: 0.4rem;
+                }
+            }
             &--orders {
                 display: flex;
                 flex-direction: column;

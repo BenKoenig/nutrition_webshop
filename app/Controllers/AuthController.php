@@ -17,17 +17,14 @@ class AuthController
             Redirector::redirect('/home');
         }
 
-        //Sends user to login page if they aren't logged in
-        View::render('auth/login');
+        View::render('auth/login'); //Sends user to login page if they aren't logged in
     }
 
     public function loginDo()
     {
 
         $user = User::findByEmailOrUsername($_POST['username-or-email']);
-
-        //Array for upcoming errrs
-        $errors = [];
+        $errors = []; //Array for upcoming errrs
 
         //Checks if password is correct
         if (empty($user) || !$user->checkPassword($_POST['password'])) {

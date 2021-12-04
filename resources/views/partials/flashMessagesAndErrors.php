@@ -1,5 +1,5 @@
-<?php foreach (\Core\Session::getAndForget('errors', []) as $error) : ?>
-    <div class="errors">
-        <p class="errors_message"><?php echo $error; ?></p>
-    </div>
-<?php endforeach; ?>
+<div class="errors">
+    <?php foreach (\Core\Session::getAndForget('errors', []) as $error) : ?>
+        <p class="errors__message"><?php echo $error; ?></p>
+    <?php endforeach; ?>
+</div>

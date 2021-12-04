@@ -321,11 +321,8 @@ class CategoryPanelController
              *
              * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
              */
-            $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
+            $validator->textnum($_POST['name'], label: 'Category Name', required: true, max: 255);
             $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
-            /**
-             * @todo: implement Validate Array + Contents
-             */
         }
 
         /**

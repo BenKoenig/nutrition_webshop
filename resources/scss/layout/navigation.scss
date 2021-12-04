@@ -1,5 +1,38 @@
 .nav {
-    margin-top: 7rem;
+    @include md-screen {
+        margin-top: 7rem;
+    }
+
+    &__mobile {
+        display        : flex;
+        align-items    : center;
+        justify-content: space-between;
+        border: 20x solid red;
+
+        @include md-screen {
+            display: none;
+        }
+
+        &__a {
+            font-size: 1.4rem;
+            color: $black;
+            &--svg {
+                width: 4rem;
+            }
+        }
+
+        // &__overlay {
+        //     width: 100%;
+        //     position:fixed;
+        //     height: 100%;
+        //     background: black;
+        //     z-index: 10000;
+        //     top: 0;
+        //     left: 0;
+        // }
+
+
+    }
 
     &__desktop {
         display: none;
@@ -9,11 +42,10 @@
         &__desktop {
             display         : block;
             background-color: $lightGreen;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-radius: 0 0 3rem 3rem;
+            position        : fixed;
+            width           : 100%;
+            top             : 0;
+            z-index         : 1000;
 
             &__container {
                 display        : flex;

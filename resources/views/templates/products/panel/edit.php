@@ -60,7 +60,7 @@
             <select name="category_id" id="category_id">
 
                 <?php foreach ($categories as $category) : ?>
-                    <option <?php echo $category->id ? "selected" : ""; ?> value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
+                    <option <?php echo $category->id === $product->category_id ? "selected" : ""; ?> value="<?php echo $category->id; ?>"><?php echo $category->name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -71,7 +71,7 @@
 
 
                 <?php foreach ($goals as $goal) : ?>
-                    <option <?php echo $goal->id ? "selected" : ""; ?> value="<?php echo $goal->id; ?>"><?php echo $goal->name; ?></option>
+                    <option <?php echo $goal->id === $product->goal_id ? "selected" : ""; ?> value="<?php echo $goal->id; ?>"><?php echo $goal->name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -81,7 +81,7 @@
             <select name="merchant_id" id="merchant_id">
 
                 <?php foreach ($merchants as $merchant) : ?>
-                    <option <?php echo $merchant->id ? "selected" : ""; ?> value="<?php echo $merchant->id; ?>"><?php echo $merchant->name; ?></option>
+                    <option <?php echo $merchant->id === $product->merchant_id ? "selected" : ""; ?> value="<?php echo $merchant->id; ?>"><?php echo $merchant->name; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>

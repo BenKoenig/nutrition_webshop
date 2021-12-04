@@ -63,7 +63,7 @@ class ProfileController
         $validator->unique($_POST['email'], 'E-Mail', 'users', 'email', ignoreThisId: $user->id);
         $validator->letters($_POST['city'], label: 'City', required: true);
         $validator->letters($_POST['country'], label: 'country', required: true);
-        $validator->password($_POST['password'], label: 'Passwort', min: 8, required: true);
+        $validator->password($_POST['password'], label: 'Passwort', min: 8, required: false);
         /**
          * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
          * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt

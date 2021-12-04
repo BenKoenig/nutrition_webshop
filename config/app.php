@@ -5,7 +5,7 @@ return [
      * Hier definieren wir den Namen der Anwendung. Das bietet uns die Möglichkeit einen zentralen String zu definieren,
      * den wir dann beispielsweise für den <title>-Tag verwenden können.
      */
-    'app-name' => 'Fitness Express',
+    'app-name' => 'Shape Nutritions',
 
     /**
      * Hier definieren wir eine Slug Form des Anwendungsnamens. Dieser wird beispielsweise in der Session Klasse

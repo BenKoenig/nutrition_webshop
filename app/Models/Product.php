@@ -139,6 +139,10 @@ class Product extends AbstractModel
         }
     }
 
+    public function getUnits() {
+        return $this->units;
+    }
+
     public function getImages(): array
     {
         /**

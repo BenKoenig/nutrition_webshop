@@ -51,84 +51,30 @@ class MerchantPanelController
 
 
 
-
-    /**
-     * Formulardaten aus dem Bearbeitungsformular entgegennehmen und verarbeiten.
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     */
     public function update(int $id)
     {
-        /**
-         * Prüfen, ob ein*e User*in eingeloggt ist und ob diese*r eingeloggte User*in Admin ist. Wenn nicht, geben wir
-         * einen Fehler 403 Forbidden zurück. Dazu haben wir eine Art Middleware geschrieben, damit wir nicht immer
-         * dasselbe if-Statement kopieren müssen, sondern einfach diese Funktion aufrufen können.
-         */
         AuthMiddleware::isAdminOrFail();
 
-        /**
-         * 1) Daten validieren
-         * 2) Model aus der DB abfragen, das aktualisiert werden soll
-         * 3) Model in PHP überschreiben
-         * 4) Model in DB zurückspeichern
-         * 5) Redirect irgendwohin
-         */
-
-        /**
-         * Nachdem wir exakt dieselben Validierungen durchführen für update und create, können wir sie in eine eigene
-         * Methode auslagern und überall dort verwenden, wo wir sie brauchen.
-         */
         $validationErrors = $this->validateFormData($id);
 
-        /**
-         * Sind Validierungsfehler aufgetreten ...
-         */
+
         if (!empty($validationErrors)) {
-            /**
-             * ... dann speichern wir sie in die Session um sie in den Views dann ausgeben zu können ...
-             */
+     
             Session::set('errors', $validationErrors);
-            /**
-             * ... und leiten zurück zum Bearbeitungsformular. Der Code weiter unten in dieser Funktion wird dadurch
-             * nicht mehr ausgeführt.
-             */
+   
             Redirector::redirect("/admin/merchants/${id}/edit");
         }
 
-        /**
-         * Gewünschten Room über das ROom-Model aus der Datenbank laden. Hier verwenden wir die findOrFail()-Methode aus
-         * dem AbstractModel, die einen 404 Fehler ausgibt, wenn das Objekt nicht gefunden wird. Dadurch sparen wir uns
-         * hier zu prüfen, ob ein Post gefunden wurde oder nicht.
-         */
+
         $merchant = Merchant::findOrFail($id);
-
-        /**
-         * Sind keine Fehler aufgetreten legen aktualisieren wir die Werte des vorher geladenen Objekts ...
-         */
-
-    
-
         $merchant->fill($_POST);
 
-
-
-
-        /**
-         * Schlägt die Speicherung aus irgendeinem Grund fehl ...
-         */
         if (!$merchant->save()) {
-            /**
-             * ... so speichern wir einen Fehler in die Session und leiten wieder zurück zum Bearbeitungsformular.
-             */
             Session::set('errors', ['Speichern fehlgeschlagen.']);
-            // Redirector::redirect("/categorie/${id}/edit");
+            Redirector::redirect("/merchants/${id}/edit");
         }
 
-        /**
-         * Wenn alles funktioniert hat, leiten wir zurück zur /home-Route.
-         */
+
         Redirector::redirect('/admin/merchants');
     }
 
@@ -306,11 +252,8 @@ class MerchantPanelController
              *
              * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
              */
-            // $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
-            // $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
-            /**
-             * @todo: implement Validate Array + Contents
-             */
+            $validator->letters($_POST['name'], label: 'Goal', required: true, max: 255);
+            $validator->textnum($_POST['website'], label: 'Website', required: true, max: 255);
         }
 
         /**

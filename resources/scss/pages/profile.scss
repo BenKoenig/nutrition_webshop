@@ -36,6 +36,8 @@
                     background                : $lightGreen;
                     border-radius             : 1rem;
 
+         
+
                     @include sm-screen {
                         max-width: 15rem;
                     }

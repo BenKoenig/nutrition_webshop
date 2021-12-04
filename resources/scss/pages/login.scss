@@ -1,35 +1,24 @@
-
 .login-form {
     max-width      : 100rem;
-    margin         : 0 auto;
+    margin         : 10rem auto;
     padding        : 5rem 0;
     background     : $lightGreen;
-    margin-top     : 3rem;
     display        : flex;
     justify-content: center;
     border-radius  : 0.7rem;
+    flex-direction : column;
+    align-items    : center;
 
     @include sm-screen {
         border-radius: 5rem;
     }
 
+    &--h2 {
+        margin-bottom: 1rem;
+    }
+
     &__container {
         flex-direction: column;
-
-        &--btn {
-            display         : flex;
-            justify-content : center;
-            align-items     : center;
-            width           : 8rem;
-            height          : 2.5rem;
-            font-weight     : bold;
-            border          : 0;
-            border-radius   : 10rem;
-            background-color: $darkGreen;
-            color           : $white;
-            margin-top      : 1.5rem;
-
-        }
 
         &__field {
             display       : flex;
@@ -42,10 +31,10 @@
             &__input {
                 padding      : 0 1.1rem;
                 border       : 0;
-                height       : 2.8rem;
+                height       : 3rem;
                 background   : $white;
-                border-radius: 20rem;
-                font-size    : 1.2remfirfe;
+                border-radius: 1rem;
+                font-size    : 1.2rem;
 
                 &:focus {
                     border : 0;

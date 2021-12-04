@@ -1,25 +1,36 @@
 <nav class="nav">
+    <div class="nav__mobile">
+        <a class="nav__mobile__a" href="<?php echo BASE_URL; ?>/home">Shape Nutrtitions</a>
+        <a class="nav__mobile__a" href="#"><span class="sr-only">Menu</span><svg class="nav__mobile__a--svg" viewBox="0 0 32 32" xml:space="preserve">
+                <path d="M26 16c0 1.104-.896 2-2 2H8c-1.104 0-2-.896-2-2s.896-2 2-2h16c1.104 0 2 .896 2 2zM26 8c0 1.104-.896 2-2 2H8c-1.104 0-2-.896-2-2s.896-2 2-2h16c1.104 0 2 .896 2 2zM26 24c0 1.104-.896 2-2 2H8c-1.104 0-2-.896-2-2s.896-2 2-2h16c1.104 0 2 .896 2 2z" />
+            </svg></a>
+        <div class="nav__mobile__overlay">
+            
+        </div>
+    </div>
+
     <div class="nav__desktop">
         <div class="nav__desktop__container">
             <ul class="nav__desktop__container__ul">
+
                 <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--home" href="<?php echo BASE_URL; ?>/home">Shape <span class="font-normal">Nutrtitions</span></a></li>
                 <li class="nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/categories"">Categories</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/sales"">Sales</a></li>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a" href="<?php echo BASE_URL; ?>/new"">New</a></li>
                 <?php
-    if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
+                if (\Core\Middlewares\AuthMiddleware::isAdmin()) : ?>
                 <li class=" nav__desktop__container__ul__li"><a class="nav__desktop__container__ul__li__a nav__desktop__container__ul__li__a--admin" href="<?php echo BASE_URL; ?>/admin"">Admin</a></li>
                 <?php
-    endif; ?>
+                endif; ?>
             </ul>
 
             <ul class=" nav__desktop__container__account">
-            <?php if (!\App\Models\User::isLoggedIn()) : ?>
+                                    <?php if (!\App\Models\User::isLoggedIn()) : ?>
                 <li class="nav__desktop__container__account__li"><a class="nav__desktop__container__account__li__a nav__desktop__container__account__li__a--login" href="<?php echo BASE_URL; ?>/login">Login</a></li>
                 <li class="nav__desktop__container__account__li"><a class="nav__desktop__container__account__li__a nav__desktop__container__account__li__a--register" href="<?php echo BASE_URL; ?>/register">Register</a></li>
             <?php else : ?>
                 <div class="nav__desktop__container__account__logged">
-                    <p>Logged in as <a href="<?php echo BASE_URL . "/profile";?>"><?php echo \App\Models\User::getLoggedIn()->username; ?></a></p>
+                    <p>Logged in as <a href="<?php echo BASE_URL . "/profile"; ?>"><?php echo \App\Models\User::getLoggedIn()->username; ?></a></p>
                     <a class="nav__desktop__container__account__logged__a" href="<?php echo BASE_URL ?>/logout">Logout</a>
                 </div>
             <?php endif; ?>

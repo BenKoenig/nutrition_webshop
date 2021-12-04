@@ -1,0 +1,28 @@
+.register {
+    &__container {
+        &--h2 {
+            padding-bottom: 0.3rem;
+        }
+        @include page-width;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        flex-direction: column;
+        &__wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            &__field {
+                &__input {
+                    border: 0;
+                    background: $gray;
+                    height:3rem;
+                    font-size: 1.2rem;
+                    border-radius: 1rem;
+                    padding-left: 0.8rem;
+                }
+            }
+        }
+
+    }
+}

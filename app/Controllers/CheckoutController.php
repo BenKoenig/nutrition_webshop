@@ -9,6 +9,7 @@ use Core\Helpers\Redirector;
 use Core\Middlewares\AuthMiddleware;
 use Core\Session;
 use Core\View;
+use Core\Validator;
 
 /**
  * Checkout Controller
@@ -117,6 +118,64 @@ class CheckoutController
          */
         Session::set('success', ['Equipment erfolgreich gebucht!']);
         Redirector::redirect('/home');
+    }
+
+    public function update()
+    {
+
+        $user = User::getLoggedIn();
+
+  
+        $validator = new Validator();
+        $validator->letters($_POST['firstname'], label: 'First Name', required: true);
+        $validator->letters($_POST['lastname'], label: 'Last Name', required: true);
+        $validator->textnum($_POST['adress_1'], label: 'Adress 1', required: true);
+        $validator->textnum($_POST['adress_2'], label: 'Adress 2', required: false);
+        $validator->numeric($_POST['postal_code'], label: 'Postal Code', required: true);
+        $validator->letters($_POST['city'], label: 'City', required: true);
+        $validator->letters($_POST['country'], label: 'country', required: true);
+   
+        $errors = $validator->getErrors();
+
+    
+        if (!empty($errors)) {
+ 
+            Session::set('errors', $errors);
+            Redirector::redirect('/checkout/summary');
+        }
+
+
+        $fields = ['firstname', 'lastname', 'adress_1', 'adress_2', 'postal_code', 'city', 'country'];
+        foreach($fields as $field) {
+            $user->$field = trim($_POST[$field]);
+        }
+
+
+
+        /**
+         * Neue*n User*in in die Datenbank speichern.
+         *
+         * Die User::save() Methode gibt true zurück, wenn die Speicherung in die Datenbank funktioniert hat.
+         */
+        if ($user->save()) {
+            /**
+             * Hat alles funktioniert und sind keine Fehler aufgetreten, leiten wir zum Login Formular.
+             *
+             * Um eine Erfolgsmeldung ausgeben zu können, verwenden wir dieselbe Mechanik wie für die errors.
+             */
+            Session::set('success', ['Profil erfolgreich aktualisiert.']);
+        } else {
+            /**
+             * Fehlermeldung erstellen und in die Session speichern.
+             */
+            $errors[] = 'Leider ist ein Fehler aufgetreten. Bitte probieren Sie es erneut! :(';
+            Session::set('errors', $errors);
+        }
+
+        /**
+         * Redirect zurück zum Profile.
+         */
+        Redirector::redirect('/checkout/summary');
     }
 
 }

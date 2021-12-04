@@ -85,6 +85,7 @@ return [
      * Checkout Routes
      */
     '/checkout/summary' => [CheckoutController::class, 'summary'],
+    '/checkout/summary/update' => [CheckoutController::class, 'update'],
     '/checkout/finish' => [CheckoutController::class, 'finish'],
 
     /**
