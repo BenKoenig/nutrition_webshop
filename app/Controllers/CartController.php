@@ -51,8 +51,8 @@ class CartController
          */
         
         if($product->getUnits() < 1) {
-            Session::set('errors', ['No more Units are left.']);
-            Redirector::redirect('/home');
+            Session::set('errors', [$product->name . ' is out of stock']);
+            Redirector::redirect('/cart');
         }
 
 

@@ -23,6 +23,9 @@ class Redirector
         /**
          * Wurde eine Redirect-URL übergeben, leiten wir hier weiter.
          */
+
+
+         
         if (!empty($redirect)) {
             /**
              * Soll das übergeben Redirect-Ziel mit der BASE_URL geprefixt werde?
