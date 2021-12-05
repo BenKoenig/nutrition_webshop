@@ -752,7 +752,7 @@
     "\/resources\/scss\/main.scss" : {
       "aP" : 0,
       "bl" : 0,
-      "co" : 0,
+      "co" : 1,
       "dP" : 10,
       "ec" : 1,
       "ft" : 4,
