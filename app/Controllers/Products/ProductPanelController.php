@@ -182,11 +182,11 @@ class ProductPanelController
 
         if (!empty($_POST)) {
             //Validations
-            $validator->letters($_POST['name'], label: 'Name', required: true, max: 255);
+            $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
             $validator->numeric($_POST['price'], label: 'Price', required: true);
-            $validator->textnum($_POST['description'], label: 'Description', required: true, max: 1000);
+            // $validator->textnum($_POST['description'], label: 'Description', required: true, max: 1000);
             $validator->numeric($_POST['serving'], label: 'Serving', required: true);
-            $validator->textnum($_POST['ingredients'], label: 'Ingredients', required: true, max:1000);
+            // $validator->textnum($_POST['ingredients'], label: 'Ingredients', required: true, max:1000);
             $validator->numeric($_POST['weight'], label: 'Weight', required: true);
             $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
         }

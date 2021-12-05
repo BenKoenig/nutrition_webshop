@@ -116,20 +116,7 @@ class Validator
         return array_key_exists($type, $this->numericTypes);
     }
 
-    /**
-     * Prüfe, ob ein
-     *
-     * @param string $value
-     * @param string $label
-     * @param string $table
-     * @param string $column
-     * @param int    $ignoreThisId Soll ein Eintrag aktualisiert werden, so muss die Unique-Prüfung auf alle anderen
-     *                             Einträge ausgeführt werden und den aktuellen Eintrag ignorieren, da sonst ein
-     *                             Validierungsfehler passieren würde, wenn der Wert in der Unique-Spalte für den zu
-     *                             aktualisierenden Eintrag nicht geändert werden soll.
-     *
-     * @return bool
-     */
+
     public function unique(string $value, string $label, string $table, string $column, int $ignoreThisId = 0): bool
     {
         /**
