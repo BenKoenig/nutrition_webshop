@@ -26,27 +26,27 @@
 
 
 
-        <div class="row">
+        <div class="adminForm__form__imgs">
             <?php
             /**
              * Hier gehen wir alle Bilder aus dem Raum durch und rendern ein Thumbnail und eine Checkbox zum Löschen der
              * Bilder.
              */
             foreach ($categorie->getImages() as $image) : ?>
-                <div class="col col-2">
-                    <img src="<?php echo BASE_URL . $image; ?>" alt="<?php echo $categorie->name; ?>" class="thumbnail">
+                <div class="adminForm__form__imgs__item">
+                    <img src="<?php echo BASE_URL . $image; ?>" alt="<?php echo $categorie->name; ?>" class="adminForm__form__imgs__item__tn">
 
                     <div class="form-check">
                         <input type="checkbox" value="<?php echo $image; ?>" name="delete-images[]" id="delete-images[<?php echo $image; ?>]" class="form-check-input">
-                        <label class="form-check-label" for="delete-images[<?php echo $image; ?>]">Löschen?</label>
+                        <label class="form-check-label" for="delete-images[<?php echo $image; ?>]">Delete?</label>
                     </div>
                 </div>
             <?php endforeach; ?>
         </div>
 
         <div class="adminForm__form__btns">
-            <button class="adminForm__form__btns--create" type="submit">Update</button>
-            <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
+            <button class="btn btn--lime" type="submit">Update</button>
+            <a class="btn btn--red" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
         </div>
 
     </form>

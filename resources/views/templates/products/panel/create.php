@@ -18,7 +18,7 @@
 
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="description">Description</label>
-            <input class="adminForm__form__field__input" type="textarea" name="description" id="description" placeholder="Lorem Ipsum Dolar Sit Et">
+            <textarea class="adminForm__form__field__textarea" name="description" id="description" cols="30" rows="5" placeholder="Lorem Ipsum Dolar"></textarea>
         </div>
 
         <div class="adminForm__form__field">
@@ -28,7 +28,7 @@
 
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="ingredients">Ingredients</label>
-            <input class="adminForm__form__field__input" type="textarea" name="ingredients" id="ingredients" placeholder="Rice protein concentrate, soy protein, pumpkin seed protein...">
+            <textarea class="adminForm__form__field__textarea" name="description" id="description" cols="30" rows="5" placeholder="Rice protein concentrate, soy protein, pumpkin seed protein..."></textarea>
         </div>
 
         <div class="adminForm__form__field">
@@ -62,7 +62,7 @@
 
         <div class="adminForm__form__field">
             <label for="category_id">Select Category</label>
-            <select name="category_id" id="category_id">
+            <select class="adminForm__form__field__select" name="category_id" id="category_id">
                 <option value="_default" disabled selected>Categories</option>
 
                 <?php foreach ($categories as $category) : ?>
@@ -73,7 +73,7 @@
 
         <div class="adminForm__form__field">
             <label for="goal_id">Select a Goal</label>
-            <select name="goal_id" id="goal_id">
+            <select class="adminForm__form__field__select" name="goal_id" id="goal_id">
                 <option value="_default" disabled selected>Goals</option>
 
                 <?php foreach ($goals as $goal) : ?>
@@ -84,7 +84,7 @@
 
         <div class="adminForm__form__field">
             <label for="merchant_id">Select a Merchant</label>
-            <select name="merchant_id" id="merchant_id">
+            <select class="adminForm__form__field__select" name="merchant_id" id="merchant_id">
                 <option value="_default" disabled selected>Merchant</option>
 
                 <?php foreach ($merchants as $merchant) : ?>
@@ -101,8 +101,8 @@
             <input class="adminForm__form__field__file" type="file" class="form-control" id="imgs" name="imgs[]" multiple>
         </div>
         <div class="adminForm__form__btns">
-            <button class="adminForm__form__btns--create" type="submit">Create Product</button>
-            <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
+            <button class="btn btn--lime" type="submit">Create Product</button>
+            <a class="btn btn--red" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
         </div>
 
     </form>

@@ -21,8 +21,8 @@
             <input class="adminForm__form__field__file" type="file" class="form-control" id="imgs" name="imgs[]" multiple>
         </div>
         <div class="adminForm__form__btns">
-            <button class="adminForm__form__btns--create" type="submit">Create Category</button>
-            <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
+            <button class="btn btn--lime" type="submit">Create Category</button>
+            <a class="btn btn--red" href="<?php echo BASE_URL . '/admin/categories'; ?>">Cancel</a>
         </div>
 
     </form>
