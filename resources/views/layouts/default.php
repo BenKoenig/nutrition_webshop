@@ -7,7 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Shape Nutritions</title>
     <link rel="stylesheet" href="<?php url_e("css/main.css");?>"></link>
-    <script src="<?php url_e("js/app.min.js");?>"></script>
 </head>
 
 <body>

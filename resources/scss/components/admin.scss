@@ -195,85 +195,13 @@
     }
 }
 
-// .adminForm {
-//     @include page-width;
-
-//     &__path {
-//         display      : flex;
-//         margin-bottom: 0.7rem;
-//     }
-
-//     &__form {
-//         &__imgs {
-//             &__item {
-//                 &__tn {
-//                     width: 10rem
-//                 }
-//             }
-//         }
-
-//         display: flex;
-//         flex-direction: column;
-//         gap: 0.5rem;
-//         &__field {
-//             display       : flex;
-//             flex-direction: column;
-//             max-width     : 20rem;
-
-//             &--checkfield {
-//                 align-items     : center;
-//                 flex-direction  : row;
-//                 background-color: $gray;
-//                 border-radius   : 0.9rem;
-//                 padding         : 0.8rem 1rem;
-//                 gap             : 1rem;
-//             }
-
-//             &__label {
-//                 font-size  : 1.1rem;
-//                 font-weight: bold;
-
-//                 &--checklabel {
-//                     font-weight: normal;
-//                 }
-//             }
-
-//             &__input {
-//                 border         : 0;
-//                 display        : flex;
-//                 justify-content: center;
-//                 align-items    : center;
-
-//                 max-width       : 30rem;
-//                 height          : 4rem;
-//                 border-radius   : 0.9rem;
-//                 padding         : 0 1rem;
-//                 background-color: $gray;
-//                 font-size       : 1.1rem;
-//             }
-
-//             &__file {
-//                 background   : $gray;
-//                 padding      : 1rem 1rem;
-//                 border-radius: 0.9rem;
-//             }
-//         }
-
-//         &__btns {
-//             display: flex;
-//             gap    : 0.4rem;
-//         }
-
-//     }
-
-// }
-
 
 .adminForm {
     max-width: 100rem;
     margin   : 0 auto;
     padding  : 3rem 0.7rem;
 
+    //puts path into one line
     &__path {
         display      : flex;
         margin-bottom: 0.7rem;

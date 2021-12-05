@@ -19,19 +19,21 @@
 @import 'pages/profile';
 @import 'pages/register';
 
-
+//removes padding and margin and sets default backgrund color
 body {
     background-color: $white;
     margin          : 0;
     padding         : 0;
 }
 
+//removes default html unordered list style
 ul {
     list-style-type: none;
     margin         : 0;
     padding        : 0;
 }
 
+//removes default html text decoration
 a {
     text-decoration: none;
 }
@@ -85,20 +87,24 @@ h5 {
     font-size: 1.5rem;
 }
 
+//sets font to medium green color
 .text-medium {
     color: $mediumGreen;
 
 }
 
+//dark green text
 .text-dark {
     color: $darkGreen;
     margin-bottom: 0.8rem;
 }
 
+//centers text
 .text-center {
     text-align: center;
 }
 
+//sets font
 p,
 a,
 button,
@@ -112,18 +118,18 @@ textarea {
     margin     : 0.5rem 0;
 }
 
+//lowers text a little bit incase the margin of the font is too big
 .p--translate {
     transform: translateY(-0.5rem);
 }
 
-
-
-
-
-
-
-
-
+//Line devider for decoration purposes
+.line {
+    width: 100%;
+    height: 0.07rem;
+    background: $darkgray;
+    margin: 0.7rem 0;
+}
 
 
 

@@ -27,12 +27,13 @@ class ProductPanelController
 
     public function index()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //loads all products
         $products = Product::all();
-        /**
-         * Renders the View
-         */
+
+        //renders view
         View::render('products/panel/index', [
             'products' => $products
         ]);
@@ -42,57 +43,56 @@ class ProductPanelController
 
     public function update(int $id)
     {
-
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //creates validation
         $validationErrors = $this->validateFormData($id);
 
-
+        //checks fields
         $_POST['is_featured'] = $_POST['is_featured'] === 0 ? 0 : 1;
         $_POST['is_bestseller'] = $_POST['is_bestseller'] === 0 ? 0 : 1;
         $_POST['is_sale'] = $_POST['is_sale'] === 0 ? 0 : 1;
-  
+
+        //checks for validation errors
         if (!empty($validationErrors)) {
-    
+
+            //sends error
             Session::set('errors', $validationErrors);
-   
+
+            //redirects user back to edit page
             Redirector::redirect("/admin/products/${id}/edit");
         }
 
-  
+        //searches for product with the id given in the parameter
         $product = Product::findOrFail($id);
 
-
-
+        //fills product
         $product->fill($_POST);
 
+        //updates image(s)
         $product = $this->handleUploadedFiles($product);
 
-
+        //deletes image(s)
         $product = $this->handleDeleteFiles($product);
 
-
-
- 
+        //checks if product was saved
         if (!$product->save()) {
+            //sends user error
             Session::set('errors', ['Speichern fehlgeschlagen.']);
+
+            //redirects user back to page
             Redirector::redirect("/admin/products/${id}/edit");
         }
+
+        //after success, redirects user back to products admin page
         Redirector::redirect('/admin/products');
     }
 
 
-
-
-
-
-
     public function delete(int $id)
     {
-        /**
-         * Check if user is logged in
-         * If user is not logged in, thex will receive an error
-         */
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
         /**
@@ -115,12 +115,19 @@ class ProductPanelController
 
     public function deleteConfirm(int $id)
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //loads product with id given in the parameter
         $product = Product::findOrFail($id);
+
+        //deletes product
         $product->delete();
+
+        //updates session
         Session::set('success', ['The product has been sucessfully deleted.']);
-  
+
+        //redirects user back to products admin page
         Redirector::redirect('/admin/products/');
     }
 
@@ -129,12 +136,19 @@ class ProductPanelController
 
     public function create()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //goes through all categories
         $categories = Category::all();
+
+        //goes through all goals
         $goals = Goal::all();
+
+        //goes through all merchants
         $merchants = Merchant::all();
 
+        //renders view
         View::render('products/panel/create', [
             'categories' => $categories,
             'goals' => $goals,
@@ -146,31 +160,49 @@ class ProductPanelController
 
     public function store()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //validates fields
         $_POST['is_featured'] = empty($_POST['is_featured']) ? 0 : 1;
         $_POST['is_bestseller'] = empty($_POST['is_bestseller']) ? 0 : 1;
         $_POST['is_sale'] = empty($_POST['is_sale']) ? 0 : 1;
 
 
-     
+        //creates array
         $validationErrors = $this->validateFormData();
 
- 
-        if (!empty($validationErrors)) {
+        //checks if there were validation errors
+        if (!empty($validationErrors)) { #
+            //updates session
             Session::set('errors', $validationErrors);
+
+            //redirects user back to edit create page
             Redirector::redirect("/admin/products/create");
         }
+
+        //creates new product
         $product = new Product();
+
+        //fills product
         $product->fill($_POST);
+
+        //uploads image(s)
         $product = $this->handleUploadedFiles($product);
+
+        //deletes image(s)
         $product = $this->handleDeleteFiles($product);
 
+        //checks if product was saved
         if (!$product->save()) {
+            //updates session
             Session::set('errors', ['Speichern fehlgeschlagen.']);
+
+            //redirectws user back to admin create page
             Redirector::redirect("/admin/products/create");
         }
 
+        //redirects user back to products admin page
         Redirector::redirect('/admin/products');
     }
 
@@ -178,6 +210,7 @@ class ProductPanelController
 
     private function validateFormData(int $id = 0): array
     {
+        //creates new Validatior
         $validator = new Validator();
 
         if (!empty($_POST)) {
@@ -197,18 +230,24 @@ class ProductPanelController
 
 
 
-
-
     public function edit(int $id)
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //loads product with given id in the parameter
         $product = Product::findOrFail($id);
+
+        //loads all categories
         $categories = Category::all();
+
+        //loads all merchants
         $merchants = Merchant::all();
+
+        //loads all goals
         $goals = Goal::all();
 
-
+        //renders view
         View::render('products/panel/edit', [
             'product' => $product,
             'categories' => $categories,
@@ -224,8 +263,9 @@ class ProductPanelController
     {
         $files = AbstractFile::createFromUploadedFiles('imgs');
 
-
+        //goes through files
         foreach ($files as $file) {
+            //uploads image to folder
             $storagePath = $file->putToUploadsFolder();
             $product->addImages([$storagePath]);
         }
@@ -236,21 +276,15 @@ class ProductPanelController
 
     private function handleDeleteFiles(Product $product): Product
     {
-        /**
-         * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
-         */
+        //checks if a checkbox was selected
         if (isset($_POST['delete-images'])) {
-            /**
-             * Wenn ja, gehen wir alle Checkboxen durch ...
-             */
+            //goes through all selected checkboxes
             foreach ($_POST['delete-images'] as $deleteImage) {
-                /**
-                 * Lösen die Verknüpfung zum Room ...
-                 */
+
+                //removes selected image(s)
                 $product->removeImages([$deleteImage]);
-                /**
-                 * ... und löschen die Datei aus dem Uploads-Ordner.
-                 */
+ 
+                //deletes image(s) from folder
                 AbstractFile::delete($deleteImage);
             }
         }

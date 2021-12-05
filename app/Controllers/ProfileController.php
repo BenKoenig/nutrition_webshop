@@ -8,6 +8,7 @@ use Core\View;
 use Core\Validator;
 use Core\Session;
 use Core\Helpers\Redirector;
+
 /**
  * Profile Controller
  */
@@ -15,44 +16,28 @@ class ProfileController
 {
     public function __construct()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isLoggedInOrFail();
     }
 
     public function index()
     {
+        //checks if user is logged  in
         $user = User::getLoggedIn();
 
-        /**
-         * View laden und Daten übergeben.
-         */
+        //renders view
         View::render('profile', [
             'user' => $user
         ]);
     }
 
 
-
-
-
     public function update()
     {
-        /**
-         * 1) Daten validieren
-         * 2) User, der aktualisiert werden soll, aus DB laden
-         * 3) Email-Adresse im User Objekt aktualisieren
-         * 4) Soll das Passwort aktualisiert werden? Wenn ja: Passwort im User Objekt aktualisieren; wenn nein: weiter
-         * 5) User Objekt in Datenbank zurückspeichern
-         * 6) Redirect zum Profil
-         */
-
-        /**
-         * Eingeloggte*n User*in aus der DB holen.
-         */
+        //Checks if user is permited to view this page
         $user = User::getLoggedIn();
 
-        /**
-         * Daten validieren.
-         */
+        //Validates data
         $validator = new Validator();
         $validator->email($_POST['email'], label: 'E-Mail', required: true);
         $validator->letters($_POST['firstname'], label: 'First Name', required: true);
@@ -64,11 +49,8 @@ class ProfileController
         $validator->letters($_POST['city'], label: 'City', required: true);
         $validator->letters($_POST['country'], label: 'country', required: true);
         $validator->password($_POST['password'], label: 'Passwort', min: 8, required: false);
-        /**
-         * Das Feld 'password_repeat' braucht nicht validiert werden, weil wenn 'password' ein valides Passwort ist und
-         * alle Kriterien erfüllt, und wir hier nun prüfen, ob 'password' und 'password_repeat' ident sind, dann ergibt
-         * sich daraus, dass auch 'password_repeat' ein valides Passwort ist.
-         */
+
+        //compares passwords
         $validator->compare([
             $_POST['password'],
             'Passwort'
@@ -77,31 +59,19 @@ class ProfileController
             'Passwort wiederholen'
         ]);
 
-        /**
-         * Fehler aus dem Validator auslesen. Validator::getErrors() gibt uns dabei in jedem Fall ein Array zurück,
-         * wenn keine Fehler aufgetreten sind, ist dieses Array allerdings leer.
-         */
+        //error array list
         $errors = $validator->getErrors();
 
-        /**
-         * Wenn der Fehler-Array nicht leer ist und es somit Fehler gibt, ...
-         */
+        //checks if there was an error
         if (!empty($errors)) {
-            /**
-             * ... dann speichern wir sie in die Session, damit sie im View ausgegeben werden können und leiten dann
-             * zurück zum Formular.
-             */
             Session::set('errors', $errors);
             Redirector::redirect('/profile');
         }
 
-        /**
-         * Kommen wir an diesen Punkt, können wir sicher sein, dass die E-Mail-Adresse und der Username noch nicht
-         * verwendet werden und alle eingegebenen Daten korrekt validiert werden konnten.
-         */
 
+        //fields that need to  be updated
         $fields = ['email', 'username', 'firstname', 'lastname', 'adress_1', 'adress_2', 'postal_code', 'city', 'country'];
-        foreach($fields as $field) {
+        foreach ($fields as $field) {
             $user->$field = trim($_POST[$field]);
         }
 
@@ -109,62 +79,17 @@ class ProfileController
             $user->setPassword($_POST['password']);
         }
 
-        /**
-         * Neue*n User*in in die Datenbank speichern.
-         *
-         * Die User::save() Methode gibt true zurück, wenn die Speicherung in die Datenbank funktioniert hat.
-         */
+        //checks if it saved successfully
         if ($user->save()) {
-            /**
-             * Hat alles funktioniert und sind keine Fehler aufgetreten, leiten wir zum Login Formular.
-             *
-             * Um eine Erfolgsmeldung ausgeben zu können, verwenden wir dieselbe Mechanik wie für die errors.
-             */
             Session::set('success', ['Profil erfolgreich aktualisiert.']);
         } else {
-            /**
-             * Fehlermeldung erstellen und in die Session speichern.
-             */
+    
             $errors[] = 'Leider ist ein Fehler aufgetreten. Bitte probieren Sie es erneut! :(';
             Session::set('errors', $errors);
         }
 
-        /**
-         * Redirect zurück zum Profile.
-         */
+        //redirects to profile
         Redirector::redirect('/profile');
-    }
-
-
-
-
-    private function validateFormData(int $id = 0): array
-    {
-        /**
-         * Neues Validator Objekt erstellen.
-         */
-        $validator = new Validator();
-
-        /**
-         * Gibt es überhaupt Daten, die validiert werden können?
-         */
-        if (!empty($_POST)) {
-            /**
-             * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
-             *
-             * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
-             */
-            // $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
-            // $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
-            /**
-             * @todo: implement Validate Array + Contents
-             */
-        }
-
-        /**
-         * Fehler aus dem Validator zurückgeben.
-         */
-        return $validator->getErrors();
     }
 
 }

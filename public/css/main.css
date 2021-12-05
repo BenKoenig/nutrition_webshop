@@ -1200,23 +1200,52 @@
 .productDetail {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 1rem;
+  padding: 5rem 2rem;
 }
 .productDetail__container {
-  display: grid;
-  gap: 1rem;
-  grid-template-columns: repeat(1, 1fr);
+  display: flex;
+  gap: 6rem 3rem;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
-@media only screen and (min-width: 992px) {
-  .productDetail__container {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-.productDetail__container__item__img {
-  max-width: 30rem;
+.productDetail__container__imgs {
+  max-width: 35rem;
   width: 100%;
-  background: #D4EBEA;
+  overflow: hidden;
+  position: relative;
   border-radius: 3rem;
+}
+.productDetail__container__imgs--bgColor {
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  bottom: 0;
+  left: 0;
+  background: #D4EBEA;
+  z-index: -1;
+  border-radius: 3rem;
+}
+.productDetail__container__imgs__list {
+  display: flex;
+  flex-shrink: 0;
+}
+.productDetail__container__imgs__list__img {
+  width: 100%;
+  flex-shrink: 0;
+  max-width: 35rem;
+}
+.productDetail__container__imgs--next {
+  z-index: 3;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 1rem;
+}
+.productDetail__container__imgs--back {
+  z-index: 3;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 10rem;
 }
 .productDetail__container__item--description {
   max-width: 30rem;
@@ -1461,4 +1490,11 @@ textarea {
 
 .p--translate {
   transform: translateY(-0.5rem);
+}
+
+.line {
+  width: 100%;
+  height: 0.07rem;
+  background: #777272;
+  margin: 0.7rem 0;
 }
