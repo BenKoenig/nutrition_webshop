@@ -24,7 +24,6 @@ use Core\Models\AbstractFile;
  */
 class ProductPanelController
 {
-
     public function index()
     {
         //Checks if user is permited to view this page
@@ -46,13 +45,16 @@ class ProductPanelController
         //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+
+        $_POST['is_featured'] = empty($_POST['is_featured']) ? -1 : 1;
+        $_POST['is_bestseller'] = empty($_POST['is_bestseller']) ? -1 : 1;
+        $_POST['is_sale'] = empty($_POST['is_sale']) ? -1 : 1;
+
         //creates validation
         $validationErrors = $this->validateFormData($id);
 
-        //checks fields
-        $_POST['is_featured'] = $_POST['is_featured'] === 0 ? 0 : 1;
-        $_POST['is_bestseller'] = $_POST['is_bestseller'] === 0 ? 0 : 1;
-        $_POST['is_sale'] = $_POST['is_sale'] === 0 ? 0 : 1;
+
+
 
         //checks for validation errors
         if (!empty($validationErrors)) {
@@ -79,7 +81,7 @@ class ProductPanelController
         //checks if product was saved
         if (!$product->save()) {
             //sends user error
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Session::set('errors', ['Failed to save']);
 
             //redirects user back to page
             Redirector::redirect("/admin/products/${id}/edit");
@@ -125,7 +127,7 @@ class ProductPanelController
         $product->delete();
 
         //updates session
-        Session::set('success', ['The product has been sucessfully deleted.']);
+        Session::set('success', ['The product has been sucessfully deleted']);
 
         //redirects user back to products admin page
         Redirector::redirect('/admin/products/');
@@ -163,7 +165,8 @@ class ProductPanelController
         //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
-        //validates fields
+        //if checkbox is left empty, it will return 0
+        //if checkbox is checked, it will return 1
         $_POST['is_featured'] = empty($_POST['is_featured']) ? 0 : 1;
         $_POST['is_bestseller'] = empty($_POST['is_bestseller']) ? 0 : 1;
         $_POST['is_sale'] = empty($_POST['is_sale']) ? 0 : 1;
@@ -196,7 +199,7 @@ class ProductPanelController
         //checks if product was saved
         if (!$product->save()) {
             //updates session
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Session::set('errors', ['Failed to save']);
 
             //redirectws user back to admin create page
             Redirector::redirect("/admin/products/create");
@@ -217,9 +220,7 @@ class ProductPanelController
             //Validations
             $validator->textnum($_POST['name'], label: 'Name', required: true, max: 255);
             $validator->numeric($_POST['price'], label: 'Price', required: true);
-            // $validator->textnum($_POST['description'], label: 'Description', required: true, max: 1000);
             $validator->numeric($_POST['serving'], label: 'Serving', required: true);
-            // $validator->textnum($_POST['ingredients'], label: 'Ingredients', required: true, max:1000);
             $validator->numeric($_POST['weight'], label: 'Weight', required: true);
             $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
         }
@@ -283,7 +284,7 @@ class ProductPanelController
 
                 //removes selected image(s)
                 $product->removeImages([$deleteImage]);
- 
+
                 //deletes image(s) from folder
                 AbstractFile::delete($deleteImage);
             }

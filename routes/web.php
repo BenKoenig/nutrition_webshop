@@ -143,6 +143,4 @@ return [
      */
     '/profile' => [ProfileController::class, 'index'],
     '/profile/update' => [ProfileController::class, 'update'],
-
-
 ];

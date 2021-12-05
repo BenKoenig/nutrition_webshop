@@ -8,53 +8,31 @@ use Core\Helpers\Redirector;
 use Core\View;
 use Core\Session;
 
-/**
- * Cart Controller
- */
+
 class CartController
 {
-
-    /**
-     * Cart Übersicht anzeigen
-     */
     public function index()
     {
-        /**
-         * Inhalt des Cart laden.
-         */
+        //lodas products in cart
         $productsInCart = CartService::get();
 
-        /**
-         * View laden und Daten übergeben.
-         */
+        //renders view
         View::render('cart', [
             'products' => $productsInCart
         ]);
     }
 
-    /**
-     * Equipment in Cart hinzufügen (+1)
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     */
     public function add(int $id)
     {
-        /**
-         * Equipment, das hinzugefügt werden soll, laden.
-         */
+        //loads product with the id given in parameter
         $product = Product::findOrFail($id);
 
-        /**
-         * Equipment in Cart hinzufügen.
-         */
         
+        //adds item in cart if it is in stock and if not, it will give an error
         if($product->getUnits() < 1) {
             Session::set('errors', [$product->name . ' is out of stock']);
             Redirector::redirect('/cart');
         }
-
 
         CartService::add($product);
 
@@ -64,53 +42,29 @@ class CartController
         Redirector::redirect('/cart');
     }
 
-    /**
-     * Equipment in Cart entfernen (-1)
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     */
+
+    
     public function remove(int $id)
     {
-        /**
-         * Equipment, von dem ein Element entfernt werden soll, laden.
-         */
+        //loads product with the id given in the parameter
         $product = Product::findOrFail($id);
 
-        /**
-         * Ein Element des Equipments entfernen.
-         */
+        //removes item from cart
         CartService::remove($product);
 
-        /**
-         * Redirect.
-         */
+        //redirects user back to cart
         Redirector::redirect('/cart');
     }
 
-    /**
-     * Equipment komplett aus Cart entfernen (-all)
-     *
-     * @param int $id
-     *
-     * @throws \Exception
-     */
     public function removeAll(int $id)
     {
-        /**
-         * Equipment, das komplett aus dem Cart entfernt werden soll, laden.
-         */
+        //loads product with the id given in the parameter
         $product = Product::findOrFail($id);
 
-        /**
-         * Aus dem Cart entfernen.
-         */
+        //removes all items from cart
         CartService::removeAll($product);
 
-        /**
-         * Redirect.
-         */
+        //redirects user back to cart
         Redirector::redirect('/cart');
     }
 

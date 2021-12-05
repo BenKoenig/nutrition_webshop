@@ -42,8 +42,8 @@
         </div>
 
         <div class="adminForm__form__btns">
-            <button class="adminForm__form__btns--create" type="submit">Update</button>
-            <a class="adminForm__form__btns--cancel" href="<?php echo BASE_URL . '/admin/goals'; ?>">Cancel</a>
+            <button class="btn btn--lime" type="submit">Update</button>
+            <a class="btn btn--red" href="<?php echo BASE_URL . '/admin/goals'; ?>">Cancel</a>
         </div>
 
     </form>

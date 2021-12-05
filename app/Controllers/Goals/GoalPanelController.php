@@ -69,7 +69,7 @@ class GoalPanelController
 
         //Checks if goal was saved
         if (!$goal->save()) {
-            Session::set('errors', ['Speichern fehlgeschlagen.']); //notifies user about error
+            Session::set('errors', ['Failed to save']); //notifies user about error
             Redirector::redirect("/goals/${id}/edit"); //refreshes page
         }
         Redirector::redirect('/admin/goals'); //sends user back to goal panel
@@ -109,7 +109,7 @@ class GoalPanelController
 
 
         if (!$goal->save()) {
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Session::set('errors', ['Failed to save']);
             Redirector::redirect("/admin/goals/create");
         }
 

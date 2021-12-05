@@ -5,18 +5,15 @@ namespace App\Controllers;
 use Core\Middlewares\AuthMiddleware;
 use Core\View;
 
-/**
- * ControlPanelController
- */
 class AdminController
 {
 
-    /**
-     * Render the Control Panel
-     */
     public function index()
     {
+        //checks if user is admin
         AuthMiddleware::isAdminOrFail();
+
+        //renders admin panel view
         View::render('admin');
     }
     

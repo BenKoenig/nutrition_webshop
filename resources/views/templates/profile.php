@@ -1,5 +1,6 @@
 <div class="profile">
     <div class="profile__header">
+        <!-- Greets user by name -->
         <h1>Hello, <?php e(upperLowerCase($user->firstname)); ?></h1>
     </div>
 
@@ -8,10 +9,13 @@
             <h3>Orders</h3>
             <p class="p--translate">All of your recent orders.</p>
             <div class="profile__wrapper__orders__container">
+                <!-- Goes through all orders -->
                 <?php foreach ($user->orders(true) as $order) : ?>
                     <div class="profile__wrapper__orders__container__item">
-
-                        <img class="profile__wrapper__orders__container__item--img" src="<?php echo BASE_URL . $order->item()->getImages()[0]; ?>" alt="<?php echo $order->item()->name; ?>">
+                        <!-- displays order image -->
+                        <img class="profile__wrapper__orders__container__item--img" src="<?php url_e($order->item()->getFirstImage()); ?>" alt="<?php echo $order->item()->name; ?>">
+                        
+                        <!-- link to get to product page -->
                         <a href="<?php echo BASE_URL . '/product/' . $order->item()->id; ?> " class="profile__wrapper__orders__container__item--a"><?php echo $order->item()->name; ?> (<?php echo $order->units; ?>)</a>
 
                     </div>
@@ -19,6 +23,7 @@
             </div>
         </div>
 
+        <!-- update profile -->
         <form class="profile__wrapper__form" action="<?php url_e("profile/update"); ?>" method="post">
             <h3>Edit Profile</h3>
             <p class="p--translate">Your profile information.</p>
@@ -72,7 +77,6 @@
 
                 </div>
                 <div class="profile__wrapper__form__container__flex">
-
                     <div class="profile__wrapper__form__container__field">
                         <label for="city" class="profile__wrapper__form__container__flex__field--label">City</label>
                         <input class="profile__wrapper__form__container__flex__field__input" type="text" name="city" id="city" value="<?php e($user->city); ?>">
@@ -85,7 +89,7 @@
                     </div>
                 </div>
 
-
+                <!-- Updates profile information -->
                 <button type="submit" class="btn btn--lime">Submit</button>
             </div>
 

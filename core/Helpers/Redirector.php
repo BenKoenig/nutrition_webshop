@@ -23,8 +23,6 @@ class Redirector
         /**
          * Wurde eine Redirect-URL übergeben, leiten wir hier weiter.
          */
-
-
          
         if (!empty($redirect)) {
             /**

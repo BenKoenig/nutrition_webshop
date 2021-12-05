@@ -59,41 +59,48 @@ class CategoryPanelController
         //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
-        //creates new validatror
+
+        $_POST['is_popular'] = empty($_POST['is_popular']) ? -1 : 1;
+
+
+        //creates validation
         $validationErrors = $this->validateFormData($id);
+
+
+
 
         //checks for validation errors
         if (!empty($validationErrors)) {
-            //sends user error message
+
+            //sends error
             Session::set('errors', $validationErrors);
 
             //redirects user back to edit page
             Redirector::redirect("/admin/categories/${id}/edit");
         }
 
-        //searches for category with the id given in the parameter
+        //searches for product with the id given in the parameter
         $category = Category::findOrFail($id);
 
-        //fills category data
+        //fills product
         $category->fill($_POST);
 
-        //uploads image(s) to category
+        //updates image(s)
         $category = $this->handleUploadedFiles($category);
 
-        //deletes image(s) from category
+        //deletes image(s)
         $category = $this->handleDeleteFiles($category);
 
-
-        //checks if category was saved
+        //checks if product was saved
         if (!$category->save()) {
-            //sends error
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            //sends user error
+            Session::set('errors', ['Failed to save']);
 
-            //redirects user back to edit page
-            Redirector::redirect("/categorie/${id}/edit");
+            //redirects user back to page
+            Redirector::redirect("/admin/categories/${id}/edit");
         }
 
-        //redirects user back to category admin panel - once everything is saved
+        //after success, redirects user back to products admin page
         Redirector::redirect('/admin/categories');
     }
 
@@ -113,6 +120,12 @@ class CategoryPanelController
         //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //if is_popular is left empty it returns 0
+        //if is_popular is checked it returns 1 
+        $_POST['is_popular'] = empty($_POST['is_popular']) ? 0 : 1;
+        // var_dump($_POST['is_popular']);
+
+     
         //creates new validator
         $validationErrors = $this->validateFormData();
 

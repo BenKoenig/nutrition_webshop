@@ -5,17 +5,14 @@ namespace App\Controllers\Products;
 use App\Models\Product;
 use Core\View;
 
-class SaleController {
+class SaleController
+{
     public function index()
     {
-        /**
-         * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
-         */;
-         $products = Product::all('updated_at', 'ASC', null, 'is_sale', 1);
+        //loads all products
+        $products = Product::all('updated_at', 'ASC', null, 'is_sale', 1);
 
-        /**
-         * View laden und Daten übergeben.
-         */
+        //Renders view
         View::render('products/sales', [
             'products' => $products,
         ]);

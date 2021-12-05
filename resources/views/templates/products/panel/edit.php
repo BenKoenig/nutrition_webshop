@@ -46,6 +46,7 @@
 
         <div class="adminForm__form__field adminForm__form__field--checkfield">
             <label class="adminForm__form__field__label--checklabel" for="is_bestseller">Is this item a bestseller?</label>
+
             <input type="checkbox" name="is_bestseller" id="is_bestseller" <?php echo $product->is_bestseller === 1 ? "checked" : ""; ?>>
         </div>
 
@@ -96,16 +97,8 @@
             <input class="adminForm__form__field__file" type="file" class="form-control" id="imgs" name="imgs[]" multiple>
         </div>
 
-
-
-
-
         <div class="adminForm__form__imgs">
             <?php
-            /**
-             * Hier gehen wir alle Bilder aus dem Raum durch und rendern ein Thumbnail und eine Checkbox zum Löschen der
-             * Bilder.
-             */
             foreach ($product->getImages() as $image) : ?>
                 <div class="adminForm__form__imgs__item">
                     <img src="<?php echo BASE_URL . $image; ?>" alt="<?php echo $product->name; ?>" class="adminForm__form__imgs__item__tn">

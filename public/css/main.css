@@ -7,10 +7,17 @@
   display: flex;
   gap: 3rem;
   flex-wrap: wrap;
-  justify-content: center;
   background-color: #F4FAFA;
   width: 100%;
   padding: 8rem 0;
+}
+@media only screen and (min-width: 767px) {
+  .footer__links {
+    justify-content: center;
+  }
+}
+.footer__links__social {
+  padding: 0 0.8rem;
 }
 .footer__links__social__desc {
   max-width: 20rem;
@@ -31,6 +38,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.4rem;
+  padding: 0 0.8rem;
 }
 .footer__links__info__item__a {
   text-decoration: none;
@@ -405,6 +413,7 @@
 }
 .adminForm__form__imgs__item__tn {
   max-width: 20rem;
+  border-radius: 1rem;
 }
 .adminForm__form__field {
   display: flex;
@@ -495,7 +504,7 @@
 .panel {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 0.8rem;
 }
 .panel__header__path {
   display: flex;
@@ -586,7 +595,7 @@
 .panel-option {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 0.8rem;
 }
 .panel-option__header__container {
   display: flex;
@@ -714,7 +723,7 @@
 .cards {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 2.5rem 0;
+  padding: 5rem 0.8rem;
 }
 .cards__container {
   display: grid;
@@ -1225,7 +1234,7 @@
 .productDetail {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 0.8rem;
 }
 .productDetail__container {
   display: flex;
@@ -1289,7 +1298,7 @@
 .profile {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 0.8rem;
 }
 .profile__header {
   padding-bottom: 1.5rem;
@@ -1404,7 +1413,7 @@
 .register__container {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 5rem 2rem;
+  padding: 5rem 0.8rem;
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;

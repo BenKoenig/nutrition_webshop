@@ -30,7 +30,7 @@
             </div>
             <div class="summary__container__item__field">
                 <label for="country">Country</label>
-                <input type="text" class="summary__container__item__field__input" name="country" id="country" value="<?php echo $user->city; ?>">
+                <input type="text" class="summary__container__item__field__input" name="country" id="country" value="<?php echo $user->country; ?>">
             </div>
 
             

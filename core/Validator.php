@@ -24,34 +24,34 @@ class Validator
 
     //Error Message templates
     private array $errorMessages = [
-        'letters' => '%s darf nur Buchstaben und Leerzeichen beinhalten.',
-        'text' => '%s darf nur Buchstaben und Sonderzeichen beinhalten.',
-        'textnum' => '%s darf nur aus alphanumerischen Zeichen bestehen.',
-        'alphanumeric' => '%s darf nur Buchstaben, Zahlen, Binde- und Unterstriche beinhalten.',
-        'checkbox' => '%s enthält keinen gültigen Wert für eine Checkbox.',
-        'password' => '%s muss mindestens 8 Zeichen lang sein, Groß- und Kleinbuchstabe und Sonderzeichen enthalten.',
-        'email' => '%s muss eine korrekte E-Mail Adresse sein.',
+        'letters' => '%s can only have letters and spaces',
+        'text' => '%s can only have letters and special characters',
+        'textnum' => '%s can only have alphanumeric characters',
+        'alphanumeric' => '%s can only have letters, numbers, hyphens and underscores',
+        'checkbox' => '%s is not a valid',
+        'password' => '%s must have 8 characters, uppercase and lowercase letter and a special character',
+        'email' => '%s must be a valid email adress',
 
-        'numeric' => '%s muss numerisch sein.',
-        'int' => '%s muss ganzzahlig sein.',
-        'intRegex' => '%s muss ganzzahlig sein.',
-        'float' => '%s muss eine Fließkommazahl sein.',
+        'numeric' => '%s must be numeric',
+        'int' => '%s must be a integer',
+        'intRegex' => '%s must be a integer',
+        'float' => '%s must be a float',
 
-        'equals' => '%s muss ident sein mit %s.',
-        'compare' => '%s und %s müssen ident sein.',
-        'unique' => '%s wird bereits verwendet.',
-        'date' => '%s muss ein Datum sein.',
-        'array-required' => '%s muss Werte beinhalten.',
+        'equals' => '%s must be identical to %s',
+        'compare' => '%s and %s must be identical.',
+        'unique' => '%s has already been used',
+        'date' => '%s must be a date',
+        'array-required' => '%s must have values',
 
-        'required' => '%s ist ein Pflichtfeld.',
-        'min' => '%s muss mindestens %s sein.',
-        'min-string' => '%s muss mindestens %s Zeichen haben.',
-        'max' => '%s muss kleiner oder gleich %s sein.',
-        'max-string' => '%s darf maximal %s Zeichen haben.',
+        'required' => '%s is required',
+        'min' => '%s must at least be %s',
+        'min-string' => '%s must at least have %s characters',
+        'max' => '%s must be smaller or equal to %s',
+        'max-string' => '%s can maximum have %s letters',
 
-        'file-error' => 'Es konnten nicht alle Dateien aus %s hochgeladen werden.',
-        'file-type' => '%s darf nur Dateien vom Typ "%s" beinhalten.',
-        'file-size' => '%s darf nur Dateien bis zu %d MB beinhalten.'
+        'file-error' => 'Not all data from %s could be uploaded',
+        'file-type' => '%s can only include data-types from "%s"',
+        'file-size' => '%s is only allowed to be %d MB  '
     ];
 
     //Error Array

@@ -1,5 +1,17 @@
 <?php
 
+/**
+ * =================================
+ * Admin Account: 
+ * Username: sae
+ * Password: test
+ * =================================
+ * User Account (without admin privileges): 
+ * Username: user
+ * Password: test
+ */
+
+
 return [
     /**
      * Hier definieren wir den Namen der Anwendung. Das bietet uns die Möglichkeit einen zentralen String zu definieren,

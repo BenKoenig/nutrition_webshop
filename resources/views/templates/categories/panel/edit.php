@@ -15,7 +15,7 @@
 
         <div class="adminForm__form__field adminForm__form__field--checkfield"> 
             <label class="adminForm__form__field__label--checklabel" for="is_popular">Add to popular section</label>
-            <input type="checkbox" name="is_popular" id="is_popular" <?php echo $categorie->is_popular ? "checked" : ""; ?>>
+            <input type="checkbox" name="is_popular" id="is_popular" <?php e($categorie->is_popular == 0  || $categorie->is_popular == -1   ? "" : "checked") ?>>
         </div>
         <div class="adminForm__form__field">
             <label class="adminForm__form__field__label" for="imgs">Upload Images</label>

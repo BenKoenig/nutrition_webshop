@@ -58,12 +58,14 @@ class MerchantPanelController
             Redirector::redirect("/admin/merchants/${id}/edit");
         }
 
-
+        //finds merchant with id given in parameter
         $merchant = Merchant::findOrFail($id);
+        //fills merchant
         $merchant->fill($_POST);
 
+        //checks if merchant was filled successfully
         if (!$merchant->save()) {
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Session::set('errors', ['Failed to saved']);
             Redirector::redirect("/merchants/${id}/edit");
         }
 
@@ -106,7 +108,7 @@ class MerchantPanelController
         //checks if merchant was saved correctly
         if (!$merchant->save()) {
             //Sends error message
-            Session::set('errors', ['Speichern fehlgeschlagen.']);
+            Session::set('errors', ['Failed to save']);
             Redirector::redirect("/admin/merchants/create");
         }
 

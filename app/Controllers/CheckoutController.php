@@ -17,79 +17,48 @@ use Core\Validator;
 class CheckoutController
 {
 
-    /**
-     * Wir können die AuthMiddleware auch im Konstruktor aufrufen, wenn alle Actions dieselbe Methode der AuthMiddleware
-     * aufgerufen hätten.
-     *
-     * @throws \Exception
-     */
+    //checks if user is admin
     public function __construct()
     {
         AuthMiddleware::isLoggedInOrFail();
     }
 
-    /**
-     * Zusammenfassung anzeigen, bevor die Buchung abgeschlossen wird.
-     *
-     * @throws \Exception
-     */
+    
     public function summary()
     {
-        /**
-         * Einträge aus dem Cart und eingeloggte*n User*in holen.
-         */
+
+        //loads all items in cart
         $cartContent = CartService::get();
+
+        //checks if user is logged in
         $user = User::getLoggedIn();
 
-        /**
-         * View laden und Daten übergeben.
-         */
+        //renders view
         View::render('summary', [
             'cartContent' => $cartContent,
             'user' => $user
         ]);
     }
 
-    /**
-     * Buchung wirklich durchführen.
-     *
-     * @throws \Exception
-     */
+
     public function finish()
     {
-        /**
-         * + Booking Einträge anlegen
-         * + Units reduzieren
-         */
-
-        /**
-         * Einträge aus dem Cart und eingeloggte*n User*in holen.
-         */
+        //gets information from user
         $cartContent = CartService::get();
         $user = User::getLoggedIn();
 
-        /**
-         * Alle Einträge aus dem Cart durchgehen.
-         */
+
+        //goes through all items
         foreach ($cartContent as $itemFromCart) {
-            /**
-             * Nachdem ein Equipment mehrmals im Cart sein kann, legen wir hier für jedes einzelne Equipment einen
-             * Booking-Eintrag an. Eleganter wäre es, in der bookings Tabelle eine quantity Spalte hinzuzufügen und
-             * nicht für dasselbe Equipment mehrere Einträge anzulegen, aber der Einfachheit halber machen wir es
-             * jetzt mal so.
-             */
             for ($i = 1; $i <= $itemFromCart->count; $i++) {
-                /**
-                 * Booking Objekt erstellen und befüllen.
-                 */
+                //fills order
                 $order = new Order();
                 $order->fill([
                     'user_id' => $user->id,
                     'product_id' => $itemFromCart->id
                 ]);
-                /**
-                 * Booking Objekt in die Datenbank speichern.
-                 */
+
+                //saves order to databse
                 if (!$order->save()) {
                     /**
                      * Konnte nicht gespeichert werden, schreiben wir einen Fehler und leiten zurück zur Zusammenfassung.
@@ -99,24 +68,18 @@ class CheckoutController
                 }
             }
 
-            /**
-             * Hat das Objekt aus dem Cart, das wir grade bearbeiten, eine units-Property, dann entfernen wir die
-             * Anzahl der gerade gebuchten Elemente und reduzieren somit den "Lagerbestand."
-             */
+            //removes item from stock
             if (property_exists($itemFromCart, 'units')) {
                 $itemFromCart->units = $itemFromCart->units - $itemFromCart->count;
                 $itemFromCart->save();
             }
         }
 
-        /**
-         * Nun löschen wir den Inhalt des Carts, der soeben erfolgreich gebucht wurde ...
-         */
+        //resets cart
         CartService::destroy();
-        /**
-         * ... schreiben eine Erfolgsmeldung und leiten weiter.
-         */
-        Session::set('success', ['Equipment erfolgreich gebucht!']);
+
+        //sets session and redirects user back to home
+        Session::set('success', ['Order is complete']);
         Redirector::redirect('/home');
     }
 
@@ -151,30 +114,17 @@ class CheckoutController
         }
 
 
-
-        /**
-         * Neue*n User*in in die Datenbank speichern.
-         *
-         * Die User::save() Methode gibt true zurück, wenn die Speicherung in die Datenbank funktioniert hat.
-         */
+        //checks if profile was saved
         if ($user->save()) {
-            /**
-             * Hat alles funktioniert und sind keine Fehler aufgetreten, leiten wir zum Login Formular.
-             *
-             * Um eine Erfolgsmeldung ausgeben zu können, verwenden wir dieselbe Mechanik wie für die errors.
-             */
-            Session::set('success', ['Profil erfolgreich aktualisiert.']);
+            //updates session to success
+            Session::set('success', ['Profile has been successfully updated']);
         } else {
-            /**
-             * Fehlermeldung erstellen und in die Session speichern.
-             */
-            $errors[] = 'Leider ist ein Fehler aufgetreten. Bitte probieren Sie es erneut! :(';
+            //error message
+            $errors[] = 'There was an error, please try again';
             Session::set('errors', $errors);
         }
 
-        /**
-         * Redirect zurück zum Profile.
-         */
+        //Redirects user back to summary page
         Redirector::redirect('/checkout/summary');
     }
 
