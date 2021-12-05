@@ -4,7 +4,7 @@ const ingredientsBtn = document.querySelector('.productDetail__container__item--
 //ingredients text
 const moreInfo = document.querySelector('.productDetail__container__item--moreInfo');
 
-//displays no information by default
+//hides information by default
 moreInfo.style.display = "none";
 
 ingredientsBtn.addEventListener('click', (e) => {

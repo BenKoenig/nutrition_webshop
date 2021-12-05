@@ -15,6 +15,7 @@ use App\Controllers\Products\ProductDetailController;
 use App\Controllers\Merchants\MerchantPanelController;
 use App\Controllers\Users\UserPanelController;
 use App\Controllers\Goals\GoalPanelController;
+use App\Controllers\Goals\GoalController;
 use App\Controllers\CartController;
 use App\Controllers\Products\NewController;
 use App\Controllers\Products\SaleController;
@@ -22,6 +23,7 @@ use App\Controllers\CheckoutController;
 use App\Controllers\AdminController;
 use App\Controllers\HomeController;
 use App\Controllers\ProfileController;
+
 
 return [
     /**
@@ -131,8 +133,16 @@ return [
     '/admin' => [AdminController::class, 'index'],
 
     /**
+     * Goals Route
+     */
+    '/goals/{id}' => [GoalController::class, 'index'],
+
+
+    /**
      * Profile Route
      */
     '/profile' => [ProfileController::class, 'index'],
     '/profile/update' => [ProfileController::class, 'update'],
+
+
 ];

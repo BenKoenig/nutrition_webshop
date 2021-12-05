@@ -117,7 +117,7 @@ and can be edited within the CMS.
                     The headline (h4) contains the goal name from the database
                     -->
                     <h4 class="cards__container__item__info__title"><?php echo $goal->name; ?></h4>
-                    <a class="btn btn--lime" href="#">Discover</a>
+                    <a class="btn btn--lime" href="<?php url_e("goals/" . $goal->id);?>">Discover</a>
                 </div>
             </div>
         <?php endforeach; ?>

@@ -81,6 +81,14 @@
       "oAP" : "\/app\/Controllers\/CheckoutController.php",
       "oF" : 0
     },
+    "\/app\/Controllers\/Goals\/GoalController.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/app\/Controllers\/Goals\/GoalController.php",
+      "oF" : 0
+    },
     "\/app\/Controllers\/Goals\/GoalPanelController.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -460,6 +468,39 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/public\/js\/app.min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/public\/js\/ingredients-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/ingredients-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/public\/js\/navigation-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/navigation-min-min.js",
+      "oF" : 0,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/public\/js\/slider-min.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/slider-min-min.js",
       "oF" : 0,
       "sC" : 3,
       "tS" : 0
@@ -1010,6 +1051,14 @@
       "oAP" : "\/resources\/views\/templates\/goals\/panel\/index.php",
       "oF" : 0
     },
+    "\/resources\/views\/templates\/goals\/productList.php" : {
+      "cB" : 0,
+      "ft" : 8192,
+      "hM" : 0,
+      "oA" : 0,
+      "oAP" : "\/resources\/views\/templates\/goals\/productList.php",
+      "oF" : 0
+    },
     "\/resources\/views\/templates\/helpers\/confirmation.php" : {
       "cB" : 0,
       "ft" : 8192,
@@ -1168,14 +1217,6 @@
       "hM" : 0,
       "oA" : 0,
       "oAP" : "\/routes\/web.php",
-      "oF" : 0
-    },
-    "\/storage\/fonts\/HelveticaNeue-Light.otf" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/storage\/fonts\/HelveticaNeue-Light.otf",
       "oF" : 0
     },
     "\/storage\/sessions\/.gitkeep" : {
