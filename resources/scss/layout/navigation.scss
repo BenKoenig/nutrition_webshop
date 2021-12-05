@@ -1,4 +1,5 @@
 .nav {
+    margin-top: 3rem;
     @include md-screen {
         margin-top: 7rem;
     }
@@ -7,7 +8,12 @@
         display        : flex;
         align-items    : center;
         justify-content: space-between;
-        border: 20x solid red;
+        position: fixed;
+        width: 100%;
+        background: $white;
+        padding: 0 0.5rem;
+        z-index: 10000;
+        top: 0;
 
         @include md-screen {
             display: none;
@@ -21,15 +27,27 @@
             }
         }
 
-        // &__overlay {
-        //     width: 100%;
-        //     position:fixed;
-        //     height: 100%;
-        //     background: black;
-        //     z-index: 10000;
-        //     top: 0;
-        //     left: 0;
-        // }
+        &__overlay {
+            width: 100%;
+            position:fixed;
+            height: 100%;
+            backdrop-filter: blur(16px) saturate(180%);
+            background-color: rgba(17, 25, 40, 0.75);
+            z-index: 10000;
+            top: 0;
+            left: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            &__ul {
+                &__li {
+                    &__a {
+                        font-size: 3rem;
+                        color: $white;
+                    }
+                }
+            }
+        }
 
 
     }

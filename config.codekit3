@@ -499,6 +499,17 @@
       "oAP" : "\/resources\/js\/.gitkeep",
       "oF" : 0
     },
+    "\/resources\/js\/ingredients.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/ingredients-min.js",
+      "oF" : 2,
+      "sC" : 3,
+      "tS" : 0
+    },
     "\/resources\/js\/main.js" : {
       "bF" : 0,
       "ft" : 64,
@@ -506,6 +517,28 @@
       "mi" : 1,
       "oA" : 0,
       "oAP" : "\/public\/js\/app.min.js",
+      "oF" : 2,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/resources\/js\/navigation.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/navigation-min.js",
+      "oF" : 2,
+      "sC" : 3,
+      "tS" : 0
+    },
+    "\/resources\/js\/slider.js" : {
+      "bF" : 0,
+      "ft" : 64,
+      "ma" : 0,
+      "mi" : 1,
+      "oA" : 0,
+      "oAP" : "\/public\/js\/slider-min.js",
       "oF" : 2,
       "sC" : 3,
       "tS" : 0

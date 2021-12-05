@@ -43,6 +43,7 @@
     </footer>
     <!-- /.container -->
     <script src="<?php echo BASE_URL; ?>/js/app.min.js"></script>
+    <script src="<?php echo BASE_URL; ?>/js/navigation-min.js"></script>
 </body>
 
 </html>

@@ -51,3 +51,6 @@
         </div>
     </div>
 </div>
+
+<script src="<?php echo BASE_URL; ?>/js/slider-min.js"></script>
+<script src="<?php echo BASE_URL; ?>/js/ingredients-min.js"></script>

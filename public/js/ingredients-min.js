@@ -1,0 +1,1 @@
+const ingredientsBtn=document.querySelector(".productDetail__container__item--a"),moreInfo=document.querySelector(".productDetail__container__item--moreInfo");moreInfo.style.display="none",ingredientsBtn.addEventListener("click",(e=>{e.preventDefault(),"block"===moreInfo.style.display?moreInfo.style.display="none":moreInfo.style.display="block"}));
