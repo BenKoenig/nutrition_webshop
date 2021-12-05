@@ -14,7 +14,7 @@
                     alt: PHP code that contains the name of the image from the database
                     -->
                     <div class="cards__container__item__bgColor"></div>
-                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $product->getImages()[0]; ?>" alt="<?php echo $product->name; ?>">
+                    <img class="cards__container__item__bg" src="<?php echo BASE_URL . $product->getFirstImage(); ?>" alt="<?php echo $product->name; ?>">
                 </div>
                 <div class="cards__container__item__box">
                     <div class="cards__container__item__box__desc">

@@ -1,4 +1,4 @@
-
+//Header for Admin panel
 .panel-header {
     margin-bottom   : 1rem;
     display         : flex;
@@ -17,16 +17,7 @@
         color: $darkGreen;
     }
 
-    &--logout {
-        text-decoration: none;
-        background     : $yellow;
-        width          : 6rem;
-        height         : 2.5rem;
-        display        : flex;
-        justify-content: center;
-        align-items    : center;
-        border-radius  : 2.5rem;
-    }
+
 
     &__img {
         border-radius: 100%;
@@ -34,9 +25,7 @@
 }
 
 .panel {
-    max-width: 100rem;
-    margin   : 0 auto;
-    padding  : 2.5rem 0.7rem;
+    @include page-width;        //sets a max width for the div
 
     &__header {
         &__path {
@@ -144,8 +133,7 @@
 }
 
 .panel-option {
-    max-width: 100rem;
-    margin   : 0 auto;
+    @include page-width;        //sets a max width for the div
 
     &__header {
         &__container {
@@ -181,9 +169,7 @@
         &__head {
             text-align: left;
 
-
             th {
-
                 padding: 2rem 0.8rem;
             }
         }
@@ -207,19 +193,6 @@
                         color          : white;
                         font-weight    : bold;
                         border-radius  : 3rem;
-
-                        &--view {
-                            background: $black;
-                            width     : 8rem;
-                        }
-
-                        &--edit {
-                            background: $blue;
-                        }
-
-                        &--delete {
-                            background: $red;
-                        }
                     }
                 }
 

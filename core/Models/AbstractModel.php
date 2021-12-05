@@ -34,37 +34,45 @@ abstract class AbstractModel
          * Searches through parameters and adds SQL code depending on the information that is provided
          */
         switch([$orderBy, $limit, $where, $is]) {
+            //all parameters are left empty
             case [null, null, null, null]:
                 $result = $database->query("SELECT * FROM $tablename");
             break;
+            //only $orderBy parameter used
             case [true, null, null, null]:
                 $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction");
             break;
+            //only $limit parameter used
             case [null, true, null, null]: 
                 $result = $database->query("SELECT * FROM $tablename LIMIT $limit");
             break;
+            //$orderBy and $limit parameter are used
             case [true, true, null, null]:
                 $result = $database->query("SELECT * FROM $tablename ORDER BY $orderBy $direction LIMIT $limit");
             break;
+            //only $where parameter is used
             case [null, null, true, null]:
                 $result = $database->query("SELECT * FROM $tablename WHERE $where");
             break;
+            //$orderBy and $where parameter are used
             case [true, null, true, null]:
                 $result = $database->query("SELECT * FROM $tablename WHERE $where ORDER BY $orderBy $direction");
             break;
+            //$where parameter and $is are used
             case [null, null, true, true]:
                 $result = $database->query("SELECT * FROM $tablename WHERE $where = $is");
             break;
+            //$orderBy, $where and $is parameter are used
             case [true, null, true, true]:
                 $result = $database->query("SELECT * FROM $tablename WHERE $where = $is ORDER BY $orderBy $direction");
             break;
+            //all parameters are used
             case [true, true, true, true]:
                 $result = $database->query("SELECT * FROM $tablename WHERE $where = $is LIMIT $limit ORDER BY $orderBy $direction");
             break;
 
         }
-
-
+        
         /**
          * Returns data result
          */

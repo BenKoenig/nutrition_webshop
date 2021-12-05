@@ -8,14 +8,11 @@ use Core\View;
 class NewController {
     public function index()
     {
-        /**
-         * Alle Räume aus der Datenbank laden und von der Datenbank sortieren lassen.
-         */;
+        //Loads 10 products sorted  by their creation date
         $products = Product::all('created_at', 'ASC', '10');
 
-        /**
-         * View laden und Daten übergeben.
-         */
+
+        //Renders view and products
         View::render('products/new', [
             'products' => $products,
         ]);

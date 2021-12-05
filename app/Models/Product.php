@@ -139,22 +139,40 @@ class Product extends AbstractModel
         }
     }
 
-    public function getUnits() {
+    public function notifyStock()
+    {
+        if ($this->units === 0) {                               //checks if product is out of stock
+            return "This product is out of stock";              //returns message
+        } elseif ($this->units < 4) {                           //checks if 3 or less units are left
+            return "Only " . $this->units . " in stock";        //returns message
+        } elseif ($this->units < 11) {                          //checks if 10 or less units are left
+            return "Limited quantity available";                //returns message
+        }
+    }
+
+    public function getUnits()
+    {
         return $this->units;
     }
 
+    /**
+     * translates JSON-Array to PHP Array and returns it
+     */
     public function getImages(): array
     {
-        /**
-         * Nachdem $this->images ein JSON-Array ist, wandeln wir ihn hier in ein natives PHP Array um.
-         */
         return json_decode($this->imgs);
     }
 
     /**
-     * Prüfen, ob Bilder vorhanden sind in dem Raum.
-     *
-     * @return bool
+     * returns first image
+     */
+    public function getFirstImage()
+    {
+        return $this->getImages()[0];
+    }
+
+    /**
+     * checks if images are uploaded
      */
     public function hasImages(): bool
     {
@@ -162,11 +180,7 @@ class Product extends AbstractModel
     }
 
     /**
-     * Ein oder mehrere Bilder in $this->images hinzufügen.
-     *
-     * @param array $images
-     *
-     * @return array
+     * adds images to $this->images
      */
     public function addImages(array $imgs): array
     {
@@ -244,7 +258,4 @@ class Product extends AbstractModel
          */
         return $this->getImages();
     }
-
-    
-}   
-
+}

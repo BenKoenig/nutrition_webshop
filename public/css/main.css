@@ -463,16 +463,6 @@
 .panel-header--user {
   color: #217E7E;
 }
-.panel-header--logout {
-  text-decoration: none;
-  background: #E6ED96;
-  width: 6rem;
-  height: 2.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 2.5rem;
-}
 .panel-header__img {
   border-radius: 100%;
 }
@@ -480,7 +470,7 @@
 .panel {
   max-width: 100rem;
   margin: 0 auto;
-  padding: 2.5rem 0.7rem;
+  padding: 5rem 2rem;
 }
 .panel__header__path {
   display: flex;
@@ -571,6 +561,7 @@
 .panel-option {
   max-width: 100rem;
   margin: 0 auto;
+  padding: 5rem 2rem;
 }
 .panel-option__header__container {
   display: flex;
@@ -620,16 +611,6 @@
   color: white;
   font-weight: bold;
   border-radius: 3rem;
-}
-.panel-option__table__body__tr__td__btn--view {
-  background: #000000;
-  width: 8rem;
-}
-.panel-option__table__body__tr__td__btn--edit {
-  background: #b2d7f3;
-}
-.panel-option__table__body__tr__td__btn--delete {
-  background: #F5B8B8;
 }
 
 .login-form {
@@ -1243,6 +1224,9 @@
 .productDetail__container__item--price {
   font-weight: bold;
   font-size: 1.5rem;
+}
+.productDetail__container__item--stock {
+  color: #BB0000;
 }
 
 .profile {

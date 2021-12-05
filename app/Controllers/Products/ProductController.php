@@ -16,6 +16,7 @@ class ProductController {
         $products = Product::all('name', 'asc', null, 'category_id', $id);
         $category = Category::findOrFail($id);
 
+        //Renders view and displays products and the category with the $id given in the parameter
         View::render('products/productList', [
             'products' => $products,
             'category' => $category
@@ -24,6 +25,8 @@ class ProductController {
 
     public function detail(int $id) {
         $product = Product::find($id);
+
+        //Renders a specific product with the $id given in the parameter
         View::render('products/productDetails', [
             'product' => $product,
         ]);

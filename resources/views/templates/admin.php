@@ -6,10 +6,12 @@ Control Panel Header
 <div class="panel-header">
     <div>
         <h2>Admin Panel</h2>
+        <!-- Small description of the admin panel -->
         <p class="panel-header--desc">You can explore Admin Panel by selecting different categories
             (for example users, products and merchants), and viewing common tasks listed under each category. </p>
+        <!-- Displays who is logged in-->
         <p class="panel-header--user">Logged in as: <?php echo \App\Models\User::getLoggedIn()->username; ?></p>
-        <a class="panel-header--logout"" href=" <?php echo BASE_URL ?>/logout">Logout</a>
+        <a class="btn btn--red" href=" <?php echo BASE_URL ?>/logout">Logout</a>
     </div>
 
     <img class="panel-header__img" src="https://bit.ly/3qxun4E" alt="cat admin (supposed to be funny)">
@@ -33,8 +35,6 @@ want to edit.
 
 ----------------------------------------------------------
 -->
-
-
 <div class="listing">
 
     <ul class="listing__ul">

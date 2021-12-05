@@ -10,7 +10,7 @@
         grid-template-columns: repeat(1, 1fr);
         gap: 2rem;
         @include md-screen {
-            grid-template-columns: repeat(2, 1fr);
+            grid-template-columns: repeat(2, 1fr); //adds more rows on bigger screens
         }
         &__item {
             &__field {

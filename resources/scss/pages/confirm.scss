@@ -4,7 +4,7 @@
     height: 50rem;
     background-color: white;
     &__container {
-        position       : absolute;
+        position       : absolute; //to center message
         top            : 50%;
         left           : 50%;
         transform      : translate(-50%, -50%);
@@ -17,7 +17,7 @@
         max-width: 40rem;
     
         &__btns {
-            display: flex;
+            display: flex; //to display buttons next to each other
             gap: 0.6rem;
         }
     }

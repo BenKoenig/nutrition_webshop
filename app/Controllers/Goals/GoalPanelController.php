@@ -16,6 +16,7 @@ class GoalPanelController
 {
     public function index()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
         $goals = Goal::all('id', 'ASC');
         View::render('goals/panel/index', [
@@ -28,10 +29,13 @@ class GoalPanelController
 
     public function edit(int $id)
     {
-        AuthMiddleware::isAdminOrFail(); //checks if user is admin
-        $goal = Goal::findOrFail($id); //searches specific id
+        //Checks if user is permited to view this page
+        AuthMiddleware::isAdminOrFail();
 
-        //renders content
+        //searches for goal with the id given in the parameter
+        $goal = Goal::findOrFail($id);
+
+        //renders view
         View::render('goals/panel/edit', [
             'goal' => $goal
         ]);
@@ -41,24 +45,25 @@ class GoalPanelController
 
     public function update(int $id)
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
         $validationErrors = $this->validateFormData($id);
 
+        //checks if there were validation errors
         if (!empty($validationErrors)) {
             Session::set('errors', $validationErrors); //notifies user about errors
             Redirector::redirect("/admin/goals/${id}/edit"); //refreshes page
         }
 
-        $goal = Goal::findOrFail($id); //Searches for specific id
+        //Searches for specific id
+        $goal = Goal::findOrFail($id);
 
-   
+        //updates goal 
+        $goal->fill($_POST);
 
-        $goal->fill($_POST); 
-
+        //updates images
         $goal = $this->handleUploadedFiles($goal);
-
-
         $goal = $this->handleDeleteFiles($goal);
 
 
@@ -75,8 +80,10 @@ class GoalPanelController
 
     public function create()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
+        //renders view
         View::render('goals/panel/create');
     }
 
@@ -84,6 +91,7 @@ class GoalPanelController
 
     public function store()
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
         $validationErrors = $this->validateFormData();
 
@@ -124,6 +132,7 @@ class GoalPanelController
 
     public function deleteConfirm(int $id)
     {
+        //Checks if user is permited to view this page
         AuthMiddleware::isAdminOrFail();
 
         $goal = Goal::findOrFail($id); //Searches for specific id
@@ -136,18 +145,12 @@ class GoalPanelController
 
     private function validateFormData(int $id = 0): array
     {
+        //creates new validator
         $validator = new Validator();
         if (!empty($_POST)) {
-            /**
-             * Daten validieren. Für genauere Informationen zu den Funktionen s. Core\Validator.
-             *
-             * Hier verwenden wir "named params", damit wir einzelne Funktionsparameter überspringen können.
-             */
+            //validates fields
             $validator->letters($_POST['name'], label: 'Goal', required: true, max: 255);
             $validator->file($_FILES['imgs'], label: 'imgs', type: 'image');
-            /**
-             * @todo: implement Validate Array + Contents
-             */
         }
 
         return $validator->getErrors();
@@ -156,62 +159,35 @@ class GoalPanelController
 
     public function handleUploadedFiles(Goal $goal): ?Goal
     {
-        /**
-         * Wir erstellen zunächst einen Array an Objekten, damit wir Logik, die zu einer Datei gehört, in diesen
-         * Objekten kapseln können.
-         */
+        //cretes array
         $files = AbstractFile::createFromUploadedFiles('imgs');
 
-        /**
-         * Nun gehen wir alle Dateien durch ...
-         */
+
+        //goes through all files
         foreach ($files as $file) {
-            /**
-             * ... speichern sie in den Uploads Ordner ...
-             */
+            //saves images in a selected file
             $storagePath = $file->putToUploadsFolder();
-            /**
-             * ... und verknüpfen sie mit dem Raum.
-             */
             $goal->addImages([$storagePath]);
         }
-        /**
-         * Nun geben wir den aktualisierten Raum wieder zurück.
-         */
+
         return $goal;
     }
 
 
-    /**
-     * Löschen-Checkboxen der Bilder eines Raumes verarbeiten.
-     *
-     * @param Room $room
-     *
-     * @return Room
-     */
+
     private function handleDeleteFiles(Goal $goal): Goal
     {
-        /**
-         * Wir prüfen, ob eine der Checkboxen angehakerlt wurde.
-         */
+        //checks if the checkbox is checked
         if (isset($_POST['delete-images'])) {
-            /**
-             * Wenn ja, gehen wir alle Checkboxen durch ...
-             */
+            //... goes through all selected checkboxes
             foreach ($_POST['delete-images'] as $deleteImage) {
-                /**
-                 * Lösen die Verknüpfung zum Room ...
-                 */
+
+                //deletes selected images
                 $goal->removeImages([$deleteImage]);
-                /**
-                 * ... und löschen die Datei aus dem Uploads-Ordner.
-                 */
                 AbstractFile::delete($deleteImage);
             }
         }
 
         return $goal;
     }
-
-
 }

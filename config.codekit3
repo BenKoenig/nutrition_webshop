@@ -1081,14 +1081,6 @@
       "oAP" : "\/resources\/views\/templates\/products\/productList.php",
       "oF" : 0
     },
-    "\/resources\/views\/templates\/products\/products.php" : {
-      "cB" : 0,
-      "ft" : 8192,
-      "hM" : 0,
-      "oA" : 0,
-      "oAP" : "\/resources\/views\/templates\/products\/products.php",
-      "oF" : 0
-    },
     "\/resources\/views\/templates\/products\/sales.php" : {
       "cB" : 0,
       "ft" : 8192,
