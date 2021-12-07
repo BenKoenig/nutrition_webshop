@@ -2,19 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
 	<meta charset="utf-8"/>
+	<meta name="nameoftheshop" content="Shape Nutritions"/>
+	<meta name="languages" content="HTML, CSS, JavaScript, PHP, SQL"/>
+	<meta name="compiler" content="Codekit3"/>
 </head>
 <body>
-
-<p>░██╗░░░░░░░██╗███████╗██████╗░░██████╗██╗░░██╗░█████╗░██████╗░
-░██║░░██╗░░██║██╔════╝██╔══██╗██╔════╝██║░░██║██╔══██╗██╔══██╗
-░╚██╗████╗██╔╝█████╗░░██████╦╝╚█████╗░███████║██║░░██║██████╔╝
-░░████╔═████║░██╔══╝░░██╔══██╗░╚═══██╗██╔══██║██║░░██║██╔═══╝░
-░░╚██╔╝░╚██╔╝░███████╗██████╦╝██████╔╝██║░░██║╚█████╔╝██║░░░░░
-░░░╚═╝░░░╚═╝░░╚══════╝╚═════╝░╚═════╝░╚═╝░░╚═╝░╚════╝░╚═╝░░░░░</p>
-
-<p>Name of the shop: Shape Nutritions
-Languages: HTML, CSS, JavaScript, PHP, SQL
-Compiler: Codekit3</p>
 
 <p>Admin Account:
 Username: sae
@@ -24,74 +16,93 @@ Password: test</p>
 Username: user
 Password: test</p>
 
-<p>Database Structure:</p>
+<p>Database Structure:
+Products</p>
 
 <ul>
-<li><p>Products
-++ id : int(11) : primary_key : auto_increment
-++ category_id : int(11)
-++ goal_id : int(11)
-++ merchant_id : int(11)
-++ name : varchar(45)
-++ description : varchar(450)
-++ price : float
-++ serving : float
-++ ingredients : varchar(450)
-++ weight : float
-++ is_featured : tinyint(1) : default=0
-++ is_bestseller : tinyint(1) : default=0
-++ is_sale : tinyint(1) : default=0
-++ imgs : longtext : default=[]
-++ units : int(11)
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p></li>
-<li><p>Categories
-++ id : int(11) : primary_key : auto_increment
-++ name : varchar(45)
-++ is_popular : tinyint(1)
-++ imgs : longtext : default=[]
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p></li>
-<li><p>Goals
-++ id : int(11) : primary_key : auto_increment
-++ name : varchar(45)
-++ imgs : longtext : default=[]
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p></li>
-<li><p>Users
-++ id : int(11) : primary_key : auto_increment
-++ username : varchar(255)
-++ email : varchar(255)
-++ password : varchar(255)
-++ firstname : varchar(100)
-++ lastname : varchar(100)
-++ adress_1 : varchar(100)
-++ adress_2 : varchar(100)
-++ postal_code : int(100)
-++ city : varchar(100)
-is_admin : tinyint(1) : default=null
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p></li>
-<li><p>Orders
-++ id : int(11) : primary_key : auto_increment
-++ user_id : int(11)
-++ product_id : int(11)
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p></li>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>category_id : int(11)</li>
+<li>goal_id : int(11)</li>
+<li>merchant_id : int(11)</li>
+<li>name : varchar(45)</li>
+<li>description : varchar(450)</li>
+<li>price : float</li>
+<li>serving : float</li>
+<li>ingredients : varchar(450)</li>
+<li>weight : float</li>
+<li>is_featured : tinyint(1) : default=0</li>
+<li>is_bestseller : tinyint(1) : default=0</li>
+<li>is_sale : tinyint(1) : default=0</li>
+<li>imgs : longtext : default=[]</li>
+<li>units : int(11)</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
 </ul>
 
-<p>++ Merchants
-++ id : int(11) : primary_key : auto_increment
-++ name : int(11)
-++ website : varchar(45)
-++ created_at : timestamp : current_timestamp()
-++ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
-++ deleted_at : timestamp : null = true : default = null</p>
+<p>Categories</p>
+
+<ul>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>name : varchar(45)</li>
+<li>is_popular : tinyint(1)</li>
+<li>imgs : longtext : default=[]</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
+</ul>
+
+<p>Goals</p>
+
+<ul>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>name : varchar(45)</li>
+<li>imgs : longtext : default=[]</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
+</ul>
+
+<p>Users</p>
+
+<ul>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>username : varchar(255)</li>
+<li>email : varchar(255)</li>
+<li>password : varchar(255)</li>
+<li>firstname : varchar(100)</li>
+<li>lastname : varchar(100)</li>
+<li>adress_1 : varchar(100)</li>
+<li>adress_2 : varchar(100)</li>
+<li>postal_code : int(100)</li>
+<li>city : varchar(100)</li>
+<li>is_admin : tinyint(1) : default=null</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
+</ul>
+
+<p>Orders</p>
+
+<ul>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>user_id : int(11)</li>
+<li>product_id : int(11)</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
+</ul>
+
+<p>Merchants</p>
+
+<ul>
+<li>id : int(11) : primary_key : auto_increment</li>
+<li>name : int(11)</li>
+<li>website : varchar(45)</li>
+<li>created_at : timestamp : current_timestamp()</li>
+<li>updated_at : timestamp : current_timestamp : on_update_current_timestamp()</li>
+<li>deleted_at : timestamp : null = true : default = null</li>
+</ul>
 
 </body>
 </html>

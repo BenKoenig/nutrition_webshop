@@ -7,7 +7,7 @@
       "uuidString" : "40155193-033E-4FBF-961B-5813562C0D61"
     }
   ],
-  "creatorBuild" : "34214",
+  "creatorBuild" : "34264",
   "files" : {
     "\/.htaccess" : {
       "cB" : 0,
@@ -3195,6 +3195,9 @@
       },
       "no-unused-labels" : {
         "active" : 1
+      },
+      "no-unused-private-class-members" : {
+        "active" : 0
       },
       "no-unused-vars" : {
         "active" : 1,
