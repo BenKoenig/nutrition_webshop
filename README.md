@@ -5,13 +5,18 @@
 Username: sae
 Password: test
 `
-
 ### User Account (without admin privileges):
 `
 Username: user
 Password: test
 `
 
+## Technologies used
+- HTML :rose:
+- SASS :hamster:
+- Vanilla Javascript :zap:
+- Custom PHP Framework :diamond_shape_with_a_dot_inside:
+- Custom CMS :crown:
 
 ## Database Structure
 ### Products
