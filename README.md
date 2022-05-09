@@ -20,6 +20,7 @@ Password: test
 - HTML :rose:
 - SASS :hamster:
 - Vanilla Javascript :zap:
+- MySQL :palm_tree:
 - Custom PHP Framework :diamond_shape_with_a_dot_inside:
 - Custom CMS :crown:
 
