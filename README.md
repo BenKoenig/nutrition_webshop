@@ -1,12 +1,12 @@
-### Sports Nutrition Webshop
+# Sports Nutrition Webshop
 
-# Admin Account:
+### Admin Account:
 `
 Username: sae
 Password: test
 `
 
-# User Account (without admin privileges):
+### User Account (without admin privileges):
 `
 Username: user
 Password: test
@@ -14,7 +14,7 @@ Password: test
 
 
 ## Database Structure
-# Products
+### Products
 ```
 id : int(11) : primary_key : auto_increment
 category_id : int(11)
@@ -36,7 +36,7 @@ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
 deleted_at : timestamp : null = true : default = null
 ```
 
-# Categories
+### Categories
 ```
 id : int(11) : primary_key : auto_increment
 name : varchar(45)
@@ -47,7 +47,7 @@ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
 deleted_at : timestamp : null = true : default = null
 ```
 
-# Goals
+### Goals
 ```
 id : int(11) : primary_key : auto_increment
 name : varchar(45)
@@ -57,7 +57,7 @@ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
 deleted_at : timestamp : null = true : default = null
 ```
 
-# Users
+### Users
 ```
 id : int(11) : primary_key : auto_increment
 username : varchar(255)
@@ -75,7 +75,7 @@ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
 deleted_at : timestamp : null = true : default = null
 ```
 
-# Orders
+### Orders
 ```
 id : int(11) : primary_key : auto_increment
 user_id : int(11)
@@ -85,7 +85,7 @@ updated_at : timestamp : current_timestamp : on_update_current_timestamp()
 deleted_at : timestamp : null = true : default = null
 ```
 
-# Merchants
+### Merchants
 ```
 id : int(11) : primary_key : auto_increment
 name : int(11)
